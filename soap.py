@@ -1639,7 +1639,3 @@ class SOAP(optim.Optimizer):
         self._finalize_basis_stats()
         return loss
 
-
-# Backward-compatible alias for older imports/configs that referenced this
-# non-low-rank SOAP variant as TurboSlimSOAP.
-TurboSlimSOAP = SOAP
