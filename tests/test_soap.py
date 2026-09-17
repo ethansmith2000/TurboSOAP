@@ -6,7 +6,9 @@ from soap import (
     SOAP,
     TurboSlimSOAP,
     _basis_metrics,
+    _clip_rotation,
     _damped_jacobi_generator,
+    _largest_pair_jacobi_step,
     _offdiag,
     _orthogonalize_ns,
     _sym,
@@ -46,6 +48,59 @@ def test_clip_only_tracker_does_not_amplify_zero_signal():
     b = torch.diag(diagonal)
     omega = _damped_jacobi_generator(b, damping=1e-2)
     assert torch.count_nonzero(omega) == 0
+
+
+def test_spectral_bound_cap_controls_concentrated_rotation():
+    rotation = torch.zeros(128, 128)
+    rotation[0, 1] = 100.0
+    rotation[1, 0] = -100.0
+
+    clipped = _clip_rotation(rotation, 0.1, mode="spectral_bound")
+
+    assert clipped.abs().sum(dim=-1).amax() <= 0.100001
+
+
+def test_pair_step_escapes_equal_diagonal_stationary_point():
+    covariance_in_basis = torch.tensor([[1.0, 0.9], [0.9, 1.0]])
+    q = torch.eye(2)
+
+    corrected = _largest_pair_jacobi_step(q, covariance_in_basis, math.pi / 4)
+    diagonalized = corrected.T @ covariance_in_basis @ corrected
+
+    assert diagonalized[0, 1].abs() < 1e-6
+    assert torch.allclose(corrected.T @ corrected, torch.eye(2), atol=1e-6)
+
+
+def test_capped_pair_fallback_chooses_a_descent_angle():
+    torch.manual_seed(8)
+    for _ in range(50):
+        value = torch.randn(2, 2)
+        covariance = value @ value.T
+        before = _offdiag(covariance).norm()
+
+        corrected = _largest_pair_jacobi_step(
+            torch.eye(2), covariance, max_angle=0.1
+        )
+        after = _offdiag(corrected.T @ covariance @ corrected).norm()
+
+        assert after <= before + 1e-6
+
+
+def test_tracker_uses_pair_fallback_when_dense_flow_stalls():
+    covariance = torch.tensor([[1.0, 0.9], [0.9, 1.0]])
+    q = torch.eye(2)
+    group = {
+        "basis_jacobi_damping": 1e-2,
+        "basis_lr": 0.5,
+        "basis_rotation_cap": math.pi / 4,
+        "basis_rotation_cap_mode": "average",
+        "basis_stall_pair_threshold": 1e-3,
+        "basis_ns_iterations": 2,
+    }
+
+    corrected = SOAP._gauge_step_one(covariance, q, group)
+
+    assert _offdiag(corrected.T @ covariance @ corrected).norm() < 1e-6
 
 
 def test_damped_tracker_handles_condition_number_1e5():
@@ -142,6 +197,25 @@ def test_general_tensor_projection_round_trip():
         projected, basis, optimizer.param_groups[0]
     )
     assert torch.allclose(restored, value, atol=2e-6, rtol=2e-6)
+
+
+def test_smaller_side_mode_keeps_only_small_matrix_factor():
+    parameter = torch.nn.Parameter(torch.zeros(16, 4))
+    optimizer = SOAP(
+        [parameter],
+        precondition_mode="smaller_side",
+        covariance_compute_dtype="float32",
+        basis_track_stats=False,
+    )
+
+    parameter.grad = torch.randn_like(parameter)
+    optimizer.step()
+    state = optimizer.state[parameter]
+
+    assert state["GG"][0] is None
+    assert state["Q"][0] is None
+    assert state["GG"][1].shape == (4, 4)
+    assert state["Q"][1].shape == (4, 4)
 
 
 def test_refresh_reports_orthogonal_basis_metrics():

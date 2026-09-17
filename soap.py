@@ -48,12 +48,15 @@ def _orthogonalize_ns(x: Tensor, iterations: int = 2) -> Tensor:
     upper_sq = gram.abs().sum(dim=-1).amax().clamp_min(1e-12)
     scale = (_NS_MAX_SINGULAR / upper_sq.sqrt()).clamp(max=1.0)
     z = z * scale
+    gram = gram * scale.square()
 
-    for _ in range(max(1, int(iterations))):
-        gram = z.T @ z
+    num_iterations = max(1, int(iterations))
+    for iteration in range(num_iterations):
         gram_sq = gram @ gram
         correction = -10.0 * gram + 3.0 * gram_sq
         z = 0.125 * (15.0 * z + z @ correction)
+        if iteration + 1 < num_iterations:
+            gram = z.T @ z
     return z
 
 
@@ -84,14 +87,53 @@ def _damped_jacobi_generator(
     return 0.5 * (omega - omega.T)
 
 
-def _clip_rotation(rotation: Tensor, max_average_column_norm: float) -> Tensor:
-    """Clip a rotation without ever increasing a small direction."""
-    if rotation.numel() == 0 or max_average_column_norm <= 0.0:
+def _clip_rotation(
+    rotation: Tensor,
+    limit_value: float,
+    mode: str = "average",
+) -> Tensor:
+    """Clip a rotation without scaling small steps up.
+
+    ``average`` preserves the original average-column-norm policy.  The safer
+    ``spectral_bound`` mode uses the maximum absolute row sum, which bounds the
+    spectral norm of a skew-symmetric matrix but can be more conservative.
+    """
+    if rotation.numel() == 0 or limit_value <= 0.0:
         return rotation
-    average_column_norm = rotation.float().norm() / math.sqrt(max(1, rotation.shape[0]))
-    limit = rotation.new_tensor(float(max_average_column_norm))
-    scale = (limit / average_column_norm.clamp_min(1e-30)).clamp(max=1.0)
+    if mode == "average":
+        magnitude = rotation.float().norm() / math.sqrt(max(1, rotation.shape[0]))
+    elif mode == "spectral_bound":
+        # For skew matrices, ||A||_1 == ||A||_inf and
+        # ||A||_2 <= sqrt(||A||_1 ||A||_inf) == ||A||_inf.
+        magnitude = rotation.float().abs().sum(dim=-1).amax()
+    else:
+        raise ValueError(f"Unknown rotation cap mode: {mode!r}")
+    limit = rotation.new_tensor(float(limit_value))
+    scale = (limit / magnitude.clamp_min(1e-30)).clamp(max=1.0)
     return rotation * scale.to(rotation.dtype)
+
+
+def _largest_pair_jacobi_step(q: Tensor, b: Tensor, max_angle: float) -> Tensor:
+    """Exactly rotate the most correlated 2x2 block of ``b``."""
+    offdiag = _offdiag(b).abs()
+    flat_index = offdiag.argmax()
+    size = b.shape[0]
+    i = flat_index // size
+    j = flat_index % size
+    bij = b[i, j]
+    theta = 0.5 * torch.atan2(2.0 * bij, b[i, i] - b[j, j])
+    theta = torch.where(theta > math.pi / 4, theta - math.pi / 2, theta)
+    theta = torch.where(theta < -math.pi / 4, theta + math.pi / 2, theta)
+    theta = theta.clamp(min=-float(max_angle), max=float(max_angle))
+    cosine = theta.cos()
+    sine = theta.sin()
+
+    qi = q[:, i].clone()
+    qj = q[:, j].clone()
+    result = q.clone()
+    result[:, i] = cosine * qi + sine * qj
+    result[:, j] = -sine * qi + cosine * qj
+    return result
 
 
 def _basis_metrics(covariance: Tensor, q: Tensor, q_old: Optional[Tensor] = None) -> dict[str, float]:
@@ -136,12 +178,19 @@ class SOAP(Optimizer):
         max_precond_dim: Axes larger than this are not preconditioned.
         merge_dims: Merge adjacent tensor dimensions before preconditioning.
         precondition_1d: Build a covariance basis for vector parameters.
+        precondition_mode: ``"all"`` tracks every eligible factor;
+            ``"smaller_side"`` tracks only the smaller axis of 2D tensors.
         normalize_grads: RMS-normalize the final parameter update.
         data_format: ``"channels_first"`` or ``"channels_last"``.
         basis_lr: Step size for the damped Jacobi gauge flow.
-        basis_rotation_cap: Maximum average column norm of one rotation.
-            This clips large rotations but never scales small ones upward.
+        basis_rotation_cap: Rotation limit interpreted according to
+            ``basis_rotation_cap_mode``. Zero disables clipping.
+        basis_rotation_cap_mode: ``"average"`` preserves the original cap;
+            ``"spectral_bound"`` strictly controls a spectral-norm upper bound.
         basis_jacobi_damping: Relative Tikhonov damping for pairwise gaps.
+        basis_stall_pair_threshold: If positive, use an exact capped 2x2 Jacobi
+            step when the dense generator is this small relative to remaining
+            off-diagonal covariance. This adds a device synchronization.
         basis_reset_frequency: Hard-reset interval measured in basis refreshes.
             ``0`` disables periodic resets. Cold start always uses ``eigh``.
         basis_reset_method: ``"qr"`` (one orthogonal iteration) or ``"eigh"``.
@@ -149,6 +198,9 @@ class SOAP(Optimizer):
         covariance_compute_dtype: Outer-product matmul dtype. On CPU, bf16
             requests use fp32. Covariance state itself always remains fp32.
         basis_track_stats: Populate ``latest_basis_stats`` on basis refreshes.
+        basis_track_stats_frequency: Collect those statistics every N refreshes.
+        transport_second_moment_on_warm: Apply squared-overlap diagonal variance
+            transport after warm rotations as well as hard resets.
 
     Optimizer moments, covariance matrices, and master bases are kept in fp32.
     Momentum is transported only when Q actually changes. Elementwise second
@@ -168,16 +220,21 @@ class SOAP(Optimizer):
         max_precond_dim: int = 10000,
         merge_dims: bool = False,
         precondition_1d: bool = False,
+        precondition_mode: str = "all",
         normalize_grads: bool = False,
         data_format: str = "channels_first",
         basis_lr: float = 0.5,
         basis_rotation_cap: float = 0.1,
+        basis_rotation_cap_mode: str = "average",
         basis_jacobi_damping: float = 1e-2,
+        basis_stall_pair_threshold: float = 0.0,
         basis_reset_frequency: int = 50,
         basis_reset_method: str = "qr",
         basis_ns_iterations: int = 2,
         covariance_compute_dtype: str = "bfloat16",
         basis_track_stats: bool = True,
+        basis_track_stats_frequency: int = 1,
+        transport_second_moment_on_warm: bool = False,
     ):
         if lr < 0.0:
             raise ValueError(f"lr must be non-negative, got {lr}")
@@ -195,12 +252,20 @@ class SOAP(Optimizer):
             raise ValueError("max_precond_dim must be >= 1")
         if data_format not in ("channels_first", "channels_last"):
             raise ValueError("data_format must be 'channels_first' or 'channels_last'")
+        if precondition_mode not in ("all", "smaller_side"):
+            raise ValueError("precondition_mode must be 'all' or 'smaller_side'")
         if basis_lr < 0.0:
             raise ValueError("basis_lr must be non-negative")
         if basis_rotation_cap < 0.0:
             raise ValueError("basis_rotation_cap must be non-negative")
+        if basis_rotation_cap_mode not in ("average", "spectral_bound"):
+            raise ValueError(
+                "basis_rotation_cap_mode must be 'average' or 'spectral_bound'"
+            )
         if basis_jacobi_damping <= 0.0:
             raise ValueError("basis_jacobi_damping must be positive")
+        if basis_stall_pair_threshold < 0.0:
+            raise ValueError("basis_stall_pair_threshold must be non-negative")
         if int(basis_reset_frequency) < 0:
             raise ValueError("basis_reset_frequency must be >= 0")
         if basis_reset_method not in ("qr", "eigh"):
@@ -209,6 +274,8 @@ class SOAP(Optimizer):
             raise ValueError("basis_ns_iterations must be >= 1")
         if covariance_compute_dtype not in ("float32", "bfloat16"):
             raise ValueError("covariance_compute_dtype must be 'float32' or 'bfloat16'")
+        if int(basis_track_stats_frequency) < 1:
+            raise ValueError("basis_track_stats_frequency must be >= 1")
 
         defaults = dict(
             lr=float(lr),
@@ -220,15 +287,20 @@ class SOAP(Optimizer):
             max_precond_dim=int(max_precond_dim),
             merge_dims=bool(merge_dims),
             precondition_1d=bool(precondition_1d),
+            precondition_mode=precondition_mode,
             normalize_grads=bool(normalize_grads),
             basis_lr=float(basis_lr),
             basis_rotation_cap=float(basis_rotation_cap),
+            basis_rotation_cap_mode=basis_rotation_cap_mode,
             basis_jacobi_damping=float(basis_jacobi_damping),
+            basis_stall_pair_threshold=float(basis_stall_pair_threshold),
             basis_reset_frequency=int(basis_reset_frequency),
             basis_reset_method=basis_reset_method,
             basis_ns_iterations=int(basis_ns_iterations),
             covariance_compute_dtype=covariance_compute_dtype,
             basis_track_stats=bool(basis_track_stats),
+            basis_track_stats_frequency=int(basis_track_stats_frequency),
+            transport_second_moment_on_warm=bool(transport_second_moment_on_warm),
         )
         super().__init__(params, defaults)
         self._data_format = data_format
@@ -363,9 +435,19 @@ class SOAP(Optimizer):
         dimensions = [working_grad.shape[0]] if working_grad.dim() == 1 else list(working_grad.shape)
 
         covariance: list[Optional[Tensor]] = []
-        for size in dimensions:
-            skip = int(size) > group["max_precond_dim"] or (
-                working_grad.dim() == 1 and not group["precondition_1d"]
+        smaller_axis = None
+        if (
+            working_grad.dim() == 2
+            and group.get("precondition_mode") == "smaller_side"
+        ):
+            smaller_axis = min(
+                range(2), key=lambda axis: int(working_grad.shape[axis])
+            )
+        for axis, size in enumerate(dimensions):
+            skip = (
+                int(size) > group["max_precond_dim"]
+                or (smaller_axis is not None and axis != smaller_axis)
+                or (working_grad.dim() == 1 and not group["precondition_1d"])
             )
             covariance.append(
                 None
@@ -461,7 +543,26 @@ class SOAP(Optimizer):
         rotation = _clip_rotation(
             group["basis_lr"] * omega,
             group["basis_rotation_cap"],
+            group.get("basis_rotation_cap_mode", "average"),
         )
+        stall_threshold = group.get("basis_stall_pair_threshold", 0.0)
+        if stall_threshold > 0.0:
+            offdiag_norm = _offdiag(b).norm()
+            if (
+                float(offdiag_norm) > 0.0
+                and float(rotation.norm()) <= float(stall_threshold * offdiag_norm)
+            ):
+                # Equal or poorly separated Rayleigh quotients can make the
+                # double-bracket generator vanish away from a diagonal basis.
+                return _largest_pair_jacobi_step(
+                    q,
+                    b,
+                    max_angle=(
+                        group["basis_rotation_cap"]
+                        if group["basis_rotation_cap"] > 0.0
+                        else math.pi / 4.0
+                    ),
+                )
         candidate = q + q @ rotation
         return _orthogonalize_ns(candidate, group["basis_ns_iterations"])
 
@@ -524,11 +625,15 @@ class SOAP(Optimizer):
             else:
                 q_new = self._gauge_step_one(covariance, q_old, group)
             new_basis.append(q_new.float())
-            if group["basis_track_stats"]:
+            collect_stats = (
+                group["basis_track_stats"]
+                and state["basis_refreshes"] % group["basis_track_stats_frequency"] == 0
+            )
+            if collect_stats:
                 self._record_metrics(covariance, q_new, q_old, hard_reset)
 
         self._transport_first_moment(state, old_basis, new_basis, group)
-        if hard_reset:
+        if hard_reset or group["transport_second_moment_on_warm"]:
             self._transport_second_moment_for_reset(state, old_basis, new_basis, group)
         state["Q"] = new_basis
 
