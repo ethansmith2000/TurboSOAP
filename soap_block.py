@@ -192,6 +192,7 @@ def _select_cayley_blocks(
     unbiased_scale: bool = True,
     round_index: int = 0,
     seed: int = 0,
+    stall_threshold: float = 1e-6,
 ) -> Optional[BlockBatch]:
     """Build reproducibly shuffled blocks and near-identity Cayley transforms."""
     size = basis_covariance.shape[0]
@@ -215,13 +216,17 @@ def _select_cayley_blocks(
     tau = tau.clamp_min(1e-12) * float(damping)
     rotation = -local * gap / (gap.square() + tau.square()).clamp_min(1e-24)
     rotation = 0.5 * (rotation - rotation.transpose(1, 2))
+    selected_count = block_count * width
     sampling_scale = (
-        (size - 1) / (width - 1)
+        size * (size - 1) / (selected_count * (width - 1))
         if unbiased_scale and width < size
         else 1.0
     )
     rotation = rotation * (float(step_size) * sampling_scale)
 
+    active = torch.ones(
+        block_count, device=rotation.device, dtype=torch.bool
+    )
     if min_correlation > 0.0:
         scale = (
             diagonal.clamp_min(0.0).sqrt().unsqueeze(2)
@@ -241,10 +246,53 @@ def _select_cayley_blocks(
     identity = identity.expand(block_count, -1, -1)
     # Cayley(rotation) = (I - rotation/2)^-1 (I + rotation/2), which is
     # orthogonal for skew rotation and agrees with I + rotation to first order.
-    transitions = torch.linalg.solve(
+    transitions, solve_info = torch.linalg.solve_ex(
         identity - 0.5 * rotation,
         identity + 0.5 * rotation,
+        check_errors=False,
     )
+    transitions = torch.where(
+        solve_info.eq(0).reshape(-1, 1, 1), transitions, identity
+    )
+    # A double-bracket/Jacobi generator vanishes when the local diagonal is
+    # repeated, even if a large off-diagonal entry remains. Replace a stalled
+    # block with one exact, capped Jacobi plane rotation. Selection and masking
+    # remain on device and add no explicit synchronization.
+    if stall_threshold > 0.0 and step_size > 0.0:
+        offdiagonal = local - torch.diag_embed(diagonal)
+        offdiagonal_norm = offdiagonal.norm(dim=(-2, -1))
+        rotation_norm = rotation.norm(dim=(-2, -1))
+        stalled = (
+            (offdiagonal_norm > 0.0)
+            & (rotation_norm <= float(stall_threshold) * offdiagonal_norm)
+            & active
+        )
+        upper_scores = torch.triu(offdiagonal.abs(), diagonal=1)
+        flat_pair = upper_scores.flatten(1).argmax(dim=1)
+        first = torch.div(flat_pair, width, rounding_mode="floor")
+        second = flat_pair.remainder(width)
+        batch_index = torch.arange(
+            block_count, device=rotation.device, dtype=torch.long
+        )
+        bij = local[batch_index, first, second]
+        theta = 0.5 * torch.atan2(
+            2.0 * bij,
+            diagonal[batch_index, first] - diagonal[batch_index, second],
+        )
+        theta = torch.where(theta > math.pi / 4, theta - math.pi / 2, theta)
+        theta = torch.where(theta < -math.pi / 4, theta + math.pi / 2, theta)
+        if rotation_cap > 0.0:
+            max_angle = 2.0 * math.atan(0.5 * float(rotation_cap))
+            theta = theta.clamp(min=-max_angle, max=max_angle)
+        cosine, sine = theta.cos(), theta.sin()
+        fallback = identity.clone()
+        fallback[batch_index, first, first] = cosine
+        fallback[batch_index, second, second] = cosine
+        fallback[batch_index, first, second] = -sine
+        fallback[batch_index, second, first] = sine
+        transitions = torch.where(
+            stalled.reshape(-1, 1, 1), fallback, transitions
+        )
     return indices, transitions
 
 
@@ -280,6 +328,8 @@ class BlockSOAP(SOAP):
             appears in a random block; the block spectral cap still applies.
         basis_block_rotation_cap: Spectral bound for each sampled block's skew
             generator before applying its Cayley transform.
+        basis_block_stall_threshold: Relative threshold for replacing a stalled
+            block generator with one exact, capped Jacobi pair rotation.
         basis_block_seed: Seed for the reproducible shuffled-block schedule.
 
     ``top_correlation`` selection transfers a short top-k candidate list to the
@@ -297,9 +347,10 @@ class BlockSOAP(SOAP):
         basis_pair_selection: str = "round_robin",
         basis_pair_candidate_multiplier: int = 8,
         basis_block_size: int = 2,
-        basis_block_unbiased_scale: bool = True,
+        basis_block_unbiased_scale: bool = False,
         basis_block_rotation_cap: float = 0.25,
         basis_block_seed: int = 0,
+        basis_block_stall_threshold: float = 1e-6,
         **kwargs,
     ):
         if int(basis_pairs_per_refresh) < 0:
@@ -318,6 +369,8 @@ class BlockSOAP(SOAP):
             raise ValueError("basis_block_size must be >= 2")
         if float(basis_block_rotation_cap) < 0.0:
             raise ValueError("basis_block_rotation_cap must be non-negative")
+        if float(basis_block_stall_threshold) < 0.0:
+            raise ValueError("basis_block_stall_threshold must be non-negative")
         super().__init__(params, *args, **kwargs)
         for group in self.param_groups:
             group.setdefault("basis_pairs_per_refresh", int(basis_pairs_per_refresh))
@@ -338,6 +391,10 @@ class BlockSOAP(SOAP):
                 "basis_block_rotation_cap", float(basis_block_rotation_cap)
             )
             group.setdefault("basis_block_seed", int(basis_block_seed))
+            group.setdefault(
+                "basis_block_stall_threshold",
+                float(basis_block_stall_threshold),
+            )
 
     def _cold_start_basis(self, state: dict) -> None:
         bases: list[Optional[Tensor]] = []
@@ -433,25 +490,32 @@ class BlockSOAP(SOAP):
         q_old: Tensor,
         method: str,
     ) -> tuple[Tensor, Tensor, Tensor]:
+        # Reconstruct the world-coordinate covariance before resetting. Merely
+        # right-multiplying a drifted q_old by an orthogonal transition preserves
+        # its singular values and therefore cannot repair lost orthogonality.
+        world_covariance = _sym(q_old.float() @ b.float() @ q_old.float().T)
         if method == "eigh":
-            transition = self._eigh_basis(b)
+            q_new = self._eigh_basis(world_covariance)
         else:
-            transition, r = torch.linalg.qr(b.float(), mode="reduced")
+            q_new, r = torch.linalg.qr(
+                world_covariance @ q_old.float(), mode="reduced"
+            )
             signs = r.diagonal().sign()
             signs = torch.where(signs == 0, torch.ones_like(signs), signs)
-            transition = transition * signs.unsqueeze(0)
-        q_new = q_old.float() @ transition
-        b_new = _sym(transition.T @ b.float() @ transition)
+            q_new = q_new * signs.unsqueeze(0)
+        q_new = self._align_reset_basis(q_old, q_new).float()
+        transition = q_old.float().T @ q_new
+        b_new = _sym(q_new.T @ world_covariance @ q_new)
         return q_new, b_new, transition
 
     def _refresh_basis(self, state: dict, group: dict) -> None:
         old_basis = state["Q"]
         state["basis_refreshes"] += 1
-        reset_frequency = group["basis_reset_frequency"]
-        hard_reset = (
-            reset_frequency > 0
-            and state["basis_refreshes"] % reset_frequency == 0
-        )
+        if any(factor is not None for factor in old_basis):
+            self.last_basis_refreshes += 1
+        hard_reset = self._should_hard_reset(state, group)
+        if hard_reset:
+            self._record_hard_reset(state)
         collect_stats = (
             group["basis_track_stats"]
             and state["basis_refreshes"] % group["basis_track_stats_frequency"] == 0
@@ -503,6 +567,7 @@ class BlockSOAP(SOAP):
                         group["basis_block_unbiased_scale"],
                         state["basis_refreshes"] - 1,
                         group["basis_block_seed"],
+                        group["basis_block_stall_threshold"],
                     )
                     q_new = _apply_block_axis(q_old.float(), 1, blocks)
                     b_new = _transform_basis_covariance_blocks(b, blocks)
@@ -568,6 +633,8 @@ class BlockSOAP(SOAP):
         self._basis_stats_accum = None
         self.latest_basis_stats = {}
         self.just_gathered_basis_stats = False
+        self.last_basis_refreshes = 0
+        self.last_hard_reset_events = 0
 
         for group in self.param_groups:
             beta1, beta2 = group["betas"]
@@ -580,7 +647,7 @@ class BlockSOAP(SOAP):
                 grad = parameter.grad.detach()
                 state = self.state[parameter]
                 if "step" not in state:
-                    self._init_state(grad, state, group)
+                    self._init_state(grad, state, group, parameter)
                     # The initial observation is in world coordinates; cold
                     # start diagonalizes it and converts GG to moving coordinates.
                     super()._accumulate_covariance(grad, state, group)

@@ -179,7 +179,11 @@ class SOAP(Optimizer):
         merge_dims: Merge adjacent tensor dimensions before preconditioning.
         precondition_1d: Build a covariance basis for vector parameters.
         precondition_mode: ``"all"`` tracks every eligible factor;
-            ``"smaller_side"`` tracks only the smaller axis of 2D tensors.
+            ``"smaller_side"`` tracks only the smaller axis of 2D tensors;
+            ``"aspect_ratio"`` does so only when the larger axis is at least
+            ``precondition_aspect_ratio`` times the smaller axis.
+        precondition_aspect_ratio: Rectangularity threshold for
+            ``precondition_mode="aspect_ratio"``.
         normalize_grads: RMS-normalize the final parameter update.
         data_format: ``"channels_first"`` or ``"channels_last"``.
         basis_lr: Step size for the damped Jacobi gauge flow.
@@ -193,6 +197,10 @@ class SOAP(Optimizer):
             off-diagonal covariance. This adds a device synchronization.
         basis_reset_frequency: Hard-reset interval measured in basis refreshes.
             ``0`` disables periodic resets. Cold start always uses ``eigh``.
+        basis_reset_stagger: Spread each parameter's first reset across a
+            centered one-period window, then retain the configured cadence.
+            This smooths synchronized reset spikes without changing the
+            long-run reset frequency.
         basis_reset_method: ``"qr"`` (one orthogonal iteration) or ``"eigh"``.
         basis_ns_iterations: Newton--Schulz iterations per gauge retraction.
         covariance_compute_dtype: Outer-product matmul dtype. On CPU, bf16
@@ -221,6 +229,7 @@ class SOAP(Optimizer):
         merge_dims: bool = False,
         precondition_1d: bool = False,
         precondition_mode: str = "all",
+        precondition_aspect_ratio: float = 2.0,
         normalize_grads: bool = False,
         data_format: str = "channels_first",
         basis_lr: float = 0.5,
@@ -229,6 +238,7 @@ class SOAP(Optimizer):
         basis_jacobi_damping: float = 1e-2,
         basis_stall_pair_threshold: float = 0.0,
         basis_reset_frequency: int = 50,
+        basis_reset_stagger: bool = False,
         basis_reset_method: str = "qr",
         basis_ns_iterations: int = 2,
         covariance_compute_dtype: str = "bfloat16",
@@ -252,8 +262,12 @@ class SOAP(Optimizer):
             raise ValueError("max_precond_dim must be >= 1")
         if data_format not in ("channels_first", "channels_last"):
             raise ValueError("data_format must be 'channels_first' or 'channels_last'")
-        if precondition_mode not in ("all", "smaller_side"):
-            raise ValueError("precondition_mode must be 'all' or 'smaller_side'")
+        if precondition_mode not in ("all", "smaller_side", "aspect_ratio"):
+            raise ValueError(
+                "precondition_mode must be 'all', 'smaller_side', or 'aspect_ratio'"
+            )
+        if float(precondition_aspect_ratio) < 1.0:
+            raise ValueError("precondition_aspect_ratio must be >= 1")
         if basis_lr < 0.0:
             raise ValueError("basis_lr must be non-negative")
         if basis_rotation_cap < 0.0:
@@ -288,6 +302,7 @@ class SOAP(Optimizer):
             merge_dims=bool(merge_dims),
             precondition_1d=bool(precondition_1d),
             precondition_mode=precondition_mode,
+            precondition_aspect_ratio=float(precondition_aspect_ratio),
             normalize_grads=bool(normalize_grads),
             basis_lr=float(basis_lr),
             basis_rotation_cap=float(basis_rotation_cap),
@@ -295,6 +310,7 @@ class SOAP(Optimizer):
             basis_jacobi_damping=float(basis_jacobi_damping),
             basis_stall_pair_threshold=float(basis_stall_pair_threshold),
             basis_reset_frequency=int(basis_reset_frequency),
+            basis_reset_stagger=bool(basis_reset_stagger),
             basis_reset_method=basis_reset_method,
             basis_ns_iterations=int(basis_ns_iterations),
             covariance_compute_dtype=covariance_compute_dtype,
@@ -307,6 +323,25 @@ class SOAP(Optimizer):
         self.latest_basis_stats: dict[str, float] = {}
         self.just_gathered_basis_stats = False
         self._basis_stats_accum: Optional[dict[str, float]] = None
+        self.last_basis_refreshes = 0
+        self.last_hard_reset_events = 0
+        self._basis_reset_first_refresh: dict[int, int] = {}
+        for group in self.param_groups:
+            reset_frequency = int(group["basis_reset_frequency"])
+            eligible = [
+                parameter
+                for parameter in group["params"]
+                if self._parameter_has_preconditioner(parameter, group)
+            ]
+            for index, parameter in enumerate(eligible):
+                first_refresh = reset_frequency
+                if group["basis_reset_stagger"] and reset_frequency > 1:
+                    first_refresh = (
+                        reset_frequency // 2
+                        + 1
+                        + (index * reset_frequency) // len(eligible)
+                    )
+                self._basis_reset_first_refresh[id(parameter)] = first_refresh
 
     # ------------------------------------------------------------------
     # Tensor layout and basis transforms
@@ -423,9 +458,54 @@ class SOAP(Optimizer):
             return torch.bfloat16
         return torch.float32
 
-    def _init_state(self, grad: Tensor, state: dict, group: dict) -> None:
+    @staticmethod
+    def _parameter_has_preconditioner(parameter: Tensor, group: dict) -> bool:
+        if parameter.ndim == 0:
+            return False
+        if parameter.ndim == 1:
+            return (
+                group["precondition_1d"]
+                and int(parameter.shape[0]) <= group["max_precond_dim"]
+            )
+        dimensions = list(parameter.shape)
+        eligible_axes = {
+            axis
+            for axis, size in enumerate(dimensions)
+            if int(size) <= group["max_precond_dim"]
+        }
+        if not eligible_axes:
+            return False
+        mode = group.get("precondition_mode")
+        if parameter.ndim == 2 and mode in ("smaller_side", "aspect_ratio"):
+            smaller = min(dimensions)
+            larger = max(dimensions)
+            one_sided = mode == "smaller_side" or (
+                larger / max(1, smaller)
+                >= float(group["precondition_aspect_ratio"])
+            )
+            if one_sided:
+                smaller_axis = min(
+                    range(2), key=lambda axis: int(dimensions[axis])
+                )
+                return smaller_axis in eligible_axes
+        return True
+
+    def _init_state(
+        self,
+        grad: Tensor,
+        state: dict,
+        group: dict,
+        parameter: Optional[Tensor] = None,
+    ) -> None:
         state["step"] = 0
         state["basis_refreshes"] = 0
+        state["basis_hard_reset_events"] = 0
+        state["basis_hard_reset_factors"] = 0
+        state["basis_reset_first_refresh"] = int(
+            self._basis_reset_first_refresh.get(
+                id(parameter), group["basis_reset_frequency"]
+            )
+        )
         state["exp_avg"] = torch.zeros_like(grad, dtype=torch.float32)
         state["exp_avg_sq"] = torch.zeros_like(grad, dtype=torch.float32)
 
@@ -436,10 +516,16 @@ class SOAP(Optimizer):
 
         covariance: list[Optional[Tensor]] = []
         smaller_axis = None
-        if (
-            working_grad.dim() == 2
-            and group.get("precondition_mode") == "smaller_side"
-        ):
+        mode = group.get("precondition_mode")
+        use_smaller_side = mode == "smaller_side"
+        if working_grad.dim() == 2 and mode == "aspect_ratio":
+            smaller = min(int(working_grad.shape[0]), int(working_grad.shape[1]))
+            larger = max(int(working_grad.shape[0]), int(working_grad.shape[1]))
+            use_smaller_side = (
+                larger / max(1, smaller)
+                >= float(group["precondition_aspect_ratio"])
+            )
+        if working_grad.dim() == 2 and use_smaller_side:
             smaller_axis = min(
                 range(2), key=lambda axis: int(working_grad.shape[axis])
             )
@@ -607,11 +693,40 @@ class SOAP(Optimizer):
         for key, value in metrics.items():
             self._basis_stats_accum[key] = self._basis_stats_accum.get(key, 0.0) + value
 
+    @staticmethod
+    def _should_hard_reset(state: dict, group: dict) -> bool:
+        reset_frequency = int(group["basis_reset_frequency"])
+        if reset_frequency <= 0:
+            return False
+        first_refresh = int(
+            state.get("basis_reset_first_refresh", reset_frequency)
+        )
+        refreshes = int(state["basis_refreshes"])
+        return (
+            refreshes >= first_refresh
+            and (refreshes - first_refresh) % reset_frequency == 0
+        )
+
+    def _record_hard_reset(self, state: dict) -> None:
+        active_factors = sum(factor is not None for factor in state["Q"])
+        if active_factors == 0:
+            return
+        self.last_hard_reset_events += 1
+        state["basis_hard_reset_events"] = int(
+            state.get("basis_hard_reset_events", 0)
+        ) + 1
+        state["basis_hard_reset_factors"] = int(
+            state.get("basis_hard_reset_factors", 0)
+        ) + active_factors
+
     def _refresh_basis(self, state: dict, group: dict) -> None:
         old_basis = state["Q"]
         state["basis_refreshes"] += 1
-        reset_frequency = group["basis_reset_frequency"]
-        hard_reset = reset_frequency > 0 and state["basis_refreshes"] % reset_frequency == 0
+        if any(factor is not None for factor in old_basis):
+            self.last_basis_refreshes += 1
+        hard_reset = self._should_hard_reset(state, group)
+        if hard_reset:
+            self._record_hard_reset(state)
 
         new_basis: list[Optional[Tensor]] = []
         for covariance, q_old in zip(state["GG"], old_basis):
@@ -662,6 +777,8 @@ class SOAP(Optimizer):
         self._basis_stats_accum = None
         self.latest_basis_stats = {}
         self.just_gathered_basis_stats = False
+        self.last_basis_refreshes = 0
+        self.last_hard_reset_events = 0
 
         for group in self.param_groups:
             beta1, beta2 = group["betas"]
@@ -675,7 +792,7 @@ class SOAP(Optimizer):
                 state = self.state[parameter]
 
                 if "step" not in state:
-                    self._init_state(grad, state, group)
+                    self._init_state(grad, state, group, parameter)
                     self._accumulate_covariance(grad, state, group)
                     self._cold_start_basis(state)
                     continue  # Initial covariance/basis observation.

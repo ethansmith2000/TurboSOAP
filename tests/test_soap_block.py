@@ -19,6 +19,13 @@ def test_alias_is_preserved():
     assert TurboBlockSOAP is BlockSOAP
 
 
+def test_block_probability_compensation_is_opt_in():
+    parameter = torch.nn.Parameter(torch.zeros(8, 8))
+    optimizer = BlockSOAP([parameter], basis_block_size=4)
+
+    assert optimizer.param_groups[0]["basis_block_unbiased_scale"] is False
+
+
 def test_block_rotation_preserves_world_covariance_and_orthogonality():
     torch.manual_seed(41)
     size = 12
@@ -88,6 +95,24 @@ def test_cayley_blocks_preserve_world_covariance_and_reduce_error():
         rtol=3e-5,
     )
     assert torch.allclose(q_new.T @ q_new, torch.eye(size), atol=2e-5)
+
+
+def test_cayley_block_escapes_equal_diagonal_stall():
+    covariance = torch.eye(8)
+    covariance[0, 1] = covariance[1, 0] = 0.8
+    offdiagonal_before = _offdiag(covariance).norm()
+
+    blocks = _select_cayley_blocks(
+        covariance,
+        block_size=8,
+        step_size=0.5,
+        damping=1e-2,
+        rotation_cap=0.25,
+        min_correlation=0.0,
+    )
+    covariance_new = _transform_basis_covariance_blocks(covariance, blocks)
+
+    assert _offdiag(covariance_new).norm() < offdiagonal_before
 
 
 def test_cayley_block_schedule_is_reproducible_from_refresh_index():
@@ -273,6 +298,31 @@ def test_dense_reset_path_keeps_optimizer_finite():
 
     assert parameter.isfinite().all()
     assert optimizer.state[parameter]["basis_refreshes"] == 2
+
+
+def test_dense_reset_repairs_basis_singular_value_drift():
+    torch.manual_seed(48)
+    size = 6
+    parameter = torch.nn.Parameter(torch.zeros(size, size))
+    optimizer = BlockSOAP([parameter], covariance_compute_dtype="float32")
+    orthogonal = torch.linalg.qr(torch.randn(size, size)).Q
+    q_old = orthogonal @ torch.diag(torch.linspace(0.8, 1.2, size))
+    value = torch.randn(size, size)
+    moving_covariance = value @ value.T
+    world_covariance = q_old @ moving_covariance @ q_old.T
+
+    q_new, b_new, transition = optimizer._dense_reset_in_moving_basis(
+        moving_covariance, q_old, "eigh"
+    )
+
+    assert torch.allclose(q_new.T @ q_new, torch.eye(size), atol=2e-5)
+    assert torch.allclose(
+        q_new @ b_new @ q_new.T,
+        world_covariance,
+        atol=5e-5,
+        rtol=5e-5,
+    )
+    assert torch.allclose(transition, q_old.T @ q_new, atol=1e-6)
 
 
 def test_cayley_block_optimizer_path_keeps_optimizer_finite():

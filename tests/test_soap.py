@@ -218,6 +218,91 @@ def test_smaller_side_mode_keeps_only_small_matrix_factor():
     assert state["Q"][1].shape == (4, 4)
 
 
+def test_aspect_ratio_mode_keeps_square_factors_and_slims_rectangles():
+    square = torch.nn.Parameter(torch.zeros(4, 4))
+    rectangular = torch.nn.Parameter(torch.zeros(16, 4))
+    optimizer = SOAP(
+        [square, rectangular],
+        precondition_mode="aspect_ratio",
+        precondition_aspect_ratio=2.0,
+        covariance_compute_dtype="float32",
+        basis_track_stats=False,
+    )
+
+    square.grad = torch.randn_like(square)
+    rectangular.grad = torch.randn_like(rectangular)
+    optimizer.step()
+
+    square_state = optimizer.state[square]
+    rectangular_state = optimizer.state[rectangular]
+    assert all(factor is not None for factor in square_state["GG"])
+    assert all(basis is not None for basis in square_state["Q"])
+    assert rectangular_state["GG"][0] is None
+    assert rectangular_state["Q"][0] is None
+    assert rectangular_state["GG"][1].shape == (4, 4)
+    assert rectangular_state["Q"][1].shape == (4, 4)
+
+
+def test_staggered_resets_spread_first_refresh_and_keep_cadence():
+    torch.manual_seed(18)
+    parameters = [
+        torch.nn.Parameter(torch.zeros(3, 3)) for _ in range(4)
+    ]
+    optimizer = SOAP(
+        parameters,
+        precondition_frequency=1,
+        basis_reset_frequency=4,
+        basis_reset_stagger=True,
+        covariance_compute_dtype="float32",
+        basis_track_stats=False,
+    )
+
+    for parameter in parameters:
+        parameter.grad = torch.randn_like(parameter)
+    optimizer.step()
+
+    first_refreshes = [
+        optimizer.state[parameter]["basis_reset_first_refresh"]
+        for parameter in parameters
+    ]
+    assert first_refreshes == [3, 4, 5, 6]
+
+    for _ in range(10):
+        for parameter in parameters:
+            parameter.grad = torch.randn_like(parameter)
+        optimizer.step()
+
+    assert {
+        optimizer.state[parameter]["basis_hard_reset_events"]
+        for parameter in parameters
+    } == {2}
+    assert {
+        optimizer.state[parameter]["basis_hard_reset_factors"]
+        for parameter in parameters
+    } == {4}
+
+
+def test_default_reset_schedule_is_unchanged():
+    parameter = torch.nn.Parameter(torch.zeros(3, 3))
+    optimizer = SOAP(
+        [parameter],
+        precondition_frequency=1,
+        basis_reset_frequency=4,
+        covariance_compute_dtype="float32",
+        basis_track_stats=False,
+    )
+
+    for _ in range(5):
+        parameter.grad = torch.randn_like(parameter)
+        optimizer.step()
+
+    state = optimizer.state[parameter]
+    assert state["basis_reset_first_refresh"] == 4
+    assert state["basis_refreshes"] == 4
+    assert state["basis_hard_reset_events"] == 1
+    assert state["basis_hard_reset_factors"] == 2
+
+
 def test_refresh_reports_orthogonal_basis_metrics():
     torch.manual_seed(19)
     parameter = torch.nn.Parameter(torch.randn(8, 6))
