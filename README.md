@@ -231,7 +231,20 @@ stream directly, followed by pre-norm RMSNorm blocks, RoPE attention with option
 QK normalization, bias-free SwiGLU, a final RMSNorm, and a tied LM head. The
 nonstandard input projection from the imported trainer is disabled by default;
 `--input-projection` retains it as an explicit ablation. RMSNorm uses an explicit
-`1e-5` epsilon under BF16.
+`1e-5` epsilon under BF16. QK normalization is per head dimension and is applied
+before RoPE. QKV and the two SwiGLU input projections remain fused by default for
+the forward pass; `--no-fused-qkv` and `--no-fused-swiglu` expose physical-split
+architecture controls.
+
+SOAP treats each physical parameter tensor as one covariance problem. Under the
+default smaller-side policy, fused QKV and SwiGLU input matrices share one
+input-side basis and avoid the much larger output-side factor. Physical splitting
+is therefore an explicit parameterization/memory ablation for SOAP rather than a
+correctness requirement.
+
+CUDA AdamW already uses PyTorch's fused implementation. `--compile` enables
+`torch.compile`, and `--compile-fullgraph` requests the full-graph behavior used
+by the larger target profile.
 
 `train_llm.py` is self-contained and defaults to the promoted dense one-sided
 configuration plus a structured synthetic dataset for offline checks:
@@ -258,6 +271,62 @@ tokens and 262,144 validation tokens, and share a roughly 11 MB int32 token cach
   --config configs/llm_openwebtext_one_sided_1000.json \
   --output soap_openwebtext_1000.json
 ```
+
+### Width-768 target screen
+
+The first target-regime screen uses a 95.2M-parameter decoder at width 768,
+depth 8, 12 heads, batch 32, and sequence length 1024. Runs use BF16,
+full-graph compilation, direct token embeddings, QK normalization, and fused
+QKV/SwiGLU tensors. Smaller-side SOAP retains 32 factors: fused rectangular
+projections share their input-side basis and omit the large output-side basis.
+
+A seed-123 matrix-rate sweep covered `6.25e-5`, `1.25e-4`, `2.5e-4`, and
+`5e-4`. The two lowest rates were close at step 50; `1.25e-4` was retained
+because it was better at the step-25 validation and avoids selecting a rate
+from a `0.011` single-seed endpoint difference. The matched three-seed result is:
+
+| Profile | Mean validation loss | Mean step ms | Mean optimizer ms | State MiB |
+|---|---:|---:|---:|---:|
+| Fused AdamW, LR `4e-4` | 7.04498 | **134.67** | **1.76** | 726.58 |
+| Smaller-side SOAP, LR `1.25e-4` | 6.89174 | 146.15 | 14.55 | 870.58 |
+| Transport skew 0.52, Muon LR `0.06` | **6.59310** | 173.21 | 43.87 | **618.67** |
+
+SOAP improves mean loss by `0.15323` over tuned AdamW while increasing total
+step time by 8.5%. Its optimizer state is 144.0 MiB larger than AdamW and
+251.9 MiB larger than Transport Muon. The result establishes a useful quality
+and throughput middle point, but 50 steps is too short to choose a long-run
+default or to resolve the two lowest SOAP rates.
+
+The complete rate sweep, seed rows, refresh timing, memory, and source artifact
+names are in
+`../optimizer_replay_results/llm_openwebtext_modern_768x8_50step_summary.json`.
+The next gate freezes `1.25e-4` and uses a larger int32-only token cache rather
+than recycling the existing 2.5M training tokens.
+
+The cache has now been expanded to 40M training tokens plus the validation
+prefix, stored as 153.6 MiB of int32 IDs with no retained source text. At 200
+steps and three matched seeds, smaller-side SOAP reaches validation loss
+`5.90796 ± 0.01387`, versus `6.09585 ± 0.03048` for tuned AdamW and
+`5.66059 ± 0.00539` for skew-controlled Transport Muon.
+
+SOAP averages 146.81 ms per step and 13.54 ms in the optimizer, compared with
+135.75/1.76 ms for AdamW and 174.44/43.73 ms for Transport. Its gain over AdamW
+is `0.18789` loss for 8.1% more step time. The 870.58 MiB optimizer state remains
+144.0 MiB above AdamW and 252.0 MiB above Transport.
+
+All three runs complete 1,254 basis refreshes with no hard reset. The configured
+staggered first-reset range is 21--59 refreshes per factor, while 200 training
+steps provide only about 20 refresh opportunities per factor. A 1,000-step gate
+is therefore needed both for convergence and to exercise reset behavior in this
+larger transformer. Full curves and source artifacts are in
+`../optimizer_replay_results/llm_openwebtext_modern_768x8_200step_three_seed_summary.json`.
+
+The shared summary also includes the Transport warm-kernel efficiency control.
+A one-power-iteration skew profile preserves the two-iteration profile's
+three-seed mean loss (`5.66084` versus `5.66059`) while reducing its total step
+time by 2.2%. This does not change the SOAP candidate: smaller-side SOAP remains
+the lower-cost quality/throughput middle point, and its next distinctive test is
+the 1,000-step run that crosses the staggered hard-reset window.
 
 Two aspect-ratio profiles are included. Threshold 4 keeps both factors for the
 square and 3:1 matrices in this decoder and drops the large factor only for the
@@ -314,6 +383,41 @@ factor resets to 32/40, lowers median hard-reset-step time from `64.98` to
 `54.81` ms, and changes mean optimizer time from `13.97` to `13.81` ms. The
 supplied threshold-2 profile therefore uses reset 40 plus staggering while its
 explicit reset-20 configuration remains available for reproduction.
+
+The modern width-768, depth-8 gate now covers 1,000 steps at seeds 123, 456,
+and 789. Smaller-side SOAP at matrix LR `1.25e-4` reaches validation loss
+`4.61910 ± 0.01213`, versus `4.75432 ± 0.00774` for AdamW and
+`4.23854 ± 0.00144` for one-power skew Transport. SOAP averages 148.34 ms per
+step, 13.52 ms in the optimizer, 220,899 tokens/s, and 870.58 MiB of optimizer
+state. It remains the middle quality/throughput point.
+
+Every SOAP seed completes exactly 6,534 basis refreshes and 64 staggered hard
+resets with no instability. Ordinary optimizer steps average 9.62 ms, warm
+refresh steps 46.68 ms, and hard-reset steps 49.65 ms. A hard reset therefore
+adds only 2.98 ms over a normal warm refresh on average; reducing unnecessary
+basis refreshes is more promising than optimizing the reset itself. The next
+method gate compares the fixed ten-step schedule with a device-side covariance
+residual trigger. Full curves and reset timing are in
+`../optimizer_replay_results/llm_openwebtext_modern_768x8_1000step_three_seed_summary.json`.
+
+Long runs support atomic rolling checkpoints with exact shuffled-data position,
+model, optimizer, scheduler, and RNG state:
+
+```bash
+/venv/main/bin/python train_llm.py \
+  --config configs/llm_openwebtext_modern_768x8_soap_smaller_side_lr000125_batch32_seq1024_1000.json \
+  --checkpoint /workspace/optimizer_checkpoints/soap.pt \
+  --checkpoint-every 100
+
+/venv/main/bin/python train_llm.py \
+  --config configs/llm_openwebtext_modern_768x8_soap_smaller_side_lr000125_batch32_seq1024_1000.json \
+  --resume /workspace/optimizer_checkpoints/soap.pt
+```
+
+Keep the original target `--steps` and schedule when resuming. CPU controls are
+bitwise exact. Compiled CUDA controls reproduce every logged loss and reset
+event; final FP32 optimizer state can differ by about `5e-10` because reduction
+order after recompilation is not bitwise fixed.
 
 `--hf-streaming` reads only the bounded sample. `--max-train-tokens` and
 `--max-validation-tokens` cap RAM and token-cache usage, while `--token-cache`

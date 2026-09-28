@@ -1,13 +1,16 @@
 import torch
 import pytest
+from pathlib import Path
 
 from train_llm import (
     SyntheticSequenceDataset,
     _compact_token_ids,
+    _load_optimizer_state_exact,
     _tokenize_iterable_split,
     build_datasets,
     build_parser,
     optimizer_diagnostics,
+    train,
 )
 
 
@@ -26,6 +29,11 @@ def test_local_optimizer_is_the_default():
     assert args.optimizer in {"transport_muon", "soap"}
     assert not args.input_projection
     assert args.tie_embeddings
+    assert args.fused_qkv
+    assert args.fused_swiglu
+    assert not args.compile_fullgraph
+    assert not args.muon_split_qkv
+    assert not args.muon_split_swiglu
     assert args.soap_fallback_lr == 3e-4
     assert args.muon_retract_steps == 1
     assert args.muon_spectral_cap_mode == "gershgorin"
@@ -33,7 +41,113 @@ def test_local_optimizer_is_the_default():
     assert args.muon_power_safety_factor == 1.25
     assert not args.muon_async_checks
     assert not args.hf_streaming
-    assert not args.soap_reset_stagger
+    assert args.checkpoint_every == 0
+    assert args.resume is None
+    assert args.stop_after_step == 0
+
+
+def _assert_nested_equal(left, right):
+    if torch.is_tensor(left):
+        assert torch.equal(left, right)
+    elif isinstance(left, dict):
+        assert left.keys() == right.keys()
+        for key in left:
+            _assert_nested_equal(left[key], right[key])
+    elif isinstance(left, (list, tuple)):
+        assert type(left) is type(right)
+        assert len(left) == len(right)
+        for left_item, right_item in zip(left, right):
+            _assert_nested_equal(left_item, right_item)
+    else:
+        assert left == right
+
+
+def _tiny_resume_args(checkpoint: Path):
+    return build_parser().parse_args(
+        [
+            "--optimizer", "adamw",
+            "--dataset", "synthetic",
+            "--device", "cpu",
+            "--dtype", "float32",
+            "--dim", "16",
+            "--depth", "1",
+            "--heads", "4",
+            "--sequence-length", "8",
+            "--dropout", "0.2",
+            "--synthetic-train-samples", "20",
+            "--synthetic-validation-samples", "8",
+            "--synthetic-vocab-size", "32",
+            "--batch-size", "4",
+            "--steps", "7",
+            "--warmup-steps", "2",
+            "--timing-warmup", "0",
+            "--eval-every", "2",
+            "--eval-batches", "1",
+            "--log-every", "1",
+            "--checkpoint", str(checkpoint),
+            "--checkpoint-every", "2",
+        ]
+    )
+
+
+def test_exact_resume_matches_uninterrupted_training(tmp_path):
+    control_path = tmp_path / "control.pt"
+    resumed_path = tmp_path / "resumed.pt"
+
+    control_result = train(_tiny_resume_args(control_path))
+
+    interrupted_args = _tiny_resume_args(resumed_path)
+    interrupted_args.stop_after_step = 3
+    interrupted_result = train(interrupted_args)
+    assert interrupted_result["progress"] == {
+        "completed": False,
+        "completed_steps": 3,
+        "target_steps": 7,
+        "resumed_from_step": 0,
+    }
+
+    resume_args = _tiny_resume_args(resumed_path)
+    resume_args.resume = resumed_path
+    resumed_result = train(resume_args)
+    assert resumed_result["progress"] == {
+        "completed": True,
+        "completed_steps": 7,
+        "target_steps": 7,
+        "resumed_from_step": 3,
+    }
+
+    control = torch.load(control_path, map_location="cpu", weights_only=False)
+    resumed = torch.load(resumed_path, map_location="cpu", weights_only=False)
+    for key in (
+        "model",
+        "optimizer",
+        "scheduler",
+        "history",
+        "last_loss",
+        "data_stream",
+        "rng",
+    ):
+        _assert_nested_equal(control[key], resumed[key])
+    assert control_result["history"] == resumed_result["history"]
+
+
+def test_exact_optimizer_loader_preserves_nested_cache_dtype():
+    parameter = torch.nn.Parameter(torch.zeros(2, 2, dtype=torch.float32))
+    source = torch.optim.SGD([parameter], lr=1.0)
+    source.state[parameter] = {
+        "cache": torch.ones(2, 2, dtype=torch.bfloat16),
+        "nested": {"probe": torch.ones(2, dtype=torch.bfloat16)},
+    }
+
+    restored_parameter = torch.nn.Parameter(torch.zeros_like(parameter))
+    restored = torch.optim.SGD([restored_parameter], lr=1.0)
+    _load_optimizer_state_exact(restored, source.state_dict())
+
+    assert restored.state[restored_parameter]["cache"].dtype == torch.bfloat16
+    assert (
+        restored.state[restored_parameter]["nested"]["probe"].dtype
+        == torch.bfloat16
+    )
 
 
 class _TinyTokenizer:
@@ -95,6 +209,8 @@ def test_optimizer_diagnostics_summarizes_muon_reference_statistics():
             "muon_reference_applied_sq_sum_tensor": torch.tensor(0.0025),
             "muon_reference_elements": 4,
             "muon_reference_samples": 1,
+            "muon_warm_q": torch.eye(2),
+            "muon_warm_output_retractions": 7,
             "muon_warm_power_cap_samples": 2,
             "muon_warm_power_sigma_sum_tensor": torch.tensor(2.2),
             "muon_warm_spectral_cap_scale_sum_tensor": torch.tensor(1.8),
@@ -116,6 +232,12 @@ def test_optimizer_diagnostics_summarizes_muon_reference_statistics():
                     "reference_difference_sq_sum_tensor": torch.tensor(0.0),
                     "candidate_applied_sq_sum_tensor": torch.tensor(0.04),
                     "reference_applied_sq_sum_tensor": torch.tensor(0.0025),
+                    "refresh_predictor_momentum_innovation_ratio_sample_sum_tensor": torch.tensor(2.0),
+                    "refresh_predictor_momentum_innovation_ratio_value_sum_tensor": torch.tensor(3.0),
+                    "refresh_predictor_momentum_innovation_ratio_value_sq_sum_tensor": torch.tensor(5.0),
+                    "refresh_predictor_momentum_innovation_ratio_error_sum_tensor": torch.tensor(6.0),
+                    "refresh_predictor_momentum_innovation_ratio_error_sq_sum_tensor": torch.tensor(20.0),
+                    "refresh_predictor_momentum_innovation_ratio_value_error_sum_tensor": torch.tensor(10.0),
                     "elements": 4,
                     "samples": 1,
                     "reference_elements": 4,
@@ -143,6 +265,17 @@ def test_optimizer_diagnostics_summarizes_muon_reference_statistics():
     assert age_three["direction_rms"] == 1.0
     assert age_three["mean_orthogonality_error"] == pytest.approx(0.2)
     assert age_three["fresh_reference"]["direction_cosine"] == 1.0
+    predictor = diagnostics["refresh_predictor_stats"][
+        "momentum_innovation_ratio"
+    ]
+    assert predictor["samples"] == 2
+    assert predictor["mean_value"] == pytest.approx(1.5)
+    assert predictor["mean_relative_reference_error"] == pytest.approx(3.0)
+    assert predictor["pearson_error_correlation"] == pytest.approx(1.0)
+    assert age_three["refresh_predictors"]["momentum_innovation_ratio"] == predictor
+    assert diagnostics["refresh_predictor_stats_by_shape"]["2x2"][
+        "momentum_innovation_ratio"
+    ] == predictor
     assert diagnostics["power_cap_stats"]["samples"] == 2
     assert diagnostics["power_cap_stats"][
         "mean_estimated_top_singular"
@@ -152,3 +285,26 @@ def test_optimizer_diagnostics_summarizes_muon_reference_statistics():
     assert diagnostics["power_cap_stats"]["mean_probe_top_singular"] == 2.0
     assert diagnostics["power_cap_stats"]["mean_transport_step_scale"] == pytest.approx(0.3)
     assert diagnostics["power_cap_stats"]["minimum_transport_step_scale"] == pytest.approx(0.2)
+    assert diagnostics["output_retractions"] == 7
+
+
+def test_optimizer_diagnostics_reports_step_only_power_statistics():
+    parameter = torch.nn.Parameter(torch.zeros(2, 2))
+    optimizer = torch.optim.SGD([parameter], lr=1.0)
+    optimizer.state[parameter].update(
+        {
+            "muon_warm_power_step_samples": 2,
+            "muon_warm_power_probe_sigma_sum_tensor": torch.tensor(4.0),
+            "muon_warm_spectral_step_scale_sum_tensor": torch.tensor(0.6),
+            "muon_warm_spectral_step_min_scale_tensor": torch.tensor(0.2),
+        }
+    )
+
+    diagnostics = optimizer_diagnostics(optimizer)
+
+    assert diagnostics["power_cap_stats"] == {
+        "step_samples": 2,
+        "mean_probe_top_singular": 2.0,
+        "mean_transport_step_scale": pytest.approx(0.3),
+        "minimum_transport_step_scale": pytest.approx(0.2),
+    }
