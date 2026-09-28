@@ -31,6 +31,7 @@ def test_local_optimizer_is_the_default():
     assert args.muon_spectral_cap_mode == "gershgorin"
     assert args.muon_power_steps == 2
     assert args.muon_power_safety_factor == 1.25
+    assert not args.muon_async_checks
     assert not args.hf_streaming
     assert not args.soap_reset_stagger
 
