@@ -142,6 +142,18 @@ upward, so the update naturally vanishes in a diagonal basis.
 ## Main options
 
 - `precondition_frequency`: optimizer updates between warm basis refreshes.
+- `precondition_frequency_after_warmup`: optional deterministic refresh period
+  after `precondition_frequency_warmup_steps`. Both default to `0`, which keeps
+  one fixed cadence.
+- `basis_residual_threshold`: optional normalized off-diagonal residual gate.
+  At a nominal refresh, it measures
+  `||offdiag(Q.T @ C @ Q)||_F / ||Q.T @ C @ Q||_F` and refreshes only when the
+  threshold is crossed. The checked scalar transfer synchronizes CUDA, so this
+  is an experimental diagnostic rather than the recommended throughput path.
+- `basis_residual_max_age`: force a basis refresh after this many optimizer
+  updates even if the residual remains below threshold.
+- `basis_residual_warmup_steps`: retain the fixed nominal cadence for an initial
+  bootstrap before residual gating begins.
 - `basis_lr`: damped Jacobi step size.
 - `basis_rotation_cap`: maximum average column rotation in one refresh; `0`
   disables clipping.
@@ -158,6 +170,8 @@ upward, so the update naturally vanishes in a diagonal basis.
   blocks larger than two. Default: `1e-6`; `0` disables the fallback.
 - `basis_reset_frequency`: hard-reset interval in basis refreshes; `0` disables
   periodic resets.
+- `basis_reset_max_age`: optional optimizer-step bound between later hard
+  resets. This keeps reset age bounded when basis refreshes become sparse.
 - `basis_reset_stagger`: distribute parameter resets across a centered
   one-period window before continuing at the configured cadence. This preserves
   long-run reset work while avoiding a single step that QR-resets every active
@@ -213,9 +227,11 @@ On basis refreshes, `latest_basis_stats` reports averages over active factors:
 collected diagnostics. This can be less frequent than basis refreshes when
 `basis_track_stats_frequency > 1`.
 
-The LLM harness also reports active hard-reset tensor/factor counts, the first
-reset range, optimizer-time percentiles, and timing split into ordinary, warm
-refresh, and hard-reset steps.
+The LLM harness also reports actual active-factor basis updates separately from
+legacy per-state cadence counters, residual checks/skips and refresh causes,
+checked-residual percentiles, active hard-reset tensor/factor counts, the first
+reset range in refreshes and optimizer steps, optimizer-time percentiles, and
+timing split into ordinary, warm-refresh, and hard-reset steps.
 
 ## Benchmarks
 
@@ -399,6 +415,40 @@ basis refreshes is more promising than optimizing the reset itself. The next
 method gate compares the fixed ten-step schedule with a device-side covariance
 residual trigger. Full curves and reset timing are in
 `../optimizer_replay_results/llm_openwebtext_modern_768x8_1000step_three_seed_summary.json`.
+
+That refresh-policy gate adds two opt-in controls. Residual gating checks the
+normalized off-diagonal covariance energy at each nominal refresh and reuses the
+checked `Q.T @ C @ Q` product when it accepts the refresh. A deterministic
+two-phase policy changes the fixed cadence after a chosen optimizer step. A
+step-age bound preserves occasional hard resets under either sparse policy. All
+controls default to disabled and preserve the preceding fixed-cadence behavior.
+
+At 200 steps, residual threshold `0.9` with maximum age 40 reaches validation
+loss `5.91150` with 161 active-factor refreshes, versus `5.93042` and 608 for the
+observed fixed-10 control. Fixed periods 30 and 40 reach `5.95933` and `5.97329`
+with 192 and 128 refreshes. This shows that the residual carries useful selection
+information. Its checked host transfer, however, removes most end-to-end timing
+benefit. At 1,000 steps, using the gate from initialization regresses validation
+by `0.01587`. A fixed-10 bootstrap through step 200 repairs the seed-123 result,
+but only one later threshold crossing occurs; maximum age makes nearly every
+remaining decision.
+
+The synchronization-free equivalent is fixed period 10 through step 200 and
+period 40 thereafter, with a 400-step hard-reset age bound. Its three-seed gate
+is:
+
+| Refresh policy | Validation loss | Optimizer ms | Step ms | Active refreshes |
+|---|---:|---:|---:|---:|
+| Fixed period 10 | **4.62583** | 13.64 | 148.51 | 3,168 |
+| Period 10 to 40 after step 200 | 4.63066 | **11.37** | **148.14** | **1,248** |
+
+The two-phase schedule removes 60.6% of active basis updates and 16.7% of
+optimizer time, but worsens mean validation by `0.00483`; seeds 456 and 789
+regress. Mean step time improves only 0.25%. Fixed period 10 remains the quality
+default. The two-phase and residual policies remain explicit research controls.
+The durable calibration, source paths, curves, counters, and paired statistics
+are in
+`../optimizer_replay_results/soap_refresh_policy_768_summary.json`.
 
 Long runs support atomic rolling checkpoints with exact shuffled-data position,
 model, optimizer, scheduler, and RNG state:

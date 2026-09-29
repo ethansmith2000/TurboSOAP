@@ -175,6 +175,20 @@ class SOAP(Optimizer):
         eps: Adam denominator epsilon.
         weight_decay: AdamW-style decoupled weight decay.
         precondition_frequency: Optimizer updates between basis refreshes.
+        precondition_frequency_after_warmup: Optional fixed refresh frequency
+            used after ``precondition_frequency_warmup_steps``. Zero keeps one
+            fixed frequency throughout.
+        precondition_frequency_warmup_steps: Optimizer updates to retain the
+            base fixed frequency before switching to the optional later one.
+        basis_residual_threshold: If positive, treat ``precondition_frequency``
+            as the interval between residual checks and refresh a basis only
+            when ``||offdiag(Q.T C Q)||_F / ||Q.T C Q||_F`` reaches this
+            threshold. Disabled by default.
+        basis_residual_max_age: Maximum optimizer updates between basis
+            refreshes when residual gating is enabled. This bounds staleness
+            after quiet checks. Must be at least ``precondition_frequency``.
+        basis_residual_warmup_steps: Keep the fixed refresh cadence for this
+            many optimizer updates before enabling residual gating.
         max_precond_dim: Axes larger than this are not preconditioned.
         merge_dims: Merge adjacent tensor dimensions before preconditioning.
         precondition_1d: Build a covariance basis for vector parameters.
@@ -197,6 +211,10 @@ class SOAP(Optimizer):
             off-diagonal covariance. This adds a device synchronization.
         basis_reset_frequency: Hard-reset interval measured in basis refreshes.
             ``0`` disables periodic resets. Cold start always uses ``eigh``.
+        basis_reset_max_age: If positive, schedule subsequent hard resets by
+            optimizer-step age instead of accepted-refresh count. The first
+            reset retains the staggered window implied by
+            ``basis_reset_frequency * precondition_frequency``.
         basis_reset_stagger: Spread each parameter's first reset across a
             centered one-period window, then retain the configured cadence.
             This smooths synchronized reset spikes without changing the
@@ -225,6 +243,11 @@ class SOAP(Optimizer):
         eps: float = 1e-8,
         weight_decay: float = 0.01,
         precondition_frequency: int = 10,
+        precondition_frequency_after_warmup: int = 0,
+        precondition_frequency_warmup_steps: int = 0,
+        basis_residual_threshold: float = 0.0,
+        basis_residual_max_age: int = 0,
+        basis_residual_warmup_steps: int = 0,
         max_precond_dim: int = 10000,
         merge_dims: bool = False,
         precondition_1d: bool = False,
@@ -238,6 +261,7 @@ class SOAP(Optimizer):
         basis_jacobi_damping: float = 1e-2,
         basis_stall_pair_threshold: float = 0.0,
         basis_reset_frequency: int = 50,
+        basis_reset_max_age: int = 0,
         basis_reset_stagger: bool = False,
         basis_reset_method: str = "qr",
         basis_ns_iterations: int = 2,
@@ -258,6 +282,35 @@ class SOAP(Optimizer):
             raise ValueError(f"weight_decay must be non-negative, got {weight_decay}")
         if int(precondition_frequency) < 1:
             raise ValueError("precondition_frequency must be >= 1")
+        if int(precondition_frequency_after_warmup) < 0:
+            raise ValueError(
+                "precondition_frequency_after_warmup must be non-negative"
+            )
+        if int(precondition_frequency_warmup_steps) < 0:
+            raise ValueError(
+                "precondition_frequency_warmup_steps must be non-negative"
+            )
+        if (
+            int(precondition_frequency_after_warmup) > 0
+            and float(basis_residual_threshold) > 0.0
+        ):
+            raise ValueError(
+                "fixed post-warmup frequency and residual gating are "
+                "mutually exclusive"
+            )
+        if float(basis_residual_threshold) < 0.0:
+            raise ValueError("basis_residual_threshold must be non-negative")
+        if int(basis_residual_max_age) < 0:
+            raise ValueError("basis_residual_max_age must be non-negative")
+        if int(basis_residual_warmup_steps) < 0:
+            raise ValueError("basis_residual_warmup_steps must be non-negative")
+        if float(basis_residual_threshold) > 0.0 and int(
+            basis_residual_max_age
+        ) < int(precondition_frequency):
+            raise ValueError(
+                "basis_residual_max_age must be at least precondition_frequency "
+                "when residual gating is enabled"
+            )
         if int(max_precond_dim) < 1:
             raise ValueError("max_precond_dim must be >= 1")
         if data_format not in ("channels_first", "channels_last"):
@@ -282,6 +335,13 @@ class SOAP(Optimizer):
             raise ValueError("basis_stall_pair_threshold must be non-negative")
         if int(basis_reset_frequency) < 0:
             raise ValueError("basis_reset_frequency must be >= 0")
+        if int(basis_reset_max_age) < 0:
+            raise ValueError("basis_reset_max_age must be non-negative")
+        if int(basis_reset_max_age) > 0 and int(basis_reset_frequency) <= 0:
+            raise ValueError(
+                "basis_reset_frequency must be positive when "
+                "basis_reset_max_age is enabled"
+            )
         if basis_reset_method not in ("qr", "eigh"):
             raise ValueError("basis_reset_method must be 'qr' or 'eigh'")
         if int(basis_ns_iterations) < 1:
@@ -298,6 +358,15 @@ class SOAP(Optimizer):
             eps=float(eps),
             weight_decay=float(weight_decay),
             precondition_frequency=int(precondition_frequency),
+            precondition_frequency_after_warmup=int(
+                precondition_frequency_after_warmup
+            ),
+            precondition_frequency_warmup_steps=int(
+                precondition_frequency_warmup_steps
+            ),
+            basis_residual_threshold=float(basis_residual_threshold),
+            basis_residual_max_age=int(basis_residual_max_age),
+            basis_residual_warmup_steps=int(basis_residual_warmup_steps),
             max_precond_dim=int(max_precond_dim),
             merge_dims=bool(merge_dims),
             precondition_1d=bool(precondition_1d),
@@ -310,6 +379,7 @@ class SOAP(Optimizer):
             basis_jacobi_damping=float(basis_jacobi_damping),
             basis_stall_pair_threshold=float(basis_stall_pair_threshold),
             basis_reset_frequency=int(basis_reset_frequency),
+            basis_reset_max_age=int(basis_reset_max_age),
             basis_reset_stagger=bool(basis_reset_stagger),
             basis_reset_method=basis_reset_method,
             basis_ns_iterations=int(basis_ns_iterations),
@@ -499,12 +569,27 @@ class SOAP(Optimizer):
     ) -> None:
         state["step"] = 0
         state["basis_refreshes"] = 0
+        state["basis_active_refreshes"] = 0
         state["basis_hard_reset_events"] = 0
         state["basis_hard_reset_factors"] = 0
+        state["basis_last_hard_reset_step"] = 0
+        state["basis_last_refresh_step"] = 0
+        state["basis_last_residual_check_step"] = 0
+        state["basis_residual_checks"] = 0
+        state["basis_residual_skips"] = 0
+        state["basis_residual_threshold_refreshes"] = 0
+        state["basis_residual_max_age_refreshes"] = 0
+        state["basis_residual_ratio_sum"] = 0.0
+        state["basis_residual_ratio_max"] = 0.0
+        state["basis_residual_ratio_last"] = 0.0
+        state["basis_residual_ratio_samples"] = []
         state["basis_reset_first_refresh"] = int(
             self._basis_reset_first_refresh.get(
                 id(parameter), group["basis_reset_frequency"]
             )
+        )
+        state["basis_reset_first_step"] = (
+            state["basis_reset_first_refresh"] * group["precondition_frequency"]
         )
         state["exp_avg"] = torch.zeros_like(grad, dtype=torch.float32)
         state["exp_avg_sq"] = torch.zeros_like(grad, dtype=torch.float32)
@@ -621,10 +706,28 @@ class SOAP(Optimizer):
         return self._align_reset_basis(q_old, q_new).float()
 
     @staticmethod
-    def _gauge_step_one(covariance: Tensor, q_old: Tensor, group: dict) -> Tensor:
+    def _basis_covariance(covariance: Tensor, q: Tensor) -> Tensor:
         c = _normalized_covariance(covariance)
+        return _sym(q.float().T @ c @ q.float())
+
+    @staticmethod
+    def _basis_residual_ratio(basis_covariance: Tensor) -> Tensor:
+        b = basis_covariance.float()
+        return _offdiag(b).norm() / b.norm().clamp_min(1e-12)
+
+    @staticmethod
+    def _gauge_step_one(
+        covariance: Tensor,
+        q_old: Tensor,
+        group: dict,
+        basis_covariance: Optional[Tensor] = None,
+    ) -> Tensor:
         q = q_old.float()
-        b = _sym(q.T @ c @ q)
+        b = (
+            SOAP._basis_covariance(covariance, q)
+            if basis_covariance is None
+            else _sym(basis_covariance.float())
+        )
         omega = _damped_jacobi_generator(b, group["basis_jacobi_damping"])
         rotation = _clip_rotation(
             group["basis_lr"] * omega,
@@ -698,6 +801,15 @@ class SOAP(Optimizer):
         reset_frequency = int(group["basis_reset_frequency"])
         if reset_frequency <= 0:
             return False
+        reset_max_age = int(group.get("basis_reset_max_age", 0))
+        if reset_max_age > 0:
+            if int(state.get("basis_hard_reset_events", 0)) == 0:
+                return int(state["step"]) >= int(
+                    state["basis_reset_first_step"]
+                )
+            return int(state["step"]) - int(
+                state["basis_last_hard_reset_step"]
+            ) >= reset_max_age
         first_refresh = int(
             state.get("basis_reset_first_refresh", reset_frequency)
         )
@@ -718,18 +830,33 @@ class SOAP(Optimizer):
         state["basis_hard_reset_factors"] = int(
             state.get("basis_hard_reset_factors", 0)
         ) + active_factors
+        state["basis_last_hard_reset_step"] = int(state["step"])
 
-    def _refresh_basis(self, state: dict, group: dict) -> None:
+    def _refresh_basis(
+        self,
+        state: dict,
+        group: dict,
+        basis_covariances: Optional[list[Optional[Tensor]]] = None,
+    ) -> None:
         old_basis = state["Q"]
         state["basis_refreshes"] += 1
+        state["basis_last_refresh_step"] = int(state["step"])
+        state["basis_last_residual_check_step"] = int(state["step"])
         if any(factor is not None for factor in old_basis):
+            state["basis_active_refreshes"] = int(
+                state.get("basis_active_refreshes", 0)
+            ) + 1
             self.last_basis_refreshes += 1
         hard_reset = self._should_hard_reset(state, group)
         if hard_reset:
             self._record_hard_reset(state)
 
         new_basis: list[Optional[Tensor]] = []
-        for covariance, q_old in zip(state["GG"], old_basis):
+        if basis_covariances is None:
+            basis_covariances = [None for _ in old_basis]
+        for covariance, q_old, basis_covariance in zip(
+            state["GG"], old_basis, basis_covariances
+        ):
             if covariance is None or q_old is None:
                 new_basis.append(None)
                 continue
@@ -738,7 +865,12 @@ class SOAP(Optimizer):
                     covariance, q_old, group["basis_reset_method"]
                 )
             else:
-                q_new = self._gauge_step_one(covariance, q_old, group)
+                q_new = self._gauge_step_one(
+                    covariance,
+                    q_old,
+                    group,
+                    basis_covariance=basis_covariance,
+                )
             new_basis.append(q_new.float())
             collect_stats = (
                 group["basis_track_stats"]
@@ -751,6 +883,83 @@ class SOAP(Optimizer):
         if hard_reset or group["transport_second_moment_on_warm"]:
             self._transport_second_moment_for_reset(state, old_basis, new_basis, group)
         state["Q"] = new_basis
+
+    def _residual_gated_refreshes(
+        self,
+        candidates: list[dict],
+        group: dict,
+    ) -> None:
+        """Refresh candidates selected by a coarse covariance-residual check.
+
+        Residuals remain device-side until one batched transfer per parameter
+        group.  A successful check reuses its basis covariance in the gauge
+        step, avoiding a second ``Q.T @ C @ Q`` calculation.
+        """
+        if not candidates:
+            return
+
+        threshold = float(group["basis_residual_threshold"])
+        maximum_age = int(group["basis_residual_max_age"])
+        checked: list[tuple[dict, list[Optional[Tensor]], Tensor]] = []
+        for state in candidates:
+            age = int(state["step"]) - int(state["basis_last_refresh_step"])
+            if age >= maximum_age:
+                state["basis_residual_max_age_refreshes"] += 1
+                self._refresh_basis(state, group)
+                continue
+
+            state["basis_last_residual_check_step"] = int(state["step"])
+            basis_covariances: list[Optional[Tensor]] = []
+            factor_residuals: list[Tensor] = []
+            for covariance, q in zip(state["GG"], state["Q"]):
+                if covariance is None or q is None:
+                    basis_covariances.append(None)
+                    continue
+                b = self._basis_covariance(covariance, q)
+                basis_covariances.append(b)
+                factor_residuals.append(self._basis_residual_ratio(b))
+            if not factor_residuals:
+                # Parameters without an active factor retain the fixed cadence.
+                self._refresh_basis(state, group)
+                continue
+            checked.append(
+                (state, basis_covariances, torch.stack(factor_residuals).amax())
+            )
+
+        if not checked:
+            return
+        residual_values = torch.stack([entry[2] for entry in checked]).tolist()
+        for (state, basis_covariances, _), residual in zip(
+            checked, residual_values
+        ):
+            residual = float(residual)
+            state["basis_residual_checks"] += 1
+            state["basis_residual_ratio_sum"] += residual
+            state["basis_residual_ratio_max"] = max(
+                float(state["basis_residual_ratio_max"]), residual
+            )
+            state["basis_residual_ratio_last"] = residual
+            state["basis_residual_ratio_samples"].append(residual)
+            if residual >= threshold:
+                state["basis_residual_threshold_refreshes"] += 1
+                self._refresh_basis(
+                    state,
+                    group,
+                    basis_covariances=basis_covariances,
+                )
+            else:
+                state["basis_residual_skips"] += 1
+
+    @staticmethod
+    def _fixed_refresh_frequency(state: dict, group: dict) -> int:
+        later_frequency = int(group["precondition_frequency_after_warmup"])
+        if (
+            later_frequency > 0
+            and int(state["step"])
+            >= int(group["precondition_frequency_warmup_steps"])
+        ):
+            return later_frequency
+        return int(group["precondition_frequency"])
 
     # ------------------------------------------------------------------
     # Optimizer update
@@ -782,6 +991,8 @@ class SOAP(Optimizer):
 
         for group in self.param_groups:
             beta1, beta2 = group["betas"]
+            residual_gating = group["basis_residual_threshold"] > 0.0
+            residual_candidates: list[dict] = []
             for parameter in group["params"]:
                 if parameter.grad is None:
                     continue
@@ -821,8 +1032,27 @@ class SOAP(Optimizer):
                 parameter.add_(update.to(parameter.dtype), alpha=-group["lr"])
 
                 self._accumulate_covariance(grad, state, group)
-                if state["step"] % group["precondition_frequency"] == 0:
+                residual_gate_active = residual_gating and int(
+                    state["step"]
+                ) >= group["basis_residual_warmup_steps"]
+                fixed_frequency = self._fixed_refresh_frequency(state, group)
+                if not residual_gate_active and state["step"] % fixed_frequency == 0:
                     self._refresh_basis(state, group)
+                elif residual_gate_active:
+                    check_age = int(state["step"]) - int(
+                        state["basis_last_residual_check_step"]
+                    )
+                    refresh_age = int(state["step"]) - int(
+                        state["basis_last_refresh_step"]
+                    )
+                    if (
+                        check_age >= group["precondition_frequency"]
+                        or refresh_age >= group["basis_residual_max_age"]
+                    ):
+                        residual_candidates.append(state)
+
+            if residual_gating:
+                self._residual_gated_refreshes(residual_candidates, group)
 
         self._finalize_stats()
         return loss

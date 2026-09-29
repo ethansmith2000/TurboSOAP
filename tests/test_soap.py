@@ -1,5 +1,6 @@
 import math
 
+import pytest
 import torch
 
 from soap import (
@@ -325,3 +326,175 @@ def test_refresh_reports_orthogonal_basis_metrics():
     assert optimizer.just_gathered_basis_stats
     assert math.isfinite(optimizer.latest_basis_stats["diag_err"])
     assert optimizer.latest_basis_stats["orth_err"] < 1e-4
+
+
+def test_residual_gate_skips_quiet_checks_and_forces_maximum_age_refresh():
+    torch.manual_seed(20)
+    parameter = torch.nn.Parameter(torch.randn(6, 4))
+    optimizer = SOAP(
+        [parameter],
+        lr=1e-2,
+        weight_decay=0.0,
+        precondition_frequency=2,
+        basis_residual_threshold=2.0,
+        basis_residual_max_age=5,
+        basis_reset_frequency=0,
+        covariance_compute_dtype="float32",
+        basis_track_stats=False,
+    )
+
+    for _ in range(6):
+        parameter.grad = torch.randn_like(parameter)
+        optimizer.step()
+
+    state = optimizer.state[parameter]
+    assert state["step"] == 5
+    assert state["basis_residual_checks"] == 2
+    assert state["basis_residual_skips"] == 2
+    assert state["basis_residual_threshold_refreshes"] == 0
+    assert state["basis_residual_max_age_refreshes"] == 1
+    assert state["basis_refreshes"] == 1
+    assert state["basis_last_refresh_step"] == 5
+    assert state["basis_last_residual_check_step"] == 5
+
+
+def test_residual_gate_reuses_checked_basis_covariance_for_refresh():
+    torch.manual_seed(21)
+    parameter = torch.nn.Parameter(torch.randn(6, 4))
+    optimizer = SOAP(
+        [parameter],
+        lr=1e-2,
+        weight_decay=0.0,
+        precondition_frequency=2,
+        basis_residual_threshold=1e-12,
+        basis_residual_max_age=6,
+        basis_reset_frequency=0,
+        covariance_compute_dtype="float32",
+        basis_track_stats=False,
+    )
+
+    for _ in range(3):
+        parameter.grad = torch.randn_like(parameter)
+        optimizer.step()
+
+    state = optimizer.state[parameter]
+    assert state["basis_residual_checks"] == 1
+    assert state["basis_residual_skips"] == 0
+    assert state["basis_residual_threshold_refreshes"] == 1
+    assert state["basis_refreshes"] == 1
+    assert state["basis_residual_ratio_last"] > 0.0
+    for basis in state["Q"]:
+        assert torch.allclose(
+            basis.T @ basis,
+            torch.eye(basis.shape[1]),
+            atol=2e-5,
+        )
+
+
+def test_residual_gate_requires_a_valid_maximum_age():
+    parameter = torch.nn.Parameter(torch.zeros(2, 2))
+    with pytest.raises(ValueError, match="basis_residual_max_age"):
+        SOAP(
+            [parameter],
+            precondition_frequency=4,
+            basis_residual_threshold=0.1,
+            basis_residual_max_age=3,
+        )
+
+
+def test_step_aged_hard_resets_preserve_first_window_and_bound_cadence():
+    torch.manual_seed(22)
+    parameter = torch.nn.Parameter(torch.zeros(4, 4))
+    optimizer = SOAP(
+        [parameter],
+        precondition_frequency=2,
+        basis_residual_threshold=2.0,
+        basis_residual_max_age=2,
+        basis_reset_frequency=3,
+        basis_reset_max_age=5,
+        covariance_compute_dtype="float32",
+        basis_track_stats=False,
+    )
+
+    for _ in range(13):
+        parameter.grad = torch.randn_like(parameter)
+        optimizer.step()
+
+    state = optimizer.state[parameter]
+    assert state["basis_reset_first_refresh"] == 3
+    assert state["basis_reset_first_step"] == 6
+    assert state["basis_hard_reset_events"] == 2
+    assert state["basis_last_hard_reset_step"] == 12
+
+
+def test_step_aged_hard_resets_require_a_refresh_schedule():
+    parameter = torch.nn.Parameter(torch.zeros(2, 2))
+    with pytest.raises(ValueError, match="basis_reset_frequency"):
+        SOAP(
+            [parameter],
+            basis_reset_frequency=0,
+            basis_reset_max_age=10,
+        )
+
+
+def test_residual_gate_warmup_uses_fixed_cadence_before_checks():
+    torch.manual_seed(23)
+    parameter = torch.nn.Parameter(torch.zeros(4, 4))
+    optimizer = SOAP(
+        [parameter],
+        precondition_frequency=2,
+        basis_residual_threshold=2.0,
+        basis_residual_max_age=6,
+        basis_residual_warmup_steps=4,
+        basis_reset_frequency=0,
+        covariance_compute_dtype="float32",
+        basis_track_stats=False,
+    )
+
+    for _ in range(5):
+        parameter.grad = torch.randn_like(parameter)
+        optimizer.step()
+
+    state = optimizer.state[parameter]
+    assert state["step"] == 4
+    assert state["basis_refreshes"] == 1
+    assert state["basis_last_refresh_step"] == 2
+    assert state["basis_residual_checks"] == 1
+    assert state["basis_residual_skips"] == 1
+
+
+def test_fixed_refresh_frequency_can_relax_after_warmup():
+    torch.manual_seed(24)
+    parameter = torch.nn.Parameter(torch.zeros(4, 4))
+    optimizer = SOAP(
+        [parameter],
+        precondition_frequency=2,
+        precondition_frequency_after_warmup=4,
+        precondition_frequency_warmup_steps=4,
+        basis_reset_frequency=0,
+        covariance_compute_dtype="float32",
+        basis_track_stats=False,
+    )
+
+    for _ in range(9):
+        parameter.grad = torch.randn_like(parameter)
+        optimizer.step()
+
+    state = optimizer.state[parameter]
+    assert state["step"] == 8
+    assert state["basis_refreshes"] == 3
+    assert state["basis_active_refreshes"] == 3
+    assert state["basis_last_refresh_step"] == 8
+    assert state["basis_residual_checks"] == 0
+
+
+def test_fixed_frequency_switch_and_residual_gate_are_mutually_exclusive():
+    parameter = torch.nn.Parameter(torch.zeros(2, 2))
+    with pytest.raises(ValueError, match="mutually exclusive"):
+        SOAP(
+            [parameter],
+            precondition_frequency_after_warmup=20,
+            precondition_frequency_warmup_steps=100,
+            basis_residual_threshold=0.5,
+            basis_residual_max_age=40,
+        )
