@@ -488,6 +488,39 @@ def test_fixed_refresh_frequency_can_relax_after_warmup():
     assert state["basis_residual_checks"] == 0
 
 
+def test_age_compensated_basis_lr_tracks_elapsed_refresh_age():
+    torch.manual_seed(25)
+    parameter = torch.nn.Parameter(torch.zeros(4, 4))
+    optimizer = SOAP(
+        [parameter],
+        precondition_frequency=2,
+        precondition_frequency_after_warmup=4,
+        precondition_frequency_warmup_steps=4,
+        basis_lr=0.5,
+        basis_lr_age_compensation=True,
+        basis_reset_frequency=0,
+        covariance_compute_dtype="float32",
+        basis_track_stats=False,
+    )
+
+    for _ in range(9):
+        parameter.grad = torch.randn_like(parameter)
+        optimizer.step()
+
+    state = optimizer.state[parameter]
+    assert state["basis_effective_lr_samples"] == 3
+    assert state["basis_effective_lr_sum"] == pytest.approx(1.75)
+    assert state["basis_effective_lr_max"] == pytest.approx(0.75)
+
+
+def test_age_compensated_basis_lr_requires_compoundable_step():
+    parameter = torch.nn.Parameter(torch.zeros(2, 2))
+    with pytest.raises(ValueError, match="below 1"):
+        SOAP([parameter], basis_lr=1.0, basis_lr_age_compensation=True)
+    with pytest.raises(ValueError, match="reference_age"):
+        SOAP([parameter], basis_lr_reference_age=-1)
+
+
 def test_fixed_frequency_switch_and_residual_gate_are_mutually_exclusive():
     parameter = torch.nn.Parameter(torch.zeros(2, 2))
     with pytest.raises(ValueError, match="mutually exclusive"):

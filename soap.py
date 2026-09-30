@@ -201,6 +201,12 @@ class SOAP(Optimizer):
         normalize_grads: RMS-normalize the final parameter update.
         data_format: ``"channels_first"`` or ``"channels_last"``.
         basis_lr: Step size for the damped Jacobi gauge flow.
+        basis_lr_age_compensation: Increase ``basis_lr`` as the elapsed age
+            between accepted refreshes grows. The compounded step is
+            ``1 - (1 - basis_lr) ** (age / reference_age)`` and remains
+            subject to ``basis_rotation_cap``.
+        basis_lr_reference_age: Reference refresh age for compounded basis
+            motion. Zero uses ``precondition_frequency``.
         basis_rotation_cap: Rotation limit interpreted according to
             ``basis_rotation_cap_mode``. Zero disables clipping.
         basis_rotation_cap_mode: ``"average"`` preserves the original cap;
@@ -256,6 +262,8 @@ class SOAP(Optimizer):
         normalize_grads: bool = False,
         data_format: str = "channels_first",
         basis_lr: float = 0.5,
+        basis_lr_age_compensation: bool = False,
+        basis_lr_reference_age: int = 0,
         basis_rotation_cap: float = 0.1,
         basis_rotation_cap_mode: str = "average",
         basis_jacobi_damping: float = 1e-2,
@@ -323,6 +331,12 @@ class SOAP(Optimizer):
             raise ValueError("precondition_aspect_ratio must be >= 1")
         if basis_lr < 0.0:
             raise ValueError("basis_lr must be non-negative")
+        if basis_lr_age_compensation and basis_lr >= 1.0:
+            raise ValueError(
+                "basis_lr must be below 1 when age compensation is enabled"
+            )
+        if int(basis_lr_reference_age) < 0:
+            raise ValueError("basis_lr_reference_age must be non-negative")
         if basis_rotation_cap < 0.0:
             raise ValueError("basis_rotation_cap must be non-negative")
         if basis_rotation_cap_mode not in ("average", "spectral_bound"):
@@ -374,6 +388,8 @@ class SOAP(Optimizer):
             precondition_aspect_ratio=float(precondition_aspect_ratio),
             normalize_grads=bool(normalize_grads),
             basis_lr=float(basis_lr),
+            basis_lr_age_compensation=bool(basis_lr_age_compensation),
+            basis_lr_reference_age=int(basis_lr_reference_age),
             basis_rotation_cap=float(basis_rotation_cap),
             basis_rotation_cap_mode=basis_rotation_cap_mode,
             basis_jacobi_damping=float(basis_jacobi_damping),
@@ -583,6 +599,9 @@ class SOAP(Optimizer):
         state["basis_residual_ratio_max"] = 0.0
         state["basis_residual_ratio_last"] = 0.0
         state["basis_residual_ratio_samples"] = []
+        state["basis_effective_lr_samples"] = 0
+        state["basis_effective_lr_sum"] = 0.0
+        state["basis_effective_lr_max"] = 0.0
         state["basis_reset_first_refresh"] = int(
             self._basis_reset_first_refresh.get(
                 id(parameter), group["basis_reset_frequency"]
@@ -721,6 +740,7 @@ class SOAP(Optimizer):
         q_old: Tensor,
         group: dict,
         basis_covariance: Optional[Tensor] = None,
+        effective_basis_lr: Optional[float] = None,
     ) -> Tensor:
         q = q_old.float()
         b = (
@@ -729,8 +749,13 @@ class SOAP(Optimizer):
             else _sym(basis_covariance.float())
         )
         omega = _damped_jacobi_generator(b, group["basis_jacobi_damping"])
+        basis_lr = (
+            group["basis_lr"]
+            if effective_basis_lr is None
+            else float(effective_basis_lr)
+        )
         rotation = _clip_rotation(
-            group["basis_lr"] * omega,
+            basis_lr * omega,
             group["basis_rotation_cap"],
             group.get("basis_rotation_cap_mode", "average"),
         )
@@ -832,6 +857,23 @@ class SOAP(Optimizer):
         ) + active_factors
         state["basis_last_hard_reset_step"] = int(state["step"])
 
+    @staticmethod
+    def _effective_basis_lr(state: dict, group: dict) -> float:
+        basis_lr = float(group["basis_lr"])
+        if not group.get("basis_lr_age_compensation", False):
+            return basis_lr
+        reference_age = int(group.get("basis_lr_reference_age", 0))
+        if reference_age <= 0:
+            reference_age = int(group["precondition_frequency"])
+        age = max(
+            0,
+            int(state["step"]) - int(state.get("basis_last_refresh_step", 0)),
+        )
+        if basis_lr == 0.0 or age == 0:
+            return 0.0
+        # log1p/expm1 stays accurate for small tracker steps and fractional ages.
+        return -math.expm1((age / reference_age) * math.log1p(-basis_lr))
+
     def _refresh_basis(
         self,
         state: dict,
@@ -839,6 +881,7 @@ class SOAP(Optimizer):
         basis_covariances: Optional[list[Optional[Tensor]]] = None,
     ) -> None:
         old_basis = state["Q"]
+        effective_basis_lr = self._effective_basis_lr(state, group)
         state["basis_refreshes"] += 1
         state["basis_last_refresh_step"] = int(state["step"])
         state["basis_last_residual_check_step"] = int(state["step"])
@@ -850,6 +893,17 @@ class SOAP(Optimizer):
         hard_reset = self._should_hard_reset(state, group)
         if hard_reset:
             self._record_hard_reset(state)
+        else:
+            state["basis_effective_lr_samples"] = int(
+                state.get("basis_effective_lr_samples", 0)
+            ) + 1
+            state["basis_effective_lr_sum"] = float(
+                state.get("basis_effective_lr_sum", 0.0)
+            ) + effective_basis_lr
+            state["basis_effective_lr_max"] = max(
+                float(state.get("basis_effective_lr_max", 0.0)),
+                effective_basis_lr,
+            )
 
         new_basis: list[Optional[Tensor]] = []
         if basis_covariances is None:
@@ -870,6 +924,7 @@ class SOAP(Optimizer):
                     q_old,
                     group,
                     basis_covariance=basis_covariance,
+                    effective_basis_lr=effective_basis_lr,
                 )
             new_basis.append(q_new.float())
             collect_stats = (
