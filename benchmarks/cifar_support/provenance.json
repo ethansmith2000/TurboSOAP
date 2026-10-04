@@ -1,0 +1,14 @@
+{
+  "cifar100_qualification.py": {
+    "source": "/workspace/SNRAdam/measurement_runs/cifar100_strong_20260930_v2/source/cifar100_qualification.py",
+    "sha256": "565f5d0d630ea2be6b7ebf409fed08e9cb8cd67e654b39f54eac63a4990f82ed"
+  },
+  "cifar100_strong_augmentation.py": {
+    "source": "/workspace/SNRAdam/measurement_runs/cifar100_strong_20260930_v2/source/cifar100_strong_augmentation.py",
+    "sha256": "255f3145f2884a9d7952145153d50403b056664ba70fb0cb34e6ac033b7b6e28"
+  },
+  "vit.py": {
+    "source": "/workspace/SNRAdam/measurement_runs/cifar100_strong_20260930_v2/source/vit.py",
+    "sha256": "1ddd2bc618f55119650d15aca558d759f0ab880de5c9339f435df909e88d49cf"
+  }
+}

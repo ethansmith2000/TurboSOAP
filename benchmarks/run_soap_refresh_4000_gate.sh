@@ -10,11 +10,30 @@ candidate_output=/workspace/optimizer_replay_results/llm_openwebtext_modern_768x
 control_checkpoint=/workspace/optimizer_checkpoints/llm_openwebtext_modern_768x8_soap_fixed10_current_lr000125_batch32_seq1024_4000.pt
 candidate_checkpoint=/workspace/optimizer_checkpoints/llm_openwebtext_modern_768x8_soap_fixed10to20_warmup200_resetage400_lr000125_batch32_seq1024_4000.pt
 
+is_complete() {
+  "$python_bin" - "$1" <<'PY'
+import json
+import sys
+from pathlib import Path
+try:
+    result = json.loads(Path(sys.argv[1]).read_text())
+    progress = result.get("progress", {})
+    complete = (
+        progress.get("completed") is True
+        and progress.get("completed_steps") == 4000
+        and progress.get("target_steps") == 4000
+    )
+except (OSError, ValueError, AttributeError):
+    complete = False
+sys.exit(0 if complete else 1)
+PY
+}
+
 run_arm() {
   local config=$1
   local output=$2
   local checkpoint=$3
-  if [[ -f "$output" ]]; then
+  if is_complete "$output"; then
     echo "[soap-refresh-gate] already complete: $output"
     return
   fi
@@ -32,7 +51,7 @@ if [[ "${1:-}" == "--inside-claim" ]]; then
   exit 0
 fi
 
-if [[ -f "$control_output" && -f "$candidate_output" ]]; then
+if is_complete "$control_output" && is_complete "$candidate_output"; then
   echo "[soap-refresh-gate] both arms are already complete"
   exit 0
 fi

@@ -11,8 +11,43 @@ The implementation is intentionally narrow. Each covariance basis is
 initialized with `eigh`, follows a damped Jacobi/double-bracket flow between
 refreshes, and is periodically reset with QR or `eigh`.
 
-See the [long-form method write-up](BLOG.md) for the motivation, equations,
-state-transport details, limitations, and experiment plan.
+The current research question is how to allocate a fixed optimizer-time budget
+between infrequent QR refreshes and frequent warm basis motion, including Adam
+moment handling. One-sided factorization is a separate algorithmic choice; the
+dense warm tracker remains cubic. Correct first-moment handling is required,
+while additional second-moment transport is an ablation. Current covariance-beta
+and Adam-beta2 tests are restricted to .99 and .999.
+
+See [research motivation and comparison protocol](RESEARCH.md) for the baseline
+definitions, state-transport limitations, evidence and execution plan.
+The [CIFAR-100 adapter](benchmarks/CIFAR100.md) provides a separately verified
+QR reference and common-state budget comparisons. The first screen matches
+QR10/warm10 cost and retains QR20 as a cheaper baseline; it is not a converged
+quality comparison. A subsequent [20-epoch LR screen](../optimizer_replay_results/cifar_soap_lr_screen_20261001/README.md)
+was followed by a [verified lower bracket](../optimizer_replay_results/cifar_soap_lower_lr_20261001/README.md).
+Across five rates, .0005 is best for all methods on this early trajectory. Repeated
+controls match bitwise; variation in model/backward timing limits wall-quality
+claims. The [independent memory screen](../optimizer_replay_results/cifar_soap_memory_20261002/README.md)
+finds lower early loss with covariance beta .99 for all three schedules, holding
+matrix Adam beta2 at .999. Lowering matrix Adam beta2 alone worsens QR and gives
+only a small warm improvement. The [100-epoch extension](../optimizer_replay_results/cifar_soap_covariance_long_20261002/README.md)
+retains the QR10/warm benefit but leaves QR20 essentially flat. Paired seed
+replication remains planned; defaults remain unchanged.
+
+Runtime scaling is now a separate [synthetic stress benchmark](benchmarks/SYNTHETIC_SCALING.md).
+Its [first report](../optimizer_replay_results/soap_synthetic_scaling_v3_20261002/README.md)
+shows dimension-dependent costs and warm retraction failures on synthetic states,
+including a natural-cadence check. Resolve that numerical issue and include any
+repair cost before advancing large-factor speed claims. CIFAR timings remain
+specific to that workload; synthetic time and CIFAR loss must not be combined
+into an unmeasured time-to-quality claim.
+
+The [large square-factor precision screen](../optimizer_replay_results/soap_large_precision_20261002/README.md)
+adds width-2048/4096 depth-one natural cycles. Reduced precision and kernel
+compilation help costs, but QR benefits too; NS2 fails at width4096 and NS6's
+cost ranking changes with size. Inference mode brings state-lifecycle restrictions
+without consistent savings. See the [protocol](benchmarks/LARGE_PRECISION.md).
+These are numerical/runtime screens; optimizer defaults remain unchanged.
 
 ## Installation and use
 
@@ -535,15 +570,16 @@ model, optimizer, scheduler, and RNG state:
 ```
 
 Keep the original target `--steps` and schedule when resuming. CPU controls are
-bitwise exact. Compiled CUDA controls reproduce every logged loss and reset
-event; final FP32 optimizer state can differ by about `5e-10` because reduction
-order after recompilation is not bitwise fixed.
+bitwise exact. The original torch 2.12.0+cu130 CUDA controls reproduced every
+logged loss and reset event, with FP32 optimizer-state differences around
+`5e-10`. This is environment-specific evidence, not a bitwise CUDA guarantee;
+revalidate numerical replay after software or hardware changes.
 
 `--hf-streaming` reads only the bounded sample. `--max-train-tokens` and
 `--max-validation-tokens` cap RAM and token-cache usage, while `--token-cache`
 stores token IDs as int32 and avoids repeated network reads and tokenization
-across seeds. Batches are promoted to int64 only when loaded for embedding
-lookup. Eager loading of
+across seeds. The packed dataset currently expands the token stream to int64 in CPU RAM;
+the persistent cache remains int32. Eager loading of
 `Skylion007/openwebtext` is rejected unless `--allow-large-hf-download` is passed,
 because the complete download plus generated dataset can occupy about 64 GB.
 
@@ -559,3 +595,54 @@ matrix learning rate is generally too large for a tied token embedding.
 
 - SOAP: <https://arxiv.org/abs/2409.11321>
 - Shampoo: <https://arxiv.org/abs/1802.09568>
+
+### Receiving-device audit (2026-09-30)
+
+BlockSOAP now rejects dense-only `precondition_frequency_after_warmup`,
+`basis_residual_threshold`, and `basis_lr_age_compensation` settings, including
+parameter-group overrides. Its separate update loop does not implement those
+controllers. Dense SOAP behavior is unchanged.
+
+The CPU exact-resume regression now exercises the local optimizer across
+refresh/reset and shuffled-epoch boundaries, including age compensation for
+SOAP. The receiving-device environment is torch 2.11.0+cu128; historical timings
+from torch 2.12.0+cu130 must not be treated as same-environment controls.
+New results are kept under `../optimizer_replay_results/rtx5090_cu128_20260930/`.
+
+The receiving-device 4,000-step seed-123 gate is complete: fixed period 10
+reaches validation 3.76037 versus 3.76661 for 10-to-20. Sparse cadence saves
+14.3% optimizer time and 1.11% total step time, with a +0.625% perplexity gap.
+Both consume 131.072M target tokens without sampler wrap (1.376 tokens per
+parameter). This remains early-training evidence; fixed 10 is the conservative
+reference and 10-to-20 an opt-in tradeoff. Full curves and matching checks are in
+`../optimizer_replay_results/rtx5090_cu128_20260930/paired_summary.json`.
+
+Three receiving-device age-compensation pairs give loss deltas −0.007585,
+−0.002104 and +0.005902 (mean −0.001262, paired SD 0.006783). This does not
+resolve a quality benefit; keep the option experimental. Validation differences
+already exist before policy changes in both gates, so endpoint gaps do not
+isolate causal effects. A separate cap diagnostic after the sparse transition
+finds 1.60% baseline saturation and 3.54% hypothetical saturation at eta=.75 on
+the same states; the cap does not generally erase the larger request.
+
+A tiny compiled CUDA SOAP resume probe reproduces all logged losses, RNG,
+scheduler and sampler state, but is not bitwise: maximum model difference
+2.33e-10 and optimizer difference 1.86e-9. This does not guarantee target-model
+bitwise replay. Full report: `../optimizer_replay_results/rtx5090_cu128_20260930/README.md`.
+
+The completed-checkpoint recovery path can now regenerate missing result JSON
+without training again. The gate launcher checks completion metadata, and basis
+eta statistics exclude inactive fallback parameters. Shared trainer/model/test
+files remain byte-identical between repositories. Final CPU suites: 97
+TransportMuon tests and 66 TurboSOAP tests. No model weights are retained.
+
+### Current LLM evaluation check (2026-10-01)
+
+The shared 768x8 trainer passed same-weight evaluation checks at steps 100,
+200 and 1,000 on torch 2.11.0+cu128: maximum compiled/eager BF16 validation CE
+difference 2.9e-5, identical repeated compiled losses, and identical eager
+first-batch grad/no-grad losses. Model hashes were unchanged by diagnostics.
+This supports the tested current trajectory; unsaved historical weights and
+other architectures/software were not validated. The run used SOAP; it tests
+the shared model/evaluator, not every optimizer trajectory.
+See [the foundation report](../optimizer_replay_results/soap_budget_20261001/README.md).

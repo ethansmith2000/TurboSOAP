@@ -373,6 +373,16 @@ class BlockSOAP(SOAP):
             raise ValueError("basis_block_stall_threshold must be non-negative")
         super().__init__(params, *args, **kwargs)
         for group in self.param_groups:
+            # This subclass has its own step/refresh loop. Dense SOAP's new
+            # controllers are not implemented there; accepting them silently
+            # would label an unchanged experiment as a different policy.
+            for option in (
+                "precondition_frequency_after_warmup",
+                "basis_residual_threshold",
+                "basis_lr_age_compensation",
+            ):
+                if group.get(option, 0):
+                    raise ValueError(f"BlockSOAP does not support {option}")
             group.setdefault("basis_pairs_per_refresh", int(basis_pairs_per_refresh))
             group.setdefault("basis_pair_angle_cap", float(basis_pair_angle_cap))
             group.setdefault(

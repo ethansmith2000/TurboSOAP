@@ -1,5 +1,6 @@
 import math
 
+import pytest
 import torch
 
 from soap import _offdiag
@@ -17,6 +18,24 @@ from soap_block import (
 
 def test_alias_is_preserved():
     assert TurboBlockSOAP is BlockSOAP
+
+
+@pytest.mark.parametrize("option,value", [
+    ("precondition_frequency_after_warmup", 20),
+    ("basis_residual_threshold", 0.9),
+    ("basis_lr_age_compensation", True),
+])
+@pytest.mark.parametrize("per_group", [False, True])
+def test_unsupported_dense_controllers_fail_explicitly(option, value, per_group):
+    parameter = torch.nn.Parameter(torch.zeros(8, 8))
+    kwargs = {"basis_residual_max_age": 40}
+    params = [parameter]
+    if per_group:
+        params = [{"params": params, option: value}]
+    else:
+        kwargs[option] = value
+    with pytest.raises(ValueError, match=f"BlockSOAP does not support {option}"):
+        BlockSOAP(params, **kwargs)
 
 
 def test_block_probability_compensation_is_opt_in():
