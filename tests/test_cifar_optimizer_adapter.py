@@ -95,3 +95,49 @@ def test_explicit_baseline_memory_preserves_updates_and_changed_matrix_beta_leav
 def test_memory_arm_rejects_out_of_scope_beta():
     with pytest.raises(ValueError,match='.99'):
         screen_arm_config(CONFIG,dict(matrix_lr=.0005,matrix_beta2=.9999))
+
+
+@pytest.mark.parametrize('policy,frequency,method',[('qr20',20,'qr'),('qr40',40,'qr'),
+                                                 ('warm20',20,'warm'),('warm40',40,'warm')])
+def test_new_cadences_and_explicit_ns_iterations_execute_in_adapter(policy,frequency,method,monkeypatch):
+    import soap
+    calls=[];original=soap._orthogonalize_ns
+    def counted(candidate,iterations=2):
+        calls.append(iterations);return original(candidate,iterations)
+    monkeypatch.setattr(soap,'_orthogonalize_ns',counted)
+    config=screen_arm_config(CONFIG,dict(matrix_lr=.0005,covariance_beta=.99,basis_ns_iterations=6))
+    net=model();opt=build_optimizer(net,config,policy)
+    for _ in range(201):
+        for p in net.parameters():p.grad=torch.randn_like(p)
+        opt.step()
+    assert all(g['basis_ns_iterations']==6 and g['shampoo_beta']==.99 for g in opt.matrix.param_groups)
+    assert all(g['betas']==(.9,.999) for g in opt.auxiliary.param_groups)
+    for state in opt.matrix.state.values():
+        assert state['research_qr_refreshes']==(200//frequency if method=='qr' else 1)
+        assert state.get('research_warm_refreshes',0)==(0 if method=='qr' else 200//frequency-1)
+    assert set(calls)==({6} if method=='warm' else set())
+
+
+def test_refresh_guard_detects_drift_and_restores_precision():
+    from benchmarks.cifar_optimizers import check_basis_state
+    net=model();opt=build_optimizer(net,CONFIG,'warm20')
+    for p in net.parameters():p.grad=torch.randn_like(p)
+    opt.step();assert check_basis_state(opt,.05)['maximum_gram_error']<.05
+    prior=torch.get_float32_matmul_precision()
+    next(iter(opt.matrix.state.values()))['Q'][0].mul_(2)
+    with pytest.raises(FloatingPointError):check_basis_state(opt,.05)
+    assert torch.get_float32_matmul_precision()==prior
+
+
+def test_precision_cap_arm_isolated_to_matrix_optimizer_and_survives_restore():
+    c=screen_arm_config(CONFIG,dict(matrix_lr=.0005,transport_precision='highest',basis_rotation_cap=.2,basis_ns_iterations=6))
+    net=model();opt=build_optimizer(net,c,'warm20')
+    assert all(g['transport_precision']=='highest' and g['basis_rotation_cap']==.2 for g in opt.matrix.param_groups)
+    assert all('transport_precision' not in g and 'basis_rotation_cap' not in g for g in opt.auxiliary.param_groups)
+    saved=copy.deepcopy(opt.state_dict());other=build_optimizer(net,CONFIG,'warm20');other.load_state_dict(saved)
+    assert all(g['transport_precision']=='highest' and g['basis_rotation_cap']==.2 for g in other.matrix.param_groups)
+
+
+@pytest.mark.parametrize('cap',[0,-.1,float('nan'),float('inf'),True])
+def test_invalid_cap_rejected(cap):
+    with pytest.raises(ValueError,match='basis_rotation_cap'):build_optimizer(model(),{**CONFIG,'basis_rotation_cap':cap})

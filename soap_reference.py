@@ -14,7 +14,9 @@ class ResearchSOAP(SOAP):
                  eps=1e-8, weight_decay=.05, precondition_frequency=10,
                  precondition_mode='all', covariance_compute_dtype='float32',
                  max_precond_dim=10000, basis_method='qr', variance_policy='permutation',
-                 hard_reset_interval=200):
+                 hard_reset_interval=200, transport_precision='inherit'):
+        if transport_precision not in ('inherit','highest'):
+            raise ValueError('transport_precision must be inherit or highest')
         if basis_method not in ('qr','warm') or variance_policy not in ('permutation','overlap'):
             raise ValueError('Unknown research basis or variance policy')
         if type(precondition_frequency) is not int or precondition_frequency < 1:
@@ -37,7 +39,7 @@ class ResearchSOAP(SOAP):
             if group['precondition_frequency'] != precondition_frequency:
                 raise ValueError('Per-group cadence overrides are outside the research protocol')
             group.update(basis_method=basis_method,variance_policy=variance_policy,
-                         hard_reset_interval=hard_reset_interval)
+                         hard_reset_interval=hard_reset_interval,transport_precision=transport_precision)
 
     def _research_refresh(self,state,group):
         old=state['Q']
@@ -56,7 +58,16 @@ class ResearchSOAP(SOAP):
             else:
                 candidate=self._gauge_step_one(cov,q,group)
             new.append(candidate.float())
-        self._transport_first_moment(state,old,new,group)
+        if group.get('transport_precision','inherit')=='highest':
+            previous=torch.get_float32_matmul_precision()
+            try:
+                torch.set_float32_matmul_precision('highest')
+                self._transport_first_moment(state,old,new,group)
+            finally:
+                torch.set_float32_matmul_precision(previous)
+            state['research_strict_transports']=state.get('research_strict_transports',0)+1
+        else:
+            self._transport_first_moment(state,old,new,group)
         if group['variance_policy']=='overlap':
             self._transport_second_moment_for_reset(state,old,new,group)
         else:

@@ -1,4 +1,4 @@
-"""Bounded, paired CIFAR optimizer screen; frozen inputs, no retained model weights."""
+"""Isolated timing study derived from cifar_lr_screen; shared trainer is unchanged."""
 import argparse
 import copy
 import hashlib
@@ -18,6 +18,8 @@ import torch
 from torch.nn import functional as F
 from cifar_optimizer_benchmark import (json_write,rng_state,restore_rng,state_digest,
                                       support,StrongAugmentation)
+from timing_diagnostics import HostTiming, telemetry, profile_summary
+from movement_retraction import configure_matrix
 from cifar_optimizers import apply_lr_multiplier,build_optimizer,counters,screen_arm_config,check_basis_state
 
 
@@ -30,7 +32,7 @@ def main():
     for name,digest in manifest['source_sha256'].items():
         assert support.digest(bundle/'source'/name)==digest,name
     for name,key in [('config.json','config_sha256'),('split.json','split_sha256'),
-                     ('data_prepared.json','base_prepared_sha256')]:
+                     ('data_prepared.json','base_prepared_sha256'),('PROTOCOL.md','protocol_sha256')]:
         assert support.digest(bundle/name)==manifest[key],name
     c=json.loads((bundle/'config.json').read_text())
     assert not c['checkpoint'] and not c['official_test']
@@ -75,19 +77,27 @@ def main():
         if time.monotonic()-started>c['max_wall_seconds']:
             raise RuntimeError('Predeclared study wall budget exceeded')
 
+    host = HostTiming()
+    replay_states = {}
+
     def train_step(index,opt):
         ev=[torch.cuda.Event(enable_timing=True) for _ in range(4)]
-        ev[0].record()
-        batch=device_batches[index]
-        offsets=torch.randint(0,9,(c['batch_size'],2),device='cuda',generator=crop)
-        flips=torch.rand(c['batch_size'],device='cuda',generator=crop)<.5
-        y=labels[batch];x,target,_=strong(images[batch],y,offsets,flips)
-        ev[1].record()
-        multiplier=support.lr_at(index+1,schedule_steps,per_epoch*c['warmup_epochs'],1.,c['min_lr_ratio'])
-        apply_lr_multiplier(opt,multiplier);opt.zero_grad(set_to_none=True)
-        with torch.autocast('cuda',dtype=torch.bfloat16):loss=F.cross_entropy(active(x).float(),target)
-        loss.backward();norm=torch.nn.utils.clip_grad_norm_(model.parameters(),c['clip_norm'],foreach=True)
-        ev[2].record();opt.step();ev[3].record()
+        ev[0].record();host.begin()
+        with host.scope('augmentation'):
+            batch=device_batches[index]
+            offsets=torch.randint(0,9,(c['batch_size'],2),device='cuda',generator=crop)
+            flips=torch.rand(c['batch_size'],device='cuda',generator=crop)<.5
+            y=labels[batch];x,target,_=strong(images[batch],y,offsets,flips)
+        ev[1].record();host.mark()
+        with host.scope('model_backward'):
+            multiplier=support.lr_at(index+1,schedule_steps,per_epoch*c['warmup_epochs'],1.,c['min_lr_ratio'])
+            apply_lr_multiplier(opt,multiplier);opt.zero_grad(set_to_none=True)
+            with torch.autocast('cuda',dtype=torch.bfloat16):loss=F.cross_entropy(active(x).float(),target)
+            loss.backward();norm=torch.nn.utils.clip_grad_norm_(model.parameters(),c['clip_norm'],foreach=True)
+        ev[2].record();host.mark()
+        with host.scope('optimizer'):
+            opt.step()
+        ev[3].record();host.finish()
         return loss.detach(),norm.detach(),x,y,target,ev
 
     # Compile/cold-path qualification is separate, then discard every trained state.
@@ -135,6 +145,7 @@ def main():
         assert state_digest(model.state_dict())==initial_hash
         arm_config=screen_arm_config(c,arm)
         opt=build_optimizer(model,arm_config,arm['policy'])
+        if arm.get('movement_policy'):configure_matrix(opt.matrix,arm['movement_policy'])
         probe=None
         if arm.get('tracking_probe',False):
             if study.get('tracking_probe_kind')=='strict_transport':
@@ -147,7 +158,7 @@ def main():
                 from cifar_tracking_probe import TrackingProbe
             probe=TrackingProbe(opt,study['tracking_ages'])
         assert not opt.matrix.state and not opt.auxiliary.state
-        result=dict(**arm,status='running',observations=[],history=[],initial_model_sha256=initial_hash,
+        result=dict(**arm,telemetry_start=telemetry(),status='running',observations=[],history=[],initial_model_sha256=initial_hash,
                     effective_groups=[{k:v for k,v in g.items() if k in
                         ['role','betas','shampoo_beta','peak_lr','weight_decay','eps','basis_method',
                          'precondition_frequency','hard_reset_interval','variance_policy','basis_ns_iterations',
@@ -156,6 +167,7 @@ def main():
         if probe is not None:result['tracking_probes']=[]
         report['runs'].append(result);json_write(bundle/'screen.json',report)
         torch.cuda.reset_peak_memory_stats();torch.cuda.synchronize()
+        host.reset()
         id_hash=hashlib.sha256();aug_hashes={};events=[];losses=[];norms=[]
         phase_samples=[];process_cpu_seconds=0.;chunk_cpu=time.process_time()
         training_seconds=0.;wall_observed=wall_target is None;equal_observed=False
@@ -195,6 +207,7 @@ def main():
                 row=dict(step=step,training_seconds=training_seconds,process_cpu_seconds=process_cpu_seconds,
                          loss=values[0],maximum_gradient_norm=values[1],
                          **{name:statistics.mean(x[i] for x in samples) for i,name in enumerate(phase_names)})
+                row['host']=host.flush()
                 result['history'].append(row);losses=[];norms=[]
                 reasons=[]
                 if step in study['evaluation_updates']:reasons.append('fixed_updates')
@@ -220,7 +233,7 @@ def main():
                 check_budget();chunk_start=time.monotonic();chunk_cpu=time.process_time()
                 if equal_observed and wall_observed:break
         torch.cuda.synchronize()
-        result.update(status='completed',steps=step,wall_target_reached=wall_observed if wall_target is not None else None,
+        result.update(telemetry_end=telemetry(),optimizer_sha256=state_digest(opt.state_dict()),status='completed',steps=step,wall_target_reached=wall_observed if wall_target is not None else None,
                       **{name:statistics.mean(x[i] for x in phase_samples[50:]) for i,name in enumerate(phase_names)},
                       process_cpu_seconds=process_cpu_seconds,
                       training_seconds=training_seconds,all_in_seconds=time.monotonic()-arm_start,
@@ -229,6 +242,9 @@ def main():
         assert equal_observed
         json_write(bundle/'screen.json',report)
         if probe is not None:probe.close()
+        if arm.get('capture_replay'):
+            replay_states[arm['kind']]=dict(model=copy.deepcopy(model.state_dict()),
+                optimizer=copy.deepcopy(opt.state_dict()),rng=rng_state(crop,strong),arm=arm)
         del probe,opt
     def fixed(run):return next(x for x in run['observations'] if x['step']==study['equal_updates'])
     pairs=study.get('control_pairs',[['qr10_lr0.001','qr10_lr0.001_repeat']])
@@ -243,6 +259,41 @@ def main():
     report['control_repeat']=dict(model_hash_equal=all(x['model_hash_equal'] for x in comparisons),
                                  ce_difference=comparisons[-1]['ce_difference'])
     report['paired_fixed_update_checks_passed']=True
+    report['status']='completed' if report['control_repeat']['model_hash_equal'] else 'repeat_mismatch'
+    # Primary controls finish before any profiler work. Saved states stay in RAM.
+    report['status']='profiling'
+    report['profile_replays']=[]
+    json_write(bundle/'screen.json',report)
+    for kind,saved in replay_states.items():
+        arm=saved['arm'];reference=None
+        for mode in ['plain','profile1','profile2']:
+            check_budget();model.load_state_dict(saved['model']);model.train()
+            opt=build_optimizer(model,screen_arm_config(c,arm),arm['policy'])
+            if arm.get('movement_policy'):configure_matrix(opt.matrix,arm['movement_policy'])
+            opt.load_state_dict(copy.deepcopy(saved['optimizer']))
+            restore_rng(saved['rng'],crop,strong);host.reset();host.profile=mode!='plain'
+            prof=torch.profiler.profile(activities=[torch.profiler.ProfilerActivity.CPU,torch.profiler.ProfilerActivity.CUDA]) if host.profile else None
+            from contextlib import nullcontext
+            torch.cuda.synchronize();t=time.monotonic()
+            losses=[];event_rows=[]
+            with prof if prof is not None else nullcontext():
+                for index in range(study['equal_updates'],study['equal_updates']+study['profile_steps']):
+                    loss,norm,x,y,target,ev=train_step(index,opt)
+                    losses.append(loss);event_rows.append(ev)
+                torch.cuda.synchronize()
+            wall=time.monotonic()-t
+            control=dict(model=state_digest(model.state_dict()),optimizer=state_digest(opt.state_dict()),
+                         rng=state_digest(rng_state(crop,strong)),losses=torch.stack(losses).cpu().tolist())
+            if reference is None:reference=control
+            row=dict(kind=kind,mode=mode,numerical_control=control,exact=control==reference,
+                     wall_seconds=wall,host=host.flush(),cuda_ms={name:sum(e[i].elapsed_time(e[i+1]) for e in event_rows)
+                     for i,name in enumerate(['augmentation','model_backward','optimizer'])})
+            if prof is not None:row['profiler']=profile_summary(prof,bundle,kind+'_'+mode)
+            report['profile_replays'].append(row);json_write(bundle/'screen.json',report)
+            assert sum(p.stat().st_size for p in bundle.rglob('*') if p.is_file()) < manifest['evidence_budget_bytes'],'Evidence budget exceeded'
+            assert row['exact'],'Profiler replay changed numerical result'
+            del opt,prof
+    host.close()
     report['status']='completed' if report['control_repeat']['model_hash_equal'] else 'repeat_mismatch'
     report['all_in_seconds']=time.monotonic()-started
     json_write(bundle/'screen.json',report)

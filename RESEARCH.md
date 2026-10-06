@@ -1,8 +1,30 @@
 # SOAP research: basis maintenance under a compute budget
 
-Updated 2026-10-02. This document describes the current research motivation and
+Updated 2026-10-06. This document describes the current research motivation and
 comparison protocol. Optimizer defaults are unchanged; proposed studies are not
 claims of measured improvement.
+
+## Current priority: qualify timing and separate radius from bound conservatism
+
+The [movement-bound round](../optimizer_replay_results/soap_movement_round_20261006/README.md)
+implements a skew-Frobenius bound with two cubic corrections. Common-state
+movement and residual reduction improve substantially; natural-cycle cost stays
+close to row-cubic2. Paired CIFAR fixed-update CE improves only modestly and still
+trails QR/NS6. The 90-second training-wall comparison failed its predeclared
+repeat criterion: identical QR work varied by 11.85% in wall time while optimizer
+time varied only .84%. Exact numerical repeats do not establish timing stability.
+
+Keep the candidate experimental. First qualify repeated/interleaved identical
+work for wall-quality interpretation. Separately compare allowed movement radius
+and correction work on common states, using a small fixed shortlist and declared
+moment/geometry tolerances. Select on learning and total cost; better instantaneous
+covariance residual is insufficient. Replication and longer horizons remain due.
+
+The [movement note](benchmarks/MOVEMENT_BOUND.md) records the bound and scalar
+Gram-error maps. The [earlier design](benchmarks/WARM_RETRACTION_DESIGN.md) preserves
+hypotheses and failures. BF16, natural-cycle compiled ownership and exact H200
+provenance remain open. Production/defaults are unchanged; historical dated next
+steps below are superseded by this priority and the shared roadmap.
 
 ## Research question
 
@@ -165,7 +187,202 @@ training forward/backward must remain outside that context. Timing gains require
 geometry and eventual learning gates at the same precision. NS6 is an explicit
 experimental retraction setting, not a production default change or a general fix.
 
-## Execution funnel
+### Rectangular numerical gate completed
+
+The [rectangular follow-up](../optimizer_replay_results/soap_rectangular_precision_20261004/README.md)
+reproduces the original NS2 failures at updates10/110 and measures their momentum
+damage. NS6, its compiled kernel, and BF16 covariance products pass the declared
+1% momentum/update budgets over200 updates on both factor settings. BF16 gauge
+passes the coarse Gram check but fails the stronger budgets; defer that precision
+setting. Spectral-bound clipping passes but moves3072-factor bases about61x less
+than NS6/average cap on their respective trajectories, so keep it a separate
+tracking-policy choice. No optimizer defaults changed.
+
+Current schedules accumulate covariance and update Adam each step, refresh warm
+bases/transport m every10, and replace warm with scheduled QR every200. Research
+checks run after refreshes outside measured optimizer time, stop failed cases,
+and do not implement automatic QR fallback. Any eventual online checks must have
+their overhead included. Next isolate cadence and covariance beta (.99/.999) with
+the numerically surviving NS6 candidate and sparse QR controls before real-data
+quality confirmation. Numerical budget acceptance alone is not convergence or
+equal-quality speedup evidence.
+
+### Cadence and covariance screen completed
+
+The [cadence/beta screen](../optimizer_replay_results/soap_cadence_beta_20261004/README.md)
+passes all24 numerical cases: covariance .99/.999, QR or NS6 warm every10/20/40,
+both factors active on the original rectangular workload. All six repeated .999
+controls exactly match prior loss and diagnostic records. Scheduled QR200 stays
+fixed for warm; this does not introduce adaptive checks/fallbacks into the optimizer.
+
+Warm is cheaper at matched intervals, but warm20 costs about20% more than QR40;
+warm10 costs27–32% more than QR20. Sparse QR remains a serious alternative to more
+frequent warm refreshes. These are short synthetic costs, not quality rankings.
+Next: bounded real-data quality screening of NS6 warm20/40 and QR20/40 with both
+covariance betas, verifying adapter settings first. No default changes.
+
+### Real CIFAR cadence quality screen completed
+
+The [CIFAR NS6 screen](../optimizer_replay_results/cifar_soap_cadence_20261004/README.md)
+completes nine 20-epoch arms on the original 200-epoch schedule. At fixed LR .0005,
+QR20/40 beats NS6 warm20/40 in validation CE and optimizer cost at both covariance
+betas. At .99, QR20/QR40/warm20/warm40 CE is 1.74838/1.75978/1.80780/1.85002.
+Covariance .99 improves all four early endpoints relative to .999. The earlier
+100-epoch study showed horizon dependence, so do not treat this as convergence.
+
+All 1,227 per-refresh/initialization probes pass (maximum Gram .0013854); QR20
+historical anchors and the repeated control match exactly at all observations.
+The control optimizer-time range is .38%, but training wall varies 20.7% and
+model/backward 43.8%; no equal-wall claim. CIFAR matrix sizes remain separate
+from the synthetic large-factor runtime map. No defaults change.
+
+That follow-up is now complete; see the tracking and LR result below.
+
+### CIFAR tracking and matrix-LR screen completed (2026-10-04 UTC)
+
+[Report](../optimizer_replay_results/cifar_soap_tracking_lr_20261004/README.md): seven arms, 24,500 updates, 10.20 minutes. QR20 and NS6
+warm20 each test matrix LR .00025/.0005/.001 with covariance .99, auxiliary
+LR .0005 and Adam(.9,.999) fixed. Both choose .0005 at the 20-epoch endpoint:
+CE 1.74838 versus 1.80780, a warm deficit of .05941. The same original 200-epoch
+schedule and seed139 are used; this is early sensitivity, not convergence or
+new-seed replication. The bounded LR check does not remove the quality gap.
+
+On warm-trajectory incoming states, mean local covariance residuals for factors
+192/576/768 are .3467/.2852/.3095 after one NS6 step, .3102/.2318/.2576 after two,
+and .1047/.1038/.1108 after QR. Every second warm shadow improves its sampled
+residual, but dimension means still trail QR. The cap binds in 58.9/41.7/44.4%
+of those samples. QR-trajectory shadows show the same qualitative pattern.
+These are identical-state local alternatives; they are never executed in
+training, and lower residual alone does not establish better learning. QR
+permutes v and warm carries v; update differences do not isolate transport.
+
+All 1,225 refresh/initialization guards pass (maximum Gram .00143845). Six
+historical observations, three repeated-control observations and all repeated
+tracking records match exactly. 147 prelaunch CPU tests pass. Scalar probes
+cover 21 events/504 matrices/1,008 factors including the repeat. A different
+physical RTX5090 was used; numerical anchors are verified, timing is not pooled.
+Control optimizer range/mean .575%, training-wall 1.659%. Selected-rate optimizer
+cost is 9.773 ms QR versus 10.778 ms warm on these small factors. No equal-wall
+or large-factor speedup claim. No defaults changed or weights saved; GPU released
+and private supervisor stopped.
+
+Next: a bounded tracking-efficiency gate, with two inner warm steps and a modest
+cap change tested separately against unchanged warm and QR controls. Check
+geometry, world-m/update fidelity and complete refresh cost before any expanded
+training comparison. Distinguish one final m transport from two sequential
+transports. The two-step shadow has no measured cost or learning result yet.
+Keep v handling as a separate ablation, retain sparse QR budget controls, and
+preserve .99/.999 and longer-horizon replication on the roadmap. No further
+training grid was launched in this stage.
+
+### Local refresh efficiency and precision gate (2026-10-04 UTC)
+
+[Report](../optimizer_replay_results/cifar_soap_refresh_efficiency_20261004/README.md): three unchanged CIFAR trajectories, 10,500 updates,
+6.58 minutes. QR20, NS6 warm20 and the QR repeat reproduce all nine historical
+anchors exactly. The 504 actual-refresh Q/m/v controls and repeated numerical
+probes match exactly. All 525 training guards pass; 156 CPU tests pass.
+
+On 144 warm-trajectory matrix records excluding QR resets, one warm step at
+cap .1 gives mean residual .32972 at 2.930 ms per complete local refresh. Cap .2
+improves this to .31530 at 2.926 ms, about 27.1% more residual reduction per ms.
+Two inner steps with final m transport reach .28729 at 5.764 ms: 1.97× cost,
+8.9% lower local reduction/cost efficiency. QR reaches .10611 at 2.258 ms.
+These are eager small-factor event measurements including m/v handling, not
+whole-optimizer speedups or learning progress. No variant changes training.
+
+All 2,520 candidate records pass Gram and both world-m fidelity checks, but no
+variant passes every 1% strict-FP32 implied-update agreement check. Rejections
+per 504 records: QR493, warm1 49, warm2-final72, warm2-sequential187, cap-.2 53.
+Totals include the exact QR repeat and are not independent observations.
+QR's maximum update difference is 73.3%, despite world-m preservation error
+below .067%. This exposes full-refresh precision sensitivity in the baseline
+as well; it does not prove broken transport or worse QR learning. Strict FP32
+is a numerical reference, not an established learning optimum. Sequential versus
+final-only m transport changes the two-step implied update by up to 3.63%, with
+identical bases/v; sequential transport also costs slightly more.
+
+Next: hold candidate Q and v fixed to isolate transport arithmetic, then isolate
+basis construction and QR ordering/permutation effects. Preserve the full
+strict-refresh comparison; do not relax its threshold after observing failures.
+Resolve that attribution before promoting cap .2 into a training intervention.
+Defer more inner steps unless their measured cost can be justified. Retain sparse
+QR, .99/.999 and larger-factor follow-ups, with costs and learning kept separate.
+No defaults changed, no weights/checkpoints/tensor snapshots saved. GPU released,
+private supervisor stopped, prior evidence preserved. No further GPU run launched.
+
+### Precision attribution completed (2026-10-04 UTC)
+
+[Report](../optimizer_replay_results/cifar_soap_precision_attribution_20261004/README.md): 10,500 unchanged training updates, 4.61 minutes,
+504 matrix records and 2,520 precision decompositions. All nine historical
+anchors, actual-refresh Q/m/v controls, repeated probes and all previous
+full-refresh update differences reproduce exactly. All 525 training guards
+pass; 164 CPU tests pass. No candidate changes training.
+
+Holding the high candidate basis/v fixed and using strict FP32 m transport
+resolves every sampled one-step warm full-refresh agreement failure: cap .1
+49→0 and cap .2 53→0 per 504 records, including the QR repeat. Worst remaining
+difference is .844%. On the warm trajectory's 144 actual warm-event records,
+both caps go 3→0, maximum .534%. This is a sufficient local intervention, not
+proof that transport alone caused every combined discrepancy or that learning
+improves. Two inner steps retain 7/13 failures with final/sequential transport.
+
+QR remains different: failures 493→492, maximum remaining difference 73.098%.
+The strict-basis stage with high ordering held fixed still has mean magnitude
+12.086% of the strict update norm. Ordering and v differ in every sampled QR
+record; their separate stage magnitudes are not additive. Vector closure is
+at most 3.33e-8. Tiny world-m differences can become much larger after the Adam
+denominator; geometry/world-m checks alone do not bound the implied update.
+No claim of broken QR learning or a proven spectral cause follows from this.
+
+Next: an opt-in strict m-transport path, full refresh cost measurement, then a
+bounded paired learning check for one-step warm cap .1/.2 against unchanged
+controls if its targeted checks pass. Retain both fixed-basis transport checks
+and the full strict-refresh comparison. QR resets remain explicitly unresolved
+under the old full-refresh gate; do not relax that threshold retrospectively
+or claim the hybrid policy now passes it. Keep .99/.999 and large-factor work
+separate. No defaults changed, weights/checkpoints/tensor snapshots saved, or
+further GPU job launched. GPU released and private supervisor stopped.
+
+## Strict transport, shape costs and learning completed (2026-10-04 UTC)
+
+[Report](../optimizer_replay_results/cifar_soap_strict_transport_20261004/README.md):
+implemented opt-in `ResearchSOAP(transport_precision="highest")`, then completed
+18 paired shape checks and fourteen 3,500-update CIFAR arms (49,000 updates).
+Strict precision covers first-moment transport at refreshes, including QR resets;
+basis construction, v policy and nonrefresh work retain their prior behavior.
+The setting restores on exceptions. Production `soap.py` and defaults are unchanged.
+
+At covariance .99/.999, strict transport lowers QR CE by .010363/.004975.
+Warm responds conditionally: strict transport worsens cap .1 at both betas and
+improves cap .2 at both. Raising the cap at .999 hurts inherited transport but
+helps strict transport. Best tested QR/warm CE is 1.738019/1.788615 at .99 and
+1.774667/1.843668 at .999. QR also costs less on this small trainer. These are
+one-seed, fixed-LR, 20-epoch endpoints on the original 200-epoch schedule;
+neither a default recommendation nor a convergence ranking follows.
+
+Synthetic complete refresh costs reverse rank with dimension: strict QR/warm
+cap .1 cost 21.17/15.74 ms at 768×3072, but 76.82/98.99 ms at 1536×6144.
+Selective strict-transport overhead is small in these short samples. These eager
+NS6 fixture costs are separate from sustained model throughput or learning.
+
+All 176 CPU tests and 2,450 refresh guards pass. All 1,176 strict-transport
+matrix probes match the selected-basis update oracle exactly; actual warm events
+also stay below 1% full strict-refresh disagreement (maximum .675%). QR/reset
+full-reference failures remain explicit: the whole hybrid policy does not pass
+that separate gate. Twelve historical observations and both repeated controls,
+including numerical probes, reproduce exactly. No online controller or fallback
+was added. The process-wide precision setting is qualified only for sequential
+eager use; compiled/concurrent optimizer execution remains untested.
+
+Next: stop expanding this precision/cap grid. Replicate selected QR and cap-.2
+warm comparisons on paired seeds 271/811, retaining inherited precision and
+both covariance controls; then extend promising settings on the original
+schedule. Separately qualify matched-precision compiled refreshes and natural
+cadence at the 3072/6144-factor shapes. Keep strict transport opt-in. No further
+job is launched this round; no weights/checkpoints/tensor snapshots were saved.
+GPU released and private supervisor stopped; compact evidence is retained.
+
+## Foundation execution funnel (completed stages and general method)
 
 1. Audit actual LLM compiled/eager BF16 evaluation at identical trained weights.
    SNRAdam found a CIFAR-specific discrepancy; LLM parity is not inferred from it.

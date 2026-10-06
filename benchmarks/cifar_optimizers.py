@@ -1,4 +1,5 @@
 """Explicit ViT matrix/auxiliary grouping and group-preserving schedules."""
+import math
 import torch
 from soap_reference import ResearchSOAP
 
@@ -52,7 +53,16 @@ def build_optimizer(model,c,policy='qr10'):
         return torch.optim.AdamW(groups,betas=tuple(c['betas']),eps=1e-8,fused=fused)
     matrix=ResearchSOAP([g for g in groups if g['role']=='matrix'],
         lr=c['matrix_lr'],betas=tuple(c.get('matrix_betas',c['betas'])),shampoo_beta=c['shampoo_beta'],
-        precondition_mode=c['precondition_mode'],covariance_compute_dtype=c['covariance_compute_dtype'])
+        precondition_mode=c['precondition_mode'],covariance_compute_dtype=c['covariance_compute_dtype'],
+        transport_precision=c.get('transport_precision','inherit'))
+    iterations=c.get('basis_ns_iterations',2)
+    if type(iterations) is not int or iterations<1:
+        raise ValueError('basis_ns_iterations must be a positive integer')
+    for group in matrix.param_groups:group['basis_ns_iterations']=iterations
+    cap=c.get('basis_rotation_cap',.1)
+    if not isinstance(cap,(int,float)) or isinstance(cap,bool) or not math.isfinite(cap) or cap<=0:
+        raise ValueError('basis_rotation_cap must be finite and positive')
+    for group in matrix.param_groups:group['basis_rotation_cap']=cap
     auxiliary=torch.optim.AdamW([g for g in groups if g['role']=='auxiliary'],
         betas=tuple(c['betas']),eps=1e-8,fused=fused)
     result=SplitOptimizer(matrix,auxiliary)
@@ -61,8 +71,9 @@ def build_optimizer(model,c,policy='qr10'):
 
 
 def set_policy(optimizer,policy):
-    policies={'qr10':('qr',10,0),'qr20':('qr',20,0),
-              'warm5':('warm',5,200),'warm10':('warm',10,200)}
+    policies={'qr10':('qr',10,0),'qr20':('qr',20,0),'qr40':('qr',40,0),
+              'warm5':('warm',5,200),'warm10':('warm',10,200),
+              'warm20':('warm',20,200),'warm40':('warm',40,200)}
     if policy not in policies:raise ValueError('Unknown calibration policy')
     method,frequency,reset=policies[policy]
     for group in optimizer.matrix.param_groups:
@@ -77,8 +88,10 @@ def apply_lr_multiplier(optimizer,multiplier):
 
 def counters(optimizer):
     if not isinstance(optimizer,SplitOptimizer):return {}
-    return {name:sum(int(s.get(name,0)) for s in optimizer.matrix.state.values())
-            for name in ['research_qr_refreshes','research_warm_refreshes']}
+    names=['research_qr_refreshes','research_warm_refreshes']
+    if any(g.get('transport_precision','inherit')=='highest' for g in optimizer.matrix.param_groups):
+        names.append('research_strict_transports')
+    return {name:sum(int(s.get(name,0)) for s in optimizer.matrix.state.values()) for name in names}
 
 
 def screen_arm_config(config,arm):
@@ -87,5 +100,28 @@ def screen_arm_config(config,arm):
     covariance=arm.get('covariance_beta',config['shampoo_beta'])
     if beta2 not in (.99,.999) or covariance not in (.99,.999):
         raise ValueError('Memory screen permits .99 and .999 only')
-    return {**config,'matrix_lr':arm['matrix_lr'],
+    result={**config,'matrix_lr':arm['matrix_lr'],
             'matrix_betas':[config['betas'][0],beta2],'shampoo_beta':covariance}
+    if 'basis_ns_iterations' in arm:result['basis_ns_iterations']=arm['basis_ns_iterations']
+    for key in ['basis_rotation_cap','transport_precision']:
+        if key in arm:result[key]=arm[key]
+    return result
+
+
+@torch.no_grad()
+def check_basis_state(optimizer,maximum_error):
+    """Offline diagnostic; caller excludes its synchronized time from training."""
+    prior=torch.get_float32_matmul_precision();torch.set_float32_matmul_precision('highest')
+    errors=[]
+    try:
+        for parameter,state in optimizer.matrix.state.items():
+            if not all(bool(torch.isfinite(t).all()) for t in [parameter,state['exp_avg'],state['exp_avg_sq']]):
+                raise FloatingPointError('Nonfinite optimizer state')
+            for q in state['Q']:
+                if q is not None:
+                    errors.append((q.T@q-torch.eye(q.shape[0],device=q.device)).norm()/q.shape[0]**.5)
+        values=torch.stack(errors)
+        if not bool(torch.isfinite(values).all()) or float(values.max())>=maximum_error:
+            raise FloatingPointError('Predeclared basis stability guard exceeded')
+        return dict(maximum_gram_error=float(values.max()),mean_gram_error=float(values.mean()),factor_count=len(errors))
+    finally:torch.set_float32_matmul_precision(prior)

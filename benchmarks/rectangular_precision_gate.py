@@ -113,18 +113,23 @@ def diagnose(opt, world_ema):
     return dict(refreshes=rows, global_world_momentum=momentum)
 
 
+def make_optimizer(parameters, arm, mode):
+    opt=ObservedSOAP(parameters,lr=.0005,betas=(.9,.999),shampoo_beta=arm.get('covariance_beta',.999),
+        basis_method=arm['method'],precondition_mode=mode,precondition_frequency=arm['frequency'],
+        covariance_compute_dtype=arm['covariance'],hard_reset_interval=200)
+    opt.pending=[]
+    for group in opt.param_groups:
+        group.update(basis_ns_iterations=arm['iterations'],basis_rotation_cap_mode=arm['cap'])
+    return opt
+
+
 def measure(arm, mode, repeat, config, budget):
     torch.set_float32_matmul_precision(arm['precision'])
     torch.manual_seed(config['seed']+config['width']); model=MockBlock(config['width']).cuda()
     generator=torch.Generator(device='cuda').manual_seed(config['seed']+config['tokens'])
     batches=[(torch.randn(config['tokens'],config['width'],device='cuda',generator=generator),
               torch.randn(config['tokens'],config['width'],device='cuda',generator=generator)) for _ in range(4)]
-    opt=ObservedSOAP(model.parameters(),lr=.0005,betas=(.9,.999),shampoo_beta=.999,
-        basis_method=arm['method'],precondition_mode=mode,precondition_frequency=arm['frequency'],
-        covariance_compute_dtype=arm['covariance'],hard_reset_interval=200)
-    opt.pending=[]
-    for group in opt.param_groups:
-        group.update(basis_ns_iterations=arm['iterations'],basis_rotation_cap_mode=arm['cap'])
+    opt=make_optimizer(model.parameters(),arm,mode)
     if arm['bf16_gauge']:
         def bf16(cov,q,group):
             with torch.autocast('cuda',dtype=torch.bfloat16):

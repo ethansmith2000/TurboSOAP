@@ -49,6 +49,61 @@ cost ranking changes with size. Inference mode brings state-lifecycle restrictio
 without consistent savings. See the [protocol](benchmarks/LARGE_PRECISION.md).
 These are numerical/runtime screens; optimizer defaults remain unchanged.
 
+The [rectangular numerical gate](../optimizer_replay_results/soap_rectangular_precision_20261004/README.md)
+now adds same-state update and world-momentum checks: NS6 passes on the earlier
+failing workload, while BF16 gauge fails despite passing the coarse orthogonality
+guard. Conservative clipping changes basis movement substantially. Cadence/beta
+and real-data quality remain to be established; defaults are unchanged.
+
+The [cadence/beta follow-up](../optimizer_replay_results/soap_cadence_beta_20261004/README.md)
+passes all24 numerical cases for covariance .99/.999 and refresh intervals10/20/40.
+Warm costs less at matched cadence, but sparse QR remains competitive: warm20
+costs about20% more than QR40 here. Real-data quality is the next gate.
+
+The [real CIFAR cadence screen](../optimizer_replay_results/cifar_soap_cadence_20261004/README.md)
+now completes nine 20-epoch arms: QR20/40 has better validation loss and lower
+optimizer cost than NS6 warm20/40 at matching covariance settings on this small
+model and fixed LR. Every refresh guard passes; controls reproduce exactly.
+The [tracking/LR follow-up](../optimizer_replay_results/cifar_soap_tracking_lr_20261004/README.md) is now complete: both policies prefer
+matrix LR .0005 within the tested bracket, and warm's CE deficit remains .05941.
+Same-state probes show weaker warm covariance tracking; a second warm step
+helps but does not match QR's mean residual. All 1,225 geometry guards pass and
+historical/repeated controls match exactly.
+
+The [local refresh-efficiency gate](../optimizer_replay_results/cifar_soap_refresh_efficiency_20261004/README.md) is complete too. Cap .2 improves
+residual reduction per refresh-ms by 27.1% here; two inner steps cost 1.97×.
+Geometry and world-m checks pass, but strict-FP32 implied-update comparisons
+reject samples from every variant, including QR. All controls reproduce.
+
+The [precision attribution](../optimizer_replay_results/cifar_soap_precision_attribution_20261004/README.md)
+led to an [opt-in strict transport implementation and paired learning screen](../optimizer_replay_results/cifar_soap_strict_transport_20261004/README.md).
+Fourteen 20-epoch arms show that strict m transport helps QR on this seed, while
+warm's response depends on rotation cap and covariance beta. QR remains better
+in CE and optimizer cost on this small trainer. Synthetic refresh cost reverses
+rank between factors of size 3072 and 6144; model speed cannot be extrapolated
+from one size. All 176 tests and targeted transport checks pass, but QR/reset
+full strict-refresh differences remain. Defaults remain unchanged.
+
+The [completed retraction round](../optimizer_replay_results/soap_retraction_round_20261005/README.md)
+finds that stronger movement bounds permit cheap local corrections, while the
+new CIFAR candidates trade worse fixed-update loss for lower optimizer cost.
+One cubic correction failed the predeclared momentum guard; two cubic corrections
+and one quintic correction passed the revised screen. Compilation reduces fixture
+cost, with actual graph replay verified, but no equal-time learning advantage is
+established. Next recover useful basis movement and compare measured budgets.
+The [design note](benchmarks/WARM_RETRACTION_DESIGN.md) records the reasoning and
+remaining precision, scheduling and H200 reproduction questions. Defaults remain
+unchanged; 186 CPU tests passed, followed by 10 focused tests after final revisions.
+
+The [movement-bound follow-up](../optimizer_replay_results/soap_movement_round_20261006/README.md)
+now replaces row clipping experimentally with a skew-Frobenius bound and retains
+two cubic corrections. It improves common-state tracking and modestly improves
+CIFAR loss over row-cubic2, while still trailing QR/NS6. The measured 90-second
+learning screen fails its prospective wall-timing repeat criterion (11.85% QR
+variation despite exact numerical repeats); no time-to-quality winner is selected.
+All 189 CPU tests and targeted checks pass. See the
+[movement note](benchmarks/MOVEMENT_BOUND.md) and current roadmap for next work.
+
 ## Installation and use
 
 `soap.py` contains the optimizer and only requires PyTorch.
