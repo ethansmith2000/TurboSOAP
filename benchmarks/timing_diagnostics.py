@@ -91,22 +91,25 @@ def telemetry():
 
 
 def profile_summary(prof, bundle, name):
-    events = prof.events()
-    device = [e for e in events if e.device_type == torch.autograd.DeviceType.CUDA]
-    phase = {e.key:dict(count=e.count, cpu_total_us=e.cpu_time_total,
-                       device_total_us=e.device_time_total, self_cpu_us=e.self_cpu_time_total)
-             for e in prof.key_averages() if e.key.startswith('timing/')}
-    # Union handles overlap; sum is kernel/copy work, never called wall time.
-    intervals = [(e.time_range.start, e.time_range.end) for e in device]
-    span = max((b for a,b in intervals),default=0)-min((a for a,b in intervals),default=0)
+    # Kineto emits CUDA user annotations as device events too. Their spans are
+    # not kernel work; filter exported trace categories and retain CPU scope rows.
+    try:
+        from .analyze_timing_traces import analyze_trace
+    except ImportError:
+        from analyze_timing_traces import analyze_trace
     raw = bundle/(name+'.json')
     prof.export_chrome_trace(str(raw))
+    with raw.open() as source:
+        corrected = analyze_trace(json.load(source))
     target = bundle/(name+'.json.gz')
     with raw.open('rb') as source, gzip.open(target,'wb') as out:
         import shutil
         shutil.copyfileobj(source,out)
-    raw.unlink()  # Only the just-created, compressed temporary trace.
-    return dict(phases=phase, device_events=len(device), device_sum_us=sum(b-a for a,b in intervals),
-                device_union_us=interval_union_us(intervals), device_span_us=span,
+    raw.unlink()
+    device = corrected['gpu_work']
+    return dict(phases=corrected['phases'], device_events=device['count'],
+                device_sum_us=device['sum_us'], device_union_us=device['union_us'],
+                device_span_us=device.get('span_us',0), ignored_gpu_annotations=corrected['ignored_gpu_annotations'],
+                unattributed_gpu_events=corrected['unattributed_gpu_events'],
                 trace=target.name, trace_bytes=target.stat().st_size,
                 caveat='Profiler perturbation: diagnostic replay only; excluded from primary repeat timing.')

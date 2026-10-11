@@ -10,7 +10,9 @@ def main():
     b=Path(sys.argv[1]).resolve()
     prior=Path('/workspace/optimizer_replay_results/cifar_soap_timing_20261006')
     report=json.loads((prior/'screen.json').read_text())
-    assert report['status']=='completed','Finish the existing bounded diagnostic first'
+    assert len(report['runs'])==6 and all(x['status']=='completed' for x in report['runs'])
+    assert report['control_repeat']['model_hash_equal']
+    # Prior primary stage completed; supplemental profiling failed before execution.
     prepare(b,Path('/workspace/SNRAdam/measurement_runs/cifar100_strong_20260930_v2'),
             matrix_lr=.0005,branch_steps=1004,covariance_beta=.99)
     c=json.loads((b/'config.json').read_text());arms=[]
@@ -27,7 +29,7 @@ def main():
         timing_repeat_maximum_training_wall_range_over_mean=.03,
         timing_repeat_maximum_optimizer_range_over_mean=.02)
     c['max_wall_seconds']=600
-    for name in ['cifar_timing_screen.py','cifar_affinity_screen.py','timing_diagnostics.py',
+    for name in ['cifar_timing_screen.py','cifar_affinity_screen.py','timing_diagnostics.py','analyze_timing_traces.py',
                  'cifar_tracking_probe.py','cifar_strict_transport.py','movement_retraction.py',
                  'warm_retraction.py','prepare_cifar_affinity.py']:
         shutil.copy2(REPO/'benchmarks'/name,b/'source/benchmarks'/name)
@@ -43,6 +45,11 @@ six-arm unpinned diagnostic reproduced unstable timing, host/event model changes
 and thread migration without in-arm compilation. This is a local causal
 intervention on thread placement, not a retroactive explanation of undocumented
 historical CPU placement, and not a comparison of GPU hardware or optimizers.
+
+The preceding primary stage completed21000updates; its supplemental profile
+replay failed before the first update because of an undersized batch list. That
+attempt remains preserved. This runner allocates maximum_updates+profile_steps
+batches; do not rerun completed primary controls. Profile evidence here is at1000.
 
 Six1000-update QR20 arms from identical initial weights/optimizer/RNG; order
 near,far,far,near,near,far. CPU main thread116 in both. Autograd CUDA worker117

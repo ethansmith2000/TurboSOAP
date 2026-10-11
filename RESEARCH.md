@@ -1,10 +1,284 @@
 # SOAP research: basis maintenance under a compute budget
 
+> Latest: [width1536 learning attempt](../optimizer_replay_results/soap_wide_learning_round_20261007/README.md) STOPPED: exact historical model/optimizer anchors fail despite matched initialization/input/RNG.875 durable/at least1000 logged updates, firstQR only; numerical checks pass. GPU3 released; private supervisor stopped. Next: bounded fresh-process numerical execution diagnostic, no automatic21k retry or relaxed gate.
+
+The new six3500-update campaign was stopped during its firstQR arm on the
+historical100-update exact-state failure. Initial model/source/recipe/sampled
+input/augmentation/RNG/software/GPU all match old1536; four retained anchors
+100/200/400/420 fail model/fulloptimizer/metrics equality. CE shifts are small
+but do not relax the exact gate.875updates/five observations/44guards/28targetedM
+samples persist; progresslog confirms at least1000updates, unlogged tail unknown.
+All recorded numerical checks pass. No Fro arm, completed3500 control, timing
+qualification or learningwinner. Raw screen stillrunning; execution_status.json
+records termination. No finalowned-release/memory/affinity-restoration record;
+ownthreads died, no other process masks changed, GPU3 claim released/private
+supervisor stopped.167 oldPython files/sixteen earlier inventories intact;
+237 CPU tests pass. Workspace-root pytest collection was interrupted, correctly
+scoped tests and historical evidence checks pass. No historical GPU rerun.
+
+Read-only audit finds unchanged common frozen source and initial/data streams;
+top-level config branch_steps420→3500 plus declared observation/flush/allocation/
+owned-lifecycle changes. Drift appears before the420partial boundary. Old smoke
+and new smoke gradient parity differ slightly, both pass smoke limits. Compiler
+startup telemetry differs (old AOT1hit/2miss, new3hits; InductorGPUbenchmark62
+versus12), but no recorded selected code/runtime-kernel fingerprint establishes
+a cause. Do not claim cuDNN/compiler causality or optimizer instability.
+
+Next bounded task: separately declare fresh-process numerical execution
+fingerprints at actual1536, before another long learning run. Proposed allocation
+420/3500 × flush10/25, two fresh processes each, fixed25 discarded compilation
+smoke plus25 measured updates/process (400total). Record backendflags, actual
+compiled code/runtime-kernel provenance and model/gradient/firstcovariance/basis/
+optimizer/RNG/input fingerprints. No modelgraph hooks, shared cache edits, new
+controller, automatic horizon extension or old-gate relaxation. Proposed
+internal600/external660s,24GiBallocated/<25MiBexpected100MiBcap; verify/freeze
+beforelaunch. This diagnostic is NOT yet prepared/running. Preserve this aborted
+campaign and all earlier qualified/failing scopes. See NEXT_TASK.md.
+
+
+> Latest: [actual width2048 pilot](../optimizer_replay_results/soap_wide2048_round_20261007/README.md) completed; feasibility/numerics and owned-adapter teardown pass, QR repeat exact. GPU3 released; private supervisor stopped. Next: longer matched width1536 learning past LR warmup with its own three-repeat timing qualification. No wall-quality winner or historical rerun.
+
+Actual shallow ViT2048/depth1 (50,796,644params/eight factors through8192)
+completed1260 primary updates plus25 discarded compilation smoke in235.230s.
+All63 guards/72 targetedmoment samples/144factor rows retained. Max physicalM
+.0780062%, selected-update error0, Gram .000687319. QR repeat model/fulloptimizer/
+RNG/input/probe/chunkloss records exact; compiler stable and observers complete.
+Owned hooks restored before optimizer deletion; every matrix/split optimizer
+weakref dead immediately without explicit GC/cache clearing. Processpeaks5.144/
+5.584/5.143GiB, cleanup baseline .732386GiB each; cleanup .00044–.00057s.
+Peaks include shared model/data/compiler/offline work. Earlier1536 peaks may
+include adapter cycles awaitingGC; no retroactive isolated-memory comparison.
+
+Observed completeoptimizer QR48.582/48.624 versusFro41.337ms; model28.113/28.130
+versus28.105ms. Trainingwall33.721/33.699 versus30.618s; CE4203.332654 versus
+3.346387. All within5epoch LRwarmup; only2QR/1Fro arms. QRpair spreads .066%wall/
+.085%optimizer descriptive, not three-repeat qualification. No fullstrictQR
+shadow, wall endpoint/learningwinner/dimensioncausality. Old failures preserved.
+All32 warmfactor samples bindcap.5; tracking still weak beforefirstQR reset,
+stronger afterward. Retained role/age-matched widthcomparison is descriptive,
+with differing weights/gradient/covariance histories. No EMA/controller change.
+230 CPU tests/five focused cleanup checks pass;161 originalPython files and
+fourteen previous inventories verified. Compact evidence only, no checkpoints/
+weights/tensors/traces; GPU3 released/private supervisor stopped.
+
+Next bounded task: new width1536/depth1 matched3500-update learning, threefresh
+interleaved repeats per method, current QR20/Frocap.5/cubic2/.99 covariance/
+strictM/currentV/both factors on original200epoch recipe. Preserve four existing
+100/200/400/420 anchors, observe875/1750/3500; qualify its OWN unchanged3%wall/
+2%optimizer gates before any wall-quality interpretation. Freeze warmup/setup,
+probe ages, observations and runtime/storage/memory limits beforelaunch; owned
+teardown throughout. See soap_wide2048_round_20261007/NEXT_TASK.md. No width/EMA/
+seed sweep, automatic wall endpoint or completed experiment rerun.
+
+
+> Latest: [actual width1536 pilot](../optimizer_replay_results/soap_wide_pilot_round_20261007/README.md) completed; feasibility/numerics pass and QR repeat is exact. GPU3 released; private supervisor stopped. No wall-quality claim. Next: owned-adapter lifecycle cleanup, then one shallow width2048 pilot. Preserve prior warmed90 failure; no reruns.
+
+Actual shallow ViT1536/depth1 completed1260 measured updates plus25 discarded
+compilation smoke in134.530s. All63 guards/72 targeted moment samples pass,
+QR repeat/model/fulloptimizer/RNG/input/probe scalars exact; compiler stable and
+placement restored. Actual8factors through6144. Max physicalM .0741428%,
+selectedupdate error0. Full strict reference shadow prospectively not collected;
+all older QR/reset discrepancies remain separately preserved.
+
+Observed QRoptimizer22.920/22.958 versusFro17.871ms, training17.504/17.650 versus
+15.324s; CE4203.287511 versus3.374298. Only2QR/1Fro arms, within original5epoch
+LR warmup: no wallqualification/learningwinner/widthranking. All32 warmfactor
+samples bindcap.5. Residual barely drops before firstQR reset, more afterward.
+Scalar generator amplitude normalization cancels when homogeneous cap binds.
+No EMA or controller changed. Per-arm allocated peaks2.970/4.240/5.010GiB include
+process state; CPU lifecycle audit confirms adapter cycles may awaitGC, without
+attributing actualGPUbytes. Restore ownedhooks before a future memory comparison.
+225 CPU tests pass;155 originalPythonfiles/twelve earlier inventories verified.
+Compact evidence only, no weights/checkpoints/tensors/traces; claimreleased.
+
+Next bounded task: add explicit restoration/removal of owned per-instance
+probe and Fro adapter hooks when discarding an arm, and verify object release on
+CPU without global GC changes. Then freeze one actual shallow width2048/depth1
+QR/Fro/QR420-update pilot (factors through8192), same recipe, both factors,
+strict M/current V/.99 covariance, and bounded diagnostics/runtime/storage/memory.
+Do not infer algorithm memory from the present per-arm process peaks. No width
+sweep or EMA intervention. After feasibility, longer matched width1536 learning
+must pass the5epoch LR warmup and qualify its own three repeats per method before
+any wall-quality interpretation. No rerun of completed1536/90-second campaigns.
+
+
+> Latest: [warmed90-second campaign](../optimizer_replay_results/soap_warmed_budget_round_20261007/README.md)
+> completed: warmup/reset/numerics pass, but **QR wall repeat gate fails**.
+> Endpoints remain exploratory. GPU3 released; private supervisor stopped.
+> Next: shallow width1536 actual-model fixed-work pilot. Do not rerun this campaign.
+
+[Warmed90-second QR/Fro campaign](../optimizer_replay_results/soap_warmed_budget_round_20261007/README.md)
+completed on 2026-10-07: 28,950 measured updates plus 2,400 disposable warmup
+updates, global128 compilation/parity smoke, 669.7s all-in. Every arm has the
+same fixed400 warmup on its own policy, then restores original weights and
+complete RNG and starts a fresh optimizer at measured update1. Warmup/reset
+hashes and repeats pass exactly; no measured recompilation. All18 historical
+fixed anchors, optimizer hashes, repeated probes, 1,449 guards and 1,008 targeted
+M samples pass. The 564 full strict QR/reset discrepancies remain separate.
+
+NEW wall qualification FAILS. QR fixed3500 wall spread9.724% and optimizer
+8.621% exceed unchanged3%/2% limits. Fro spreads .064%/.124% pass. All six first
+crossings meet the declared90-second/<=1s overshoot rule. QR endpoints4800/4450/
+4800 updates, CE1.592796/1.614801/1.592796; Fro4950/4975/4975, CE1.619056/
+1.628469/1.628469. These endpoints stay exploratory because the campaign repeat
+gate fails. No wall-learning winner or old-endpoint promotion. Earlier full3500
+qualification retains its own execution scope; it does not qualify this new run.
+
+Retained identical3500 audit: slow QR has optimizer main CPU36.293s versus
+32.863/32.808s, model main CPU13.450 versus12.176/12.196s, autograd native
+runtime16.491 versus14.886/14.893s. Main queue wait11.486 versus11.343/11.465s;
+GC about.014s; measured compiler counters stable. Sparse own-GPU SM clock ranges
+are similar. This documents additional CPU time across phases, not an identified
+clock/cache/instruction cause. Warmup duration itself is close across QR arms
+(7.507–7.539s); no evidence supports silently adding burn-in or trimming the slow
+repeat. No experiment was rerun to erase this failure.
+
+Before launch221 CPU tests and seven focused checks passed;147 old Python files
+and ten prior inventories are intact. Frozen execution source/config/protocol,
+raw warmup/reset records, metrics/logs/observers and derived audit/figure retained;
+about15MiB, no weights/checkpoints/tensor snapshots or new traces. GPU3 released;
+private supervisor stopped. No queued claimant or other-project changes.
+
+Next bounded work follows user steering: shallow actual-model ViT with embedding
+width1536, initially one block, matched QR20/Fro .5/cubic2, strict M/both factors,
+current V and covariance.99. CPU meta inventory gives28,660,324 parameters and
+8 SOAP factors, actual factor widths1536/4608/6144. Covariance+basis FP32 storage
+alone is828MiB (algebra, not measured peak); moments, activations, casts and
+workspaces are additional. Start with a prospectively bounded fixed-update
+pilot through natural warm/reset cycles and measured complete optimizer/model
+cost; no equal-wall quality claim until that setup passes its own repeat gates.
+A second declared larger width and longer learning follow feasibility/numerics.
+
+Larger matrices being easier to refresh or needing dimension/magnitude-specific
+step scaling remains a hypothesis. Record offline normalized generator and
+tracking diagnostics before choosing an intervention. Scalar/row/column EMA
+normalization would be a separate bounded ablation with reductions, state updates,
+casts and memory charged; no full-tensor EMA without a stated benefit/cost case.
+The current small-factor recipe and all prior failures remain preserved.
+
+[Full-horizon co-location qualification](../optimizer_replay_results/soap_colocated_round_20261007/README.md)
+completed on 2026-10-07: six 3,500-update QR/Fro arms, 21,000 primary updates
+in 460.9s. Full qualification passes. All 18 historical observations,
+full optimizer-state hashes, repeated trajectories/probes and six plain/profile
+replays are exact. All 1,050 guards and 1,008 targeted M checks pass. Maximum
+sampled physical M drift is .10039%; selected-basis errors are zero. The 564 full
+strict-reference QR/reset disagreements remain separate: 492 QR and 72 Fro reset
+samples; warm full-reference checks pass.
+
+Main/autograd both CPU116. All three repeats pass unchanged limits: QR/Fro wall
+range/mean .890%/.375%, optimizer .339%/.126%. Mean training wall is 66.218/63.810s;
+optimizer events 9.760/9.144ms. Fro saves 3.64% training wall and 6.31% optimizer
+event time at fixed work, but CE remains 1.738019/1.862894. This is a local
+instrumented timing qualification, not a learning winner, uninstrumented
+throughput result, device comparison or retroactive qualification of old endpoints.
+
+Observer/placement records, stable compiler counters and corrected GPU trace
+attribution pass. Original main/autograd masks are restored. Execution source,
+config and protocol remain frozen. Before launch, 214 CPU tests passed; all 142
+previously existing Python files still match preflight hashes. No weights,
+checkpoints or tensor files were saved. Compact evidence is about 14.5MiB,
+below the 30MiB estimate and 100MiB cap. GPU3 claim released; private supervisor
+stopped. No queue or changes to other projects.
+
+Next bounded work: declare a NEW 90-second measured-training-wall comparison
+of QR20 versus Fro .5/cubic2, covariance .99, seed139, current V carry/reindex,
+strict M and both factors, main/autograd CPU116/116. Include interleaved fresh
+3,500-update controls with three repeats per method; require unchanged 3% wall /
+2% optimizer gates in that campaign before interpreting its new budget endpoints.
+Keep the recipe/LR and full online optimizer costs; declare stop/evaluation rules
+and bounds before launch. No .999 wall claim, old endpoint promotion, radius/V
+sweep or seed expansion follows from timing qualification alone.
+
 Updated 2026-10-06. This document describes the current research motivation and
 comparison protocol. Optimizer defaults are unchanged; proposed studies are not
 claims of measured improvement.
 
-## Current priority: qualify timing and separate radius from bound conservatism
+Latest continuation: [Autograd co-location diagnostic](../optimizer_replay_results/soap_dispatch_round_20261006/README.md)
+completed on 2026-10-07: six 1,000-update QR arms, 6,000 primary updates in 186.17s.
+All numerical controls, twelve historical observations, six historical optimizer
+hashes at update 875, probes and six plain/profile replays are exact. Both placements
+pass the unchanged repeat gates: near/same wall 1.223%/.449%, optimizer .322%/.211%.
+Main/autograd on CPU116/116 versus CPU116/117 lowers model/backward events 35.69%
+and total training wall 18.66%; all three pairs agree and model ranges separate.
+Mean wall falls from 23.253 to 18.913s; mean model time from 12.089 to 7.774ms.
+
+Observed autograd runtime roughly halves, from 8.43–8.62 to 4.26–4.28s. Same-core
+queue wait rises to about 3.21–3.23s, while net execution is faster. Other observed
+stable threads contribute <.03s. Snapshot intervals include offline work and omit
+threads created or destroyed between snapshots; they are not complete phase
+accounting. Corrected profiler model kernels remain 3.540–3.555ms/update with exact
+operation signatures. This supports a local host-placement effect; the precise
+cache or microarchitecture cause remains unresolved. All 300 guards and 720
+targeted probes pass. The 714 full strict QR reference disagreements remain
+separately preserved. Before launch, 213 CPU tests and 10 focused tests passed.
+No weights, checkpoints or tensor files were saved. Defaults and prior failed
+wall endpoints retain their scope.
+
+The subsequent full 3,500-update QR/Fro qualification completed and passed
+all gates. Its 214 CPU tests passed before launch, including lossless affinity-mask
+deduplication. GPU3 is released and the private supervisor stopped. See the
+latest full-horizon decision above; this earlier short-study next step is complete.
+No historical experiment was rerun for context.
+
+Earlier V-state continuation (historical next steps): [Fixed-update variance-state ablation](../optimizer_replay_results/soap_variance_round_20261006/README.md)
+completed: twelve arms and 42,000 updates in 1031.7s. Fixed-update qualification
+passes: all 18 historical anchors, model/full optimizer hashes and four repeated
+trajectories/probes are exact. All 2100 refresh guards, 2016 targeted M probes
+and 2016 independent matched-high V formula checks pass. Maximum physical M
+drift is .11884%; warm full strict-reference checks pass, while 991 QR/reset
+full-reference disagreements remain separately recorded.
+
+Overlap worsens validation CE in every pair at 3500: QR +.061393/+.009562 and
+Fro .5/cubic2 +.070220/+.054643 for covariance .99/.999. It does not close the
+warm/QR gap. Retain carry/reindex; no overlap promotion or seed expansion. This
+is one seed at 20 epochs of the original 200-epoch schedule. The study compares
+the existing diagonal approximation, not exact full second-moment history.
+
+Observed mean optimizer cost changes are +1.74%/+2.15% for QR/Fro at .99 and
++.26%/+1.99% at .999. Execution repeat spreads reach 8.18%, so these small mean
+changes do not establish stable marginal costs. No wall endpoint or wall-quality
+gate was collected. Prior wall failures remain unchanged. 206 CPU tests, 21
+focused checks and five additional focused checks passed before launch. All 129
+pre-existing Python files and six recent frozen evidence inventories are intact.
+GPU1 claim released; private supervisor stopped; other projects remain active.
+
+Next bounded task: audit retained timing evidence and choose one prospective
+cause-led timing diagnostic/intervention. Require exact work and unchanged
+<=3% wall / <=2% optimizer repeat limits before a new wall-quality campaign.
+Do not rerun completed experiments merely for context or launch a broad sweep.
+
+No production/default changes.
+
+Earlier radius-learning continuation (historical next steps): [Radius .6 paired CIFAR learning](../optimizer_replay_results/soap_radius_learning_round_20261006/README.md)
+completed: 16 arms, 65,175 updates. Fixed-update qualification passes; all 24
+historical anchors and repeated model/full optimizer-state/metric/probe records
+are exact. Radius-only CE deltas versus .5/cubic2 at 3500 are -.000095/.000338
+(.99/.999); cubic3 deltas -.003876/+.005930 with about 1.86% extra mean optimizer
+cost at .99. Neither produces a consistent learning gain; QR remains ahead.
+No radius .6 promotion or seed expansion. All 3262 guards/2688 targeted probes
+pass; 202 CPU tests passed before launch. New wall gate fails: QR range/mean
+3.383% exceeds 3%, with optimizer variation 1.217% below 2%. Warm policies pass
+repeat timing. All matched wall-quality endpoints remain exploratory; .999 has
+one trajectory per policy. Earlier qualification and failures retain their scope.
+Next bounded algorithm task: fixed-update variance-state ablation, current V
+carry/reindex versus existing squared-overlap transport, with matched QR and
+.5/cubic2 bases, strict M, both factors, .99/.999. This is a hypothesis about the
+warm/QR learning gap; it is not an established mechanism. Keep radius/cadence
+fixed and charge full costs. Separately diagnose timing from retained host/thread
+records before a new wall campaign. GPU3 released; private supervisor stopped.
+No production/default changes.
+
+Earlier, the [timing round](../optimizer_replay_results/soap_timing_round_20261006/README.md)
+reproduces unpinned wall-repeat failures, then establishes an 8.52% local
+model/backward timing effect from main/autograd CPU placement with exact numerical
+work. Both fixed placements pass the repeat limits at 1,000 QR updates. Next
+qualify recorded placement on interleaved 3,500-update QR/Frobenius controls;
+the shorter result does not qualify earlier wall endpoints. Host dispatch and
+actual GPU kernels must remain separate. The supplemental replay and initial
+trace-summary failures are preserved and corrected without editing frozen
+evidence. No optimizer or permanent affinity default changed.
+
+## Earlier priority: qualify timing and separate radius from bound conservatism
 
 The [movement-bound round](../optimizer_replay_results/soap_movement_round_20261006/README.md)
 implements a skew-Frobenius bound with two cubic corrections. Common-state

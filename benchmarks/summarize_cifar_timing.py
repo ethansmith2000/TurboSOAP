@@ -13,7 +13,7 @@ def main():
     history=Path(m['historical_bundle'])/'screen.json'
     assert hashlib.sha256(history.read_bytes()).hexdigest()==m['historical_screen_sha256']
     old=json.loads(history.read_text())
-    s=dict(status=r['status'],policies=[],historical_matches=[],profile_replays_exact=all(x['exact'] for x in r.get('profile_replays',[])))
+    s=dict(status=r['status'],policies=[],historical_matches=[],profile_replays_exact=len(r.get('profile_replays',[]))==6 and all(x['exact'] for x in r.get('profile_replays',[])))
     def controls(o):
         return {k:o[k] for k in ['step','validation','train_panel','model_sha256','rng_sha256',
                                  'consumed_ids_sha256','augmented_batches','optimizer_counters',

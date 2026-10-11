@@ -62,7 +62,7 @@ def main():
     assert study['maximum_updates']<=schedule_steps
     order_rng=np.random.default_rng(c['seed']+2001)
     batches=[]
-    for _ in range(math.ceil(study['maximum_updates']/per_epoch)):
+    for _ in range(math.ceil((study['maximum_updates']+study['profile_steps'])/per_epoch)):
         order=order_rng.permutation(np.asarray(split['train']))
         batches.extend(order[:per_epoch*c['batch_size']].reshape(per_epoch,c['batch_size']))
     device_batches=[torch.tensor(x,device='cuda') for x in batches]

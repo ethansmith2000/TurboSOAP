@@ -28,3 +28,19 @@ def test_host_observer_reset_does_not_accumulate_prior_chunks():
         assert all(v==0 for phase in second['phases'].values() for v in phase.values())
     finally:h.close()
     assert len(gc.callbacks)==before
+
+
+def test_gpu_annotation_spans_are_not_kernel_work():
+    from benchmarks.analyze_timing_traces import analyze_trace
+    events=[
+        dict(cat='user_annotation',name='timing/model_backward',ph='X',ts=0,dur=100),
+        dict(cat='gpu_user_annotation',name='timing/model_backward',ph='X',ts=1,dur=1000),
+        dict(cat='cuda_runtime',name='cudaLaunchKernel',ph='X',ts=10,dur=1,args={'correlation':7}),
+        dict(cat='kernel',name='real_kernel',ph='X',ts=12,dur=2,args={'correlation':7})]
+    result=analyze_trace({'traceEvents':events})
+    assert result['gpu_work']['sum_us']==2
+    assert result['gpu_work']['union_us']==2
+    assert result['ignored_gpu_annotations']==1
+    assert result['phases']['timing/model_backward']['host_wall_us']==100
+    assert result['phases']['timing/model_backward']['gpu_work']['count']==1
+    assert result['unattributed_gpu_events']==0

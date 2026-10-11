@@ -28,7 +28,7 @@ def main():
         timing_repeat_maximum_training_wall_range_over_mean=.03,
         timing_repeat_maximum_optimizer_range_over_mean=.02,profile_steps=4)
     c['max_wall_seconds']=1200
-    for name in ['cifar_timing_screen.py','timing_diagnostics.py','cifar_tracking_probe.py',
+    for name in ['cifar_timing_screen.py','timing_diagnostics.py','analyze_timing_traces.py','cifar_tracking_probe.py',
                  'cifar_strict_transport.py','movement_retraction.py','warm_retraction.py',
                  'prepare_cifar_timing.py','summarize_cifar_timing.py']:
         shutil.copy2(REPO/'benchmarks'/name,b/'source/benchmarks'/name)
