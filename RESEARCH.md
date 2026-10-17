@@ -1,3 +1,40 @@
+# SOAP research framework — current decisions (2026-10-15)
+
+This is the master method document for the current SOAP work. The [roadmap](../manifold_opt/optimizer_research_roadmap.md) owns execution order, the [handoff](../manifold_opt/NEW_AGENT_HANDOFF.md) owns continuation navigation, and frozen reports own experimental observations. This section supersedes the dated execution instructions retained under **Historical method record** below. No experiment or default optimizer change is introduced by this documentation update.
+
+## Objective and design principles
+
+Maintain useful preconditioning coordinates and optimizer history cheaply enough to improve heldout training progress per complete wall time, with little quality penalty relative to practical QR SOAP. Closing the gap is sufficient; outperforming QR is not required. The May implementation is a source of separable ideas, not a recipe to reproduce1:1 or an objective to assume correct. Sparse QR, warm tracking and hybrids are competing solutions; no basis update is intrinsically preferred.
+
+Judge the complete policy: ordinary covariance/projection/update work, refresh/retraction, momentum and V handling, precision/casts, compilation/setup, repair/fallback, memory and required checks. A faster refresh atom or lower covariance residual is not by itself a training improvement. Keep two-sided SOAP coverage fixed for the primary comparison; smaller-side coverage, reduced covariance cadence and changed attention backends are separate interventions.
+
+## Decisions after the three reviews
+
+The [review reconciliation](../optimizer_replay_results/soap_review_reconciliation_20261015/RECONCILIATION.md) changes priorities. Pause cubic3 confirmation and further warm tuning. Retain J1 as a control; test pure hold/QR200 and QR40 against QR20/J1 before assuming intervening warm motion earns its cost. The initial planned screen uses two fresh paired seeds, four3500-call arms each, with unchanged model/recipe and prospectively counterbalanced order. It is not yet prepared or launched; the roadmap specifies the preparation and follow-up branches.
+
+Cubic3 recovered a real numerical failure and improved tracking, but [seed179](../optimizer_replay_results/soap_llm_cubic3_learning_20261014/REPORT.md) does not establish a consistent learning gain over cheaper J1. Severe left-factor cap suppression is observed; equivalence to hold, the cause of the suppression and a causal dimension law are unproved. Preserve real first-warm failures. A measured QR burn-in is a policy change, distinct from disposable compilation warmup/reset.
+
+## Fidelity and evidence hierarchy
+
+- Finite/arithmetic/reset/geometry and momentum checks constrain implementation fidelity; they are not a learning objective. Keep original numerical gates in qualifications. Absolute Gram0.05 does not imply physical-M error≤1%; the frozen concentrated-M negative control already demonstrates this.
+- The physical-M round trip measures preservation of currently represented world momentum. It is not an exact past-gradient EMA oracle. Diagonal V lacks cross-moment history; overlap transport adds an approximation and may diffuse history through closed loops. The [completed October10 oracle](../optimizer_replay_results/soap_direction_history_cpu_20261010/REPORT.md) establishes mechanisms, not learner rankings, and must not be rerun for context.
+- Tracking and adaptive-preview improvements are explanatory diagnostics. Correlated72/72 or36/36 signs do not establish independent evidence of learning gains. Use paired trajectories and practical quality/cost effects; report uncertainty and mixed panels. Two seeds are a finite screen, not an equivalence proof.
+- Compare matched-update learning and comparable measured training time. Interpolate only within a shared observed horizon; do not infer CE gains from a local slope or attach synthetic timings to another workload. Qualify efficient QR before broad speed claims. More layers, coverage, longer horizons and the intended attention backend require their own continuation checks.
+
+## Mechanisms retained for conditional work
+
+First qualify covariance-product reuse in QR, then profile ordinary covariance/projection/pointwise traffic on the surviving policy. Selected BF16/TF32 arithmetic, cast removal, batching and long pure default/fullgraph regions are candidates; complete-cost and learning checks determine value.
+
+Only if motion provides consequential learning value should alternative objectives/directions advance. Candidate ideas include relative damping, linearized ordered-QR motion, structured pair/block rotations and known relative M transitions. Account for dense covariance-basis products and history costs. Entrywise bounds do not certify dense-generator safety; inverse/relative-coordinate shortcuts must match actual mixed arithmetic and inherited drift. Scalar EMA can cancel under saturated clipping; row/column EMA and one-sided SOAP change the algorithm and need a cost case. Shifted Cholesky QR remains speculative.
+
+Use a bounded trained-history diagnostic only when an observed ambiguity blocks a design choice. Do not automatically add correction-count, EMA/cap, overlap-V or precision grids. Retain compact provenance and scalar evidence; no default checkpoints/final weights. Preserve dirty trees and frozen successes/failures, declare deliberate state purpose/retention, and check shared resources before launches.
+
+## Historical method record
+
+The complete previous document follows unchanged; its old latest/next-step statements are historical.
+
+---
+
 # SOAP research: basis maintenance under a compute budget
 
 > Latest: [width1536 learning attempt](../optimizer_replay_results/soap_wide_learning_round_20261007/README.md) STOPPED: exact historical model/optimizer anchors fail despite matched initialization/input/RNG.875 durable/at least1000 logged updates, firstQR only; numerical checks pass. GPU3 released; private supervisor stopped. Next: bounded fresh-process numerical execution diagnostic, no automatic21k retry or relaxed gate.

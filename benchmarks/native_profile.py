@@ -1,0 +1,294 @@
+"""Fresh183 native-only complete-step/atom cost profile; no product reuse."""
+import argparse
+from collections import Counter
+from contextlib import nullcontext
+import json
+import math
+import os
+from pathlib import Path
+import sys
+import time
+
+HERE=Path(__file__).resolve().parent
+sys.path[:0]=[str(HERE.parent),str(HERE),str(HERE/'cifar_support')]
+import torch
+from torch.nn import functional as F
+from cifar_matched_training import GPURuntime, write
+from cifar_optimizers import apply_lr_multiplier
+from cifar100_qualification import lr_at
+from cadence_training_contract import validate_counters
+from execution_fingerprints import backend_record
+from llm_sparse_screen_kernel import build_arm, qualify_actual_m, common_geometry_guard
+from llm_sparse_screen_contract import event_kind
+from native_profile_contract import HORIZON, WARMUP, PROFILE_COUNTS
+ARMS=('hold200',)
+OWN_REFERENCE_CALLS=()
+from cifar_hybrid_width import larger_snapshot_cap
+from matched_training_runtime import (OptimizerLease, captured_backward, check_state,
+    disposable_smoke, failure_record, optimizer_extras, refresh_due, streaming_digest)
+from prepare_native_profile import verify, verify_launch, verify_backend
+from tensor_ownership import TensorOwnership
+
+
+def compiler_stats():
+    from torch._dynamo.utils import counters
+    return {k:dict(v) for k,v in counters.items() if v}
+
+
+from llm_sparse_screen_runtime import Runtime as BaseRuntime
+from native_profile_core import run_profile
+from qr_reuse_profile_core import gpu_measure
+
+class Runtime(BaseRuntime):
+    measure_call=staticmethod(gpu_measure)
+    def before_smoke(self):
+        record=backend_record();verify_backend(self.bundle,record)
+        self.emit('backend_before_smoke',dict(record=record,passed=True,execution_contract=self.execution_contract()))
+    def after_measured(self):
+        record=backend_record();verify_backend(self.bundle,record)
+        self.emit('backend_after_measured',dict(record=record,passed=True,execution_contract=self.execution_contract()))
+        self.retain_code('after_measured');self.budget(resources=True)
+
+from llm_feasibility_runtime import captured_backward
+from llm_jacobi2_core import limits
+
+
+def compilation_guard(runtime):
+    if limits()!=runtime.protocol['gates']['compiler_limits'] or compiler_stats().get('graph_break'):
+        raise RuntimeError('Original compiler limits or graph-break gate changed')
+
+
+def endpoint(runtime,opt):
+    return dict(model_sha256=streaming_digest(runtime.model.state_dict()),
+        optimizer_sha256=streaming_digest(dict(state=opt.state_dict(),extras=dict(
+            matrix=optimizer_extras(opt.matrix),auxiliary=optimizer_extras(opt.auxiliary)))),
+        rng_sha256=streaming_digest(runtime.streams.capture()))
+
+
+def evaluate_transaction(runtime,opt):
+    """Evaluate eagerly under eval flags and restore all branch state, including failures."""
+    started=time.monotonic()
+    modules=list(runtime.model.modules());flags=[m.training for m in modules]
+    rng=runtime.streams.capture();before=endpoint(runtime,opt)
+    gradient_before=streaming_digest([p.grad for p in runtime.model.parameters()])
+    stats=compiler_stats()
+    try:
+        runtime.model.eval()
+        metrics=runtime.evaluate()
+    finally:
+        runtime.streams.restore(rng)
+        for module,flag in zip(modules,flags):module.training=flag
+        after=endpoint(runtime,opt)
+        if after!=before or streaming_digest([p.grad for p in runtime.model.parameters()])!=gradient_before:
+            raise RuntimeError('Evaluation mutated model/optimizer/gradient/RNG')
+        if [m.training for m in modules]!=flags or compiler_stats()!=stats:
+            raise RuntimeError('Evaluation flags/compiler restoration failed')
+    if set(metrics)!=set(runtime.ids):raise RuntimeError('Fixed evaluation panel set differs')
+    for name,row in metrics.items():
+        if set(row)!={'ce','accuracy','examples','valid_tokens'} or not math.isfinite(row['ce']) or row['ce']<0 or not 0<=row['accuracy']<=1 or row['examples']!=len(runtime.ids[name]) or row['valid_tokens']!=runtime.protocol['llm_evaluation']['panels'][name]['valid_tokens']:
+            raise RuntimeError('Invalid fixed evaluation metrics: '+name)
+    runtime.budget(resources=True)
+    return dict(metrics=metrics,restoration_passed=True,before=before,after=after,
+        gradients_sha256=gradient_before,token_weighted=True,seconds=time.monotonic()-started)
+
+
+def preflight(runtime):
+    records=[]
+    for arm in ARMS:
+        lease=OptimizerLease(runtime.model,build_arm(runtime.model,runtime.config,arm,runtime.kernel))
+        try:
+            with runtime.snapshot.probe_scope():
+                row,loss,norm=captured_backward(runtime.model,runtime.active,
+                    lambda:runtime.make_batch(0),runtime.streams,
+                    clip_norm=runtime.config['clip_norm'],autocast=runtime.autocast)
+                del loss,norm
+                if streaming_digest(runtime.model.state_dict())!=runtime.snapshot.initial_digest:
+                    raise RuntimeError('Initial preflight mutated model')
+                if records and row!=records[0]:
+                    raise RuntimeError('Exact initial all-arm backward mismatch: '+arm)
+                records.append(row)
+        finally:
+            release=lease.release()
+            runtime.emit('preflight_release',dict(arm=arm,**release))
+        if not release['passed']:
+            raise RuntimeError('Preflight registered release failed')
+    runtime.emit('preflight_passed',dict(status='running',observations=records))
+    return records[0]
+
+
+def coverage_guard(runtime,opt):
+    rows=common_geometry_guard(opt,runtime.model)
+    sizes=Counter(str(r['dimension']) for r in rows)
+    c=runtime.protocol['coverage']
+    if len(opt.matrix.state)!=c['matrix_parameters'] or len(rows)!=c['two_sided_factors'] or dict(sizes)!=c['dimensions_per_refresh']:
+        raise RuntimeError('Actual two-sided coverage differs')
+    return dict(factors=rows,dimensions=dict(sizes))
+
+
+def trajectory(runtime,arm,phase,steps,expected):
+    measured=phase=='primary';runtime.current_arm=arm+'_'+phase;runtime.snapshot.reset()
+    if streaming_digest(runtime.streams.capture())!=streaming_digest(runtime.snapshot.rng):
+        raise RuntimeError('Initial RNG not restored')
+    lease=OptimizerLease(runtime.model,build_arm(runtime.model,runtime.config,arm,runtime.kernel))
+    result=dict(arm=arm,phase=phase,status='running',calls=0,timings=[],guards=[],prefixes={},sampled_batches={},evaluations=[])
+    if not measured:qualify_actual_m(lease.opt.matrix,runtime.kernel,arm)
+    result['training_seconds']=0.;result['observation_seconds']=0.
+    started=time.monotonic();error=None;call=0;step_attempted=False;step_returned=False;initial_stats=compiler_stats();initial_kernel_calls=sum(runtime.kernel.calls.values())
+    try:
+        for call in range(1,steps+1):
+            step_attempted=False;step_returned=False
+            runtime.budget();iteration_started=time.monotonic();opt=lease.opt
+            apply_lr_multiplier(opt,lr_at(call,runtime.schedule_steps,runtime.warmup_steps,1.,runtime.config['min_lr_ratio']))
+            is_refresh=refresh_due(opt)
+            if call==1:
+                row,loss,norm=captured_backward(runtime.model,runtime.active,
+                    lambda:runtime.make_batch(0),runtime.streams,
+                    clip_norm=runtime.config['clip_norm'],autocast=runtime.autocast)
+                if row!=expected:raise RuntimeError('Actual first pre-update mismatch: '+runtime.current_arm)
+                result['sampled_batches']['1']={k:row[k] for k in ('indices','input','target','rng_after_augmentation')}
+                runtime.emit('actual_first_passed',dict(arm=arm,phase=phase,observation=row))
+            else:
+                indices,x,target=runtime.make_batch(call-1);opt.zero_grad(set_to_none=True)
+                if measured and call in runtime.protocol['sampled_batch_calls']:
+                    result['sampled_batches'][str(call)]=dict(indices=streaming_digest(indices),
+                        input=streaming_digest(x),target=streaming_digest(target),
+                        rng_after_augmentation=streaming_digest(runtime.streams.capture()))
+                with runtime.autocast():
+                    logits=runtime.active(x);loss=F.cross_entropy(logits.float(),target)
+                loss.backward()
+                norm=torch.nn.utils.clip_grad_norm_(runtime.model.parameters(),runtime.config['clip_norm'],foreach=True)
+                loss=loss.detach();norm=norm.detach();del indices,x,target,logits
+            diagnostic=not measured and arm=='highest_residual20' and call in OWN_REFERENCE_CALLS
+            runtime.kernel.probe=diagnostic;probe_before=len(runtime.kernel.probes)
+            runtime.synchronize();marks=runtime.optimizer_events();host_started=time.perf_counter()
+            marks[0].record();step_attempted=True;opt.step();step_returned=True;marks[1].record();runtime.synchronize()
+            host_ms=1000*(time.perf_counter()-host_started);device_ms=marks[0].elapsed_time(marks[1]);del marks
+            iteration_seconds=time.monotonic()-iteration_started
+            result['training_seconds']+=iteration_seconds
+            observation_started=time.monotonic()
+            runtime.kernel.probe=False
+            if diagnostic:
+                rows=runtime.kernel.probes[probe_before:]
+                if len(rows)!=runtime.protocol['coverage']['two_sided_factors'] or not all(r['passed'] for r in rows):
+                    raise RuntimeError('Diagnostic factor coverage failure')
+                runtime.emit('actual_state_probes',dict(call=call,rows=rows))
+                runtime.budget(resources=True)
+            scalar_loss=float(loss);scalar_norm=float(norm);del loss,norm
+            if not all(math.isfinite(v) for v in (scalar_loss,scalar_norm)):
+                raise FloatingPointError('Nonfinite actual loss/gradient norm')
+            kind=event_kind(call,arm)
+            result['timings'].append(dict(call=call,kind=kind,diagnostic=diagnostic,
+                optimizer_host_ms=host_ms,optimizer_event_ms=device_ms,loss=scalar_loss,gradient_norm=scalar_norm,
+                training_iteration_seconds=iteration_seconds,cumulative_training_seconds=result['training_seconds']))
+            result['calls']=call
+            if call in runtime.protocol['guard_calls'] or call==steps:
+                guard=coverage_guard(runtime,opt);guard.update(call=call,counters=validate_counters(opt,call))
+                result['guards'].append(guard)
+                compilation_guard(runtime)
+                if measured and compiler_stats()!=initial_stats:
+                    raise RuntimeError('Steady compilation counters changed after disposable warmup')
+            if call in runtime.protocol['prefix_hashes']:
+                result['prefixes'][str(call)]=endpoint(runtime,opt)
+            if measured and call in runtime.protocol['evaluation_calls']:
+                observation=evaluate_transaction(runtime,opt);observation['call']=call;observation['cumulative_training_seconds']=result['training_seconds'];observation['phase_elapsed_seconds']=time.monotonic()-started
+                result['evaluations'].append(observation)
+                runtime.emit('validation',dict(arm=arm,**observation))
+            if call%250==0 or call==steps:
+                runtime.emit('progress',dict(arm=arm,phase=phase,call=call,loss=scalar_loss))
+                runtime.budget(resources=True)
+            del opt
+            result['observation_seconds']+=time.monotonic()-observation_started
+        result['final_counters']=validate_counters(lease.opt,steps)
+        if measured:result['profile']=run_profile(runtime,lease.opt)
+        if measured:result['endpoint']=endpoint(runtime,lease.opt)
+        result.update(status='completed',phase_seconds=time.monotonic()-started,
+            compiler_before=initial_stats,compiler_after=compiler_stats(),
+            hybrid_factor_calls=sum(runtime.kernel.calls.values())-initial_kernel_calls)
+    except BaseException as exc:
+        # Exception formatting inspects frame locals; drop the borrowed optimizer
+        # before it can become a lingering alias during the registered-release check.
+        opt=None
+        error=failure_record(exc);result.update(status='failed',failure=error)
+    finally:
+        runtime.kernel.probe=False
+        opt=None
+        result['last_attempted_training_call']=call;result['last_step_attempted']=step_attempted;result['last_step_returned']=step_returned
+        result['completed_optimizer_step_calls']=result['calls']+int(step_returned and call>result['calls']);result['attempted_optimizer_step_calls']=result['calls']+int(step_attempted and call>result['calls'])
+        result['release']=lease.release();runtime.emit('trajectory_result',result)
+        write(runtime.bundle/(arm+'_'+phase+'.json'),result)
+        runtime.snapshot.reset()
+    if error is not None or not result['release']['passed']:
+        raise RuntimeError('Trajectory failed: '+runtime.current_arm)
+    return result
+
+
+def run_pilot(runtime):
+    owner=TensorOwnership();owner.watch_tree(runtime.snapshot.weights,'initial.weights');owner.watch_tree(runtime.snapshot.rng,'initial.rng')
+    try:
+        compilation_guard(runtime)
+        runtime.before_smoke();disposable_smoke(runtime,runtime.protocol['disposable_smoke_calls']);runtime.after_smoke()
+        expected=preflight(runtime)
+        disposable=[trajectory(runtime,a,'disposable',runtime.protocol['disposable_calls_per_arm'],expected) for a in runtime.protocol['execution_order']]
+        steady_before=compiler_stats()
+        primary=[]
+        for arm in runtime.protocol['execution_order']:
+            row=trajectory(runtime,arm,'primary',runtime.protocol['steps_per_arm'],expected)
+            if primary and (row['sampled_batches']!=primary[0]['sampled_batches'] or
+                row['endpoint']['rng_sha256']!=primary[0]['endpoint']['rng_sha256']):
+                raise RuntimeError('Paired batch/augmentation/global RNG mismatch')
+            prior=next(r for r in disposable if r['arm']==arm)
+            if [(r['loss'],r['gradient_norm']) for r in row['timings'][:prior['calls']]] != [(r['loss'],r['gradient_norm']) for r in prior['timings']]:
+                raise RuntimeError('Disposable/primary scalar prefix mismatch: '+arm)
+            if row['prefixes']['245']!=prior['prefixes']['245']:
+                raise RuntimeError('Disposable/primary entire state prefix mismatch: '+arm)
+            row['exact_disposable_scalar_and_state_prefix']=True
+            if [v['call'] for v in row['evaluations']]!=runtime.protocol['evaluation_calls'] or not all(v['restoration_passed'] and v['token_weighted'] for v in row['evaluations']):raise RuntimeError('Fixed token evaluation observation count or gate differs')
+            primary.append(row)
+        if compiler_stats()!=steady_before:raise RuntimeError('Steady compiler counts changed')
+        if runtime.kernel.calls or runtime.kernel.probes:raise RuntimeError('No warm basis calls declared')
+        if len(runtime.kernel.moments)!=4:raise RuntimeError('Expected four disposable native M checks')
+        if primary[0]['profile']['counts']!=PROFILE_COUNTS:raise RuntimeError('Frozen profile count mismatch')
+        runtime.after_measured()
+        result=dict(status='completed',seed=runtime.config['seed'],disposable=disposable,primary=primary,
+            optimizer_calls=runtime.protocol['disposable_smoke_calls']+sum(r['calls'] for r in disposable+primary),
+            hybrid_calls=dict(runtime.kernel.calls),disposable_own_eager_probes=runtime.kernel.probes,
+            disposable_actual_m=runtime.kernel.moments,compiler_final=compiler_stats(),
+            peak_allocated_bytes=torch.cuda.max_memory_allocated(),snapshot_purpose_bytes=runtime.snapshot.budget_bytes,
+            diagnostic_shadow_optimizer_steps=primary[0]['profile']['counts']['shadow_optimizer_steps'],
+            total_live_and_shadow_optimizer_calls=1270+primary[0]['profile']['counts']['shadow_optimizer_steps'],
+            tokens_per_update=runtime.protocol['llm_data']['token_batch'],
+            primary_tokens_per_arm=runtime.protocol['llm_data']['training_tokens_per_primary_arm'],
+            qualified_training_timing=False,no_candidate_promoted=True)
+    finally:
+        runtime.model.zero_grad(set_to_none=True);runtime.snapshot.close()
+        release=owner.report();owner.close();masks=runtime.close()
+        write(runtime.bundle/'final_cleanup.json',dict(snapshot_release=release,masks=masks))
+    if not release['all_registered_released'] or not masks['passed']:
+        raise RuntimeError('Initial snapshot/placement release failed')
+    result.update(snapshot_release=release,masks=masks)
+    return result
+
+
+def main():
+    started=time.monotonic();p=argparse.ArgumentParser();p.add_argument('--bundle',type=Path,required=True)
+    b=p.parse_args().bundle.resolve();runtime=None
+    if HERE.parent!=b/'source':raise RuntimeError('Frozen entry only')
+    if (b/'execution_status.json').exists() or (b/'events.jsonl').exists():raise RuntimeError('One attempt only')
+    try:
+        verify(b);verify_launch(b)
+        write(b/'execution_status.json',dict(status='initializing',attempt=1,pid=os.getpid()))
+        if torch.cuda.device_count()!=1:raise RuntimeError('One lifetime-claimed GPU required')
+        runtime=Runtime(b,started=started);runtime.initialize()
+        result=run_pilot(runtime);result['all_in_seconds']=time.monotonic()-started
+        verify(b);write(b/'summary.json',result);runtime.emit('finished',dict(status='completed',peak_allocated_bytes=result['peak_allocated_bytes']))
+        status=json.loads((b/'execution_status.json').read_text());status['peak_allocated_bytes']=result['peak_allocated_bytes'];write(b/'execution_status.json',status)
+    except BaseException as exc:
+        write(b/'execution_status.json',dict(status='failed',pid=os.getpid(),error=repr(exc),all_in_seconds=time.monotonic()-started,peak_allocated_bytes=torch.cuda.max_memory_allocated() if torch.cuda.is_initialized() else None))
+        if runtime is not None:
+            if runtime.snapshot is not None and not runtime.snapshot.closed:
+                runtime.model.zero_grad(set_to_none=True);runtime.snapshot.close()
+            write(b/'failure_cleanup.json',runtime.close())
+        raise
+
+
+if __name__=='__main__':main()
