@@ -1,0 +1,13 @@
+{
+  "scheduled_task_id": "scheduled-task:command:mcp:a97f4f60-c5d0-4424-aeba-8ee065f395b6:schedule-task:turbosoap-completion-monitor-20261027-v1",
+  "title": "TurboSOAP remaining experiment monitor",
+  "enabled": true,
+  "schedule": {
+    "type": "interval",
+    "everyMs": 600000
+  },
+  "next_run_at": "2026-10-27T08:10:11.793Z",
+  "bound_thread_id": "3af4f8fb-234a-495b-b6b1-08dd25dbfe46",
+  "state_file": "/workspace/TurboSOAP/automation/remaining_experiments_20261027.json",
+  "runbook": "/workspace/TurboSOAP/EXPERIMENT_AUTOMATION.md"
+}

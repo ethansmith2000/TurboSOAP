@@ -1,0 +1,280 @@
+{
+  "status": "completed",
+  "case": "bf16",
+  "calls": 10000,
+  "seed": 204,
+  "initial_parameters_sha256": "24da908288be7ee828bd2a8221ac637b870c0c219b05964b3517c576b0a7da79",
+  "initial_gradient_sha256": "7936c3f658be84b84ee780a52876bc2a3cda2771d0b30596cff715f47a81deb2",
+  "validation": [
+    {
+      "call": 0,
+      "ce": 10.966108478605747,
+      "targets": 1047552,
+      "listed_tensor_hash_preservation_checked": true
+    },
+    {
+      "call": 50,
+      "ce": 7.159334506839514,
+      "targets": 1047552,
+      "listed_tensor_hash_preservation_checked": false
+    },
+    {
+      "call": 100,
+      "ce": 6.35079650208354,
+      "targets": 1047552,
+      "listed_tensor_hash_preservation_checked": false
+    },
+    {
+      "call": 200,
+      "ce": 5.773977719247341,
+      "targets": 1047552,
+      "listed_tensor_hash_preservation_checked": false
+    },
+    {
+      "call": 500,
+      "ce": 5.001514211297035,
+      "targets": 1047552,
+      "listed_tensor_hash_preservation_checked": false
+    },
+    {
+      "call": 1000,
+      "ce": 4.361596241593361,
+      "targets": 1047552,
+      "listed_tensor_hash_preservation_checked": true
+    },
+    {
+      "call": 1500,
+      "ce": 4.1223688162863255,
+      "targets": 1047552,
+      "listed_tensor_hash_preservation_checked": false
+    },
+    {
+      "call": 2000,
+      "ce": 3.9939393140375614,
+      "targets": 1047552,
+      "listed_tensor_hash_preservation_checked": false
+    },
+    {
+      "call": 2500,
+      "ce": 3.904072407633066,
+      "targets": 1047552,
+      "listed_tensor_hash_preservation_checked": false
+    },
+    {
+      "call": 3000,
+      "ce": 3.831547223031521,
+      "targets": 1047552,
+      "listed_tensor_hash_preservation_checked": false
+    },
+    {
+      "call": 4000,
+      "ce": 3.724702801555395,
+      "targets": 1047552,
+      "listed_tensor_hash_preservation_checked": false
+    },
+    {
+      "call": 5000,
+      "ce": 3.6416942924261093,
+      "targets": 1047552,
+      "listed_tensor_hash_preservation_checked": true
+    },
+    {
+      "call": 6000,
+      "ce": 3.5740797091275454,
+      "targets": 1047552,
+      "listed_tensor_hash_preservation_checked": false
+    },
+    {
+      "call": 7000,
+      "ce": 3.5150540340691805,
+      "targets": 1047552,
+      "listed_tensor_hash_preservation_checked": false
+    },
+    {
+      "call": 7500,
+      "ce": 3.492179589346051,
+      "targets": 1047552,
+      "listed_tensor_hash_preservation_checked": false
+    },
+    {
+      "call": 8000,
+      "ce": 3.4714350067079067,
+      "targets": 1047552,
+      "listed_tensor_hash_preservation_checked": false
+    },
+    {
+      "call": 9000,
+      "ce": 3.4406023249030113,
+      "targets": 1047552,
+      "listed_tensor_hash_preservation_checked": false
+    },
+    {
+      "call": 10000,
+      "ce": 3.422388957813382,
+      "targets": 1047552,
+      "listed_tensor_hash_preservation_checked": true
+    }
+  ],
+  "parity": {
+    "eager_compiled": [
+      {
+        "event": "ordinary",
+        "parameter_max_absolute": 0.0,
+        "state_relative_errors": {
+          "m": 0.0,
+          "v": 0.0,
+          "cl": 0.0,
+          "cr": 0.0,
+          "ql": 0.0,
+          "qr": 0.0
+        }
+      },
+      {
+        "event": "warm",
+        "parameter_max_absolute": 0.0,
+        "state_relative_errors": {
+          "m": 0.0,
+          "v": 0.0,
+          "cl": 0.0,
+          "cr": 0.0,
+          "ql": 0.0,
+          "qr": 0.0
+        }
+      },
+      {
+        "event": "qr",
+        "parameter_max_absolute": 0.0,
+        "state_relative_errors": {
+          "m": 0.0,
+          "v": 0.0,
+          "cl": 0.0,
+          "cr": 0.0,
+          "ql": 0.0,
+          "qr": 0.0
+        }
+      }
+    ],
+    "same_state_update_relative_error": 0.0027622138150036335,
+    "same_state_update_cosine": 0.9999961853027344,
+    "arithmetic_screen_passed": true
+  },
+  "matrix_state_bytes": 1245708320,
+  "peak_gpu_bytes": 8829772800,
+  "mean_optimizer_ms": 26.4081771344398,
+  "mean_step_ms": 314.05783515723397,
+  "optimizer_by_kind": {
+    "ordinary": 10.177525276826186,
+    "warm": 61.624080696757034,
+    "qr": 615.9238964777835
+  },
+  "max_absolute_gram": 0.13049538433551788,
+  "max_normalized_gram": 0.0023658532627864807,
+  "max_physical_m_error": 0.009924227371811867,
+  "original_geometry_guard_passed": false,
+  "precision_specific_guard_passed": true,
+  "dynamo_counters": {
+    "stats": {
+      "calls_captured": 1564,
+      "unique_graphs": 12
+    },
+    "inductor": {
+      "pattern_matcher_count": 140,
+      "pattern_matcher_nodes": 140,
+      "fxgraph_cache_miss": 12,
+      "async_compile_cache_miss": 564,
+      "extern_calls": 200,
+      "async_compile_cache_hit": 282,
+      "triton_bundler_save_kernel": 4008,
+      "triton_bundler_save_static_autotuner": 12,
+      "benchmarking.InductorBenchmarker.benchmark": 418,
+      "benchmarking.InductorBenchmarker.benchmark_gpu": 418
+    },
+    "graph_break": {}
+  },
+  "elapsed_seconds": 3308.2630085960263,
+  "clean_cycle_calls": 9900,
+  "protocol": {
+    "model_seed": 204,
+    "validation_rows": 1024,
+    "validation_calls": [
+      50,
+      100,
+      200,
+      500,
+      1000,
+      1500,
+      2000,
+      2500,
+      3000,
+      4000,
+      5000,
+      6000,
+      7000,
+      7500,
+      8000,
+      9000,
+      10000
+    ],
+    "evaluation_hash_calls": [
+      0,
+      1000,
+      5000,
+      10000
+    ],
+    "diagnostic_calls": [
+      11,
+      21,
+      51,
+      101,
+      151,
+      201,
+      501,
+      511,
+      1001,
+      1011,
+      1501,
+      1511,
+      1991,
+      2501,
+      2511,
+      5001,
+      5011,
+      7501,
+      7511,
+      9951,
+      9991
+    ],
+    "residual_calls": [
+      501,
+      1001,
+      1501,
+      1991,
+      2501,
+      5001,
+      7501,
+      9991
+    ],
+    "capture_calls": [
+      51,
+      101,
+      201,
+      501,
+      1001,
+      2501,
+      5001,
+      7501,
+      10000
+    ],
+    "repeat_initial_backward": true,
+    "arm_timeout_seconds": 5400,
+    "expected_startup": {
+      "initial_parameters_sha256": "24da908288be7ee828bd2a8221ac637b870c0c219b05964b3517c576b0a7da79",
+      "initial_gradient_sha256": "7936c3f658be84b84ee780a52876bc2a3cda2771d0b30596cff715f47a81deb2",
+      "initial_loss": 10.963447570800781,
+      "initial_norm": 11.2014741897583,
+      "initial_validation_ce": 10.966108478605747
+    },
+    "startup_reference": "hash-verified completed stock QR10, seed204 full horizon"
+  },
+  "initial_backward_repeat_passed": true
+}

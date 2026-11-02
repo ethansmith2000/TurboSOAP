@@ -1,0 +1,218 @@
+{
+  "status": "passed",
+  "checked_utc": "2026-10-26T08:00:42.647896+00:00",
+  "source_files_verified": 572,
+  "input_files_verified": 4,
+  "paired_initial_parameters_and_gradients_match": true,
+  "unique_training_rows": 320000,
+  "validation_rows": 1024,
+  "primary_update_calls": 40000,
+  "primary_targets": 1309440000,
+  "primary_audits": [
+    {
+      "name": "primary_stock_qr",
+      "update_calls": 10000,
+      "event_counts": {
+        "cold": 1,
+        "ordinary": 9000,
+        "qr": 999
+      },
+      "geometry_observations": 45,
+      "factor_observations": 4320,
+      "full_state_evaluation_checks": 3,
+      "max_absolute_gram": 6.941060564713553e-05,
+      "max_physical_m_relative": 0.0006159652257338166,
+      "all_registered_released": true,
+      "released_allocated_bytes": 0
+    },
+    {
+      "name": "primary_stock_warm",
+      "update_calls": 10000,
+      "event_counts": {
+        "cold": 1,
+        "ordinary": 9000,
+        "warm": 800,
+        "qr": 199
+      },
+      "geometry_observations": 45,
+      "factor_observations": 4320,
+      "full_state_evaluation_checks": 3,
+      "max_absolute_gram": 0.017438916489481926,
+      "max_physical_m_relative": 0.0015428795013576746,
+      "all_registered_released": true,
+      "released_allocated_bytes": 0
+    },
+    {
+      "name": "primary_previous_warm",
+      "update_calls": 10000,
+      "event_counts": {
+        "cold": 1,
+        "ordinary": 9000,
+        "warm": 800,
+        "qr": 199
+      },
+      "geometry_observations": 45,
+      "factor_observations": 4320,
+      "full_state_evaluation_checks": 3,
+      "max_absolute_gram": 0.017223510891199112,
+      "max_physical_m_relative": 0.0010828837985172868,
+      "all_registered_released": true,
+      "released_allocated_bytes": 0
+    },
+    {
+      "name": "primary_previous_qr",
+      "update_calls": 10000,
+      "event_counts": {
+        "cold": 1,
+        "ordinary": 9000,
+        "qr": 999
+      },
+      "geometry_observations": 45,
+      "factor_observations": 4320,
+      "full_state_evaluation_checks": 3,
+      "max_absolute_gram": 6.935384590178728e-05,
+      "max_physical_m_relative": 0.0006607035174965858,
+      "all_registered_released": true,
+      "released_allocated_bytes": 0
+    }
+  ],
+  "pair_summary": {
+    "stock": {
+      "qr_final_ce": 3.4111515320837498,
+      "warm_final_ce": 3.4181275255978107,
+      "warm_ce_penalty": 0.006975993514060974,
+      "warm_perplexity_percent_higher": 0.7000382436151803,
+      "step_percent_lower": 10.814092751131687,
+      "optimizer_percent_lower": 44.03294479684126,
+      "qr_minutes": 65.28134403873312,
+      "warm_minutes": 58.4540864160653,
+      "sampled_thresholds": {
+        "4.0": {
+          "qr": {
+            "call": 2000,
+            "ce": 3.9859051536768675,
+            "first_observed_seconds": 813.4145682300441,
+            "previous_observation_seconds": 619.9709613079904
+          },
+          "warm": {
+            "call": 2000,
+            "ce": 3.9957525469362736,
+            "first_observed_seconds": 732.1137745809974,
+            "previous_observation_seconds": 559.6057169699343
+          }
+        },
+        "3.8": {
+          "qr": {
+            "call": 3500,
+            "ce": 3.7643001545220613,
+            "first_observed_seconds": 1392.9928652730305,
+            "previous_observation_seconds": 1199.8053952540504
+          },
+          "warm": {
+            "call": 3500,
+            "ce": 3.7727464716881514,
+            "first_observed_seconds": 1249.946102235932,
+            "previous_observation_seconds": 1077.3196950979764
+          }
+        },
+        "3.6": {
+          "qr": {
+            "call": 5500,
+            "ce": 3.5952800679951906,
+            "first_observed_seconds": 2166.1112919820007,
+            "previous_observation_seconds": 1972.5669718800345
+          },
+          "warm": {
+            "call": 6000,
+            "ce": 3.569548264145851,
+            "first_observed_seconds": 2113.7616224889643,
+            "previous_observation_seconds": 1940.9965565239545
+          }
+        },
+        "3.5": {
+          "qr": {
+            "call": 7500,
+            "ce": 3.4815527107566595,
+            "first_observed_seconds": 2938.7851799400523,
+            "previous_observation_seconds": 2745.69082344498
+          },
+          "warm": {
+            "call": 7500,
+            "ce": 3.487882314249873,
+            "first_observed_seconds": 2631.8410078180023,
+            "previous_observation_seconds": 2459.1630550969858
+          }
+        }
+      }
+    },
+    "previous": {
+      "qr_final_ce": 3.442197060212493,
+      "warm_final_ce": 3.4511003382503986,
+      "warm_ce_penalty": 0.008903278037905693,
+      "warm_perplexity_percent_higher": 0.8943030104801927,
+      "step_percent_lower": 11.153951947790318,
+      "optimizer_percent_lower": 45.028570525129155,
+      "qr_minutes": 65.46072379260052,
+      "warm_minutes": 58.388598180083015,
+      "sampled_thresholds": {
+        "4.0": {
+          "warm": {
+            "call": 2000,
+            "ce": 3.9916885420680046,
+            "first_observed_seconds": 731.0822326489724,
+            "previous_observation_seconds": 558.766135939979
+          },
+          "qr": {
+            "call": 2000,
+            "ce": 3.971226116642356,
+            "first_observed_seconds": 816.7043157680891,
+            "previous_observation_seconds": 623.0343312920304
+          }
+        },
+        "3.8": {
+          "warm": {
+            "call": 3500,
+            "ce": 3.7818579208105803,
+            "first_observed_seconds": 1247.575467634946,
+            "previous_observation_seconds": 1075.4301619289909
+          },
+          "qr": {
+            "call": 3500,
+            "ce": 3.7671738546341658,
+            "first_observed_seconds": 1397.7909845920512,
+            "previous_observation_seconds": 1204.0821742240805
+          }
+        },
+        "3.6": {
+          "warm": {
+            "call": 6000,
+            "ce": 3.5884993448853493,
+            "first_observed_seconds": 2109.064210395911,
+            "previous_observation_seconds": 1936.7929728169693
+          },
+          "qr": {
+            "call": 6000,
+            "ce": 3.578179469332099,
+            "first_observed_seconds": 2366.3078455170617,
+            "previous_observation_seconds": 2172.7200799770653
+          }
+        },
+        "3.5": {
+          "warm": {
+            "call": 8000,
+            "ce": 3.495005689561367,
+            "first_observed_seconds": 2798.3071861770004,
+            "previous_observation_seconds": 2625.9884558089543
+          },
+          "qr": {
+            "call": 8000,
+            "ce": 3.4851854406297207,
+            "first_observed_seconds": 3140.685127522098,
+            "previous_observation_seconds": 2947.0147795800585
+          }
+        }
+      }
+    }
+  },
+  "scope": "Completed four-primary-arm audit; one model/data seed; profile-specific early LR selection, differing beta1 and LR prevent isolated beta attribution; sampled thresholds are not exact continuous crossing times"
+}

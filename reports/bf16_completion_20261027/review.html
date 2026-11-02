@@ -1,0 +1,14 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+body{margin:0;font:14px var(--font-sans,system-ui);color:var(--foreground,#172033)}
+.lead{font-size:18px;font-weight:650;line-height:1.4;margin:0 0 12px}p{line-height:1.5}
+table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums}th,td{padding:8px 6px;border-bottom:1px solid var(--border,#dbe0e8);text-align:right}th:first-child,td:first-child{text-align:left}
+.plot{background:white;border-radius:12px;padding:16px;margin:16px 0}img{width:100%;display:block}.muted{color:var(--muted-foreground,#606a7a);font-size:12px}
+</style></head><body><p class="lead">Two seeds: a small loss gap, half the matrix state</p>
+<table><tr><th>Model seed</th><th>Stock CE</th><th>Full BF16 CE</th><th>Delta</th></tr><tr><td>204</td><td>3.411152</td><td>3.422389</td><td>+0.011237</td></tr><tr><td>205</td><td>3.409272</td><td>3.419354</td><td>+0.010082</td></tr></table>
+<p>Mean paired gap <b>+0.010660 CE</b> · matrix state <b>2.320 → 1.160 GiB</b>.<br>
+Measured step-time reductions: <b>17.36%</b> (seed204,100-call prefix) and <b>18.66%</b> (seed205,9,900 calls).</p>
+<div class="plot"><img src="/workspace/TurboSOAP/reports/bf16_completion_20261027/full_horizon.png" alt="Two seed loss curves and BF16 minus stock gaps"></div>
+<p>At2k calls: QR20 <b>3.99038</b>, warm <b>3.99394</b>, QR50 <b>3.99868</b> CE. Short controls support a modest tradeoff, not final-horizon superiority.</p>
+<div class="plot"><img src="/workspace/TurboSOAP/reports/bf16_completion_20261027/controls_and_profile.png" alt="Short control loss gaps and isolated QR primitive timings"></div>
+<p class="muted">All bounded experiments and audits completed. QR product reuse saves0.95–4.63% at batch12; the solver dominates. Same-state synthetic following-update difference ≤0.112%. Finite numerical screens remain diagnostics. Two fixed-order model seeds do not establish statistical equivalence. Warm control timing is cached across launches; training speed is relative to original stock SOAP.</p>
+</body></html>

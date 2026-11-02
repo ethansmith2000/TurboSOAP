@@ -1,0 +1,33 @@
+{
+  "dimensions": [
+    768,
+    1536,
+    2304,
+    3072
+  ],
+  "batches": [
+    1,
+    12
+  ],
+  "gpu_execution_seconds_cap": 600,
+  "source_files": {
+    "bf16_soap.py": "65812bc620addd902e75ed1b79bac26ec68ced4de44cfd5c65d3bc4acbbf50df",
+    "soap_reference.py": "10f8b77a83742b849946177ee7c3f28cc169c638beedce4949132082ee0e119d",
+    "fast_soap.py": "5df19bf9112840ddf70a82af24f5bfcc8fc05940fd2d1d6071b7e9b3af5f47aa",
+    "soap.py": "7e0d811daac8247f28284c61846b85dfa290a8faa4182979cc870051ee32070e",
+    "benchmarks/bf16_qr_attribution.py": "51b44125ec62285256aa3e2a3ef8c507e6546c6fdefd19c6c378e4df9d9d10ab",
+    "tests/test_bf16_qr_attribution.py": "d8831b8a16a0de45b11d3b910d67d65e5fdc51b91e9898b2b32da43cd968766b"
+  },
+  "support_files": {
+    "PROTOCOL.md": "84c1a77f1dc296f921dc167ad59a0cc5d05f88eafd4f0e4fd0f11391c221deef",
+    "cpu_checks.xml": "bef28b57f080e00004d04c4dab0d20fadcb171b4b9681b665a0e87237d0d1a17"
+  },
+  "production_source_sha256": {
+    "bf16_soap.py": "65812bc620addd902e75ed1b79bac26ec68ced4de44cfd5c65d3bc4acbbf50df",
+    "soap_reference.py": "10f8b77a83742b849946177ee7c3f28cc169c638beedce4949132082ee0e119d",
+    "fast_soap.py": "5df19bf9112840ddf70a82af24f5bfcc8fc05940fd2d1d6071b7e9b3af5f47aa",
+    "soap.py": "7e0d811daac8247f28284c61846b85dfa290a8faa4182979cc870051ee32070e"
+  },
+  "created_at_utc": "2026-10-27T09:54:25.557954+00:00",
+  "compact_evidence_directory": "/workspace/TurboSOAP/reports/bf16_qr_attribution_20261027"
+}

@@ -1,0 +1,644 @@
+{
+  "version": 1,
+  "status": "completed",
+  "created_at_utc": "2026-10-27T07:58:27.652373+00:00",
+  "expires_at_utc": "2026-10-27T15:58:27.652373+00:00",
+  "scheduled_task_id": "scheduled-task:command:mcp:a97f4f60-c5d0-4424-aeba-8ee065f395b6:schedule-task:turbosoap-completion-monitor-20261027-v1",
+  "interval_minutes": 10,
+  "additional_gpu_seconds_cap": 2700,
+  "gpu_seconds_reserved": 2400,
+  "current_replication": {
+    "program": "soap-bf16-repl204",
+    "bundle": "/workspace/optimizer_replay_results/soap_bf16_replicate_20261027_seed204_v1"
+  },
+  "production_source_sha256": {
+    "bf16_soap.py": "65812bc620addd902e75ed1b79bac26ec68ced4de44cfd5c65d3bc4acbbf50df",
+    "soap_reference.py": "10f8b77a83742b849946177ee7c3f28cc169c638beedce4949132082ee0e119d",
+    "fast_soap.py": "5df19bf9112840ddf70a82af24f5bfcc8fc05940fd2d1d6071b7e9b3af5f47aa",
+    "soap.py": "7e0d811daac8247f28284c61846b85dfa290a8faa4182979cc870051ee32070e"
+  },
+  "stages": {
+    "replication_review": {
+      "status": "completed",
+      "owner": "monitor-20261027T0851-review",
+      "reserved_at_utc": "2026-10-27T08:51:53.353072+00:00",
+      "gpu_seconds_reserved": 0,
+      "updated_at_utc": "2026-10-27T08:52:30.710655+00:00",
+      "details": {
+        "status": "passed",
+        "frozen_sources_verified": 583,
+        "production_source_hashes_verified": true,
+        "inputs_and_support_verified": true,
+        "repeated_audits": [
+          {
+            "status": "passed",
+            "case": "qr10",
+            "calls": 201,
+            "diagnostics_advisory": true,
+            "original_geometry_guard_passed": true,
+            "precision_specific_guard_passed": true,
+            "exactly_reproduced_validation_calls": [
+              0,
+              50,
+              100,
+              200
+            ]
+          },
+          {
+            "case": "bf16",
+            "status": "passed",
+            "calls": 10000,
+            "seed": 204,
+            "event_counts": {
+              "cold": 1,
+              "ordinary": 9000,
+              "warm": 800,
+              "qr": 199
+            },
+            "factor_observations": 2112,
+            "actual_m_observations": 1008,
+            "coordinate_residual_observations": 768,
+            "graph_breaks": 0,
+            "original_geometry_guard_passed": false,
+            "precision_specific_guard_passed": true
+          }
+        ],
+        "per_seed": [
+          {
+            "seed": 204,
+            "stock_ce": 3.4111515320837498,
+            "bf16_ce": 3.422388957813382,
+            "ce_delta": 0.011237425729632378,
+            "perplexity_increase_percent": 1.1300802773944505,
+            "candidate_mean_step_ms": 314.05783515723397,
+            "matrix_state_bytes": 1245708320,
+            "max_physical_m_error": 0.009924227371811867,
+            "max_normalized_gram": 0.0023658532627864807
+          },
+          {
+            "seed": 205,
+            "stock_ce": 3.4092715363949537,
+            "bf16_ce": 3.4193537402898073,
+            "ce_delta": 0.010082203894853592,
+            "perplexity_increase_percent": 1.013320055469048,
+            "candidate_mean_step_ms": 309.5329194916342,
+            "matrix_state_bytes": 1245708320,
+            "max_physical_m_error": 0.010355544276535511,
+            "max_normalized_gram": 0.0023670758307713026
+          }
+        ],
+        "mean_paired_ce_delta": 0.010659814812242985,
+        "seed204_matched_prefix_timing": {
+          "calls": [
+            101,
+            200
+          ],
+          "number_of_calls": 100,
+          "mean_step_ms": {
+            "qr10": 380.74003388290294,
+            "bf16": 314.6378758782521
+          },
+          "measured_step_time_saving_percent": 17.36149396492953
+        },
+        "seed205_paired_full_timing_saving_percent": 18.661371754633137,
+        "numerical_error_role": "diagnostic",
+        "scope": "Two model-initialization seeds, fixed data order; no statistical equivalence claim."
+      }
+    },
+    "refresh_controls": {
+      "status": "completed",
+      "owner": "monitor-20261027T0853-controls",
+      "reserved_at_utc": "2026-10-27T08:52:30.764304+00:00",
+      "gpu_seconds_reserved": 1800,
+      "updated_at_utc": "2026-10-27T09:49:37.611979+00:00",
+      "details": {
+        "status": "passed",
+        "bundle": "/workspace/optimizer_replay_results/soap_bf16_refresh_controls_20261027_seed204_v1",
+        "audits": [
+          {
+            "status": "passed",
+            "case": "bf16_qr20",
+            "event_counts": {
+              "cold": 1,
+              "ordinary": 1900,
+              "qr": 99
+            },
+            "unique_graphs": 8,
+            "clean_cycle_calls": 1900,
+            "final_state_finite": true,
+            "numerical_error_role": "diagnostic"
+          },
+          {
+            "status": "passed",
+            "case": "bf16_qr50",
+            "event_counts": {
+              "cold": 1,
+              "ordinary": 1960,
+              "qr": 39
+            },
+            "unique_graphs": 8,
+            "clean_cycle_calls": 1900,
+            "final_state_finite": true,
+            "numerical_error_role": "diagnostic"
+          }
+        ],
+        "production_hashes_verified": true,
+        "source_input_support_hashes_verified": true,
+        "elapsed_seconds": 1459.462208164041,
+        "results": [
+          {
+            "case": "cached_bf16_warm10_qr50",
+            "validation": [
+              {
+                "call": 0,
+                "ce": 10.966108478605747,
+                "targets": 1047552,
+                "listed_tensor_hash_preservation_checked": true
+              },
+              {
+                "call": 50,
+                "ce": 7.159334506839514,
+                "targets": 1047552,
+                "listed_tensor_hash_preservation_checked": false
+              },
+              {
+                "call": 100,
+                "ce": 6.35079650208354,
+                "targets": 1047552,
+                "listed_tensor_hash_preservation_checked": false
+              },
+              {
+                "call": 200,
+                "ce": 5.773977719247341,
+                "targets": 1047552,
+                "listed_tensor_hash_preservation_checked": false
+              },
+              {
+                "call": 500,
+                "ce": 5.001514211297035,
+                "targets": 1047552,
+                "listed_tensor_hash_preservation_checked": false
+              },
+              {
+                "call": 1000,
+                "ce": 4.361596241593361,
+                "targets": 1047552,
+                "listed_tensor_hash_preservation_checked": true
+              },
+              {
+                "call": 1500,
+                "ce": 4.1223688162863255,
+                "targets": 1047552,
+                "listed_tensor_hash_preservation_checked": false
+              },
+              {
+                "call": 2000,
+                "ce": 3.9939393140375614,
+                "targets": 1047552,
+                "listed_tensor_hash_preservation_checked": false
+              }
+            ],
+            "mean_step_ms": 314.14195984032153,
+            "mean_optimizer_ms": 26.415084154884283,
+            "matrix_state_bytes": 1245708320
+          },
+          {
+            "case": "bf16_qr20",
+            "validation": [
+              {
+                "call": 0,
+                "ce": 10.966108478605747,
+                "targets": 1047552,
+                "listed_tensor_hash_preservation_checked": true
+              },
+              {
+                "call": 50,
+                "ce": 7.15756281465292,
+                "targets": 1047552,
+                "listed_tensor_hash_preservation_checked": false
+              },
+              {
+                "call": 100,
+                "ce": 6.334601294249296,
+                "targets": 1047552,
+                "listed_tensor_hash_preservation_checked": false
+              },
+              {
+                "call": 200,
+                "ce": 5.733952008187771,
+                "targets": 1047552,
+                "listed_tensor_hash_preservation_checked": false
+              },
+              {
+                "call": 500,
+                "ce": 4.936851505190134,
+                "targets": 1047552,
+                "listed_tensor_hash_preservation_checked": false
+              },
+              {
+                "call": 1000,
+                "ce": 4.341771213337779,
+                "targets": 1047552,
+                "listed_tensor_hash_preservation_checked": true
+              },
+              {
+                "call": 1500,
+                "ce": 4.123380791395903,
+                "targets": 1047552,
+                "listed_tensor_hash_preservation_checked": false
+              },
+              {
+                "call": 2000,
+                "ce": 3.990382792428136,
+                "targets": 1047552,
+                "listed_tensor_hash_preservation_checked": true
+              }
+            ],
+            "mean_step_ms": 329.6406275997747,
+            "mean_optimizer_ms": 40.45993206685556,
+            "matrix_state_bytes": 1245708320
+          },
+          {
+            "case": "bf16_qr50",
+            "validation": [
+              {
+                "call": 0,
+                "ce": 10.966108478605747,
+                "targets": 1047552,
+                "listed_tensor_hash_preservation_checked": true
+              },
+              {
+                "call": 50,
+                "ce": 7.204366810619831,
+                "targets": 1047552,
+                "listed_tensor_hash_preservation_checked": false
+              },
+              {
+                "call": 100,
+                "ce": 6.404539309442043,
+                "targets": 1047552,
+                "listed_tensor_hash_preservation_checked": false
+              },
+              {
+                "call": 200,
+                "ce": 5.830097418278456,
+                "targets": 1047552,
+                "listed_tensor_hash_preservation_checked": false
+              },
+              {
+                "call": 500,
+                "ce": 5.018046278506517,
+                "targets": 1047552,
+                "listed_tensor_hash_preservation_checked": false
+              },
+              {
+                "call": 1000,
+                "ce": 4.364714320749044,
+                "targets": 1047552,
+                "listed_tensor_hash_preservation_checked": true
+              },
+              {
+                "call": 1500,
+                "ce": 4.1323130670934916,
+                "targets": 1047552,
+                "listed_tensor_hash_preservation_checked": false
+              },
+              {
+                "call": 2000,
+                "ce": 3.9986794628202915,
+                "targets": 1047552,
+                "listed_tensor_hash_preservation_checked": true
+              }
+            ],
+            "mean_step_ms": 313.5512978235554,
+            "mean_optimizer_ms": 22.86430248089968,
+            "matrix_state_bytes": 1245708320
+          }
+        ]
+      }
+    },
+    "qr_profile": {
+      "status": "completed",
+      "owner": "monitor-20261027T0949-profile",
+      "reserved_at_utc": "2026-10-27T09:49:37.673465+00:00",
+      "gpu_seconds_reserved": 600,
+      "updated_at_utc": "2026-10-27T10:20:06.511290+00:00",
+      "details": {
+        "status": "passed",
+        "bundle": "/workspace/optimizer_replay_results/soap_bf16_qr_profile_20261027_v1",
+        "production_sources_verified": true,
+        "frozen_sources_support_service_verified": true,
+        "elapsed_seconds": 32.335429096012376,
+        "rows": [
+          {
+            "batch": 1,
+            "dimension": 768,
+            "original_cuda_ms": 3.051055908203125,
+            "reuse_cuda_ms": 2.8315999507904053,
+            "original_wall_ms": 3.0768050346523523,
+            "reuse_wall_ms": 2.853930927813053,
+            "qr_time_saving_percent": 7.192787153545311,
+            "original_products_ms": 0.39825600385665894,
+            "reuse_products_ms": 0.2953439950942993,
+            "solver_ms": 2.6130239963531494,
+            "numerical": {
+              "order_disagreements": 0,
+              "total_columns": 768,
+              "score_max_relative_difference": 3.266157364123501e-05,
+              "reordered_score_band_relative": 0.0,
+              "negative_same_column_overlaps": 0,
+              "raw_basis_relative": 0.0,
+              "sign_aligned_basis_relative": 0.0,
+              "normalized_gram": {
+                "original": 6.662912710453384e-07,
+                "reuse": 6.662912710453384e-07
+              },
+              "following_update_relative": 0.0,
+              "following_update_cosine": 0.9999999403953552,
+              "state_relative": {
+                "moment": 0.0,
+                "variance": 0.0,
+                "world_m": 0.0
+              },
+              "finite": true,
+              "variance_nonnegative": true,
+              "probe_scope": "Synthetic one-sided refresh; fixed 32D right identity, BF16 storage/transport and actual next ordinary matrix_step. No training trajectory."
+            }
+          },
+          {
+            "batch": 1,
+            "dimension": 1536,
+            "original_cuda_ms": 7.228303909301758,
+            "reuse_cuda_ms": 6.933088064193726,
+            "original_wall_ms": 7.26142548955977,
+            "reuse_wall_ms": 7.028231048025191,
+            "qr_time_saving_percent": 4.084164816702474,
+            "original_products_ms": 0.5622079968452454,
+            "reuse_products_ms": 0.38625599443912506,
+            "solver_ms": 6.671135902404785,
+            "numerical": {
+              "order_disagreements": 0,
+              "total_columns": 1536,
+              "score_max_relative_difference": 3.3012456697179005e-05,
+              "reordered_score_band_relative": 0.0,
+              "negative_same_column_overlaps": 0,
+              "raw_basis_relative": 0.0,
+              "sign_aligned_basis_relative": 0.0,
+              "normalized_gram": {
+                "original": 8.106818540909444e-07,
+                "reuse": 8.106818540909444e-07
+              },
+              "following_update_relative": 0.0,
+              "following_update_cosine": 1.0,
+              "state_relative": {
+                "moment": 0.0,
+                "variance": 0.0,
+                "world_m": 0.0
+              },
+              "finite": true,
+              "variance_nonnegative": true,
+              "probe_scope": "Synthetic one-sided refresh; fixed 32D right identity, BF16 storage/transport and actual next ordinary matrix_step. No training trajectory."
+            }
+          },
+          {
+            "batch": 1,
+            "dimension": 2304,
+            "original_cuda_ms": 12.369408130645752,
+            "reuse_cuda_ms": 11.957919597625732,
+            "original_wall_ms": 12.40760856308043,
+            "reuse_wall_ms": 11.990242986939847,
+            "qr_time_saving_percent": 3.326663076146208,
+            "original_products_ms": 0.8366239964962006,
+            "reuse_products_ms": 0.4230720102787018,
+            "solver_ms": 11.478736400604248,
+            "numerical": {
+              "order_disagreements": 2,
+              "total_columns": 2304,
+              "score_max_relative_difference": 3.230168658774346e-05,
+              "reordered_score_band_relative": 5.54254029339063e-06,
+              "negative_same_column_overlaps": 258,
+              "raw_basis_relative": 0.6679677963256836,
+              "sign_aligned_basis_relative": 0.0416620709002018,
+              "normalized_gram": {
+                "original": 1.0523345963520114e-06,
+                "reuse": 1.0537085017858772e-06
+              },
+              "following_update_relative": 0.0010426663793623447,
+              "following_update_cosine": 0.9999995827674866,
+              "state_relative": {
+                "moment": 0.6593940258026123,
+                "variance": 0.016086388379335403,
+                "world_m": 0.0008041572291404009
+              },
+              "finite": true,
+              "variance_nonnegative": true,
+              "probe_scope": "Synthetic one-sided refresh; fixed 32D right identity, BF16 storage/transport and actual next ordinary matrix_step. No training trajectory."
+            }
+          },
+          {
+            "batch": 1,
+            "dimension": 3072,
+            "original_cuda_ms": 19.246591567993164,
+            "reuse_cuda_ms": 18.06020736694336,
+            "original_wall_ms": 19.302274042274803,
+            "reuse_wall_ms": 18.09704245533794,
+            "qr_time_saving_percent": 6.164126239488277,
+            "original_products_ms": 1.9417919516563416,
+            "reuse_products_ms": 0.8375999927520752,
+            "solver_ms": 17.302767753601074,
+            "numerical": {
+              "order_disagreements": 10,
+              "total_columns": 3072,
+              "score_max_relative_difference": 3.820877827820368e-05,
+              "reordered_score_band_relative": 1.0431414011691231e-05,
+              "negative_same_column_overlaps": 516,
+              "raw_basis_relative": 0.8188852667808533,
+              "sign_aligned_basis_relative": 0.08068560808897018,
+              "normalized_gram": {
+                "original": 8.944528531174001e-07,
+                "reuse": 8.988889703687164e-07
+              },
+              "following_update_relative": 0.001114101498387754,
+              "following_update_cosine": 0.9999994039535522,
+              "state_relative": {
+                "moment": 0.8216122984886169,
+                "variance": 0.034667447209358215,
+                "world_m": 0.0009019937133416533
+              },
+              "finite": true,
+              "variance_nonnegative": true,
+              "probe_scope": "Synthetic one-sided refresh; fixed 32D right identity, BF16 storage/transport and actual next ordinary matrix_step. No training trajectory."
+            }
+          },
+          {
+            "batch": 12,
+            "dimension": 768,
+            "original_cuda_ms": 31.21008014678955,
+            "reuse_cuda_ms": 30.914448738098145,
+            "original_wall_ms": 31.244628480635583,
+            "reuse_wall_ms": 30.945771490223706,
+            "qr_time_saving_percent": 0.94723053353587,
+            "original_products_ms": 0.6494880020618439,
+            "reuse_products_ms": 0.4081600159406662,
+            "solver_ms": 30.487695693969727,
+            "numerical": {
+              "order_disagreements": 0,
+              "total_columns": 9216,
+              "score_max_relative_difference": 3.989348988397978e-05,
+              "reordered_score_band_relative": 0.0,
+              "negative_same_column_overlaps": 0,
+              "raw_basis_relative": 0.0,
+              "sign_aligned_basis_relative": 0.0,
+              "normalized_gram": {
+                "original": 7.831816901671118e-07,
+                "reuse": 7.831816901671118e-07
+              },
+              "following_update_relative": 0.0,
+              "following_update_cosine": 0.9999998807907104,
+              "state_relative": {
+                "moment": 0.0,
+                "variance": 0.0,
+                "world_m": 0.0
+              },
+              "finite": true,
+              "variance_nonnegative": true,
+              "probe_scope": "Synthetic one-sided refresh; fixed 32D right identity, BF16 storage/transport and actual next ordinary matrix_step. No training trajectory."
+            }
+          },
+          {
+            "batch": 12,
+            "dimension": 1536,
+            "original_cuda_ms": 82.0533447265625,
+            "reuse_cuda_ms": 80.5350227355957,
+            "original_wall_ms": 82.0976160466671,
+            "reuse_wall_ms": 80.58481151238084,
+            "qr_time_saving_percent": 1.8504084093421302,
+            "original_products_ms": 2.800336003303528,
+            "reuse_products_ms": 1.471280038356781,
+            "solver_ms": 79.2175521850586,
+            "numerical": {
+              "order_disagreements": 12,
+              "total_columns": 18432,
+              "score_max_relative_difference": 3.890644438797608e-05,
+              "reordered_score_band_relative": 1.984049958991818e-05,
+              "negative_same_column_overlaps": 1292,
+              "raw_basis_relative": 0.5295110940933228,
+              "sign_aligned_basis_relative": 0.03608207777142525,
+              "normalized_gram": {
+                "original": 9.223523420587298e-07,
+                "reuse": 9.236397318090894e-07
+              },
+              "following_update_relative": 0.0006146121304482222,
+              "following_update_cosine": 0.9999997019767761,
+              "state_relative": {
+                "moment": 0.5290542840957642,
+                "variance": 0.015932178124785423,
+                "world_m": 0.000504947267472744
+              },
+              "finite": true,
+              "variance_nonnegative": true,
+              "probe_scope": "Synthetic one-sided refresh; fixed 32D right identity, BF16 storage/transport and actual next ordinary matrix_step. No training trajectory."
+            }
+          },
+          {
+            "batch": 12,
+            "dimension": 2304,
+            "original_cuda_ms": 145.85433959960938,
+            "reuse_cuda_ms": 141.56610870361328,
+            "original_wall_ms": 145.90576000045985,
+            "reuse_wall_ms": 141.6103735100478,
+            "qr_time_saving_percent": 2.9400776883073187,
+            "original_products_ms": 7.969359874725342,
+            "reuse_products_ms": 3.668415904045105,
+            "solver_ms": 137.93638610839844,
+            "numerical": {
+              "order_disagreements": 40,
+              "total_columns": 27648,
+              "score_max_relative_difference": 3.9032154745655134e-05,
+              "reordered_score_band_relative": 1.8771188479149714e-05,
+              "negative_same_column_overlaps": 3658,
+              "raw_basis_relative": 0.7270804047584534,
+              "sign_aligned_basis_relative": 0.05378939211368561,
+              "normalized_gram": {
+                "original": 1.0544359838604578e-06,
+                "reuse": 1.0539118875385611e-06
+              },
+              "following_update_relative": 0.0009127918165177107,
+              "following_update_cosine": 0.9999995827674866,
+              "state_relative": {
+                "moment": 0.7298721671104431,
+                "variance": 0.022959893569350243,
+                "world_m": 0.0007511303992941976
+              },
+              "finite": true,
+              "variance_nonnegative": true,
+              "probe_scope": "Synthetic one-sided refresh; fixed 32D right identity, BF16 storage/transport and actual next ordinary matrix_step. No training trajectory."
+            }
+          },
+          {
+            "batch": 12,
+            "dimension": 3072,
+            "original_cuda_ms": 225.65955352783203,
+            "reuse_cuda_ms": 215.21822357177734,
+            "original_wall_ms": 225.7124590105377,
+            "reuse_wall_ms": 215.27117950608954,
+            "qr_time_saving_percent": 4.627027658621552,
+            "original_products_ms": 18.164816856384277,
+            "reuse_products_ms": 7.7241599559783936,
+            "solver_ms": 207.61306762695312,
+            "numerical": {
+              "order_disagreements": 160,
+              "total_columns": 36864,
+              "score_max_relative_difference": 4.2250107071595266e-05,
+              "reordered_score_band_relative": 2.6756415536510758e-05,
+              "negative_same_column_overlaps": 7058,
+              "raw_basis_relative": 0.8758056163787842,
+              "sign_aligned_basis_relative": 0.09316748380661011,
+              "normalized_gram": {
+                "original": 1.1860627182613825e-06,
+                "reuse": 1.1867798548337305e-06
+              },
+              "following_update_relative": 0.0011160002322867513,
+              "following_update_cosine": 0.9999994039535522,
+              "state_relative": {
+                "moment": 0.8768366575241089,
+                "variance": 0.04038267582654953,
+                "world_m": 0.0009063120814971626
+              },
+              "finite": true,
+              "variance_nonnegative": true,
+              "probe_scope": "Synthetic one-sided refresh; fixed 32D right identity, BF16 storage/transport and actual next ordinary matrix_step. No training trajectory."
+            }
+          }
+        ]
+      }
+    },
+    "final_report": {
+      "status": "completed",
+      "owner": "monitor-20261027T1020-final",
+      "reserved_at_utc": "2026-10-27T10:20:06.564668+00:00",
+      "gpu_seconds_reserved": 0,
+      "updated_at_utc": "2026-10-27T10:26:00.970763+00:00",
+      "details": {
+        "status": "completed",
+        "report": "/workspace/TurboSOAP/reports/bf16_completion_20261027/REPORT.md",
+        "summary": "/workspace/TurboSOAP/reports/bf16_completion_20261027/summary.json",
+        "artifact_manifest": "/workspace/TurboSOAP/reports/bf16_completion_20261027/artifact_manifest.json",
+        "backup": "/workspace/soap-bf16-completed-backup-20261027.tar.gz",
+        "no_remaining_gpu_work": true,
+        "numerical_error_role": "diagnostic"
+      }
+    }
+  },
+  "runbook": "/workspace/TurboSOAP/EXPERIMENT_AUTOMATION.md",
+  "numerical_error_role": "diagnostic",
+  "note": "Bounded user-authorized plan completed. All three GPU supervisors EXITED0; final report, figures and backup saved; schedule disabled.",
+  "initial_next_run_at_utc": "2026-10-27T08:10:11.793Z",
+  "schedule_disabled": true,
+  "schedule_disabled_at_utc": "2026-10-27T10:26:35.158Z",
+  "schedule_disable_receipt": "/workspace/TurboSOAP/automation/completion_schedule_disabled_20261027.json",
+  "observed_schedule_at_disable": {
+    "type": "interval",
+    "everyMs": 1800000
+  }
+}

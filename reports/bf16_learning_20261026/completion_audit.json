@@ -1,0 +1,99 @@
+{
+  "status": "passed",
+  "arms": [
+    {
+      "case": "qr10",
+      "status": "passed",
+      "training_calls": 2000,
+      "event_counts": {
+        "cold": 1,
+        "ordinary": 1800,
+        "qr": 199
+      },
+      "clean_cycle_calls": 1900,
+      "factor_observations": 1344,
+      "actual_m_observations": 624,
+      "coordinate_residual_observations": 384,
+      "graph_breaks": 0,
+      "original_geometry_guard_passed": true,
+      "precision_specific_guard_passed": true
+    },
+    {
+      "case": "original",
+      "status": "passed",
+      "training_calls": 2000,
+      "event_counts": {
+        "cold": 1,
+        "ordinary": 1800,
+        "warm": 160,
+        "qr": 39
+      },
+      "clean_cycle_calls": 1900,
+      "factor_observations": 1344,
+      "actual_m_observations": 624,
+      "coordinate_residual_observations": 384,
+      "graph_breaks": 0,
+      "original_geometry_guard_passed": true,
+      "precision_specific_guard_passed": true
+    },
+    {
+      "case": "compiled_fp32",
+      "status": "passed",
+      "training_calls": 2000,
+      "event_counts": {
+        "cold": 1,
+        "ordinary": 1800,
+        "warm": 160,
+        "qr": 39
+      },
+      "clean_cycle_calls": 1900,
+      "factor_observations": 1344,
+      "actual_m_observations": 624,
+      "coordinate_residual_observations": 384,
+      "graph_breaks": 0,
+      "original_geometry_guard_passed": true,
+      "precision_specific_guard_passed": true
+    },
+    {
+      "case": "bf16",
+      "status": "passed",
+      "training_calls": 2000,
+      "event_counts": {
+        "cold": 1,
+        "ordinary": 1800,
+        "warm": 160,
+        "qr": 39
+      },
+      "clean_cycle_calls": 1900,
+      "factor_observations": 1344,
+      "actual_m_observations": 624,
+      "coordinate_residual_observations": 384,
+      "graph_breaks": 0,
+      "original_geometry_guard_passed": false,
+      "precision_specific_guard_passed": true
+    },
+    {
+      "case": "bf16_fp32_basis",
+      "status": "passed",
+      "training_calls": 2000,
+      "event_counts": {
+        "cold": 1,
+        "ordinary": 1800,
+        "warm": 160,
+        "qr": 39
+      },
+      "clean_cycle_calls": 1900,
+      "factor_observations": 1344,
+      "actual_m_observations": 624,
+      "coordinate_residual_observations": 384,
+      "graph_breaks": 0,
+      "original_geometry_guard_passed": true,
+      "precision_specific_guard_passed": true
+    }
+  ],
+  "same_initial_parameters": true,
+  "same_initial_gradients": true,
+  "same_initial_ce": true,
+  "training_targets": 327360000,
+  "model_or_optimizer_tensor_checkpoints_written": false
+}

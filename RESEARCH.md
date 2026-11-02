@@ -1,3 +1,545 @@
+# Author metadata and Overleaf handoff — 2026-10-29
+
+The paper now lists Ethan Smith and the supplied contact email, with no
+organization, affiliation or venue. [Overleaf upload ZIP](paper/TurboSOAP-Overleaf.zip),
+[compiled ten-page PDF](paper/TurboSOAP-Overleaf.pdf), [editable LaTeX](paper/overleaf/main.tex).
+The standalone project has separate sections, vector figures and a live BibTeX
+bibliography. It compiles from its ZIP without Python, Pandoc or repository
+paths. Overleaf edits should be kept as the editing copy; the export script
+refuses to replace an existing source folder. All scientific tables/equations
+and frozen evidence are preserved. The pre-author reviewed archive remains a
+historical snapshot; the new export has a separate manifest and validation.
+
+The next discussion can resume TransportMuon from its saved README and roadmap,
+beginning with a state/evidence audit before selecting further experiments.
+This handoff used no GPU and launched no experiment or automation.
+
+# Manuscript reviewed and typeset — 2026-10-29
+
+All four independent model reviews (Astra, Sol 6.1, Fable 5.1, Opus 5.5) are
+complete. [Reviewed working PDF](paper/TurboSOAP-review.pdf), [finding responses](paper/reviews_20261029/RESPONSES.md),
+[artifact guide](paper/ARTIFACTS.md). The nine-page draft adds precise runtime
+and diagnostic definitions, descriptive event-cost accounting, the FP32 warm
+pilot context, a fuller short-control table, and verified numerical lineage.
+No substantive equation or headline-number errors were identified. Causal
+attribution, full-horizon QR20 ranking, optimized-reference training and
+shortened-schedule time-to-quality remain unestablished.
+
+The frozen review snapshot, original report figures and completed experiments
+are preserved. A new Figure 2 is generated from existing scalar data; all
+production source pins and raw numerical flags remain unchanged. Both Claude
+reviews completed with supervised permissions. No training, GPU reservation,
+scheduler, source-code release, commit or publication occurred. Author and
+venue choices remain editorial inputs. The reviewed working artifact is saved
+separately at /workspace/soap-paper-reviewed-20261029.tar.gz; prior archives
+remain unchanged.
+
+# Paper first draft prepared — 2026-10-28
+
+The [working manuscript](paper/DRAFT.md) now includes an abstract, related-work
+positioning, explicit dense update/rounding/repair/history rules, method and
+experimental design, generated result tables, figures, limitations and a
+pilot appendix. See [outline](paper/OUTLINE.md), [claim map](paper/CLAIMS.md),
+[reproducibility guide](paper/REPRODUCIBILITY.md) and [package index](paper/README.md).
+The first draft is3,423 words. Author names/affiliations, venue formatting and
+an author review of framing/notation remain editorial work.
+
+Five tables regenerate from12 saved evidence records; both figures match the
+completed report byte for byte. CPU validation checks those artifacts, data/
+method configuration, local links and four production source pins. The main
+claim remains a measured quality/time/memory tradeoff against original stock-
+beta QR10, with the loss gap, timing scopes and comparator limitations visible.
+Finite numerical screen crossings are diagnostics. No experiment or production
+optimizer change was made. The ledger remains completed and its monitor disabled.
+
+This writing work is backed up separately at
+/workspace/soap-paper-draft-20261028.tar.gz. The prior completed-experiment backup
+and all frozen result records remain unchanged. The paper's source/figure/
+evidence inventory and validation receipt are in paper/.
+
+> **Completed and closed, 2026-10-27:** All four ledger stages are completed. The scheduled monitor is disabled (app receipt verified; no next run). [Final report](reports/bf16_completion_20261027/REPORT.md) and `/workspace/soap-bf16-completed-backup-20261027.tar.gz` are saved. No remaining GPU work in this plan.
+
+# Bounded demonstration measurements complete — 2026-10-27
+
+All approved GPU work is complete and audited. [Final compact report](reports/bf16_completion_20261027/REPORT.md),
+[summary/provenance](reports/bf16_completion_20261027/summary.json), and PNG/SVG
+loss/control/profile figures are saved. Fixed full BF16 final paired CE gaps
+at seeds204/205: +.011237/+.010082, mean+.010660 (about1.0–1.13% higher
+perplexity). Matrix state2.320→1.160GiB. Newly matched step savings17.36%
+(seed204,100-call prefix) and18.66% (seed205,9,900 calls); scopes remain separate.
+Finite moment/Gram screen crossings remain diagnostics; raw flags are unchanged.
+
+Short full-BF16 controls at2k calls: QR20/warm10-QR50/QR50 CE
+3.990383/3.993939/3.998679. Warm's small improvement over held QR50 comes with
+extra work; QR20 is slightly better at this prefix. Cached warm timing is not
+newly paired, and these controls do not establish final-horizon superiority.
+Same-state fixed-input CQ reuse reduces batch12 QR primitive time.95–4.63%;
+solver time dominates. Near-tie ordering changes occur; max synthetic next-
+update difference.112%, not bitwise equivalence or trained-trajectory evidence.
+
+The specific dense compiled precision policy supports a modest quality/time/
+memory demonstration against original stock SOAP, not a general superiority
+claim or novelty of warm reuse/BF16 storage. Two fixed-order initialization
+seeds do not establish statistical equivalence. No efficient-FP32-QR10 full
+training comparison was added. No production optimizer changes or further GPU
+experiments are part of this completion. Drafting can use the bounded evidence.
+
+The final ledger, schedule-disable receipt and compact backup record closure.
+Historical ACTIVE/launched/draft statuses below are superseded by this record;
+the ledger and live supervisor state remain authoritative.
+
+# Short controls audited; fixed-input QR profile launched — 2026-10-27
+
+The QR20/QR50 pair completed in24.4minutes with supervisor exit0 and repeated
+frozen source/input/support/event/capture/finite-state audits passed. See
+[control review](reports/bf16_refresh_controls_20261027/REVIEW.md). Seed204 at
+2k calls: QR20/warm10-QR50/QR50 CE3.990383/3.993939/3.998679. Complete shared
+cycles101..2000 take329.641/314.142/313.551ms; warm is cached across launches,
+so the small warm-versus-QR50 timing difference is not a fresh paired result.
+These prefix results support a modest quality/cost tradeoff, not final-horizon
+superiority; no new method or schedule is selected.
+
+The approved [same-state QR attribution profile](BF16_QR_ATTRIBUTION_20261027.md)
+passed four CPU checks and is now submitted as soap-bf16-qr-profile under one
+shared gpu-claim. Bundle /workspace/optimizer_replay_results/soap_bf16_qr_profile_20261027_v1.
+Fixed synthetic input at existing factor dimensions, matched FP32 QR precision,
+batch1/12; original versus CQ reuse, numerical update/state observations and
+synchronized timings. Hard600second claimed execution cap including startup,
+no training, production changes or retries. Its result and final synthesis are
+the only remaining bounded tasks. Ledger/live supervisor state is authoritative.
+
+# Full BF16 replicated; bounded refresh controls launched — 2026-10-27
+
+Both full BF16 model seeds are now complete. The repeated frozen measurement
+and source/input audits pass. [Seed204 review](reports/bf16_replicate_20261027_seed204/REVIEW.md)
+and [two-seed scalars](reports/bf16_replicate_20261027_seed204/monitor_review.json):
+stock/fullBF16 final CE204=3.411152/3.422389,205=3.409272/3.419354. Mean paired
+CE gap+.010660 (~1% perplexity), with half matrix state. Seed204 newly matched
+100-call prefix saves17.36% step time; seed205 paired9,900-call comparison
+saves18.66%. These timing scopes differ. Two initialization seeds with fixed
+data order do not establish statistical equivalence. Finite numerical screen
+crossings remain diagnostics, consistent with latest user steering.
+
+The approved [fullBF16 QR20/QR50 controls](BF16_REFRESH_CONTROLS_20261027.md)
+passed17 CPU checks and are now launched sequentially under one shared GPU0
+claim, program soap-bf16-controls204. Bundle
+/workspace/optimizer_replay_results/soap_bf16_refresh_controls_20261027_seed204_v1.
+Two2,000-call controls, seed204, full10k LR horizon, full validation, unchanged
+production math. Compare to the cached warm prefix; no new warm/full training.
+585 frozen Python sources, pinned production/input/support hashes; actual
+cadence tested, eight expected training graphs. Hard combined execution cap
+1,800seconds includes compilation/startup (TERM1790s, KILL10s later); no retry.
+
+Automation ledger owns this launch. Do not resubmit an active stage. The QR
+attribution profile remains pending until controls complete and are audited.
+Only the previously authorized profile/report remain after these controls.
+
+# Bounded experiment completion automation enabled — 2026-10-27
+
+The user explicitly authorized an automation to detect completed runs and proceed
+through necessary remaining experiments. A T3 recurring task is enabled in this
+thread every10 minutes; first check2026-10-27 08:10:11 UTC. See
+[runbook](EXPERIMENT_AUTOMATION.md),
+[atomic state ledger](automation/remaining_experiments_20261027.json) and
+[schedule receipt](automation/schedule_receipt_20261027.json). The current frozen
+replication supervisor remains unchanged and does not itself spawn successors.
+The newly authorized app-owned monitor performs the review and next launches.
+
+Scope: review seed204 replication and synthesize seed204/205 evidence; run fixed
+full-BF16 QR20 and QR50 controls for2k calls each at seed204; run one small same-
+state QR attribution profile; save final compact report/backup and disable the
+schedule. At most one TurboSOAP GPU job queued/active, shared gpu-claim and
+supervisor, no retries or policy tuning. Additional GPU execution after current
+replication is capped45 minutes; controls reserve at most30 minutes combined,
+profile10 minutes. Numerical errors stay descriptive. Failed/invalid experiments,
+ambiguous ownership, exceeded limits or new methodological choices stop follow-
+ups and return to the user. No broad benchmark suite or new full training runs.
+
+The monitor expires2026-10-27 15:58:27 UTC if still unfinished. It disables
+itself on completion/failure/expiry. Atomic ledger reservations prevent duplicate
+submissions; all raw results and historical flags are preserved. Later preparation
+includes meaningful CPU checks, frozen protocols/source and input/production
+hash verification before GPU work. T3 scheduling/provider and workspace access
+must remain available for agent review/launch turns; supervised GPU jobs keep
+their own lifecycle independently. Prior notes saying no automatic successor
+describe the earlier standalone launch scope and are superseded by this new
+user authorization at the coordinator level.
+
+# Full BF16 seed204 replication launched — 2026-10-27
+
+The user approved the proposed replication. [Frozen protocol](BF16_REPLICATION_20261027.md).
+Fixed full BF16 M/V/C/Q warm10/QR50 at model seed204,10k calls, same stock betas,
+data/order and full10k schedule as seed205. No optimizer or training-step source
+changes. Reuse the completed `primary_stock_qr` seed204 quality reference (final
+CE3.411151532) and run201 fresh stock replay calls first, requiring exact
+reproduction at0/50/100/200 and pinned initial weights/gradients/loss/norm/CE.
+Paired timing uses calls101..200 of both new phases on the same claimed device;
+cached full-control timing remains contextual.
+
+Numerical-error role is explicitly **diagnostic**, per user preference. Record
+all old moment/Gram screen flags, with no controller/rejection based solely on
+their finite values. Finite state, reference reproduction, capture and resource
+checks retain their operational roles. Runner/audit helpers now accept the
+specified model seed and candidate; production optimizer and training-step
+files match the completed seed205 experiment byte for byte.31 CPU checks pass,
+including advisory diagnostics with strict reference reproduction.
+
+Managed program `soap-bf16-repl204`, one shared GPU claim, stock replay then
+full BF16. Bundle
+`/workspace/optimizer_replay_results/soap_bf16_replicate_20261027_seed204_v1`,
+583 frozen Python sources, source/input/reference hashes. Expected55–65minutes
+after admission,90-minute phase/two-hour execution limits,24GiB allocation,
+no retry/automatic successor. Read live supervisor/claim state and `progress.json`
+for current status. Completion copies compact audited evidence to
+`reports/bf16_replicate_20261027_seed204/`. No model/optimizer checkpoints.
+Short QR20/QR50 controls remain later planned work, not part of this launch.
+
+# FP32 basis run completed and decision criterion clarified — 2026-10-27
+
+The FP32-basis seed205 confirmation completed in57.69minutes, exit0; repeated
+source/input/support, replay-reproduction and full candidate audits pass. See
+[review](reports/bf16_hybrid_20261026_seed205/REVIEW.md) and
+[summary](reports/bf16_hybrid_20261026_seed205/review_summary.json).
+Final CE stock QR10/full-BF16/BF16-FP32-bases:
+3.409272/3.419354/3.422055. FP32 bases improve max actual-M error to.5155% from
+1.0356%, but do not show better loss on this seed; they use1.608GiB state versus
+full BF161.160GiB and stock2.320GiB. Keep the single-seed scope; no significant
+quality ranking is established. Matched100-call prefix time falls16.73% for
+FP32 bases. Full BF16's18.66% timing comes from a different paired9900-call
+window and should not be treated as a precise head-to-head timing comparison.
+
+The user explicitly clarified that loss performance matters more than the
+arbitrary1% engineering bound. I gave that screen too much decision weight.
+For method selection going forward, finite moment/Gram errors are descriptive
+diagnostics; loss, efficiency and actual stability are primary. Historical
+thresholds/flags and raw artifacts remain unchanged. Full BF16's old false
+screen flag does not establish bad learning, and the1% threshold has no validated
+loss-quality meaning. Nonfinite/invalid-state, reproducibility and resource
+checks still serve their actual operational purposes.
+
+Current recommendation: return to fixed full BF16 as the leading precision
+option and replicate it at seed204 for10k calls, reusing the completed stock204
+quality control plus a short timing replay. This costs about one additional
+GPU-hour and would yield two full model-initialization comparisons. No new run
+was launched in this review turn; both completed supervisors are inactive.
+The revised [demonstration plan](DEMONSTRATION_EXPERIMENTS.md) keeps the scope
+to one OWT model, two model seeds and cheap refresh/profile controls. Stock
+betas and the measured loss gaps remain explicit.
+
+# Full BF16 reviewed and FP32 basis confirmation launched — 2026-10-26
+
+The10k-call seed205 stock QR10/full BF16 pair completed in119.93minutes,
+supervisor exit0. Repeated source/input/support hash, event, evaluation and
+capture audits passed. [Completed review](reports/bf16_full_horizon_20261026_seed205/REVIEW.md)
+and [scalar summary](reports/bf16_full_horizon_20261026_seed205/review_summary.json).
+Final CE QR10 **3.409272**, full BF16 **3.419354**, delta+.010082 (1.013% higher
+perplexity). Step380.548->309.533ms,18.66% less time; matrix state2.320->1.160GiB.
+Full BF16 is **numerically unqualified under the frozen guard**: actual-M error
+exceeded1% for three matrices at the first warm refresh, maximum1.0356%. Sampled
+late maximum.5424% does not erase that failure. Original absolute Gram also
+fails as expected. Preserve all results and thresholds; do not claim exact
+matching, equivalence or qualification from the completed measurement audit.
+
+At the user's request to review, launch next and keep demonstrations modest,
+launch the existing BF16 M/V/C with FP32 bases at seed205 for10k calls. It passed
+the seed204 pilot with.5326% max actual-M error and both geometry guards. Reuse
+the completed stock205 control for learning quality; run201 stock replay calls
+first and require exact validation reproduction at0/50/100/200. Compare timing
+on calls101..200 of both new phases on the same claimed device; cached full-
+control wall time is contextual. No optimizer code/math change, only selection
+of the existing FP32-basis precision option. [Frozen next protocol](BF16_HYBRID_CONFIRM_20261026.md).
+28 CPU checks passed. Managed program `soap-bf16-hybrid205`, admitted onGPU0
+after normal queueing;581 frozen Python sources. Bundle
+`/workspace/optimizer_replay_results/soap_bf16_hybrid_20261026_seed205_v1`.
+Expected55–65minutes after admission, oneGPU, no retry or successor. Live state
+is in supervisor/claim status and the bundle's `progress.json`; this note is a
+historical launch record once the job completes. Compact evidence will copy to
+`reports/bf16_hybrid_20261026_seed205/` automatically. No tensor checkpoints.
+
+[Draft demonstration experiments](DEMONSTRATION_EXPERIMENTS.md): one109M OWT
+model, two fixed model seeds using existing quality controls, shortQR20/QR50
+controls and a small symmetric QR/profile audit. Roughly2–2.5 additional GPU-
+hours including the current candidate; later items are drafts, not queued jobs.
+Report measured quality/time/memory tradeoffs and qualification failures. Broad
+dataset/model sweeps are outside the narrow matching-to-stock demonstration.
+
+# Pilot reviewed; full-horizon seed205 pair launched — 2026-10-26
+
+The five-arm2,000-call stock-beta pilot completed in64.94minutes, supervisor
+exit0, with all source/input/support hashes and event/diagnostic audits repeated.
+See [review](reports/bf16_learning_20261026/REVIEW.md),
+[curves and comparison](reports/bf16_learning_20261026/review.html), and
+[scalar summary](reports/bf16_learning_20261026/review_summary.json).
+Final CE QR10/original-warm/compiled-FP32/full-BF16/BF16-FP32-Q:
+3.985905/3.995753/3.991560/3.993939/3.995611. Full BF16 halves matrix state and
+saves18.19% measured whole-step time against original QR10,7.12% against existing
+warm, and.99% against compiled FP32 storage. These are implementation comparisons,
+not claims against optimized/adaptive/sparse QR. All declared precision-specific
+guards passed; BF16 still fails the original absolute Gram guard. Its overall
+actual-M maximum.9924% remains at the first warm refresh; sampled late maximum
+.5323%. Coordinate offdiagonal maxima near.96 occur in all warm variants at
+age1990, so orthogonality/M checks do not certify close diagonalization.
+
+At the user's explicit request to review and launch the next experiment, advance
+the fixed full BF16 policy to one10,000-call pair versus original stock QR10 at
+fresh model seed205. Selection is for memory benefit and stable sampled late
+transport, not a CE ranking from one pilot. Same data/order, betas and full10k
+LR schedule. [Frozen full-horizon protocol](BF16_FULL_HORIZON_20261026.md).
+New initializer is the only recipe change; optimizer source/mathematics remain
+the successful pilot's.26 CPU checks pass. Bundle
+`/workspace/optimizer_replay_results/soap_bf16_full_20261026_seed205_v1`,579 Python
+sources, input/support hashes. Managed program `soap-bf16-full205`, sequential
+QR10 then BF16 on one shared claim; expected2–2.5hours,90-minute arm/3-hour pair
+limits,24GiB allocation. No retry/automatic successor. Check live `progress.json`
+and supervisor state rather than inferring current status from this launch note.
+Completion copies audited compact evidence to
+`reports/bf16_full_horizon_20261026_seed205/`. No model/optimizer checkpoints.
+Full-horizon quality, additional paired seeds and efficient/sparse QR controls
+remain open; existing completed v1 evidence is preserved.
+
+# Five-arm BF16 learning comparison launched — 2026-10-26
+
+User authorized the proposed2,000-call stock-beta comparison. See the
+[frozen learning protocol](BF16_LEARNING_20261026.md). Five fresh sequential
+arms: stock QR10, original warm v1, compiled FP32 storage, full BF16 storage,
+and BF16 M/V/C with FP32 bases. Same seed204/data order and full10k LR schedule;
+1,024-row validation panel, sparse early/late actual-M and alignment diagnostics.
+No optimizer mathematics changed from the successful storage screen.24 CPU
+checks passed, including cadence, factory, observation-preservation and existing
+BF16/capture tests; receipt in `reports/bf16_learning_20261026/cpu_checks.xml`.
+
+Managed program `soap-bf16-learning`, admitted on GPU1 via shared gpu-claim.
+Bundle `/workspace/optimizer_replay_results/soap_bf16_learning_20261026_v1`,
+577 frozen Python sources, pinned input hashes and startup reference receipts.
+At launch the stock QR10 arm is first; each arm must reproduce the pinned
+initial weight/gradient hashes and initial full-panel CE before training.
+Expected60–75minutes, 30-minute arm/two-hour campaign limits,24GiB allocation,
+no retry/autorestart/automatic successor. Numerical guard failures are recorded
+as unqualified; nonfinite/startup/resource/capture failures stop the campaign.
+
+Read the bundle's `progress.json` and live supervisor state before acting: this
+launch note is historical once the job finishes. Per-arm logs are under
+`runs/<arm>/events.jsonl`, portal log `/var/log/portal/soap-bf16-learning.log`.
+Completion automatically audits results and copies compact scalar evidence to
+`reports/bf16_learning_20261026/`. No model/optimizer tensor checkpoints. No
+result or method-selection claim yet; existing completed v1 evidence stands.
+
+# BF16 storage / compiled optimizer screen completed — 2026-10-26
+
+At the user's request, implemented the opt-in `bf16_soap.CompiledSOAP` branch:
+batched full optimizer regions per repeated matrix shape, BF16 M/V/C/Q storage
+and matrix arithmetic, FP32 master weights/accumulation/solver islands, plus an
+FP32-basis alternative. Existing v1 optimizer sources remain untouched. See
+[precision contract, bounded protocol and completed results](BF16_STORAGE_20261026.md)
+and [compact audited evidence](reports/bf16_storage_20261026/comparison.json).
+
+On a fresh 201-call stock-beta OWT screen, all-state BF16 halves matrix state
+2.320->1.160 GiB and reduces measured optimizer/whole-step time 50.19%/7.74%
+against existing FastSOAP. Peak allocation 9.394->8.218 GiB. Early validation CE
+5.768391 versus 5.768373, one seed and a 128-row panel, is a smoke test only.
+Compiled FP32 storage already saves 6.15% whole-step time; full BF16 adds 1.70%
+relative to that arm, so attribute most speed to the combined implementation.
+All compiled variants hold 12 graphs with no graph breaks through call201.
+
+Full BF16 bases fail the original absolute Gram guard (~.13 vs .05), but pass
+the prospectively declared BF16 normalized guard (.002363 <= .005). Actual-M
+error .9924% is close to the 1% limit. BF16 M/V/C with FP32 bases uses 1.608 GiB,
+saves 6.58% whole-step time and lowers actual-M error to .5045%; both original
+geometry and BF16 guards pass. Keep both experimental options. Longer matched
+learning and paired replications are needed before replacing FP32 v1 evidence.
+Stock betas remain the primary comparison. General BF16 storage is established
+prior work, including Milligan et al.; the prior novelty/efficient-QR/sparse-control
+review requirements below remain open. All screen processes exited; no next
+GPU job was launched. v1/v2 startup failures and final v3 sources are preserved.
+
+# Independent pre-freeze review completed — 2026-10-26
+
+See the [reconciled review](reports/review_20261026/REVIEW_SYNTHESIS.md),
+[GPT methodology review](reports/review_20261026/gpt_review.md), and
+[GPT math review](reports/review_20261026/gpt_math_review.md). Both independent
+GPT reviewers read the requested full papers and audited actual code/results;
+Claude Opus/Sonnet attempts failed at the provider layer and produced no review.
+The parent independently checked papers, the linked authors' implementation,
+saved timing/quality curves and a CPU stall counterexample. No production
+optimizer/trainer code changed and no GPU job was launched by this review.
+
+Preserve tested v1 as an immutable reference. Before final performance claims,
+qualify the existing algebraic CQ-reuse QR optimization under the CURRENT
+recipe, apply it symmetrically to control/repair, and measure complete cadence
+cost. It removes redundant products in exact mathematics but can change
+finite-precision ordering; no new speedup is measured. A single early-QR phase
+is the most evidence-led optional schedule candidate because the current stock
+gap peaks at+.118CE at500 and falls to+.007 at10000. Choosing500 or1000 is a
+prospective design choice; no switch-point sweep or trial is launched. Shared
+fusion/batching is conditional on profiling. Persistent P, block updates,
+adaptive repair and BF16 state are separate branches requiring new validation.
+
+The papers materially narrow novelty: our specific dense matmul warm step,
+repair/retraction and state/precision policy are distinct from stored-P subspace
+QR and adaptive decomposition, but warm starts/Jacobi/hybrid refresh alone are
+not novel claims. Exact superiority/priority remains unestablished. QR repair
+is substantive because the warm generator can stall at equal diagonals despite
+nonzero coupling; the CPU example does not prove incidence in training.
+Late actual-M/residual diagnostics belong in future confirmation runs.
+
+The primary stock-beta QR10 comparison remains primary; sparse QR20/50 controls
+provide context rather than a retroactive requirement to beat every schedule.
+Methodology corrections for paper labels: per-arm elapsed uses a warmed
+campaign compiler cache and excludes earlier preparation/calibration and final
+cleanup; "full state hash" covers listed tensors, not every Python scalar,
+CPU RNG or buffer. The shared validation set is not an untouched test set.
+The49-test XML is v3 CPU evidence; v4 adds cleanup and passed GPU qualification.
+See synthesis for full scope. Existing measurements and source remain unchanged.
+If adopting a new version, explicitly re-plan replications rather than pooling
+old/new timings. The review is completed; no successor job is queued.
+
+---
+
+# Pre-freeze independent review in progress — 2026-10-26
+
+The user requests independent Claude/GPT optimization/methodology brainstorming
+and a close comparison with arXiv2605.26327 and2506.03595 before final freeze.
+Review artifacts and exact delegated-task IDs are in
+[reports/review_20261026](reports/review_20261026/parent_findings.md).
+Claude Opus5.5 and Sonnet5.5 both failed immediately with "Provider turn failed"
+and produced no review. Two independent GPT reviews were commissioned instead:
+GPT6-astra math/optimization review is complete; GPT6.1-sol methodology/novelty
+review is still running. Do not describe these as completed Claude reviews.
+
+The parent has read the full primary method/experiment sections and checked the
+linked Purifying Shampoo implementation at a pinned revision. See the
+[parent findings](reports/review_20261026/parent_findings.md),
+[math review](reports/review_20261026/gpt_math_review.md),
+[timing decomposition](reports/review_20261026/parent_timing_analysis.json), and
+[CPU stall counterexample](reports/review_20261026/equal_diagonal_counterexample.json).
+No optimizer/trainer implementation changed and no GPU job was launched.
+
+Provisional priorities: retain v1 as immutable reference; qualify the already
+known CQ-reuse QR primitive under the current recipe and apply it symmetrically
+before freezing a performance headline; consider one early-QR burn-in policy
+because the stock warm CE gap peaks at+.118 at500 and falls to+.007 at10000.
+The1000-call burn-in's~41s extra cost/~9.73% retained step saving is only an
+arithmetic estimate from old per-policy mean costs, not measured learning or a
+new speed claim. Current warm-only surcharge has about2.31% complete-step
+headroom even if eliminated entirely under fixed other costs, so do not launch
+an unlimited warm-kernel tuning grid. Fused common ordinary work and batching
+need measured whole-policy costs and state tests. Persistent basis-coordinate
+covariance, partial/block updates and adaptive repair are distinct new policies,
+not automatically safe drop-ins. Both papers substantially overlap broad warm,
+Jacobi and cheap/expensive refresh ideas; the concrete dense mixed-precision
+update/repair/state policy remains the narrower positioning question.
+
+The current warm generator can stall at equal diagonal entries despite
+nonzero offdiagonal error; this was verified on a2x2 CPU example. It is not
+proof of incidence or harm in training, but QR repair is substantive and pure
+warm/global diagonalization claims are unsupported. Geometry guards alone do
+not measure tracking quality, and late actual-M/diagonalization observations
+should be added sparsely to future confirmation runs. The user's primary
+matched-interval QR10 comparison remains primary; sparse controls supply
+context rather than an undisclosed requirement to outperform every schedule.
+Final reconciliation awaits the second review. No new experiment is approved
+or queued by this documentation entry.
+
+---
+
+# Primary comparison anchor and paper-closing proposal — 2026-10-26
+
+The user favors official stock SOAP betas as the primary comparison anchor and
+asks whether method development is nearing completion and a paper is now the
+right focus. Use matrix beta1=.95, beta2=.95, effective covariance beta=.95,
+QR10 control and the frozen FastSOAP warm10/QR50 candidate on OpenWebText.
+Retain the other beta profile as a secondary robustness result. Pin the tested
+upstream revision and complete numerical/grouping/training recipe; stock betas
+are a reproducible reference, not a guarantee that every other recipe is
+suboptimal. The current .0015 matrix LR was selected by the recorded bounded
+baseline calibration. Do not silently change global optimizer defaults,
+auxiliary betas, source algorithms, or completed experiments.
+
+Recommendation: freeze the current TurboSOAP method and shift effort to a
+bounded evidence/positioning package. This is a proposed plan, not authorization
+to launch extra training jobs, and no successor is launched by this note.
+
+Proposed closing experiments:
+
+1. Two additional paired training replications of stock QR10/warm10QR50,
+   for three paired seeds total. Freeze the selected LR, horizon, numerical
+   policy and validation protocol. Pair initialization and data order within
+   each replication; document whether data order also varies across seeds.
+   Counterbalance QR-first/warm-first order. Keep the existing validation set.
+2. Stock-beta QR20 and QR50 contextual controls on the existing seed, with
+   the same recipe and complete-cost accounting. QR50 shares warm's repair
+   cadence and measures the incremental value of intervening warm updates;
+   QR20 tests a simpler intermediate cost/quality tradeoff. This screen plus
+   the two paired replications is six additional full runs. A competitive
+   sparse policy would need fair bounded LR calibration/replication before
+   claiming method superiority; an unfavorable outcome should narrow the
+   claim rather than trigger an indefinite tuning loop. These secondary
+   controls do not replace the primary matched-interval QR10 comparison.
+3. A bounded implementation/precision attribution check: confirm an efficient
+   QR control and separate warm reuse from mixed-precision and compilation
+   benefits in complete costs. Numerical parity alone does not certify a
+   strong speed baseline. Reuse applicable saved diagnostics; avoid rerunning
+   missing historical experiments merely to recreate context.
+
+A second model shape/scale is conditional on claiming generality; the narrow
+109M OpenWebText result can anchor a focused technical report. Wider-factor
+advantages, effective-rank mechanisms, the unresolved old H200 refresh timing,
+additional beta/cadence grids, and new moment-update rules are deferred research,
+not automatic requirements for closing this narrower method. TransportMuon
+remains a separate extension requiring a modern efficient fresh-polar baseline
+and matched warm validation before a joint SOAP/Muon paper claim.
+
+Working paper title: "Warm Basis Tracking for Faster SOAP". Suggested structure:
+problem/cost motivation; frozen update and state semantics; skew/Jacobi motion,
+retraction and QR repair; stability/state limitations; matched-token and measured
+elapsed-time learning; sparse-refresh and precision attribution; reproducibility
+and limitations. Treat diagonal-second-moment handling as an approximation, and
+avoid claiming dense warm operations improve cubic asymptotic complexity.
+
+Current supportable claim is workload-specific: on one109M OpenWebText seed,
+stock-beta warm10QR50 reduces complete-step time10.81% and optimizer time44.03%
+while increasing final CE by .006976 (~.700% perplexity). First observed
+threshold timing is favorable, but sampled panels do not establish exact
+continuous crossing times or statistical equivalence. Existing published
+historical10x refresh-event figures are not current end-to-end training speedups.
+Broader claims await the closing evidence above. Acceptance/novelty is not
+established by this plan.
+
+Primary sources checked on2026-10-26:
+- Official SOAP defaults and update semantics:
+  https://github.com/nikhilvyas/SOAP/blob/main/soap.py ; tested pinned fixture at
+  a1e553530fde97d0e6b307d7c82ac6d38b072340 in tests/reference/provenance.json.
+- Milligan et al., "Reparametrizing Shampoo and SOAP for Subspace Basis Updates
+  and BFloat16 Storage" (2026): https://arxiv.org/abs/2605.26327 . Their partial
+  subspace QR updates and low-precision storage are directly relevant prior
+  work. Our warm full-basis motion and repair/state/precision policy must be
+  distinguished explicitly; a head-to-head requirement depends on the claims.
+- Eschenhagen et al., "Purifying Shampoo" (2025):
+  https://arxiv.org/abs/2506.03595 . Their adaptive basis-update criterion based
+  on warm-started QR is related scheduling/approximation work.
+- Vyas et al., "Improving SOAP Using Iterative Whitening and Muon":
+  https://nikhilvyas.github.io/SOAP_Muon.pdf . Iterative orthogonalization and
+  low-precision implementation issues are relevant to algorithm positioning.
+This is a bounded initial related-work check, not an exhaustive novelty review.
+
+---
+
+> **Completed and audited — 2026-10-26:** All four10,000-call primary arms finished,40,000 calls/1.30944B target presentations combined, with matched initial parameters/gradients and verified input/source hashes. Stock betas at selected matrix LR .0015: QR10 CE3.411152 versus warm10/QR50 CE3.418128 (+.006976, ~.700% higher perplexity); mean complete step380.056 versus338.956ms (10.814% lower), optimizer94.556 versus52.920ms (44.033% lower), elapsed65.281 versus58.454min. Previous beta profile at selected matrix LR .0005: QR CE3.442197 versus warm3.451100 (+.008903, ~.894% higher perplexity); complete step380.905 versus338.419ms (11.154% lower), optimizer94.594 versus52.000ms (45.029% lower), elapsed65.461 versus58.389min.
+>
+> All180 primary geometry observations/17,280 factor checks,384 actual-M checks,12 full-state evaluation checks and four registered releases pass; final allocated bytes zero for every arm.572 frozen files and all four input files rehashed successfully. First observed CE<=3.5 occurs at43.864 versus48.980min for stock warm/QR, and46.638 versus52.345min for previous warm/QR; these are sampled observations, not precise continuous crossing times. Stock's warm upper observed bracket precedes QR's prior observation; repeated panels and this single paired seed are not independent replications. Stock is better here under its selected LR, but beta1 and selected LR differ, so the profile comparison does not isolate covariance/beta2 causally. No universal quality equivalence or default promotion. [Completion audit](reports/owt_restart_20261026/completion_audit.json) and [full comparison](reports/owt_restart_20261026/comparison.json) are copied into this repository for recovery. Our supervisor exited normally and its GPU claim was released; no successor launched. A fresh model-seed replication of the stock QR/warm pair is the proposed next decision, not a launched experiment. Earlier ACTIVE labels below are historical.
+
+> **OpenWebText campaign qualified and launched — 2026-10-26:** [Restart protocol](OWT_RESTART_20261026.md). User authorizes continuing with the existing shared OpenWebText dataset, including official SOAP beta settings. New 109.397M/768x12 full two-sided comparison: stock matrix betas(.95,.95)/covariance .95 and previous(.9,.999)/covariance .99, each QR10 versus FastSOAP warm10/QR50, identical data/model seed204. Separate auxiliary AdamW stays(.9,.999). Full horizon10,000 calls/327.36M targets per arm, global32/physical8/sequence1024 blocks yielding1023 targets each. Six baseline-only500-call LR calibrations (.0005/.0015/.003 per profile), using the same full schedule, precede four fresh main arms; selected LR shared within each QR/warm pair. This is a new OpenWebText experiment, not a FineWeb Trial213 replay or a full upstream training-recipe reproduction.
+>
+> 49 CPU tests PASS, including pinned upstream stock-beta parity. Four61-call GPU qualification arms PASS with exact cross-arm initial weight/gradient/validation agreement, geometry/actual momentum checks and zero registered tensor/storage leaks; worst Gram .017224, worst M relative .001083, peak9.398GiB. A separate real-batch compiled/eager CE execution screen PASS (gradient relative .1385%, cosine .99999904, CE difference2.384e-7). Deterministic CUDA and explicit post-training cuBLAS workspace release were qualified; earlier startup/release failures and code fixes remain preserved in versioned bundles. No thresholds relaxed.
+>
+> Active managed campaign: `soap-owt-learning`, lifetime-claimed physical GPU1, frozen bundle `/workspace/optimizer_replay_results/soap_owt_restart_20261026_v4`, log `/var/log/portal/soap-owt-learning.log`. Calibration and primary outcomes remain pending. Exact selected input IDs and hashes, all571 Python sources, protocol, checks and scalar logs retained; no weights/checkpoints. One-seed/profile-comparison/order/shared-node limits apply.12h external bound,6h per-arm bound,24GiB allocation bound, no restart or undeclared successor. Check live status before action. Other projects/services remain untouched; older ACTIVE labels below are historical.
+
+> **Restart direction — 2026-10-26:** The user prefers OpenWebText for consistency with other projects and is interested in stock SOAP covariance/beta2 settings as well as the recent profile. FineWeb was selected for a particular reference-recipe comparison; it is not required for warm-basis research. Prepare the next comparison on OpenWebText. This supersedes the proposed immediate FineWeb Trial213 replay; the historical records below remain unchanged. No new training run is launched by this note.
+>
+> Official SOAP defaults are `betas=(.95,.95)` and `shampoo_beta=-1`, which ties covariance decay to beta2 and therefore gives effective covariance beta `.95`; refresh interval defaults to 10. The pinned upstream fixture at `tests/reference/soap_upstream.py` (revision in `tests/reference/provenance.json`) agrees with the official source checked on 2026-10-26. The latest historical Trial213 profile instead used beta1 `.9`, adaptive beta2 `.999`, and covariance beta `.99`. Comparing these complete profiles does not isolate a covariance-only or beta2-only effect. Stock beta values also do not by themselves make a blocked/normalized or smaller-side implementation identical to upstream SOAP.
+>
+> Proposed preparation: one fixed OpenWebText model/data/validation/execution recipe, with QR10 and warm10/QR50 at each of the two beta profiles, preceded by local numerical and complete-step qualification and bounded baseline learning-rate calibration. Exact model, token budget, seeds, learning rates and full-run scope remain to be frozen. Do not silently inherit the old OpenWebText config's smaller-side coverage or the FineWeb port's hardcoded beta2. The original machine lost outbound internet, only Git repositories were rescued, and external run bundles/results/data were not recovered here. Historical "active" means last saved status, not confirmed current liveness or completion. The rebuilt shared GPU coordinator is documented at `/workspace/GPU_QUEUEING.md`.
+
 > **Trial213 active — fresh model-seed replication and sparse drift diagnostics, 2026-10-24:** [Protocol](../optimizer_replay_results/soap_seed_replication213_20261024/PREPARATION.md), [startup audit](../optimizer_replay_results/soap_seed_replication213_20261024/startup_audit.json), [diagnostic plan](../optimizer_replay_results/soap_seed_replication213_frozen_20261024/basis_diagnostic_plan.json). User authorizes the next paired run. QR10 FIRST, warm10+QR50 second, 5,000 updates /655.36Mtargets each, on claimedGPU7/private `manifold_seed_replication213`, trainer 31488. Model initialization seed204 replaces203; optimizer-vector seed203 and data/order/recipe stay fixed. This is a second model initialization, not a fresh data-order seed or a large seed ensemble.
 >
 > Same Shampoo covariance beta .99, adaptive variance/bias correction .999, raw momentum .9, LR .032/WD .0002/clip1, full28,332-update schedule/177warmup,185.68M parameters/width512/depth32/block512 normalized SOAP. Original transformer+compiledFP32CE, BF16forward/FP32state/recompute, physical16x8/global128/sequence1024/validation8. First50EIGH and QR/warm cadences unchanged. Additive harness overrides model seed and adds observation; backward, evaluation, state hash and data methods AST-identical to212. Existing optimizer/model/helpers untouched. Reuse exact210–212eight data files/640,000uniqueIDs/5,000batch hashes/2,048validationwindows; no downloads/copies. Earlier212 results preserved as context.

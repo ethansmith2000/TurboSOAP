@@ -1,0 +1,6023 @@
+[
+  {
+    "call": 1,
+    "factors": [
+      {
+        "name": "blocks.0.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 5.171039083506912e-05,
+        "normalized_gram": 1.07729980906394e-06,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.0023499454061190286
+      },
+      {
+        "name": "blocks.0.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 3.115252548013814e-05,
+        "normalized_gram": 1.1241199357434018e-06,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.0023553446376337363
+      },
+      {
+        "name": "blocks.0.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 2.917898746090941e-05,
+        "normalized_gram": 1.0529060165772978e-06,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.002358110025335019
+      },
+      {
+        "name": "blocks.0.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 2.93828434223542e-05,
+        "normalized_gram": 1.0602620349658013e-06,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.002358524860375178
+      },
+      {
+        "name": "blocks.0.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 6.916894926689565e-05,
+        "normalized_gram": 1.2479597337126805e-06,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.0023484494501580613
+      },
+      {
+        "name": "blocks.0.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 3.5488326830090955e-05,
+        "normalized_gram": 1.280574690527652e-06,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.0023559904145400634
+      },
+      {
+        "name": "blocks.0.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 3.288643711130135e-05,
+        "normalized_gram": 1.1866870824310959e-06,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.0023494197286155695
+      },
+      {
+        "name": "blocks.0.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 4.315151090850122e-05,
+        "normalized_gram": 1.1010331599580227e-06,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.0023463127064151756
+      },
+      {
+        "name": "blocks.1.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 4.9810740165412426e-05,
+        "normalized_gram": 1.0377237534460921e-06,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.0023497013996044793
+      },
+      {
+        "name": "blocks.1.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 2.852478064596653e-05,
+        "normalized_gram": 1.0292993615327377e-06,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.0023534374180777477
+      },
+      {
+        "name": "blocks.1.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 2.660797326825559e-05,
+        "normalized_gram": 9.601325330636082e-07,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.002359585472321665
+      },
+      {
+        "name": "blocks.1.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 2.671395668585319e-05,
+        "normalized_gram": 9.63956880231084e-07,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.002361263094259833
+      },
+      {
+        "name": "blocks.1.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 6.839742127340287e-05,
+        "normalized_gram": 1.2340396745023559e-06,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.00234896671692233
+      },
+      {
+        "name": "blocks.1.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 3.4091070119757205e-05,
+        "normalized_gram": 1.2301555319127644e-06,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.0023601056964322985
+      },
+      {
+        "name": "blocks.1.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 3.3176173019455746e-05,
+        "normalized_gram": 1.1971420264665234e-06,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.002353917314737945
+      },
+      {
+        "name": "blocks.1.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 4.246252137818374e-05,
+        "normalized_gram": 1.0834532350892967e-06,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.0023490388182021986
+      },
+      {
+        "name": "blocks.2.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 4.952033850713633e-05,
+        "normalized_gram": 1.0316737188986735e-06,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.0023475304866830506
+      },
+      {
+        "name": "blocks.2.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 2.7797794245998375e-05,
+        "normalized_gram": 1.003066499425312e-06,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.0023519961149991385
+      },
+      {
+        "name": "blocks.2.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 2.595102705527097e-05,
+        "normalized_gram": 9.364270285067472e-07,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.002357323371201833
+      },
+      {
+        "name": "blocks.2.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 2.6436657208250836e-05,
+        "normalized_gram": 9.539506972285927e-07,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.002350482222509743
+      },
+      {
+        "name": "blocks.2.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 6.755495996912941e-05,
+        "normalized_gram": 1.218839822602227e-06,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.0023475485349153044
+      },
+      {
+        "name": "blocks.2.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 3.3077878470066935e-05,
+        "normalized_gram": 1.1935951274321796e-06,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.0023552733924712983
+      },
+      {
+        "name": "blocks.2.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 3.326884325360879e-05,
+        "normalized_gram": 1.2004859755061564e-06,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.002352735451590479
+      },
+      {
+        "name": "blocks.2.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 4.223262658342719e-05,
+        "normalized_gram": 1.077587350280178e-06,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.0023461041607645227
+      },
+      {
+        "name": "blocks.3.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 4.879843982052989e-05,
+        "normalized_gram": 1.016634162927706e-06,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.0023506581783294678
+      },
+      {
+        "name": "blocks.3.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 2.669333480298519e-05,
+        "normalized_gram": 9.632127521295192e-07,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.0023492215864090904
+      },
+      {
+        "name": "blocks.3.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 2.6227438866044395e-05,
+        "normalized_gram": 9.464011805915741e-07,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.002355434164573706
+      },
+      {
+        "name": "blocks.3.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 2.6071609681821428e-05,
+        "normalized_gram": 9.407781792504035e-07,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.0023604449847153064
+      },
+      {
+        "name": "blocks.3.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 6.677769124507904e-05,
+        "normalized_gram": 1.2048161880065033e-06,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.0023464322710872155
+      },
+      {
+        "name": "blocks.3.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 3.24315951729659e-05,
+        "normalized_gram": 1.1702743877100518e-06,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.0023468479126763832
+      },
+      {
+        "name": "blocks.3.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 3.266205021645874e-05,
+        "normalized_gram": 1.1785902177973456e-06,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.0023502741328654893
+      },
+      {
+        "name": "blocks.3.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 4.230941704008728e-05,
+        "normalized_gram": 1.0795466985711418e-06,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.0023517120806812166
+      },
+      {
+        "name": "blocks.4.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 4.837268716073595e-05,
+        "normalized_gram": 1.0077643158486656e-06,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.0023473844242592654
+      },
+      {
+        "name": "blocks.4.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 2.6499401428736746e-05,
+        "normalized_gram": 9.562147842653196e-07,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.0023509978761759942
+      },
+      {
+        "name": "blocks.4.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 2.596577542135492e-05,
+        "normalized_gram": 9.369592143272895e-07,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.0023545907831602386
+      },
+      {
+        "name": "blocks.4.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 2.5803468815865926e-05,
+        "normalized_gram": 9.311024791791443e-07,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.0023560968790092163
+      },
+      {
+        "name": "blocks.4.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 6.672449671896175e-05,
+        "normalized_gram": 1.2038564419448395e-06,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.0023481394664890375
+      },
+      {
+        "name": "blocks.4.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 3.243907121941447e-05,
+        "normalized_gram": 1.1705441562993992e-06,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.0023546195500748837
+      },
+      {
+        "name": "blocks.4.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 3.154884689138271e-05,
+        "normalized_gram": 1.138420952835131e-06,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.002361270890900251
+      },
+      {
+        "name": "blocks.4.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 4.156019349466078e-05,
+        "normalized_gram": 1.0604298715964142e-06,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.0023496055224725694
+      },
+      {
+        "name": "blocks.5.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 4.809919846593402e-05,
+        "normalized_gram": 1.0020666347069589e-06,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.0023496183566749096
+      },
+      {
+        "name": "blocks.5.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 2.6321222321712412e-05,
+        "normalized_gram": 9.497852995525405e-07,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.0023579011291417567
+      },
+      {
+        "name": "blocks.5.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 2.5987616027123295e-05,
+        "normalized_gram": 9.377473193035167e-07,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.0023589198005397887
+      },
+      {
+        "name": "blocks.5.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 2.5947021640604362e-05,
+        "normalized_gram": 9.362824955544984e-07,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.0023511379468538446
+      },
+      {
+        "name": "blocks.5.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 6.653903255937621e-05,
+        "normalized_gram": 1.2005102612429102e-06,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.0023457760090437748
+      },
+      {
+        "name": "blocks.5.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 3.1740702979732305e-05,
+        "normalized_gram": 1.1453439631010252e-06,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.0023568273435614607
+      },
+      {
+        "name": "blocks.5.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 3.1800333090359345e-05,
+        "normalized_gram": 1.1474956793774209e-06,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.0023571862578703477
+      },
+      {
+        "name": "blocks.5.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 4.207202800898813e-05,
+        "normalized_gram": 1.0734895944385728e-06,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.0023478580734107623
+      },
+      {
+        "name": "blocks.6.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 4.839185203309171e-05,
+        "normalized_gram": 1.0081635840227439e-06,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.002348688586304585
+      },
+      {
+        "name": "blocks.6.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 2.6462301320862025e-05,
+        "normalized_gram": 9.548760494360426e-07,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.002356424069057093
+      },
+      {
+        "name": "blocks.6.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 2.6155856176046655e-05,
+        "normalized_gram": 9.438181627578546e-07,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.0023533234258178467
+      },
+      {
+        "name": "blocks.6.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 2.618540202092845e-05,
+        "normalized_gram": 9.448843066013507e-07,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.0023588383390899066
+      },
+      {
+        "name": "blocks.6.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 6.662249506916851e-05,
+        "normalized_gram": 1.2020161081959048e-06,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.0023455007069821264
+      },
+      {
+        "name": "blocks.6.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 3.1922259950079024e-05,
+        "normalized_gram": 1.1518953359574584e-06,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.002355926428318704
+      },
+      {
+        "name": "blocks.6.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 3.1706829759059474e-05,
+        "normalized_gram": 1.1441216685339141e-06,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.002357022797271244
+      },
+      {
+        "name": "blocks.6.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 4.158961382927373e-05,
+        "normalized_gram": 1.0611805466783273e-06,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.0023471233159451524
+      },
+      {
+        "name": "blocks.7.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 4.83736876049079e-05,
+        "normalized_gram": 1.0077851584355813e-06,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.0023487755097448826
+      },
+      {
+        "name": "blocks.7.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 2.6106064979103394e-05,
+        "normalized_gram": 9.420214776979504e-07,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.0023587359073657973
+      },
+      {
+        "name": "blocks.7.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 2.5830868253251538e-05,
+        "normalized_gram": 9.320911712135334e-07,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.002352827129327805
+      },
+      {
+        "name": "blocks.7.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 2.635764940350782e-05,
+        "normalized_gram": 9.510997486450638e-07,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.002350883883916093
+      },
+      {
+        "name": "blocks.7.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 6.682703678961843e-05,
+        "normalized_gram": 1.2057064899884759e-06,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.002346567502471013
+      },
+      {
+        "name": "blocks.7.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 3.185963578289375e-05,
+        "normalized_gram": 1.1496355809710713e-06,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.002353889892071648
+      },
+      {
+        "name": "blocks.7.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 3.158774052280933e-05,
+        "normalized_gram": 1.139824405871001e-06,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.00236206211547782
+      },
+      {
+        "name": "blocks.7.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 4.1562652768334374e-05,
+        "normalized_gram": 1.0604926212384784e-06,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.00234695640338246
+      },
+      {
+        "name": "blocks.8.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 4.818247180082835e-05,
+        "normalized_gram": 1.0038014958505907e-06,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.002349555492401123
+      },
+      {
+        "name": "blocks.8.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 2.6085244826390408e-05,
+        "normalized_gram": 9.412701951496123e-07,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.0023577508421764623
+      },
+      {
+        "name": "blocks.8.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 2.5822944735409692e-05,
+        "normalized_gram": 9.31805255891101e-07,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.0023597263495485237
+      },
+      {
+        "name": "blocks.8.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 2.6038129362859763e-05,
+        "normalized_gram": 9.395700623025865e-07,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.0023577494979281142
+      },
+      {
+        "name": "blocks.8.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 6.608592957491055e-05,
+        "normalized_gram": 1.1923352884287894e-06,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.00234925357951977
+      },
+      {
+        "name": "blocks.8.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 3.1828101782593876e-05,
+        "normalized_gram": 1.1484976957484615e-06,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.0023572400278042633
+      },
+      {
+        "name": "blocks.8.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 3.1081552151590586e-05,
+        "normalized_gram": 1.1215589063470135e-06,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.0023605955405302703
+      },
+      {
+        "name": "blocks.8.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 4.1232651710743085e-05,
+        "normalized_gram": 1.0520724732626713e-06,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.0023482909434623
+      },
+      {
+        "name": "blocks.9.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 4.826802251045592e-05,
+        "normalized_gram": 1.005583802301165e-06,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.0023451650825639567
+      },
+      {
+        "name": "blocks.9.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 2.584499634394888e-05,
+        "normalized_gram": 9.326009747739862e-07,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.0023579997969704917
+      },
+      {
+        "name": "blocks.9.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 2.5656423531472683e-05,
+        "normalized_gram": 9.257964395211752e-07,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.0023512239787481094
+      },
+      {
+        "name": "blocks.9.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 2.608049544505775e-05,
+        "normalized_gram": 9.410988166126813e-07,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.002348030851222528
+      },
+      {
+        "name": "blocks.9.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 6.684807158308104e-05,
+        "normalized_gram": 1.2060860038531004e-06,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.0023457786975404704
+      },
+      {
+        "name": "blocks.9.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 3.188364644302055e-05,
+        "normalized_gram": 1.1505019910390482e-06,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.002353323963517186
+      },
+      {
+        "name": "blocks.9.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 3.125487273791805e-05,
+        "normalized_gram": 1.1278130742952802e-06,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.002357870749129094
+      },
+      {
+        "name": "blocks.9.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 4.1215436795027927e-05,
+        "normalized_gram": 1.0516332257682218e-06,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.002346836446859614
+      },
+      {
+        "name": "blocks.10.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 4.801180330105126e-05,
+        "normalized_gram": 1.0002459021052346e-06,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.002347768284380436
+      },
+      {
+        "name": "blocks.10.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 2.5893954443745315e-05,
+        "normalized_gram": 9.343675980300165e-07,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.0023581439003933858
+      },
+      {
+        "name": "blocks.10.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 2.5761721190065145e-05,
+        "normalized_gram": 9.295960414920124e-07,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.00234892208787718
+      },
+      {
+        "name": "blocks.10.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 2.6072148102684878e-05,
+        "normalized_gram": 9.407976078398067e-07,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.0023553371098429883
+      },
+      {
+        "name": "blocks.10.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 6.683402898488566e-05,
+        "normalized_gram": 1.2058326445453435e-06,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.0023475899377644197
+      },
+      {
+        "name": "blocks.10.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 3.2590713090030476e-05,
+        "normalized_gram": 1.1760160609756848e-06,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.002354876301509331
+      },
+      {
+        "name": "blocks.10.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 3.1127059628488496e-05,
+        "normalized_gram": 1.1232010159743355e-06,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.0023549174355087764
+      },
+      {
+        "name": "blocks.10.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 4.131711466470733e-05,
+        "normalized_gram": 1.0542275892978858e-06,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.0023511484180976376
+      },
+      {
+        "name": "blocks.11.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 4.805592107004486e-05,
+        "normalized_gram": 1.0011650222926012e-06,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.0023470671537021794
+      },
+      {
+        "name": "blocks.11.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 2.6128207537112758e-05,
+        "normalized_gram": 9.428204784371538e-07,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.0023571685137921557
+      },
+      {
+        "name": "blocks.11.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 2.566004332038574e-05,
+        "normalized_gram": 9.259270574026354e-07,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.0023487438405462497
+      },
+      {
+        "name": "blocks.11.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 2.5819548682193272e-05,
+        "normalized_gram": 9.316827113761833e-07,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.002352918269365792
+      },
+      {
+        "name": "blocks.11.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 6.703096732962877e-05,
+        "normalized_gram": 1.209385844743818e-06,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.002347097405169752
+      },
+      {
+        "name": "blocks.11.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 3.257880962337367e-05,
+        "normalized_gram": 1.1755865316207726e-06,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.00236295469638082
+      },
+      {
+        "name": "blocks.11.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 3.109405952272937e-05,
+        "normalized_gram": 1.122010227227878e-06,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.0023543200515429735
+      },
+      {
+        "name": "blocks.11.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 4.129038279643282e-05,
+        "normalized_gram": 1.0535455118276376e-06,
+        "fresh_bf16_rounded_qr_normalized_gram": 0.002348746626164775
+      }
+    ],
+    "momentum": [],
+    "max_absolute_gram": 6.916894926689565e-05,
+    "max_normalized_gram": 1.280574690527652e-06,
+    "max_physical_m_error": 0
+  },
+  {
+    "call": 11,
+    "factors": [
+      {
+        "name": "blocks.0.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 4.975104457116686e-05,
+        "normalized_gram": 1.036480095232643e-06
+      },
+      {
+        "name": "blocks.0.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8381466361461207e-05,
+        "normalized_gram": 6.63284034493105e-07
+      },
+      {
+        "name": "blocks.0.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8601123883854598e-05,
+        "normalized_gram": 6.712102425983143e-07
+      },
+      {
+        "name": "blocks.0.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8643740986590274e-05,
+        "normalized_gram": 6.727480548318471e-07
+      },
+      {
+        "name": "blocks.0.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 4.968855137121864e-05,
+        "normalized_gram": 8.964905784317384e-07
+      },
+      {
+        "name": "blocks.0.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8631564671522938e-05,
+        "normalized_gram": 6.723086799079806e-07
+      },
+      {
+        "name": "blocks.0.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8552083929535e-05,
+        "normalized_gram": 6.694406656715977e-07
+      },
+      {
+        "name": "blocks.0.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 3.198224294465035e-05,
+        "normalized_gram": 8.160435004595907e-07
+      },
+      {
+        "name": "blocks.1.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 4.9839563871501014e-05,
+        "normalized_gram": 1.0383242473229377e-06
+      },
+      {
+        "name": "blocks.1.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8490620277589187e-05,
+        "normalized_gram": 6.672227871718294e-07
+      },
+      {
+        "name": "blocks.1.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.855664413596969e-05,
+        "normalized_gram": 6.69605217947387e-07
+      },
+      {
+        "name": "blocks.1.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.856306698755361e-05,
+        "normalized_gram": 6.698369826405708e-07
+      },
+      {
+        "name": "blocks.1.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 4.977184653398581e-05,
+        "normalized_gram": 8.979934060769204e-07
+      },
+      {
+        "name": "blocks.1.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8534459741204046e-05,
+        "normalized_gram": 6.688047075542774e-07
+      },
+      {
+        "name": "blocks.1.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.870635969680734e-05,
+        "normalized_gram": 6.750076129068553e-07
+      },
+      {
+        "name": "blocks.1.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 3.205626489943825e-05,
+        "normalized_gram": 8.179322089907752e-07
+      },
+      {
+        "name": "blocks.2.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 4.875204831478186e-05,
+        "normalized_gram": 1.0156676732246221e-06
+      },
+      {
+        "name": "blocks.2.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8490603906684555e-05,
+        "normalized_gram": 6.672221964376922e-07
+      },
+      {
+        "name": "blocks.2.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.854094080044888e-05,
+        "normalized_gram": 6.690385726355048e-07
+      },
+      {
+        "name": "blocks.2.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.846462873800192e-05,
+        "normalized_gram": 6.662848982732443e-07
+      },
+      {
+        "name": "blocks.2.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 4.989173248759471e-05,
+        "normalized_gram": 9.001564119390501e-07
+      },
+      {
+        "name": "blocks.2.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.863837314886041e-05,
+        "normalized_gram": 6.725543596719532e-07
+      },
+      {
+        "name": "blocks.2.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.844656617322471e-05,
+        "normalized_gram": 6.656331216084708e-07
+      },
+      {
+        "name": "blocks.2.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 3.1892737752059475e-05,
+        "normalized_gram": 8.137597290931617e-07
+      },
+      {
+        "name": "blocks.3.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 4.864163929596543e-05,
+        "normalized_gram": 1.0133674853326131e-06
+      },
+      {
+        "name": "blocks.3.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8716826161835343e-05,
+        "normalized_gram": 6.753852889319416e-07
+      },
+      {
+        "name": "blocks.3.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8535296476329677e-05,
+        "normalized_gram": 6.688349006324038e-07
+      },
+      {
+        "name": "blocks.3.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8578726667328738e-05,
+        "normalized_gram": 6.704020526614204e-07
+      },
+      {
+        "name": "blocks.3.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 4.964432446286082e-05,
+        "normalized_gram": 8.956926278865569e-07
+      },
+      {
+        "name": "blocks.3.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8435504898661748e-05,
+        "normalized_gram": 6.652339822430641e-07
+      },
+      {
+        "name": "blocks.3.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8598977476358414e-05,
+        "normalized_gram": 6.711327907892073e-07
+      },
+      {
+        "name": "blocks.3.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 3.206237670383416e-05,
+        "normalized_gram": 8.180881548467928e-07
+      },
+      {
+        "name": "blocks.4.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 4.8302015784429386e-05,
+        "normalized_gram": 1.0062919955089455e-06
+      },
+      {
+        "name": "blocks.4.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.869913103291765e-05,
+        "normalized_gram": 6.747467709666931e-07
+      },
+      {
+        "name": "blocks.4.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.861002965597436e-05,
+        "normalized_gram": 6.715316019689822e-07
+      },
+      {
+        "name": "blocks.4.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8598246242618188e-05,
+        "normalized_gram": 6.711064046644098e-07
+      },
+      {
+        "name": "blocks.4.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 4.982364407624118e-05,
+        "normalized_gram": 8.98927947482061e-07
+      },
+      {
+        "name": "blocks.4.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8587665181257762e-05,
+        "normalized_gram": 6.707245935003627e-07
+      },
+      {
+        "name": "blocks.4.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8607535821502097e-05,
+        "normalized_gram": 6.7144161346874e-07
+      },
+      {
+        "name": "blocks.4.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 3.209525311831385e-05,
+        "normalized_gram": 8.189270135972875e-07
+      },
+      {
+        "name": "blocks.5.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 4.906892354483716e-05,
+        "normalized_gram": 1.022269240517441e-06
+      },
+      {
+        "name": "blocks.5.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8492455637897365e-05,
+        "normalized_gram": 6.672890150323285e-07
+      },
+      {
+        "name": "blocks.5.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.846223312895745e-05,
+        "normalized_gram": 6.661984541778258e-07
+      },
+      {
+        "name": "blocks.5.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.847576641011983e-05,
+        "normalized_gram": 6.666867943979582e-07
+      },
+      {
+        "name": "blocks.5.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 4.9623933591647074e-05,
+        "normalized_gram": 8.953247317932985e-07
+      },
+      {
+        "name": "blocks.5.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8553644622443244e-05,
+        "normalized_gram": 6.694969823260163e-07
+      },
+      {
+        "name": "blocks.5.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.848056672315579e-05,
+        "normalized_gram": 6.668600107744272e-07
+      },
+      {
+        "name": "blocks.5.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 3.195870522176847e-05,
+        "normalized_gram": 8.154429232640944e-07
+      },
+      {
+        "name": "blocks.6.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 4.895867095910944e-05,
+        "normalized_gram": 1.0199723116481134e-06
+      },
+      {
+        "name": "blocks.6.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8584634744911455e-05,
+        "normalized_gram": 6.706152420478438e-07
+      },
+      {
+        "name": "blocks.6.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8365322830504738e-05,
+        "normalized_gram": 6.627015049966432e-07
+      },
+      {
+        "name": "blocks.6.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.870329288067296e-05,
+        "normalized_gram": 6.748969487118091e-07
+      },
+      {
+        "name": "blocks.6.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 4.981210076948628e-05,
+        "normalized_gram": 8.987196808801147e-07
+      },
+      {
+        "name": "blocks.6.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.878661714727059e-05,
+        "normalized_gram": 6.779036541961947e-07
+      },
+      {
+        "name": "blocks.6.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8717195416684262e-05,
+        "normalized_gram": 6.753986132685931e-07
+      },
+      {
+        "name": "blocks.6.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 3.215072865714319e-05,
+        "normalized_gram": 8.2034250071539e-07
+      },
+      {
+        "name": "blocks.7.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 4.8854300985112786e-05,
+        "normalized_gram": 1.0177979371898498e-06
+      },
+      {
+        "name": "blocks.7.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.86846918950323e-05,
+        "normalized_gram": 6.742257434576325e-07
+      },
+      {
+        "name": "blocks.7.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8575354260974564e-05,
+        "normalized_gram": 6.702803614291454e-07
+      },
+      {
+        "name": "blocks.7.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8212767827208154e-05,
+        "normalized_gram": 6.57196650482924e-07
+      },
+      {
+        "name": "blocks.7.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 4.9763370043365285e-05,
+        "normalized_gram": 8.978404715724971e-07
+      },
+      {
+        "name": "blocks.7.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.86133347597206e-05,
+        "normalized_gram": 6.716508646275818e-07
+      },
+      {
+        "name": "blocks.7.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.842675374064129e-05,
+        "normalized_gram": 6.64918202028137e-07
+      },
+      {
+        "name": "blocks.7.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 3.20198705594521e-05,
+        "normalized_gram": 8.170035885481562e-07
+      },
+      {
+        "name": "blocks.8.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 4.8849888116819784e-05,
+        "normalized_gram": 1.0177060024337454e-06
+      },
+      {
+        "name": "blocks.8.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.845468250394333e-05,
+        "normalized_gram": 6.659259944662975e-07
+      },
+      {
+        "name": "blocks.8.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.843533209466841e-05,
+        "normalized_gram": 6.652277467160597e-07
+      },
+      {
+        "name": "blocks.8.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.852736750151962e-05,
+        "normalized_gram": 6.685487883985923e-07
+      },
+      {
+        "name": "blocks.8.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 4.979654113412835e-05,
+        "normalized_gram": 8.984389508906649e-07
+      },
+      {
+        "name": "blocks.8.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8469167116563767e-05,
+        "normalized_gram": 6.664486629035172e-07
+      },
+      {
+        "name": "blocks.8.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.869191328296438e-05,
+        "normalized_gram": 6.744863228492891e-07
+      },
+      {
+        "name": "blocks.8.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 3.2007694244384766e-05,
+        "normalized_gram": 8.166929035600069e-07
+      },
+      {
+        "name": "blocks.9.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 4.861796696786769e-05,
+        "normalized_gram": 1.0128743118305767e-06
+      },
+      {
+        "name": "blocks.9.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.846456143539399e-05,
+        "normalized_gram": 6.66282469699569e-07
+      },
+      {
+        "name": "blocks.9.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.858280120359268e-05,
+        "normalized_gram": 6.70549079824471e-07
+      },
+      {
+        "name": "blocks.9.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.861429882410448e-05,
+        "normalized_gram": 6.716856523045536e-07
+      },
+      {
+        "name": "blocks.9.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 4.9671914894133806e-05,
+        "normalized_gram": 8.961904198528855e-07
+      },
+      {
+        "name": "blocks.9.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.865753256424796e-05,
+        "normalized_gram": 6.73245715523923e-07
+      },
+      {
+        "name": "blocks.9.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8250308130518533e-05,
+        "normalized_gram": 6.585512694967807e-07
+      },
+      {
+        "name": "blocks.9.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 3.194325108779594e-05,
+        "normalized_gram": 8.150486030281642e-07
+      },
+      {
+        "name": "blocks.10.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 4.870726843364537e-05,
+        "normalized_gram": 1.0147347590342786e-06
+      },
+      {
+        "name": "blocks.10.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8802131307893433e-05,
+        "normalized_gram": 6.784634732469353e-07
+      },
+      {
+        "name": "blocks.10.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8776847355184145e-05,
+        "normalized_gram": 6.77551117190505e-07
+      },
+      {
+        "name": "blocks.10.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.86950528586749e-05,
+        "normalized_gram": 6.745996125293897e-07
+      },
+      {
+        "name": "blocks.10.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 4.98070839967113e-05,
+        "normalized_gram": 8.986291672828616e-07
+      },
+      {
+        "name": "blocks.10.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.831805275287479e-05,
+        "normalized_gram": 6.609957929938767e-07
+      },
+      {
+        "name": "blocks.10.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8637099856277928e-05,
+        "normalized_gram": 6.725084136834998e-07
+      },
+      {
+        "name": "blocks.10.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 3.195471072103828e-05,
+        "normalized_gram": 8.153410015081972e-07
+      },
+      {
+        "name": "blocks.11.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 4.8257261369144544e-05,
+        "normalized_gram": 1.005359611857178e-06
+      },
+      {
+        "name": "blocks.11.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8569875464891084e-05,
+        "normalized_gram": 6.700826624045434e-07
+      },
+      {
+        "name": "blocks.11.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8558856027084403e-05,
+        "normalized_gram": 6.69685032693043e-07
+      },
+      {
+        "name": "blocks.11.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8637287212186493e-05,
+        "normalized_gram": 6.725151743075151e-07
+      },
+      {
+        "name": "blocks.11.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 4.9840262363431975e-05,
+        "normalized_gram": 8.992277778752821e-07
+      },
+      {
+        "name": "blocks.11.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8610782717587426e-05,
+        "normalized_gram": 6.71558775739296e-07
+      },
+      {
+        "name": "blocks.11.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8526639905758202e-05,
+        "normalized_gram": 6.685225335480476e-07
+      },
+      {
+        "name": "blocks.11.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 3.199137427145615e-05,
+        "normalized_gram": 8.162764909944741e-07
+      }
+    ],
+    "momentum": [
+      {
+        "name": "blocks.0.attn.to_qkv.weight",
+        "relative_physical_m_error": 0.0005776688922196627
+      },
+      {
+        "name": "blocks.0.attn.to_out.weight",
+        "relative_physical_m_error": 0.0005737960455007851
+      },
+      {
+        "name": "blocks.0.ff.proj_in.weight",
+        "relative_physical_m_error": 0.0006295378552749753
+      },
+      {
+        "name": "blocks.0.ff.proj_out.weight",
+        "relative_physical_m_error": 0.0006085284403525293
+      },
+      {
+        "name": "blocks.1.attn.to_qkv.weight",
+        "relative_physical_m_error": 0.000574466132093221
+      },
+      {
+        "name": "blocks.1.attn.to_out.weight",
+        "relative_physical_m_error": 0.0005982402944937348
+      },
+      {
+        "name": "blocks.1.ff.proj_in.weight",
+        "relative_physical_m_error": 0.0005765066598542035
+      },
+      {
+        "name": "blocks.1.ff.proj_out.weight",
+        "relative_physical_m_error": 0.0005976861575618386
+      },
+      {
+        "name": "blocks.2.attn.to_qkv.weight",
+        "relative_physical_m_error": 0.0005701193585991859
+      },
+      {
+        "name": "blocks.2.attn.to_out.weight",
+        "relative_physical_m_error": 0.0005866856081411242
+      },
+      {
+        "name": "blocks.2.ff.proj_in.weight",
+        "relative_physical_m_error": 0.0006188380066305399
+      },
+      {
+        "name": "blocks.2.ff.proj_out.weight",
+        "relative_physical_m_error": 0.0005968794575892389
+      },
+      {
+        "name": "blocks.3.attn.to_qkv.weight",
+        "relative_physical_m_error": 0.0006021131412126124
+      },
+      {
+        "name": "blocks.3.attn.to_out.weight",
+        "relative_physical_m_error": 0.0005697852466255426
+      },
+      {
+        "name": "blocks.3.ff.proj_in.weight",
+        "relative_physical_m_error": 0.0006027088384144008
+      },
+      {
+        "name": "blocks.3.ff.proj_out.weight",
+        "relative_physical_m_error": 0.0006019113352522254
+      },
+      {
+        "name": "blocks.4.attn.to_qkv.weight",
+        "relative_physical_m_error": 0.0006105374777689576
+      },
+      {
+        "name": "blocks.4.attn.to_out.weight",
+        "relative_physical_m_error": 0.0005846957210451365
+      },
+      {
+        "name": "blocks.4.ff.proj_in.weight",
+        "relative_physical_m_error": 0.0006124891224317253
+      },
+      {
+        "name": "blocks.4.ff.proj_out.weight",
+        "relative_physical_m_error": 0.0005771509022451937
+      },
+      {
+        "name": "blocks.5.attn.to_qkv.weight",
+        "relative_physical_m_error": 0.0006675580516457558
+      },
+      {
+        "name": "blocks.5.attn.to_out.weight",
+        "relative_physical_m_error": 0.0005807009874843061
+      },
+      {
+        "name": "blocks.5.ff.proj_in.weight",
+        "relative_physical_m_error": 0.0006148297688923776
+      },
+      {
+        "name": "blocks.5.ff.proj_out.weight",
+        "relative_physical_m_error": 0.0006006315816193819
+      },
+      {
+        "name": "blocks.6.attn.to_qkv.weight",
+        "relative_physical_m_error": 0.0005834631738252938
+      },
+      {
+        "name": "blocks.6.attn.to_out.weight",
+        "relative_physical_m_error": 0.0005873371846973896
+      },
+      {
+        "name": "blocks.6.ff.proj_in.weight",
+        "relative_physical_m_error": 0.0005918887909501791
+      },
+      {
+        "name": "blocks.6.ff.proj_out.weight",
+        "relative_physical_m_error": 0.0006092400872148573
+      },
+      {
+        "name": "blocks.7.attn.to_qkv.weight",
+        "relative_physical_m_error": 0.0005782191292382777
+      },
+      {
+        "name": "blocks.7.attn.to_out.weight",
+        "relative_physical_m_error": 0.0006189315463416278
+      },
+      {
+        "name": "blocks.7.ff.proj_in.weight",
+        "relative_physical_m_error": 0.0005950122722424567
+      },
+      {
+        "name": "blocks.7.ff.proj_out.weight",
+        "relative_physical_m_error": 0.0005970763158984482
+      },
+      {
+        "name": "blocks.8.attn.to_qkv.weight",
+        "relative_physical_m_error": 0.0006000765133649111
+      },
+      {
+        "name": "blocks.8.attn.to_out.weight",
+        "relative_physical_m_error": 0.0005853266338817775
+      },
+      {
+        "name": "blocks.8.ff.proj_in.weight",
+        "relative_physical_m_error": 0.0006022569141350687
+      },
+      {
+        "name": "blocks.8.ff.proj_out.weight",
+        "relative_physical_m_error": 0.0005922920536249876
+      },
+      {
+        "name": "blocks.9.attn.to_qkv.weight",
+        "relative_physical_m_error": 0.0005948981270194054
+      },
+      {
+        "name": "blocks.9.attn.to_out.weight",
+        "relative_physical_m_error": 0.0005778806516900659
+      },
+      {
+        "name": "blocks.9.ff.proj_in.weight",
+        "relative_physical_m_error": 0.0005969852209091187
+      },
+      {
+        "name": "blocks.9.ff.proj_out.weight",
+        "relative_physical_m_error": 0.0005935485241934657
+      },
+      {
+        "name": "blocks.10.attn.to_qkv.weight",
+        "relative_physical_m_error": 0.0005917245289310813
+      },
+      {
+        "name": "blocks.10.attn.to_out.weight",
+        "relative_physical_m_error": 0.0005902808625251055
+      },
+      {
+        "name": "blocks.10.ff.proj_in.weight",
+        "relative_physical_m_error": 0.0005967919714748859
+      },
+      {
+        "name": "blocks.10.ff.proj_out.weight",
+        "relative_physical_m_error": 0.0006154834991320968
+      },
+      {
+        "name": "blocks.11.attn.to_qkv.weight",
+        "relative_physical_m_error": 0.0005861857789568603
+      },
+      {
+        "name": "blocks.11.attn.to_out.weight",
+        "relative_physical_m_error": 0.0005933506763540208
+      },
+      {
+        "name": "blocks.11.ff.proj_in.weight",
+        "relative_physical_m_error": 0.0005807909183204174
+      },
+      {
+        "name": "blocks.11.ff.proj_out.weight",
+        "relative_physical_m_error": 0.0006198732298798859
+      }
+    ],
+    "max_absolute_gram": 4.989173248759471e-05,
+    "max_normalized_gram": 1.0383242473229377e-06,
+    "max_physical_m_error": 0.0006675580516457558
+  },
+  {
+    "call": 21,
+    "factors": [
+      {
+        "name": "blocks.0.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 4.961551894666627e-05,
+        "normalized_gram": 1.033656644722214e-06
+      },
+      {
+        "name": "blocks.0.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8572027329355478e-05,
+        "normalized_gram": 6.701603111250296e-07
+      },
+      {
+        "name": "blocks.0.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8299593648407608e-05,
+        "normalized_gram": 6.603297074355562e-07
+      },
+      {
+        "name": "blocks.0.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.867173887148965e-05,
+        "normalized_gram": 6.737583414808093e-07
+      },
+      {
+        "name": "blocks.0.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 4.984953920939006e-05,
+        "normalized_gram": 8.993951525475048e-07
+      },
+      {
+        "name": "blocks.0.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.854593756434042e-05,
+        "normalized_gram": 6.692188778216209e-07
+      },
+      {
+        "name": "blocks.0.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8394455764791928e-05,
+        "normalized_gram": 6.637527492124553e-07
+      },
+      {
+        "name": "blocks.0.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 3.198569902451709e-05,
+        "normalized_gram": 8.161316841281721e-07
+      },
+      {
+        "name": "blocks.1.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 4.930390787194483e-05,
+        "normalized_gram": 1.0271647473321839e-06
+      },
+      {
+        "name": "blocks.1.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8429886040394194e-05,
+        "normalized_gram": 6.650312291597322e-07
+      },
+      {
+        "name": "blocks.1.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8556680515757762e-05,
+        "normalized_gram": 6.696065306899142e-07
+      },
+      {
+        "name": "blocks.1.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8741218809736893e-05,
+        "normalized_gram": 6.762654827964546e-07
+      },
+      {
+        "name": "blocks.1.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 4.982483005733229e-05,
+        "normalized_gram": 8.989493451852549e-07
+      },
+      {
+        "name": "blocks.1.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.845594306359999e-05,
+        "normalized_gram": 6.659714809948663e-07
+      },
+      {
+        "name": "blocks.1.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8681606889003888e-05,
+        "normalized_gram": 6.741144228913227e-07
+      },
+      {
+        "name": "blocks.1.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 3.208820635336451e-05,
+        "normalized_gram": 8.187472117382957e-07
+      },
+      {
+        "name": "blocks.2.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 4.841474583372474e-05,
+        "normalized_gram": 1.0086405382025987e-06
+      },
+      {
+        "name": "blocks.2.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8608709069667384e-05,
+        "normalized_gram": 6.714839494152435e-07
+      },
+      {
+        "name": "blocks.2.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.844493453972973e-05,
+        "normalized_gram": 6.655742451061241e-07
+      },
+      {
+        "name": "blocks.2.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8484859538148157e-05,
+        "normalized_gram": 6.670149143926413e-07
+      },
+      {
+        "name": "blocks.2.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 4.966129927197471e-05,
+        "normalized_gram": 8.959988907181615e-07
+      },
+      {
+        "name": "blocks.2.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.84116779564647e-05,
+        "normalized_gram": 6.643742015248496e-07
+      },
+      {
+        "name": "blocks.2.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8541612007538788e-05,
+        "normalized_gram": 6.690627927351324e-07
+      },
+      {
+        "name": "blocks.2.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 3.188742630300112e-05,
+        "normalized_gram": 8.136242047182893e-07
+      },
+      {
+        "name": "blocks.3.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 4.910740608465858e-05,
+        "normalized_gram": 1.0230709600970538e-06
+      },
+      {
+        "name": "blocks.3.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.849951695476193e-05,
+        "normalized_gram": 6.675438183568654e-07
+      },
+      {
+        "name": "blocks.3.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.837265517679043e-05,
+        "normalized_gram": 6.62966088253008e-07
+      },
+      {
+        "name": "blocks.3.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.851916385930963e-05,
+        "normalized_gram": 6.682527649587003e-07
+      },
+      {
+        "name": "blocks.3.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 4.968101711710915e-05,
+        "normalized_gram": 8.96354643943043e-07
+      },
+      {
+        "name": "blocks.3.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8585449652164243e-05,
+        "normalized_gram": 6.70644647480454e-07
+      },
+      {
+        "name": "blocks.3.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.824182072596159e-05,
+        "normalized_gram": 6.582450066651761e-07
+      },
+      {
+        "name": "blocks.3.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 3.214412208762951e-05,
+        "normalized_gram": 8.201739306710281e-07
+      },
+      {
+        "name": "blocks.4.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 4.851121411775239e-05,
+        "normalized_gram": 1.0106502941198414e-06
+      },
+      {
+        "name": "blocks.4.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8652919607120566e-05,
+        "normalized_gram": 6.730792597714692e-07
+      },
+      {
+        "name": "blocks.4.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8495960830477998e-05,
+        "normalized_gram": 6.674154977748279e-07
+      },
+      {
+        "name": "blocks.4.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8569809981272556e-05,
+        "normalized_gram": 6.700802994679943e-07
+      },
+      {
+        "name": "blocks.4.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 4.9858012062031776e-05,
+        "normalized_gram": 8.995480214148017e-07
+      },
+      {
+        "name": "blocks.4.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8561158867669292e-05,
+        "normalized_gram": 6.697681292950173e-07
+      },
+      {
+        "name": "blocks.4.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8441796783008613e-05,
+        "normalized_gram": 6.654610210631499e-07
+      },
+      {
+        "name": "blocks.4.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 3.196100806235336e-05,
+        "normalized_gram": 8.155016814348439e-07
+      },
+      {
+        "name": "blocks.5.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 4.8276073357556015e-05,
+        "normalized_gram": 1.005751528282417e-06
+      },
+      {
+        "name": "blocks.5.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.849936234066263e-05,
+        "normalized_gram": 6.675382392011247e-07
+      },
+      {
+        "name": "blocks.5.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.856648850662168e-05,
+        "normalized_gram": 6.699604460752575e-07
+      },
+      {
+        "name": "blocks.5.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.846798841143027e-05,
+        "normalized_gram": 6.664061300456347e-07
+      },
+      {
+        "name": "blocks.5.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 4.976208947482519e-05,
+        "normalized_gram": 8.978173673040177e-07
+      },
+      {
+        "name": "blocks.5.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.840166987676639e-05,
+        "normalized_gram": 6.640130660556065e-07
+      },
+      {
+        "name": "blocks.5.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.86403176485328e-05,
+        "normalized_gram": 6.72624525760034e-07
+      },
+      {
+        "name": "blocks.5.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 3.1980962376110256e-05,
+        "normalized_gram": 8.160108260897585e-07
+      },
+      {
+        "name": "blocks.6.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 4.8421927203889936e-05,
+        "normalized_gram": 1.0087901500810403e-06
+      },
+      {
+        "name": "blocks.6.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8587830709293485e-05,
+        "normalized_gram": 6.707305664788616e-07
+      },
+      {
+        "name": "blocks.6.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.848750252975151e-05,
+        "normalized_gram": 6.671102851372451e-07
+      },
+      {
+        "name": "blocks.6.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.861633973021526e-05,
+        "normalized_gram": 6.717592971603316e-07
+      },
+      {
+        "name": "blocks.6.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 4.9834558012662455e-05,
+        "normalized_gram": 8.991248588611466e-07
+      },
+      {
+        "name": "blocks.6.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8567166989669204e-05,
+        "normalized_gram": 6.699849287233906e-07
+      },
+      {
+        "name": "blocks.6.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.84641048690537e-05,
+        "normalized_gram": 6.662659947808521e-07
+      },
+      {
+        "name": "blocks.6.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 3.207598638255149e-05,
+        "normalized_gram": 8.184354128511748e-07
+      },
+      {
+        "name": "blocks.7.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 4.80565067846328e-05,
+        "normalized_gram": 1.00117722467985e-06
+      },
+      {
+        "name": "blocks.7.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8548473235568963e-05,
+        "normalized_gram": 6.693103759757694e-07
+      },
+      {
+        "name": "blocks.7.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8543851183494553e-05,
+        "normalized_gram": 6.691435920376838e-07
+      },
+      {
+        "name": "blocks.7.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8692333469516598e-05,
+        "normalized_gram": 6.745014850254787e-07
+      },
+      {
+        "name": "blocks.7.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 4.97782530146651e-05,
+        "normalized_gram": 8.981089930564436e-07
+      },
+      {
+        "name": "blocks.7.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8680511857382953e-05,
+        "normalized_gram": 6.740749093412528e-07
+      },
+      {
+        "name": "blocks.7.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8620872651808895e-05,
+        "normalized_gram": 6.719228648792254e-07
+      },
+      {
+        "name": "blocks.7.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 3.210178329027258e-05,
+        "normalized_gram": 8.19093634318449e-07
+      },
+      {
+        "name": "blocks.8.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 4.833412094740197e-05,
+        "normalized_gram": 1.0069608530708745e-06
+      },
+      {
+        "name": "blocks.8.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8410870325169526e-05,
+        "normalized_gram": 6.64345058640745e-07
+      },
+      {
+        "name": "blocks.8.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.852465356932953e-05,
+        "normalized_gram": 6.684508578060604e-07
+      },
+      {
+        "name": "blocks.8.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.856882227002643e-05,
+        "normalized_gram": 6.700446585083799e-07
+      },
+      {
+        "name": "blocks.8.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 4.973178147338331e-05,
+        "normalized_gram": 8.972705444042968e-07
+      },
+      {
+        "name": "blocks.8.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8496077245799825e-05,
+        "normalized_gram": 6.67419698550915e-07
+      },
+      {
+        "name": "blocks.8.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.853545654739719e-05,
+        "normalized_gram": 6.688406766995237e-07
+      },
+      {
+        "name": "blocks.8.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 3.208461566828191e-05,
+        "normalized_gram": 8.186555935478853e-07
+      },
+      {
+        "name": "blocks.9.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 4.863540380029008e-05,
+        "normalized_gram": 1.01323757917271e-06
+      },
+      {
+        "name": "blocks.9.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8509897927287966e-05,
+        "normalized_gram": 6.679184094370127e-07
+      },
+      {
+        "name": "blocks.9.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8681939764064737e-05,
+        "normalized_gram": 6.741264344854469e-07
+      },
+      {
+        "name": "blocks.9.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8627402823767625e-05,
+        "normalized_gram": 6.721585021628647e-07
+      },
+      {
+        "name": "blocks.9.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 4.9845104513224214e-05,
+        "normalized_gram": 8.993151408904697e-07
+      },
+      {
+        "name": "blocks.9.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.860839984146878e-05,
+        "normalized_gram": 6.714727911037619e-07
+      },
+      {
+        "name": "blocks.9.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8615608496475033e-05,
+        "normalized_gram": 6.717329110355341e-07
+      },
+      {
+        "name": "blocks.9.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 3.198877675458789e-05,
+        "normalized_gram": 8.162102140056667e-07
+      },
+      {
+        "name": "blocks.10.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 4.845039075007662e-05,
+        "normalized_gram": 1.0093831406265963e-06
+      },
+      {
+        "name": "blocks.10.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8604872821015306e-05,
+        "normalized_gram": 6.713455207157462e-07
+      },
+      {
+        "name": "blocks.10.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.874059125839267e-05,
+        "normalized_gram": 6.762428379878597e-07
+      },
+      {
+        "name": "blocks.10.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.860285374277737e-05,
+        "normalized_gram": 6.712726635054846e-07
+      },
+      {
+        "name": "blocks.10.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 4.9843765737023205e-05,
+        "normalized_gram": 8.992909864279686e-07
+      },
+      {
+        "name": "blocks.10.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8453945813234895e-05,
+        "normalized_gram": 6.658994114301209e-07
+      },
+      {
+        "name": "blocks.10.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8478440324543044e-05,
+        "normalized_gram": 6.667832809737101e-07
+      },
+      {
+        "name": "blocks.10.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 3.178566475980915e-05,
+        "normalized_gram": 8.110277062155964e-07
+      },
+      {
+        "name": "blocks.11.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 4.788168735103682e-05,
+        "normalized_gram": 9.975351531466004e-07
+      },
+      {
+        "name": "blocks.11.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8439388441038318e-05,
+        "normalized_gram": 6.653741175078467e-07
+      },
+      {
+        "name": "blocks.11.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.859884650912136e-05,
+        "normalized_gram": 6.711280649161093e-07
+      },
+      {
+        "name": "blocks.11.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8564038327895105e-05,
+        "normalized_gram": 6.698720328660481e-07
+      },
+      {
+        "name": "blocks.11.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 4.96788379678037e-05,
+        "normalized_gram": 8.963153273043522e-07
+      },
+      {
+        "name": "blocks.11.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8531956811784767e-05,
+        "normalized_gram": 6.687143908684034e-07
+      },
+      {
+        "name": "blocks.11.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8478423953638412e-05,
+        "normalized_gram": 6.667826902395729e-07
+      },
+      {
+        "name": "blocks.11.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 3.185221794410609e-05,
+        "normalized_gram": 8.127258451977308e-07
+      }
+    ],
+    "momentum": [
+      {
+        "name": "blocks.0.attn.to_qkv.weight",
+        "relative_physical_m_error": 0.0005667562363669276
+      },
+      {
+        "name": "blocks.0.attn.to_out.weight",
+        "relative_physical_m_error": 0.0006776960217393935
+      },
+      {
+        "name": "blocks.0.ff.proj_in.weight",
+        "relative_physical_m_error": 0.0005967795150354505
+      },
+      {
+        "name": "blocks.0.ff.proj_out.weight",
+        "relative_physical_m_error": 0.0005702204653061926
+      },
+      {
+        "name": "blocks.1.attn.to_qkv.weight",
+        "relative_physical_m_error": 0.000561320863198489
+      },
+      {
+        "name": "blocks.1.attn.to_out.weight",
+        "relative_physical_m_error": 0.0005852448521181941
+      },
+      {
+        "name": "blocks.1.ff.proj_in.weight",
+        "relative_physical_m_error": 0.0005846854764968157
+      },
+      {
+        "name": "blocks.1.ff.proj_out.weight",
+        "relative_physical_m_error": 0.0006229959544725716
+      },
+      {
+        "name": "blocks.2.attn.to_qkv.weight",
+        "relative_physical_m_error": 0.0006614726153202355
+      },
+      {
+        "name": "blocks.2.attn.to_out.weight",
+        "relative_physical_m_error": 0.0005590086802840233
+      },
+      {
+        "name": "blocks.2.ff.proj_in.weight",
+        "relative_physical_m_error": 0.0005855158087797463
+      },
+      {
+        "name": "blocks.2.ff.proj_out.weight",
+        "relative_physical_m_error": 0.0005917779635637999
+      },
+      {
+        "name": "blocks.3.attn.to_qkv.weight",
+        "relative_physical_m_error": 0.000584306544624269
+      },
+      {
+        "name": "blocks.3.attn.to_out.weight",
+        "relative_physical_m_error": 0.000599064223933965
+      },
+      {
+        "name": "blocks.3.ff.proj_in.weight",
+        "relative_physical_m_error": 0.0006037761340849102
+      },
+      {
+        "name": "blocks.3.ff.proj_out.weight",
+        "relative_physical_m_error": 0.0006029029609635472
+      },
+      {
+        "name": "blocks.4.attn.to_qkv.weight",
+        "relative_physical_m_error": 0.0006523903575725853
+      },
+      {
+        "name": "blocks.4.attn.to_out.weight",
+        "relative_physical_m_error": 0.0005644708289764822
+      },
+      {
+        "name": "blocks.4.ff.proj_in.weight",
+        "relative_physical_m_error": 0.0005806898116134107
+      },
+      {
+        "name": "blocks.4.ff.proj_out.weight",
+        "relative_physical_m_error": 0.0005887792212888598
+      },
+      {
+        "name": "blocks.5.attn.to_qkv.weight",
+        "relative_physical_m_error": 0.0005775746540166438
+      },
+      {
+        "name": "blocks.5.attn.to_out.weight",
+        "relative_physical_m_error": 0.00061283033574
+      },
+      {
+        "name": "blocks.5.ff.proj_in.weight",
+        "relative_physical_m_error": 0.0005958449910394847
+      },
+      {
+        "name": "blocks.5.ff.proj_out.weight",
+        "relative_physical_m_error": 0.0005996699328534305
+      },
+      {
+        "name": "blocks.6.attn.to_qkv.weight",
+        "relative_physical_m_error": 0.0005878625670447946
+      },
+      {
+        "name": "blocks.6.attn.to_out.weight",
+        "relative_physical_m_error": 0.0005662500625476241
+      },
+      {
+        "name": "blocks.6.ff.proj_in.weight",
+        "relative_physical_m_error": 0.0005946672172285616
+      },
+      {
+        "name": "blocks.6.ff.proj_out.weight",
+        "relative_physical_m_error": 0.0005868272273801267
+      },
+      {
+        "name": "blocks.7.attn.to_qkv.weight",
+        "relative_physical_m_error": 0.0005659623420797288
+      },
+      {
+        "name": "blocks.7.attn.to_out.weight",
+        "relative_physical_m_error": 0.0006395933451130986
+      },
+      {
+        "name": "blocks.7.ff.proj_in.weight",
+        "relative_physical_m_error": 0.0005724505754187703
+      },
+      {
+        "name": "blocks.7.ff.proj_out.weight",
+        "relative_physical_m_error": 0.0006069328519515693
+      },
+      {
+        "name": "blocks.8.attn.to_qkv.weight",
+        "relative_physical_m_error": 0.0005670227692462504
+      },
+      {
+        "name": "blocks.8.attn.to_out.weight",
+        "relative_physical_m_error": 0.0005882937693968415
+      },
+      {
+        "name": "blocks.8.ff.proj_in.weight",
+        "relative_physical_m_error": 0.0006101897452026606
+      },
+      {
+        "name": "blocks.8.ff.proj_out.weight",
+        "relative_physical_m_error": 0.0006105254869908094
+      },
+      {
+        "name": "blocks.9.attn.to_qkv.weight",
+        "relative_physical_m_error": 0.000584214401897043
+      },
+      {
+        "name": "blocks.9.attn.to_out.weight",
+        "relative_physical_m_error": 0.0006824965821579099
+      },
+      {
+        "name": "blocks.9.ff.proj_in.weight",
+        "relative_physical_m_error": 0.0006161812925711274
+      },
+      {
+        "name": "blocks.9.ff.proj_out.weight",
+        "relative_physical_m_error": 0.0005717778112739325
+      },
+      {
+        "name": "blocks.10.attn.to_qkv.weight",
+        "relative_physical_m_error": 0.000580180436372757
+      },
+      {
+        "name": "blocks.10.attn.to_out.weight",
+        "relative_physical_m_error": 0.0005681201000697911
+      },
+      {
+        "name": "blocks.10.ff.proj_in.weight",
+        "relative_physical_m_error": 0.0006263123941607773
+      },
+      {
+        "name": "blocks.10.ff.proj_out.weight",
+        "relative_physical_m_error": 0.0005969034391455352
+      },
+      {
+        "name": "blocks.11.attn.to_qkv.weight",
+        "relative_physical_m_error": 0.000568757182918489
+      },
+      {
+        "name": "blocks.11.attn.to_out.weight",
+        "relative_physical_m_error": 0.00065965874819085
+      },
+      {
+        "name": "blocks.11.ff.proj_in.weight",
+        "relative_physical_m_error": 0.0006031797383911908
+      },
+      {
+        "name": "blocks.11.ff.proj_out.weight",
+        "relative_physical_m_error": 0.0005764510133303702
+      }
+    ],
+    "max_absolute_gram": 4.9858012062031776e-05,
+    "max_normalized_gram": 1.033656644722214e-06,
+    "max_physical_m_error": 0.0006824965821579099
+  },
+  {
+    "call": 51,
+    "factors": [
+      {
+        "name": "blocks.0.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 4.975892079528421e-05,
+        "normalized_gram": 1.0366441832350877e-06
+      },
+      {
+        "name": "blocks.0.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8515182091505267e-05,
+        "normalized_gram": 6.681090852890941e-07
+      },
+      {
+        "name": "blocks.0.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8571179680293426e-05,
+        "normalized_gram": 6.701297242241449e-07
+      },
+      {
+        "name": "blocks.0.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.890796556835994e-05,
+        "normalized_gram": 6.822824381700492e-07
+      },
+      {
+        "name": "blocks.0.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 4.969168730895035e-05,
+        "normalized_gram": 8.965471576346624e-07
+      },
+      {
+        "name": "blocks.0.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8338447262067348e-05,
+        "normalized_gram": 6.617317164546462e-07
+      },
+      {
+        "name": "blocks.0.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8400960470899008e-05,
+        "normalized_gram": 6.639874675763253e-07
+      },
+      {
+        "name": "blocks.0.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 3.2044019462773576e-05,
+        "normalized_gram": 8.176197603292542e-07
+      },
+      {
+        "name": "blocks.1.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 4.998535951017402e-05,
+        "normalized_gram": 1.0413616564619588e-06
+      },
+      {
+        "name": "blocks.1.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8661225112737156e-05,
+        "normalized_gram": 6.733789588904377e-07
+      },
+      {
+        "name": "blocks.1.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.857074130384717e-05,
+        "normalized_gram": 6.701139056766916e-07
+      },
+      {
+        "name": "blocks.1.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.868134677351918e-05,
+        "normalized_gram": 6.741050367822529e-07
+      },
+      {
+        "name": "blocks.1.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 4.9913702241610736e-05,
+        "normalized_gram": 9.005527945451496e-07
+      },
+      {
+        "name": "blocks.1.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8507407730794512e-05,
+        "normalized_gram": 6.678285522110233e-07
+      },
+      {
+        "name": "blocks.1.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8559569070930593e-05,
+        "normalized_gram": 6.697107624465769e-07
+      },
+      {
+        "name": "blocks.1.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 3.202986772521399e-05,
+        "normalized_gram": 8.17258671412642e-07
+      },
+      {
+        "name": "blocks.2.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 4.8418627557111904e-05,
+        "normalized_gram": 1.0087214074398314e-06
+      },
+      {
+        "name": "blocks.2.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8524307961342856e-05,
+        "normalized_gram": 6.684383867520517e-07
+      },
+      {
+        "name": "blocks.2.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8553080735728145e-05,
+        "normalized_gram": 6.69476634816844e-07
+      },
+      {
+        "name": "blocks.2.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8465512766852044e-05,
+        "normalized_gram": 6.663167979166562e-07
+      },
+      {
+        "name": "blocks.2.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 4.9906786443898454e-05,
+        "normalized_gram": 9.004280183679356e-07
+      },
+      {
+        "name": "blocks.2.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8350090613239445e-05,
+        "normalized_gram": 6.621518597004887e-07
+      },
+      {
+        "name": "blocks.2.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.846927625592798e-05,
+        "normalized_gram": 6.66452601131099e-07
+      },
+      {
+        "name": "blocks.2.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 3.2357133022742346e-05,
+        "normalized_gram": 8.256090150528982e-07
+      },
+      {
+        "name": "blocks.3.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 4.839074608753435e-05,
+        "normalized_gram": 1.008140543490299e-06
+      },
+      {
+        "name": "blocks.3.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8518889191909693e-05,
+        "normalized_gram": 6.682428537526196e-07
+      },
+      {
+        "name": "blocks.3.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8439377527101897e-05,
+        "normalized_gram": 6.653737236850885e-07
+      },
+      {
+        "name": "blocks.3.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.849924046837259e-05,
+        "normalized_gram": 6.675338415136584e-07
+      },
+      {
+        "name": "blocks.3.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 4.97763576277066e-05,
+        "normalized_gram": 8.980747961136091e-07
+      },
+      {
+        "name": "blocks.3.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8568425730336457e-05,
+        "normalized_gram": 6.70030349614833e-07
+      },
+      {
+        "name": "blocks.3.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.84893960977206e-05,
+        "normalized_gram": 6.671786133857879e-07
+      },
+      {
+        "name": "blocks.3.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 3.209550050087273e-05,
+        "normalized_gram": 8.189333256914596e-07
+      },
+      {
+        "name": "blocks.4.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 4.830859325011261e-05,
+        "normalized_gram": 1.0064290260440127e-06
+      },
+      {
+        "name": "blocks.4.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8777132936520502e-05,
+        "normalized_gram": 6.775614222193437e-07
+      },
+      {
+        "name": "blocks.4.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8711200027610175e-05,
+        "normalized_gram": 6.751822733001043e-07
+      },
+      {
+        "name": "blocks.4.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8353661289438605e-05,
+        "normalized_gram": 6.62280705379537e-07
+      },
+      {
+        "name": "blocks.4.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 4.987927604815923e-05,
+        "normalized_gram": 8.99931670418387e-07
+      },
+      {
+        "name": "blocks.4.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8503489627619274e-05,
+        "normalized_gram": 6.676871698408398e-07
+      },
+      {
+        "name": "blocks.4.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.863694706116803e-05,
+        "normalized_gram": 6.725029001648855e-07
+      },
+      {
+        "name": "blocks.4.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 3.226364788133651e-05,
+        "normalized_gram": 8.232236932302293e-07
+      },
+      {
+        "name": "blocks.5.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 4.909751078230329e-05,
+        "normalized_gram": 1.0228648079646518e-06
+      },
+      {
+        "name": "blocks.5.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.860132033471018e-05,
+        "normalized_gram": 6.712173314079615e-07
+      },
+      {
+        "name": "blocks.5.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8510960217099637e-05,
+        "normalized_gram": 6.679567415188081e-07
+      },
+      {
+        "name": "blocks.5.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8451361029292457e-05,
+        "normalized_gram": 6.658061410735607e-07
+      },
+      {
+        "name": "blocks.5.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 4.989341687178239e-05,
+        "normalized_gram": 9.001868019285557e-07
+      },
+      {
+        "name": "blocks.5.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8565729988040403e-05,
+        "normalized_gram": 6.699330753935647e-07
+      },
+      {
+        "name": "blocks.5.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8370097677689046e-05,
+        "normalized_gram": 6.628738024533431e-07
+      },
+      {
+        "name": "blocks.5.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 3.2056479540187865e-05,
+        "normalized_gram": 8.179376856607187e-07
+      },
+      {
+        "name": "blocks.6.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 4.8973812226904556e-05,
+        "normalized_gram": 1.0202877547271783e-06
+      },
+      {
+        "name": "blocks.6.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.881802199932281e-05,
+        "normalized_gram": 6.790368791828327e-07
+      },
+      {
+        "name": "blocks.6.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8639375412021764e-05,
+        "normalized_gram": 6.725905257285786e-07
+      },
+      {
+        "name": "blocks.6.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8620108676259406e-05,
+        "normalized_gram": 6.718952972861534e-07
+      },
+      {
+        "name": "blocks.6.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 4.9832458898890764e-05,
+        "normalized_gram": 8.990869862392358e-07
+      },
+      {
+        "name": "blocks.6.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.840564982558135e-05,
+        "normalized_gram": 6.641566800880864e-07
+      },
+      {
+        "name": "blocks.6.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8326400095247664e-05,
+        "normalized_gram": 6.612970017667514e-07
+      },
+      {
+        "name": "blocks.6.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 3.220352664357051e-05,
+        "normalized_gram": 8.216896686965705e-07
+      },
+      {
+        "name": "blocks.7.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 4.8609363147988915e-05,
+        "normalized_gram": 1.0126950655831024e-06
+      },
+      {
+        "name": "blocks.7.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8360749891144224e-05,
+        "normalized_gram": 6.625364932609694e-07
+      },
+      {
+        "name": "blocks.7.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8524549886933528e-05,
+        "normalized_gram": 6.684471164898577e-07
+      },
+      {
+        "name": "blocks.7.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.851262459240388e-05,
+        "normalized_gram": 6.680167994894292e-07
+      },
+      {
+        "name": "blocks.7.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 4.9734673666534945e-05,
+        "normalized_gram": 8.973227259197545e-07
+      },
+      {
+        "name": "blocks.7.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8587696104077622e-05,
+        "normalized_gram": 6.707257093315109e-07
+      },
+      {
+        "name": "blocks.7.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8564001948107034e-05,
+        "normalized_gram": 6.698707201235208e-07
+      },
+      {
+        "name": "blocks.7.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 3.213445597793907e-05,
+        "normalized_gram": 8.199272948737431e-07
+      },
+      {
+        "name": "blocks.8.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 4.85845775983762e-05,
+        "normalized_gram": 1.0121786999661708e-06
+      },
+      {
+        "name": "blocks.8.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.835036528063938e-05,
+        "normalized_gram": 6.621617709065693e-07
+      },
+      {
+        "name": "blocks.8.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8450124116498046e-05,
+        "normalized_gram": 6.657615078276346e-07
+      },
+      {
+        "name": "blocks.8.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8602488125907257e-05,
+        "normalized_gram": 6.712594704430858e-07
+      },
+      {
+        "name": "blocks.8.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 4.99448215123266e-05,
+        "normalized_gram": 9.011142545240492e-07
+      },
+      {
+        "name": "blocks.8.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.853114736150019e-05,
+        "normalized_gram": 6.686851823471723e-07
+      },
+      {
+        "name": "blocks.8.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8432760043651797e-05,
+        "normalized_gram": 6.65134935819384e-07
+      },
+      {
+        "name": "blocks.8.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 3.214974276488647e-05,
+        "normalized_gram": 8.203173451636157e-07
+      },
+      {
+        "name": "blocks.9.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 4.937851190334186e-05,
+        "normalized_gram": 1.0287189979862887e-06
+      },
+      {
+        "name": "blocks.9.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.853281537478324e-05,
+        "normalized_gram": 6.687453715920462e-07
+      },
+      {
+        "name": "blocks.9.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.839981814555358e-05,
+        "normalized_gram": 6.639462474609701e-07
+      },
+      {
+        "name": "blocks.9.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8512973838369362e-05,
+        "normalized_gram": 6.680294018176907e-07
+      },
+      {
+        "name": "blocks.9.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 4.9735826905816793e-05,
+        "normalized_gram": 8.973435328888113e-07
+      },
+      {
+        "name": "blocks.9.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8422526409267448e-05,
+        "normalized_gram": 6.64765661346472e-07
+      },
+      {
+        "name": "blocks.9.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8626729797688313e-05,
+        "normalized_gram": 6.721342164261107e-07
+      },
+      {
+        "name": "blocks.9.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 3.2096984796226025e-05,
+        "normalized_gram": 8.189711982564924e-07
+      },
+      {
+        "name": "blocks.10.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 4.865414302912541e-05,
+        "normalized_gram": 1.013627979773446e-06
+      },
+      {
+        "name": "blocks.10.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8501370504964143e-05,
+        "normalized_gram": 6.676107025886282e-07
+      },
+      {
+        "name": "blocks.10.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8407807147013955e-05,
+        "normalized_gram": 6.642345257199516e-07
+      },
+      {
+        "name": "blocks.10.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8496893972042017e-05,
+        "normalized_gram": 6.674491696206515e-07
+      },
+      {
+        "name": "blocks.10.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 4.972923488821834e-05,
+        "normalized_gram": 8.972245984158435e-07
+      },
+      {
+        "name": "blocks.10.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8481112419976853e-05,
+        "normalized_gram": 6.668797019123358e-07
+      },
+      {
+        "name": "blocks.10.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8665979951038025e-05,
+        "normalized_gram": 6.735505343387477e-07
+      },
+      {
+        "name": "blocks.10.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 3.226728949812241e-05,
+        "normalized_gram": 8.233166109694397e-07
+      },
+      {
+        "name": "blocks.11.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 4.806258948519826e-05,
+        "normalized_gram": 1.001303947608297e-06
+      },
+      {
+        "name": "blocks.11.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.840827098931186e-05,
+        "normalized_gram": 6.642512631871738e-07
+      },
+      {
+        "name": "blocks.11.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8534003174863756e-05,
+        "normalized_gram": 6.687882326355605e-07
+      },
+      {
+        "name": "blocks.11.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8536871721153148e-05,
+        "normalized_gram": 6.688917423838333e-07
+      },
+      {
+        "name": "blocks.11.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 4.9858001148095354e-05,
+        "normalized_gram": 8.995478245034227e-07
+      },
+      {
+        "name": "blocks.11.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.85029894055333e-05,
+        "normalized_gram": 6.676691196310902e-07
+      },
+      {
+        "name": "blocks.11.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.845664701249916e-05,
+        "normalized_gram": 6.659968825627683e-07
+      },
+      {
+        "name": "blocks.11.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 3.204441600246355e-05,
+        "normalized_gram": 8.176298782449126e-07
+      }
+    ],
+    "momentum": [
+      {
+        "name": "blocks.0.attn.to_qkv.weight",
+        "relative_physical_m_error": 0.0006733370828442276
+      },
+      {
+        "name": "blocks.0.attn.to_out.weight",
+        "relative_physical_m_error": 0.0006365211447700858
+      },
+      {
+        "name": "blocks.0.ff.proj_in.weight",
+        "relative_physical_m_error": 0.0006395321688614786
+      },
+      {
+        "name": "blocks.0.ff.proj_out.weight",
+        "relative_physical_m_error": 0.0006599586922675371
+      },
+      {
+        "name": "blocks.1.attn.to_qkv.weight",
+        "relative_physical_m_error": 0.0006754918722435832
+      },
+      {
+        "name": "blocks.1.attn.to_out.weight",
+        "relative_physical_m_error": 0.0006085177301429212
+      },
+      {
+        "name": "blocks.1.ff.proj_in.weight",
+        "relative_physical_m_error": 0.0006330260657705367
+      },
+      {
+        "name": "blocks.1.ff.proj_out.weight",
+        "relative_physical_m_error": 0.0005994770908728242
+      },
+      {
+        "name": "blocks.2.attn.to_qkv.weight",
+        "relative_physical_m_error": 0.000595406221691519
+      },
+      {
+        "name": "blocks.2.attn.to_out.weight",
+        "relative_physical_m_error": 0.0005956905079074204
+      },
+      {
+        "name": "blocks.2.ff.proj_in.weight",
+        "relative_physical_m_error": 0.0006022283341735601
+      },
+      {
+        "name": "blocks.2.ff.proj_out.weight",
+        "relative_physical_m_error": 0.0005929035251028836
+      },
+      {
+        "name": "blocks.3.attn.to_qkv.weight",
+        "relative_physical_m_error": 0.0005963538424111903
+      },
+      {
+        "name": "blocks.3.attn.to_out.weight",
+        "relative_physical_m_error": 0.0006076174322515726
+      },
+      {
+        "name": "blocks.3.ff.proj_in.weight",
+        "relative_physical_m_error": 0.000596197322010994
+      },
+      {
+        "name": "blocks.3.ff.proj_out.weight",
+        "relative_physical_m_error": 0.00059442815836519
+      },
+      {
+        "name": "blocks.4.attn.to_qkv.weight",
+        "relative_physical_m_error": 0.000611770898103714
+      },
+      {
+        "name": "blocks.4.attn.to_out.weight",
+        "relative_physical_m_error": 0.0005978773115202785
+      },
+      {
+        "name": "blocks.4.ff.proj_in.weight",
+        "relative_physical_m_error": 0.0005939477705396712
+      },
+      {
+        "name": "blocks.4.ff.proj_out.weight",
+        "relative_physical_m_error": 0.0006004806491546333
+      },
+      {
+        "name": "blocks.5.attn.to_qkv.weight",
+        "relative_physical_m_error": 0.0005818110657855868
+      },
+      {
+        "name": "blocks.5.attn.to_out.weight",
+        "relative_physical_m_error": 0.0006054668338038027
+      },
+      {
+        "name": "blocks.5.ff.proj_in.weight",
+        "relative_physical_m_error": 0.0006035021506249905
+      },
+      {
+        "name": "blocks.5.ff.proj_out.weight",
+        "relative_physical_m_error": 0.0006010802462697029
+      },
+      {
+        "name": "blocks.6.attn.to_qkv.weight",
+        "relative_physical_m_error": 0.0005847224965691566
+      },
+      {
+        "name": "blocks.6.attn.to_out.weight",
+        "relative_physical_m_error": 0.0005763889057561755
+      },
+      {
+        "name": "blocks.6.ff.proj_in.weight",
+        "relative_physical_m_error": 0.0005786619149148464
+      },
+      {
+        "name": "blocks.6.ff.proj_out.weight",
+        "relative_physical_m_error": 0.0006182489451020956
+      },
+      {
+        "name": "blocks.7.attn.to_qkv.weight",
+        "relative_physical_m_error": 0.0005854737246409059
+      },
+      {
+        "name": "blocks.7.attn.to_out.weight",
+        "relative_physical_m_error": 0.0006013780948705971
+      },
+      {
+        "name": "blocks.7.ff.proj_in.weight",
+        "relative_physical_m_error": 0.0006162414792925119
+      },
+      {
+        "name": "blocks.7.ff.proj_out.weight",
+        "relative_physical_m_error": 0.0005945932352915406
+      },
+      {
+        "name": "blocks.8.attn.to_qkv.weight",
+        "relative_physical_m_error": 0.0006131950649432838
+      },
+      {
+        "name": "blocks.8.attn.to_out.weight",
+        "relative_physical_m_error": 0.0005796521436423063
+      },
+      {
+        "name": "blocks.8.ff.proj_in.weight",
+        "relative_physical_m_error": 0.0006037187995389104
+      },
+      {
+        "name": "blocks.8.ff.proj_out.weight",
+        "relative_physical_m_error": 0.0005695580621249974
+      },
+      {
+        "name": "blocks.9.attn.to_qkv.weight",
+        "relative_physical_m_error": 0.0006026146584190428
+      },
+      {
+        "name": "blocks.9.attn.to_out.weight",
+        "relative_physical_m_error": 0.0005909307510592043
+      },
+      {
+        "name": "blocks.9.ff.proj_in.weight",
+        "relative_physical_m_error": 0.0005923873977735639
+      },
+      {
+        "name": "blocks.9.ff.proj_out.weight",
+        "relative_physical_m_error": 0.0005867016734555364
+      },
+      {
+        "name": "blocks.10.attn.to_qkv.weight",
+        "relative_physical_m_error": 0.0006103913183324039
+      },
+      {
+        "name": "blocks.10.attn.to_out.weight",
+        "relative_physical_m_error": 0.0006009768694639206
+      },
+      {
+        "name": "blocks.10.ff.proj_in.weight",
+        "relative_physical_m_error": 0.0005881236284039915
+      },
+      {
+        "name": "blocks.10.ff.proj_out.weight",
+        "relative_physical_m_error": 0.0006037016864866018
+      },
+      {
+        "name": "blocks.11.attn.to_qkv.weight",
+        "relative_physical_m_error": 0.000589136267080903
+      },
+      {
+        "name": "blocks.11.attn.to_out.weight",
+        "relative_physical_m_error": 0.0005736958119086921
+      },
+      {
+        "name": "blocks.11.ff.proj_in.weight",
+        "relative_physical_m_error": 0.0005813608877360821
+      },
+      {
+        "name": "blocks.11.ff.proj_out.weight",
+        "relative_physical_m_error": 0.0005884364945814013
+      }
+    ],
+    "max_absolute_gram": 4.998535951017402e-05,
+    "max_normalized_gram": 1.0413616564619588e-06,
+    "max_physical_m_error": 0.0006754918722435832
+  },
+  {
+    "call": 101,
+    "factors": [
+      {
+        "name": "blocks.0.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 4.999585507903248e-05,
+        "normalized_gram": 1.04158031414651e-06
+      },
+      {
+        "name": "blocks.0.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.859394797065761e-05,
+        "normalized_gram": 6.709513041348167e-07
+      },
+      {
+        "name": "blocks.0.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.87952409760328e-05,
+        "normalized_gram": 6.782148398122764e-07
+      },
+      {
+        "name": "blocks.0.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8583848941489123e-05,
+        "normalized_gram": 6.705868868092554e-07
+      },
+      {
+        "name": "blocks.0.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 4.988079672330059e-05,
+        "normalized_gram": 8.999591067372063e-07
+      },
+      {
+        "name": "blocks.0.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8553295376477763e-05,
+        "normalized_gram": 6.694843799977547e-07
+      },
+      {
+        "name": "blocks.0.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8606371668283828e-05,
+        "normalized_gram": 6.713996057078684e-07
+      },
+      {
+        "name": "blocks.0.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 3.207064946764149e-05,
+        "normalized_gram": 8.182992387019023e-07
+      },
+      {
+        "name": "blocks.1.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 4.978682773071341e-05,
+        "normalized_gram": 1.037225577723196e-06
+      },
+      {
+        "name": "blocks.1.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.848238753154874e-05,
+        "normalized_gram": 6.669257135379155e-07
+      },
+      {
+        "name": "blocks.1.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8535551134846173e-05,
+        "normalized_gram": 6.688440898300945e-07
+      },
+      {
+        "name": "blocks.1.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8531884052208625e-05,
+        "normalized_gram": 6.68711765383349e-07
+      },
+      {
+        "name": "blocks.1.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 4.999521479476243e-05,
+        "normalized_gram": 9.020234599984141e-07
+      },
+      {
+        "name": "blocks.1.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.855214941315353e-05,
+        "normalized_gram": 6.694430286081468e-07
+      },
+      {
+        "name": "blocks.1.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8415159502183087e-05,
+        "normalized_gram": 6.644998309847063e-07
+      },
+      {
+        "name": "blocks.1.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 3.1942661735229194e-05,
+        "normalized_gram": 8.150335653920483e-07
+      },
+      {
+        "name": "blocks.2.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 4.9638882046565413e-05,
+        "normalized_gram": 1.0341433759701129e-06
+      },
+      {
+        "name": "blocks.2.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.867391256382689e-05,
+        "normalized_gram": 6.738367778468119e-07
+      },
+      {
+        "name": "blocks.2.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.855020491348114e-05,
+        "normalized_gram": 6.693728625200659e-07
+      },
+      {
+        "name": "blocks.2.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8468685084371828e-05,
+        "normalized_gram": 6.664312690650314e-07
+      },
+      {
+        "name": "blocks.2.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 4.998924123356119e-05,
+        "normalized_gram": 9.019156838369279e-07
+      },
+      {
+        "name": "blocks.2.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8488346540834755e-05,
+        "normalized_gram": 6.67140740763877e-07
+      },
+      {
+        "name": "blocks.2.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8495871699997224e-05,
+        "normalized_gram": 6.674122815556362e-07
+      },
+      {
+        "name": "blocks.2.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 3.216505137970671e-05,
+        "normalized_gram": 8.20707952402974e-07
+      },
+      {
+        "name": "blocks.3.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 5.005584534956142e-05,
+        "normalized_gram": 1.0428301114491962e-06
+      },
+      {
+        "name": "blocks.3.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8538323274697177e-05,
+        "normalized_gram": 6.689441208106701e-07
+      },
+      {
+        "name": "blocks.3.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8658192857401446e-05,
+        "normalized_gram": 6.732695418007924e-07
+      },
+      {
+        "name": "blocks.3.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.857830284279771e-05,
+        "normalized_gram": 6.70386759210978e-07
+      },
+      {
+        "name": "blocks.3.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 4.97602486575488e-05,
+        "normalized_gram": 8.977841549180786e-07
+      },
+      {
+        "name": "blocks.3.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8618815374793485e-05,
+        "normalized_gram": 6.718486292893101e-07
+      },
+      {
+        "name": "blocks.3.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8533335605752654e-05,
+        "normalized_gram": 6.687641438101858e-07
+      },
+      {
+        "name": "blocks.3.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 3.214603566448204e-05,
+        "normalized_gram": 8.202227565759478e-07
+      },
+      {
+        "name": "blocks.4.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 5.0003895012196153e-05,
+        "normalized_gram": 1.0417478127540865e-06
+      },
+      {
+        "name": "blocks.4.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8446125977789052e-05,
+        "normalized_gram": 6.656172374238912e-07
+      },
+      {
+        "name": "blocks.4.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.843214158725459e-05,
+        "normalized_gram": 6.651126191964209e-07
+      },
+      {
+        "name": "blocks.4.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8601358533487655e-05,
+        "normalized_gram": 6.712187097876151e-07
+      },
+      {
+        "name": "blocks.4.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 4.9882768507814035e-05,
+        "normalized_gram": 8.999946820596944e-07
+      },
+      {
+        "name": "blocks.4.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.84827276825672e-05,
+        "normalized_gram": 6.669379876805452e-07
+      },
+      {
+        "name": "blocks.4.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.843489553721156e-05,
+        "normalized_gram": 6.652119938057329e-07
+      },
+      {
+        "name": "blocks.4.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 3.198425838490948e-05,
+        "normalized_gram": 8.160949254621108e-07
+      },
+      {
+        "name": "blocks.5.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 4.959730722475797e-05,
+        "normalized_gram": 1.0332772338491243e-06
+      },
+      {
+        "name": "blocks.5.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.856749258877244e-05,
+        "normalized_gram": 6.699966777690093e-07
+      },
+      {
+        "name": "blocks.5.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8430562704452313e-05,
+        "normalized_gram": 6.650556461707388e-07
+      },
+      {
+        "name": "blocks.5.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8482314771972597e-05,
+        "normalized_gram": 6.66923088052861e-07
+      },
+      {
+        "name": "blocks.5.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 4.995290146325715e-05,
+        "normalized_gram": 9.01260034581699e-07
+      },
+      {
+        "name": "blocks.5.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8607570382300764e-05,
+        "normalized_gram": 6.714428605741409e-07
+      },
+      {
+        "name": "blocks.5.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8435912352288142e-05,
+        "normalized_gram": 6.652486849593691e-07
+      },
+      {
+        "name": "blocks.5.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 3.222165469196625e-05,
+        "normalized_gram": 8.221522152445084e-07
+      },
+      {
+        "name": "blocks.6.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 5.005774073651992e-05,
+        "normalized_gram": 1.0428695986774983e-06
+      },
+      {
+        "name": "blocks.6.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8633567378856242e-05,
+        "normalized_gram": 6.723809463841051e-07
+      },
+      {
+        "name": "blocks.6.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8458058548276313e-05,
+        "normalized_gram": 6.660478169728252e-07
+      },
+      {
+        "name": "blocks.6.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.874461304396391e-05,
+        "normalized_gram": 6.763879616742459e-07
+      },
+      {
+        "name": "blocks.6.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 4.98212430102285e-05,
+        "normalized_gram": 8.988846269786621e-07
+      },
+      {
+        "name": "blocks.6.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8528540749684907e-05,
+        "normalized_gram": 6.685911243450958e-07
+      },
+      {
+        "name": "blocks.6.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8578439267002977e-05,
+        "normalized_gram": 6.703916819954552e-07
+      },
+      {
+        "name": "blocks.6.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 3.2275213015964255e-05,
+        "normalized_gram": 8.235187836327768e-07
+      },
+      {
+        "name": "blocks.7.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 4.952665403834544e-05,
+        "normalized_gram": 1.03180529246553e-06
+      },
+      {
+        "name": "blocks.7.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8514638213673607e-05,
+        "normalized_gram": 6.680894597883119e-07
+      },
+      {
+        "name": "blocks.7.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8463872038410045e-05,
+        "normalized_gram": 6.662575932286778e-07
+      },
+      {
+        "name": "blocks.7.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.868408617156092e-05,
+        "normalized_gram": 6.742038862945539e-07
+      },
+      {
+        "name": "blocks.7.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 4.989461012883112e-05,
+        "normalized_gram": 9.002083309060023e-07
+      },
+      {
+        "name": "blocks.7.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8642916984390467e-05,
+        "normalized_gram": 6.727183212136052e-07
+      },
+      {
+        "name": "blocks.7.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8509424990043044e-05,
+        "normalized_gram": 6.679013437841586e-07
+      },
+      {
+        "name": "blocks.7.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 3.227879278711043e-05,
+        "normalized_gram": 8.236101233484442e-07
+      },
+      {
+        "name": "blocks.8.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 4.943107705912553e-05,
+        "normalized_gram": 1.0298141053984484e-06
+      },
+      {
+        "name": "blocks.8.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8459841157891788e-05,
+        "normalized_gram": 6.661121413566598e-07
+      },
+      {
+        "name": "blocks.8.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8303433535038494e-05,
+        "normalized_gram": 6.604682674093062e-07
+      },
+      {
+        "name": "blocks.8.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.855007212725468e-05,
+        "normalized_gram": 6.693680710098415e-07
+      },
+      {
+        "name": "blocks.8.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 4.979879304300994e-05,
+        "normalized_gram": 8.984795802718829e-07
+      },
+      {
+        "name": "blocks.8.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8740127416094765e-05,
+        "normalized_gram": 6.762261005206375e-07
+      },
+      {
+        "name": "blocks.8.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8458145859767683e-05,
+        "normalized_gram": 6.660509675548905e-07
+      },
+      {
+        "name": "blocks.8.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 3.2125553843798116e-05,
+        "normalized_gram": 8.197001523084604e-07
+      },
+      {
+        "name": "blocks.9.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 4.9159523769048974e-05,
+        "normalized_gram": 1.0241567451885203e-06
+      },
+      {
+        "name": "blocks.9.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8498498320695944e-05,
+        "normalized_gram": 6.675070615661028e-07
+      },
+      {
+        "name": "blocks.9.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8510276277083904e-05,
+        "normalized_gram": 6.67932061959296e-07
+      },
+      {
+        "name": "blocks.9.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8536158677306958e-05,
+        "normalized_gram": 6.688660126302994e-07
+      },
+      {
+        "name": "blocks.9.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 4.982053360436112e-05,
+        "normalized_gram": 8.988718277390215e-07
+      },
+      {
+        "name": "blocks.9.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.845561018853914e-05,
+        "normalized_gram": 6.659594694007421e-07
+      },
+      {
+        "name": "blocks.9.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8466487745172344e-05,
+        "normalized_gram": 6.663519794163862e-07
+      },
+      {
+        "name": "blocks.9.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 3.2216419640462846e-05,
+        "normalized_gram": 8.220186401928361e-07
+      },
+      {
+        "name": "blocks.10.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 4.8842070100363344e-05,
+        "normalized_gram": 1.017543127090903e-06
+      },
+      {
+        "name": "blocks.10.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8578752133180387e-05,
+        "normalized_gram": 6.704029715811895e-07
+      },
+      {
+        "name": "blocks.10.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8484155589248985e-05,
+        "normalized_gram": 6.669895128247392e-07
+      },
+      {
+        "name": "blocks.10.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8604845536174253e-05,
+        "normalized_gram": 6.713445361588508e-07
+      },
+      {
+        "name": "blocks.10.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 4.98997833346948e-05,
+        "normalized_gram": 9.00301666899689e-07
+      },
+      {
+        "name": "blocks.10.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8662096408661455e-05,
+        "normalized_gram": 6.734103990739649e-07
+      },
+      {
+        "name": "blocks.10.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.846100713009946e-05,
+        "normalized_gram": 6.661542147546578e-07
+      },
+      {
+        "name": "blocks.10.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 3.203913365723565e-05,
+        "normalized_gram": 8.174950964693545e-07
+      },
+      {
+        "name": "blocks.11.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 4.9291291361441836e-05,
+        "normalized_gram": 1.0269019033633715e-06
+      },
+      {
+        "name": "blocks.11.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.846576742536854e-05,
+        "normalized_gram": 6.663259871143469e-07
+      },
+      {
+        "name": "blocks.11.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8540305973147042e-05,
+        "normalized_gram": 6.690156652784045e-07
+      },
+      {
+        "name": "blocks.11.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.855944537965115e-05,
+        "normalized_gram": 6.697062991219843e-07
+      },
+      {
+        "name": "blocks.11.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 4.978409924660809e-05,
+        "normalized_gram": 8.982144719185072e-07
+      },
+      {
+        "name": "blocks.11.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8473987438483164e-05,
+        "normalized_gram": 6.666226012883762e-07
+      },
+      {
+        "name": "blocks.11.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.870252344815526e-05,
+        "normalized_gram": 6.74869184207358e-07
+      },
+      {
+        "name": "blocks.11.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 3.237534474465065e-05,
+        "normalized_gram": 8.260736965738649e-07
+      }
+    ],
+    "momentum": [
+      {
+        "name": "blocks.0.attn.to_qkv.weight",
+        "relative_physical_m_error": 0.0006113489507697523
+      },
+      {
+        "name": "blocks.0.attn.to_out.weight",
+        "relative_physical_m_error": 0.000621079292614013
+      },
+      {
+        "name": "blocks.0.ff.proj_in.weight",
+        "relative_physical_m_error": 0.0006048340001143515
+      },
+      {
+        "name": "blocks.0.ff.proj_out.weight",
+        "relative_physical_m_error": 0.0006091896793805063
+      },
+      {
+        "name": "blocks.1.attn.to_qkv.weight",
+        "relative_physical_m_error": 0.0006133884890004992
+      },
+      {
+        "name": "blocks.1.attn.to_out.weight",
+        "relative_physical_m_error": 0.0006159342010505497
+      },
+      {
+        "name": "blocks.1.ff.proj_in.weight",
+        "relative_physical_m_error": 0.000605925393756479
+      },
+      {
+        "name": "blocks.1.ff.proj_out.weight",
+        "relative_physical_m_error": 0.0006099199526943266
+      },
+      {
+        "name": "blocks.2.attn.to_qkv.weight",
+        "relative_physical_m_error": 0.0006113910349085927
+      },
+      {
+        "name": "blocks.2.attn.to_out.weight",
+        "relative_physical_m_error": 0.0006296193460002542
+      },
+      {
+        "name": "blocks.2.ff.proj_in.weight",
+        "relative_physical_m_error": 0.0006306216819211841
+      },
+      {
+        "name": "blocks.2.ff.proj_out.weight",
+        "relative_physical_m_error": 0.0006242141244001687
+      },
+      {
+        "name": "blocks.3.attn.to_qkv.weight",
+        "relative_physical_m_error": 0.0006176463211886585
+      },
+      {
+        "name": "blocks.3.attn.to_out.weight",
+        "relative_physical_m_error": 0.0006509331869892776
+      },
+      {
+        "name": "blocks.3.ff.proj_in.weight",
+        "relative_physical_m_error": 0.0006365631124936044
+      },
+      {
+        "name": "blocks.3.ff.proj_out.weight",
+        "relative_physical_m_error": 0.0006236190674826503
+      },
+      {
+        "name": "blocks.4.attn.to_qkv.weight",
+        "relative_physical_m_error": 0.000611771596595645
+      },
+      {
+        "name": "blocks.4.attn.to_out.weight",
+        "relative_physical_m_error": 0.0006391422939486802
+      },
+      {
+        "name": "blocks.4.ff.proj_in.weight",
+        "relative_physical_m_error": 0.0006366255693137646
+      },
+      {
+        "name": "blocks.4.ff.proj_out.weight",
+        "relative_physical_m_error": 0.0006244188407436013
+      },
+      {
+        "name": "blocks.5.attn.to_qkv.weight",
+        "relative_physical_m_error": 0.0006145967054180801
+      },
+      {
+        "name": "blocks.5.attn.to_out.weight",
+        "relative_physical_m_error": 0.0006542520131915808
+      },
+      {
+        "name": "blocks.5.ff.proj_in.weight",
+        "relative_physical_m_error": 0.0006357890088111162
+      },
+      {
+        "name": "blocks.5.ff.proj_out.weight",
+        "relative_physical_m_error": 0.0006329469615593553
+      },
+      {
+        "name": "blocks.6.attn.to_qkv.weight",
+        "relative_physical_m_error": 0.0006162903737276793
+      },
+      {
+        "name": "blocks.6.attn.to_out.weight",
+        "relative_physical_m_error": 0.0006438647978939116
+      },
+      {
+        "name": "blocks.6.ff.proj_in.weight",
+        "relative_physical_m_error": 0.0006261024973355234
+      },
+      {
+        "name": "blocks.6.ff.proj_out.weight",
+        "relative_physical_m_error": 0.0006274888874031603
+      },
+      {
+        "name": "blocks.7.attn.to_qkv.weight",
+        "relative_physical_m_error": 0.0006296047940850258
+      },
+      {
+        "name": "blocks.7.attn.to_out.weight",
+        "relative_physical_m_error": 0.0006375256925821304
+      },
+      {
+        "name": "blocks.7.ff.proj_in.weight",
+        "relative_physical_m_error": 0.0006336706574074924
+      },
+      {
+        "name": "blocks.7.ff.proj_out.weight",
+        "relative_physical_m_error": 0.000618844002019614
+      },
+      {
+        "name": "blocks.8.attn.to_qkv.weight",
+        "relative_physical_m_error": 0.0006275752675719559
+      },
+      {
+        "name": "blocks.8.attn.to_out.weight",
+        "relative_physical_m_error": 0.0006289588054642081
+      },
+      {
+        "name": "blocks.8.ff.proj_in.weight",
+        "relative_physical_m_error": 0.0006309325690381229
+      },
+      {
+        "name": "blocks.8.ff.proj_out.weight",
+        "relative_physical_m_error": 0.0006137496093288064
+      },
+      {
+        "name": "blocks.9.attn.to_qkv.weight",
+        "relative_physical_m_error": 0.0006234346074052155
+      },
+      {
+        "name": "blocks.9.attn.to_out.weight",
+        "relative_physical_m_error": 0.0006300209206528962
+      },
+      {
+        "name": "blocks.9.ff.proj_in.weight",
+        "relative_physical_m_error": 0.0006166385137476027
+      },
+      {
+        "name": "blocks.9.ff.proj_out.weight",
+        "relative_physical_m_error": 0.0006036905106157064
+      },
+      {
+        "name": "blocks.10.attn.to_qkv.weight",
+        "relative_physical_m_error": 0.0006244897376745939
+      },
+      {
+        "name": "blocks.10.attn.to_out.weight",
+        "relative_physical_m_error": 0.0006195858004502952
+      },
+      {
+        "name": "blocks.10.ff.proj_in.weight",
+        "relative_physical_m_error": 0.0006131951231509447
+      },
+      {
+        "name": "blocks.10.ff.proj_out.weight",
+        "relative_physical_m_error": 0.0006110466783866286
+      },
+      {
+        "name": "blocks.11.attn.to_qkv.weight",
+        "relative_physical_m_error": 0.0006140257464721799
+      },
+      {
+        "name": "blocks.11.attn.to_out.weight",
+        "relative_physical_m_error": 0.0006009495700709522
+      },
+      {
+        "name": "blocks.11.ff.proj_in.weight",
+        "relative_physical_m_error": 0.0006122292834334075
+      },
+      {
+        "name": "blocks.11.ff.proj_out.weight",
+        "relative_physical_m_error": 0.0006123185157775879
+      }
+    ],
+    "max_absolute_gram": 5.005774073651992e-05,
+    "max_normalized_gram": 1.0428695986774983e-06,
+    "max_physical_m_error": 0.0006542520131915808
+  },
+  {
+    "call": 151,
+    "factors": [
+      {
+        "name": "blocks.0.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 5.0138150982093066e-05,
+        "normalized_gram": 1.044544812126939e-06
+      },
+      {
+        "name": "blocks.0.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8517997887101956e-05,
+        "normalized_gram": 6.682106915607023e-07
+      },
+      {
+        "name": "blocks.0.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8550121239968576e-05,
+        "normalized_gram": 6.693698432122533e-07
+      },
+      {
+        "name": "blocks.0.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.849346881499514e-05,
+        "normalized_gram": 6.673255749117121e-07
+      },
+      {
+        "name": "blocks.0.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 4.978776632924564e-05,
+        "normalized_gram": 8.982806341418799e-07
+      },
+      {
+        "name": "blocks.0.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.854832771641668e-05,
+        "normalized_gram": 6.693051250056605e-07
+      },
+      {
+        "name": "blocks.0.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8524753613746725e-05,
+        "normalized_gram": 6.684544678480104e-07
+      },
+      {
+        "name": "blocks.0.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 3.208859925507568e-05,
+        "normalized_gram": 8.187572368290397e-07
+      },
+      {
+        "name": "blocks.1.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 5.0159917009295896e-05,
+        "normalized_gram": 1.0449982710269978e-06
+      },
+      {
+        "name": "blocks.1.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.859405529103242e-05,
+        "normalized_gram": 6.70955176725272e-07
+      },
+      {
+        "name": "blocks.1.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8487260604160838e-05,
+        "normalized_gram": 6.67101555399439e-07
+      },
+      {
+        "name": "blocks.1.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.831004919949919e-05,
+        "normalized_gram": 6.607069896378843e-07
+      },
+      {
+        "name": "blocks.1.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 4.997726500732824e-05,
+        "normalized_gram": 9.016996064169446e-07
+      },
+      {
+        "name": "blocks.1.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8499447833164595e-05,
+        "normalized_gram": 6.675413241460637e-07
+      },
+      {
+        "name": "blocks.1.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.862800127128139e-05,
+        "normalized_gram": 6.721800967774377e-07
+      },
+      {
+        "name": "blocks.1.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 3.214123353245668e-05,
+        "normalized_gram": 8.201002276890769e-07
+      },
+      {
+        "name": "blocks.2.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 4.98966001032386e-05,
+        "normalized_gram": 1.039512502150804e-06
+      },
+      {
+        "name": "blocks.2.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8469259885023348e-05,
+        "normalized_gram": 6.664520103969616e-07
+      },
+      {
+        "name": "blocks.2.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.864421028585639e-05,
+        "normalized_gram": 6.727649892104485e-07
+      },
+      {
+        "name": "blocks.2.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.853809953900054e-05,
+        "normalized_gram": 6.689360474441275e-07
+      },
+      {
+        "name": "blocks.2.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 4.9898102588485926e-05,
+        "normalized_gram": 9.002713425473098e-07
+      },
+      {
+        "name": "blocks.2.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.85105818673037e-05,
+        "normalized_gram": 6.679430889965249e-07
+      },
+      {
+        "name": "blocks.2.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.846812665462494e-05,
+        "normalized_gram": 6.664111184672383e-07
+      },
+      {
+        "name": "blocks.2.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 3.1989831768441945e-05,
+        "normalized_gram": 8.162371332308126e-07
+      },
+      {
+        "name": "blocks.3.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 5.0368693337077275e-05,
+        "normalized_gram": 1.0493477778557765e-06
+      },
+      {
+        "name": "blocks.3.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.859900658018887e-05,
+        "normalized_gram": 6.711338409832291e-07
+      },
+      {
+        "name": "blocks.3.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.85420794878155e-05,
+        "normalized_gram": 6.690796614766073e-07
+      },
+      {
+        "name": "blocks.3.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8474363969289698e-05,
+        "normalized_gram": 6.666361881735332e-07
+      },
+      {
+        "name": "blocks.3.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 4.992291360395029e-05,
+        "normalized_gram": 9.007189877490979e-07
+      },
+      {
+        "name": "blocks.3.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.853738649515435e-05,
+        "normalized_gram": 6.689103176905937e-07
+      },
+      {
+        "name": "blocks.3.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.853550384112168e-05,
+        "normalized_gram": 6.688423832648091e-07
+      },
+      {
+        "name": "blocks.3.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 3.226644912501797e-05,
+        "normalized_gram": 8.232951684142373e-07
+      },
+      {
+        "name": "blocks.4.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 4.95008280267939e-05,
+        "normalized_gram": 1.0312672505582061e-06
+      },
+      {
+        "name": "blocks.4.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8521803212934174e-05,
+        "normalized_gram": 6.683480044290513e-07
+      },
+      {
+        "name": "blocks.4.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8517413991503417e-05,
+        "normalized_gram": 6.681896220431401e-07
+      },
+      {
+        "name": "blocks.4.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8585331417853013e-05,
+        "normalized_gram": 6.706403810672404e-07
+      },
+      {
+        "name": "blocks.4.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 4.986821295460686e-05,
+        "normalized_gram": 8.997320679171205e-07
+      },
+      {
+        "name": "blocks.4.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.855643859016709e-05,
+        "normalized_gram": 6.695978009521081e-07
+      },
+      {
+        "name": "blocks.4.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.838485331973061e-05,
+        "normalized_gram": 6.634062508223908e-07
+      },
+      {
+        "name": "blocks.4.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 3.2265092158922926e-05,
+        "normalized_gram": 8.232605447212048e-07
+      },
+      {
+        "name": "blocks.5.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 5.0584036216605455e-05,
+        "normalized_gram": 1.053834087845947e-06
+      },
+      {
+        "name": "blocks.5.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8583383280201815e-05,
+        "normalized_gram": 6.705700837049068e-07
+      },
+      {
+        "name": "blocks.5.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8495595213607885e-05,
+        "normalized_gram": 6.674023047124292e-07
+      },
+      {
+        "name": "blocks.5.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8523707694839686e-05,
+        "normalized_gram": 6.684167265003522e-07
+      },
+      {
+        "name": "blocks.5.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 4.984082988812588e-05,
+        "normalized_gram": 8.992380172669945e-07
+      },
+      {
+        "name": "blocks.5.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8489496142137796e-05,
+        "normalized_gram": 6.671822234277377e-07
+      },
+      {
+        "name": "blocks.5.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8511163943912834e-05,
+        "normalized_gram": 6.679640928769606e-07
+      },
+      {
+        "name": "blocks.5.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 3.212946467101574e-05,
+        "normalized_gram": 8.197999390913287e-07
+      },
+      {
+        "name": "blocks.6.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 4.965916377841495e-05,
+        "normalized_gram": 1.0345659120503115e-06
+      },
+      {
+        "name": "blocks.6.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.847996099968441e-05,
+        "normalized_gram": 6.668381536113487e-07
+      },
+      {
+        "name": "blocks.6.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.84042401087936e-05,
+        "normalized_gram": 6.641058113151559e-07
+      },
+      {
+        "name": "blocks.6.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.844566395448055e-05,
+        "normalized_gram": 6.656005655937953e-07
+      },
+      {
+        "name": "blocks.6.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 4.9803173169493675e-05,
+        "normalized_gram": 8.985586073720225e-07
+      },
+      {
+        "name": "blocks.6.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8562970581115223e-05,
+        "normalized_gram": 6.698335038728737e-07
+      },
+      {
+        "name": "blocks.6.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.836485716921743e-05,
+        "normalized_gram": 6.626847018922945e-07
+      },
+      {
+        "name": "blocks.6.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 3.211398870917037e-05,
+        "normalized_gram": 8.194050619059127e-07
+      },
+      {
+        "name": "blocks.7.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 5.010177119402215e-05,
+        "normalized_gram": 1.0437868998754614e-06
+      },
+      {
+        "name": "blocks.7.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8552615074440837e-05,
+        "normalized_gram": 6.694598317124954e-07
+      },
+      {
+        "name": "blocks.7.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8487449779058807e-05,
+        "normalized_gram": 6.671083816605806e-07
+      },
+      {
+        "name": "blocks.7.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8450349671184085e-05,
+        "normalized_gram": 6.657696468313035e-07
+      },
+      {
+        "name": "blocks.7.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 4.992104004486464e-05,
+        "normalized_gram": 9.006851846290215e-07
+      },
+      {
+        "name": "blocks.7.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8527876818552613e-05,
+        "normalized_gram": 6.685671667939737e-07
+      },
+      {
+        "name": "blocks.7.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8610935512697324e-05,
+        "normalized_gram": 6.715642892579104e-07
+      },
+      {
+        "name": "blocks.7.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 3.221936640329659e-05,
+        "normalized_gram": 8.22093828373416e-07
+      },
+      {
+        "name": "blocks.8.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 4.987998545402661e-05,
+        "normalized_gram": 1.0391663636255544e-06
+      },
+      {
+        "name": "blocks.8.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.835348484746646e-05,
+        "normalized_gram": 6.6227433857828e-07
+      },
+      {
+        "name": "blocks.8.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8499949874239974e-05,
+        "normalized_gram": 6.675594399929396e-07
+      },
+      {
+        "name": "blocks.8.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.879872434074059e-05,
+        "normalized_gram": 6.783405349092595e-07
+      },
+      {
+        "name": "blocks.8.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 4.9884580221259966e-05,
+        "normalized_gram": 9.000273693486226e-07
+      },
+      {
+        "name": "blocks.8.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8410430129733868e-05,
+        "normalized_gram": 6.643291744561653e-07
+      },
+      {
+        "name": "blocks.8.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.849450563895516e-05,
+        "normalized_gram": 6.673629880737384e-07
+      },
+      {
+        "name": "blocks.8.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 3.1951505661709234e-05,
+        "normalized_gram": 8.152592227587023e-07
+      },
+      {
+        "name": "blocks.9.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 4.976019044988789e-05,
+        "normalized_gram": 1.0366706343726644e-06
+      },
+      {
+        "name": "blocks.9.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8581315089249983e-05,
+        "normalized_gram": 6.704954542922334e-07
+      },
+      {
+        "name": "blocks.9.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8555365386418998e-05,
+        "normalized_gram": 6.695590750475545e-07
+      },
+      {
+        "name": "blocks.9.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.841983976191841e-05,
+        "normalized_gram": 6.646687153108354e-07
+      },
+      {
+        "name": "blocks.9.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 4.9906633648788556e-05,
+        "normalized_gram": 9.004252616086285e-07
+      },
+      {
+        "name": "blocks.9.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8614477085066028e-05,
+        "normalized_gram": 6.71692084742937e-07
+      },
+      {
+        "name": "blocks.9.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.845549741119612e-05,
+        "normalized_gram": 6.659553998989076e-07
+      },
+      {
+        "name": "blocks.9.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 3.20884064421989e-05,
+        "normalized_gram": 8.18752317108582e-07
+      },
+      {
+        "name": "blocks.10.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 4.912715667160228e-05,
+        "normalized_gram": 1.0234824306583807e-06
+      },
+      {
+        "name": "blocks.10.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8626591554493643e-05,
+        "normalized_gram": 6.721292280045072e-07
+      },
+      {
+        "name": "blocks.10.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.855681875895243e-05,
+        "normalized_gram": 6.696115191115178e-07
+      },
+      {
+        "name": "blocks.10.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.862337921920698e-05,
+        "normalized_gram": 6.720133128393521e-07
+      },
+      {
+        "name": "blocks.10.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 5.003103069611825e-05,
+        "normalized_gram": 9.02669657507447e-07
+      },
+      {
+        "name": "blocks.10.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8409675249131396e-05,
+        "normalized_gram": 6.643019350487252e-07
+      },
+      {
+        "name": "blocks.10.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8237991753267124e-05,
+        "normalized_gram": 6.581068405141844e-07
+      },
+      {
+        "name": "blocks.10.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 3.2161431590793654e-05,
+        "normalized_gram": 8.206155916132494e-07
+      },
+      {
+        "name": "blocks.11.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 4.931295552523807e-05,
+        "normalized_gram": 1.0273532401091263e-06
+      },
+      {
+        "name": "blocks.11.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8892709704232402e-05,
+        "normalized_gram": 6.817319395912521e-07
+      },
+      {
+        "name": "blocks.11.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8424740119371563e-05,
+        "normalized_gram": 6.648455417292544e-07
+      },
+      {
+        "name": "blocks.11.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8539465600042604e-05,
+        "normalized_gram": 6.689853409260253e-07
+      },
+      {
+        "name": "blocks.11.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 4.990823435946368e-05,
+        "normalized_gram": 9.004541419442276e-07
+      },
+      {
+        "name": "blocks.11.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8466991605237126e-05,
+        "normalized_gram": 6.663701609003885e-07
+      },
+      {
+        "name": "blocks.11.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8523840481066145e-05,
+        "normalized_gram": 6.684215180105766e-07
+      },
+      {
+        "name": "blocks.11.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 3.1949439289746806e-05,
+        "normalized_gram": 8.15206498207382e-07
+      }
+    ],
+    "momentum": [
+      {
+        "name": "blocks.0.attn.to_qkv.weight",
+        "relative_physical_m_error": 0.0006191684515215456
+      },
+      {
+        "name": "blocks.0.attn.to_out.weight",
+        "relative_physical_m_error": 0.0006235465407371521
+      },
+      {
+        "name": "blocks.0.ff.proj_in.weight",
+        "relative_physical_m_error": 0.0006069227820262313
+      },
+      {
+        "name": "blocks.0.ff.proj_out.weight",
+        "relative_physical_m_error": 0.0006124143255874515
+      },
+      {
+        "name": "blocks.1.attn.to_qkv.weight",
+        "relative_physical_m_error": 0.0006128867971710861
+      },
+      {
+        "name": "blocks.1.attn.to_out.weight",
+        "relative_physical_m_error": 0.0006085358327254653
+      },
+      {
+        "name": "blocks.1.ff.proj_in.weight",
+        "relative_physical_m_error": 0.0006113878916949034
+      },
+      {
+        "name": "blocks.1.ff.proj_out.weight",
+        "relative_physical_m_error": 0.0006127063534222543
+      },
+      {
+        "name": "blocks.2.attn.to_qkv.weight",
+        "relative_physical_m_error": 0.000628878187853843
+      },
+      {
+        "name": "blocks.2.attn.to_out.weight",
+        "relative_physical_m_error": 0.0006371085764840245
+      },
+      {
+        "name": "blocks.2.ff.proj_in.weight",
+        "relative_physical_m_error": 0.0006173143046908081
+      },
+      {
+        "name": "blocks.2.ff.proj_out.weight",
+        "relative_physical_m_error": 0.0006279987865127623
+      },
+      {
+        "name": "blocks.3.attn.to_qkv.weight",
+        "relative_physical_m_error": 0.0006032774690538645
+      },
+      {
+        "name": "blocks.3.attn.to_out.weight",
+        "relative_physical_m_error": 0.0006285246927291155
+      },
+      {
+        "name": "blocks.3.ff.proj_in.weight",
+        "relative_physical_m_error": 0.0006240382790565491
+      },
+      {
+        "name": "blocks.3.ff.proj_out.weight",
+        "relative_physical_m_error": 0.0006215237081050873
+      },
+      {
+        "name": "blocks.4.attn.to_qkv.weight",
+        "relative_physical_m_error": 0.0006097771693021059
+      },
+      {
+        "name": "blocks.4.attn.to_out.weight",
+        "relative_physical_m_error": 0.0006338629173114896
+      },
+      {
+        "name": "blocks.4.ff.proj_in.weight",
+        "relative_physical_m_error": 0.0006204912788234651
+      },
+      {
+        "name": "blocks.4.ff.proj_out.weight",
+        "relative_physical_m_error": 0.0006275129853747785
+      },
+      {
+        "name": "blocks.5.attn.to_qkv.weight",
+        "relative_physical_m_error": 0.0006226200493983924
+      },
+      {
+        "name": "blocks.5.attn.to_out.weight",
+        "relative_physical_m_error": 0.0006334439385682344
+      },
+      {
+        "name": "blocks.5.ff.proj_in.weight",
+        "relative_physical_m_error": 0.0006381336716003716
+      },
+      {
+        "name": "blocks.5.ff.proj_out.weight",
+        "relative_physical_m_error": 0.0006268768338486552
+      },
+      {
+        "name": "blocks.6.attn.to_qkv.weight",
+        "relative_physical_m_error": 0.0006225883844308555
+      },
+      {
+        "name": "blocks.6.attn.to_out.weight",
+        "relative_physical_m_error": 0.0006467128987424076
+      },
+      {
+        "name": "blocks.6.ff.proj_in.weight",
+        "relative_physical_m_error": 0.0006251197773963213
+      },
+      {
+        "name": "blocks.6.ff.proj_out.weight",
+        "relative_physical_m_error": 0.0006332697230391204
+      },
+      {
+        "name": "blocks.7.attn.to_qkv.weight",
+        "relative_physical_m_error": 0.0006111548282206059
+      },
+      {
+        "name": "blocks.7.attn.to_out.weight",
+        "relative_physical_m_error": 0.0006362650310620666
+      },
+      {
+        "name": "blocks.7.ff.proj_in.weight",
+        "relative_physical_m_error": 0.0006250902661122382
+      },
+      {
+        "name": "blocks.7.ff.proj_out.weight",
+        "relative_physical_m_error": 0.0006182615761645138
+      },
+      {
+        "name": "blocks.8.attn.to_qkv.weight",
+        "relative_physical_m_error": 0.0006283908151090145
+      },
+      {
+        "name": "blocks.8.attn.to_out.weight",
+        "relative_physical_m_error": 0.0006409434718079865
+      },
+      {
+        "name": "blocks.8.ff.proj_in.weight",
+        "relative_physical_m_error": 0.0006239418871700764
+      },
+      {
+        "name": "blocks.8.ff.proj_out.weight",
+        "relative_physical_m_error": 0.0006169946282170713
+      },
+      {
+        "name": "blocks.9.attn.to_qkv.weight",
+        "relative_physical_m_error": 0.0006244922988116741
+      },
+      {
+        "name": "blocks.9.attn.to_out.weight",
+        "relative_physical_m_error": 0.0006305869319476187
+      },
+      {
+        "name": "blocks.9.ff.proj_in.weight",
+        "relative_physical_m_error": 0.0006276161875575781
+      },
+      {
+        "name": "blocks.9.ff.proj_out.weight",
+        "relative_physical_m_error": 0.0006159859476611018
+      },
+      {
+        "name": "blocks.10.attn.to_qkv.weight",
+        "relative_physical_m_error": 0.0006219969945959747
+      },
+      {
+        "name": "blocks.10.attn.to_out.weight",
+        "relative_physical_m_error": 0.0006329288007691503
+      },
+      {
+        "name": "blocks.10.ff.proj_in.weight",
+        "relative_physical_m_error": 0.0006221079383976758
+      },
+      {
+        "name": "blocks.10.ff.proj_out.weight",
+        "relative_physical_m_error": 0.0006211685249581933
+      },
+      {
+        "name": "blocks.11.attn.to_qkv.weight",
+        "relative_physical_m_error": 0.0006274940678849816
+      },
+      {
+        "name": "blocks.11.attn.to_out.weight",
+        "relative_physical_m_error": 0.000633525662124157
+      },
+      {
+        "name": "blocks.11.ff.proj_in.weight",
+        "relative_physical_m_error": 0.0006219247006811202
+      },
+      {
+        "name": "blocks.11.ff.proj_out.weight",
+        "relative_physical_m_error": 0.0006214419845491648
+      }
+    ],
+    "max_absolute_gram": 5.0584036216605455e-05,
+    "max_normalized_gram": 1.053834087845947e-06,
+    "max_physical_m_error": 0.0006467128987424076
+  },
+  {
+    "call": 201,
+    "factors": [
+      {
+        "name": "blocks.0.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 4.9799633416114375e-05,
+        "normalized_gram": 1.0374923628357162e-06
+      },
+      {
+        "name": "blocks.0.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8534850823925808e-05,
+        "normalized_gram": 6.688188195364452e-07
+      },
+      {
+        "name": "blocks.0.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8671162251848727e-05,
+        "normalized_gram": 6.737375345117526e-07
+      },
+      {
+        "name": "blocks.0.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8529011867940426e-05,
+        "normalized_gram": 6.686081243608235e-07
+      },
+      {
+        "name": "blocks.0.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 4.979345612809993e-05,
+        "normalized_gram": 8.983832906075099e-07
+      },
+      {
+        "name": "blocks.0.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8545457351137884e-05,
+        "normalized_gram": 6.692015496202614e-07
+      },
+      {
+        "name": "blocks.0.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.86846918950323e-05,
+        "normalized_gram": 6.742257434576325e-07
+      },
+      {
+        "name": "blocks.0.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 3.223938983865082e-05,
+        "normalized_gram": 8.226047367017022e-07
+      },
+      {
+        "name": "blocks.1.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 4.9435195251135156e-05,
+        "normalized_gram": 1.0298999010653158e-06
+      },
+      {
+        "name": "blocks.1.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.839383003243711e-05,
+        "normalized_gram": 6.637301700409867e-07
+      },
+      {
+        "name": "blocks.1.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8449391063768417e-05,
+        "normalized_gram": 6.657350560657107e-07
+      },
+      {
+        "name": "blocks.1.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.858540781540796e-05,
+        "normalized_gram": 6.706431378265476e-07
+      },
+      {
+        "name": "blocks.1.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 4.980941230314784e-05,
+        "normalized_gram": 8.986711750437332e-07
+      },
+      {
+        "name": "blocks.1.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.858649375208188e-05,
+        "normalized_gram": 6.706823231909856e-07
+      },
+      {
+        "name": "blocks.1.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8555732822278515e-05,
+        "normalized_gram": 6.695723337470797e-07
+      },
+      {
+        "name": "blocks.1.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 3.198129707016051e-05,
+        "normalized_gram": 8.160193659818738e-07
+      },
+      {
+        "name": "blocks.2.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 5.0131733587477356e-05,
+        "normalized_gram": 1.0444111164057783e-06
+      },
+      {
+        "name": "blocks.2.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.858373980212491e-05,
+        "normalized_gram": 6.705829485816738e-07
+      },
+      {
+        "name": "blocks.2.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8641896531335078e-05,
+        "normalized_gram": 6.726814987857162e-07
+      },
+      {
+        "name": "blocks.2.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8537972209742293e-05,
+        "normalized_gram": 6.689314528452822e-07
+      },
+      {
+        "name": "blocks.2.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 4.981158417649567e-05,
+        "normalized_gram": 8.987103604081713e-07
+      },
+      {
+        "name": "blocks.2.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8719047147897072e-05,
+        "normalized_gram": 6.754654318632295e-07
+      },
+      {
+        "name": "blocks.2.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.851219894888345e-05,
+        "normalized_gram": 6.680014404018605e-07
+      },
+      {
+        "name": "blocks.2.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 3.209093847544864e-05,
+        "normalized_gram": 8.188169232489322e-07
+      },
+      {
+        "name": "blocks.3.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 5.0613769417395815e-05,
+        "normalized_gram": 1.0544535295290796e-06
+      },
+      {
+        "name": "blocks.3.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8605656805448234e-05,
+        "normalized_gram": 6.713738103172082e-07
+      },
+      {
+        "name": "blocks.3.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8593016648082994e-05,
+        "normalized_gram": 6.709176979261194e-07
+      },
+      {
+        "name": "blocks.3.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8639346308191307e-05,
+        "normalized_gram": 6.725894755345568e-07
+      },
+      {
+        "name": "blocks.3.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 4.989694571122527e-05,
+        "normalized_gram": 9.002504699411268e-07
+      },
+      {
+        "name": "blocks.3.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.857540883065667e-05,
+        "normalized_gram": 6.702823305429363e-07
+      },
+      {
+        "name": "blocks.3.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.854615220509004e-05,
+        "normalized_gram": 6.692266230025316e-07
+      },
+      {
+        "name": "blocks.3.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 3.213762101950124e-05,
+        "normalized_gram": 8.200080525491808e-07
+      },
+      {
+        "name": "blocks.4.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 5.0498598284320906e-05,
+        "normalized_gram": 1.0520541309233522e-06
+      },
+      {
+        "name": "blocks.4.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8467964764568023e-05,
+        "normalized_gram": 6.66405276762992e-07
+      },
+      {
+        "name": "blocks.4.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8550363165559247e-05,
+        "normalized_gram": 6.693785729500593e-07
+      },
+      {
+        "name": "blocks.4.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.867429818958044e-05,
+        "normalized_gram": 6.738506929176005e-07
+      },
+      {
+        "name": "blocks.4.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 5.011817120248452e-05,
+        "normalized_gram": 9.042418635951934e-07
+      },
+      {
+        "name": "blocks.4.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.845325095928274e-05,
+        "normalized_gram": 6.658743380478507e-07
+      },
+      {
+        "name": "blocks.4.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8548587831901386e-05,
+        "normalized_gram": 6.693145111147302e-07
+      },
+      {
+        "name": "blocks.4.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 3.2192940125241876e-05,
+        "normalized_gram": 8.214195481959685e-07
+      },
+      {
+        "name": "blocks.5.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 5.030128886573948e-05,
+        "normalized_gram": 1.047943518036239e-06
+      },
+      {
+        "name": "blocks.5.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8610551705933176e-05,
+        "normalized_gram": 6.71550439824248e-07
+      },
+      {
+        "name": "blocks.5.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.849076579674147e-05,
+        "normalized_gram": 6.672280381419384e-07
+      },
+      {
+        "name": "blocks.5.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.857346433098428e-05,
+        "normalized_gram": 6.702121644548555e-07
+      },
+      {
+        "name": "blocks.5.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 4.983338658348657e-05,
+        "normalized_gram": 8.991037237064581e-07
+      },
+      {
+        "name": "blocks.5.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.830041583161801e-05,
+        "normalized_gram": 6.603593754166718e-07
+      },
+      {
+        "name": "blocks.5.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.853906360338442e-05,
+        "normalized_gram": 6.689708351210993e-07
+      },
+      {
+        "name": "blocks.5.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 3.2249630748992786e-05,
+        "normalized_gram": 8.22866038835446e-07
+      },
+      {
+        "name": "blocks.6.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 5.0928672862937674e-05,
+        "normalized_gram": 1.0610140179778682e-06
+      },
+      {
+        "name": "blocks.6.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8372622434981167e-05,
+        "normalized_gram": 6.629649067847335e-07
+      },
+      {
+        "name": "blocks.6.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.835378134273924e-05,
+        "normalized_gram": 6.62285037429877e-07
+      },
+      {
+        "name": "blocks.6.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8796426957123913e-05,
+        "normalized_gram": 6.782576352186644e-07
+      },
+      {
+        "name": "blocks.6.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 5.001388126402162e-05,
+        "normalized_gram": 9.023602440937771e-07
+      },
+      {
+        "name": "blocks.6.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.858455107139889e-05,
+        "normalized_gram": 6.706122227400311e-07
+      },
+      {
+        "name": "blocks.6.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8453862139722332e-05,
+        "normalized_gram": 6.658963921223083e-07
+      },
+      {
+        "name": "blocks.6.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 3.2206800824496895e-05,
+        "normalized_gram": 8.217732111194371e-07
+      },
+      {
+        "name": "blocks.7.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 5.057331873103976e-05,
+        "normalized_gram": 1.0536108068966616e-06
+      },
+      {
+        "name": "blocks.7.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8497006749385037e-05,
+        "normalized_gram": 6.67453239122486e-07
+      },
+      {
+        "name": "blocks.7.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8625103621161543e-05,
+        "normalized_gram": 6.720755368351432e-07
+      },
+      {
+        "name": "blocks.7.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8338059817324392e-05,
+        "normalized_gram": 6.617177357467311e-07
+      },
+      {
+        "name": "blocks.7.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 5.001051977160387e-05,
+        "normalized_gram": 9.022995953890187e-07
+      },
+      {
+        "name": "blocks.7.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.847131716203876e-05,
+        "normalized_gram": 6.66526245986877e-07
+      },
+      {
+        "name": "blocks.7.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8568920495454222e-05,
+        "normalized_gram": 6.700482029132035e-07
+      },
+      {
+        "name": "blocks.7.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 3.194638338754885e-05,
+        "normalized_gram": 8.151285252793732e-07
+      },
+      {
+        "name": "blocks.8.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 5.014662383473478e-05,
+        "normalized_gram": 1.044721329890308e-06
+      },
+      {
+        "name": "blocks.8.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8479429854778573e-05,
+        "normalized_gram": 6.66818987570451e-07
+      },
+      {
+        "name": "blocks.8.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.870678534032777e-05,
+        "normalized_gram": 6.75022971994424e-07
+      },
+      {
+        "name": "blocks.8.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8720587831921875e-05,
+        "normalized_gram": 6.75521026509258e-07
+      },
+      {
+        "name": "blocks.8.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 5.001711906515993e-05,
+        "normalized_gram": 9.024186611362391e-07
+      },
+      {
+        "name": "blocks.8.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8540349628892727e-05,
+        "normalized_gram": 6.690172405694372e-07
+      },
+      {
+        "name": "blocks.8.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8490844013285823e-05,
+        "normalized_gram": 6.672308605383719e-07
+      },
+      {
+        "name": "blocks.8.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 3.2259951694868505e-05,
+        "normalized_gram": 8.231293831173043e-07
+      },
+      {
+        "name": "blocks.9.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 4.9805388698587194e-05,
+        "normalized_gram": 1.0376122645538999e-06
+      },
+      {
+        "name": "blocks.9.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8447559341439046e-05,
+        "normalized_gram": 6.656689594794644e-07
+      },
+      {
+        "name": "blocks.9.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8695440303417854e-05,
+        "normalized_gram": 6.746135932373048e-07
+      },
+      {
+        "name": "blocks.9.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.877339309430681e-05,
+        "normalized_gram": 6.774264722875437e-07
+      },
+      {
+        "name": "blocks.9.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 4.973155228071846e-05,
+        "normalized_gram": 8.97266409265336e-07
+      },
+      {
+        "name": "blocks.9.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.863661964307539e-05,
+        "normalized_gram": 6.724910854821403e-07
+      },
+      {
+        "name": "blocks.9.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.859233270806726e-05,
+        "normalized_gram": 6.708930183666074e-07
+      },
+      {
+        "name": "blocks.9.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 3.225449108867906e-05,
+        "normalized_gram": 8.229900529209457e-07
+      },
+      {
+        "name": "blocks.10.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 5.0651360652409494e-05,
+        "normalized_gram": 1.0552366802585311e-06
+      },
+      {
+        "name": "blocks.10.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8445018213242292e-05,
+        "normalized_gram": 6.655772644139368e-07
+      },
+      {
+        "name": "blocks.10.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8629521946422756e-05,
+        "normalized_gram": 6.722349694150762e-07
+      },
+      {
+        "name": "blocks.10.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8575969079392962e-05,
+        "normalized_gram": 6.703025467778558e-07
+      },
+      {
+        "name": "blocks.10.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 4.995020208298229e-05,
+        "normalized_gram": 9.012113318339384e-07
+      },
+      {
+        "name": "blocks.10.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.857078677858226e-05,
+        "normalized_gram": 6.701155466048507e-07
+      },
+      {
+        "name": "blocks.10.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8489332433091477e-05,
+        "normalized_gram": 6.671763160863652e-07
+      },
+      {
+        "name": "blocks.10.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 3.224950341973454e-05,
+        "normalized_gram": 8.228627899634457e-07
+      },
+      {
+        "name": "blocks.11.attn.to_qkv.weight",
+        "axis": 0,
+        "dimension": 2304,
+        "absolute_gram": 4.9895064876182005e-05,
+        "normalized_gram": 1.0394805182537918e-06
+      },
+      {
+        "name": "blocks.11.attn.to_qkv.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8490538423066027e-05,
+        "normalized_gram": 6.672198335011431e-07
+      },
+      {
+        "name": "blocks.11.attn.to_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8580500181997195e-05,
+        "normalized_gram": 6.704660488596232e-07
+      },
+      {
+        "name": "blocks.11.attn.to_out.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.8518427168601193e-05,
+        "normalized_gram": 6.682261819225236e-07
+      },
+      {
+        "name": "blocks.11.ff.proj_in.weight",
+        "axis": 0,
+        "dimension": 3072,
+        "absolute_gram": 4.994616028852761e-05,
+        "normalized_gram": 9.011384089865504e-07
+      },
+      {
+        "name": "blocks.11.ff.proj_in.weight",
+        "axis": 1,
+        "dimension": 768,
+        "absolute_gram": 1.846130362537224e-05,
+        "normalized_gram": 6.661649136062548e-07
+      },
+      {
+        "name": "blocks.11.ff.proj_out.weight",
+        "axis": 0,
+        "dimension": 768,
+        "absolute_gram": 1.8400860426481813e-05,
+        "normalized_gram": 6.639838575343754e-07
+      },
+      {
+        "name": "blocks.11.ff.proj_out.weight",
+        "axis": 1,
+        "dimension": 1536,
+        "absolute_gram": 3.231045775464736e-05,
+        "normalized_gram": 8.244180714024782e-07
+      }
+    ],
+    "momentum": [
+      {
+        "name": "blocks.0.attn.to_qkv.weight",
+        "relative_physical_m_error": 0.0006262701936066151
+      },
+      {
+        "name": "blocks.0.attn.to_out.weight",
+        "relative_physical_m_error": 0.000622785126324743
+      },
+      {
+        "name": "blocks.0.ff.proj_in.weight",
+        "relative_physical_m_error": 0.0006129164830781519
+      },
+      {
+        "name": "blocks.0.ff.proj_out.weight",
+        "relative_physical_m_error": 0.0006136622396297753
+      },
+      {
+        "name": "blocks.1.attn.to_qkv.weight",
+        "relative_physical_m_error": 0.0006189236883074045
+      },
+      {
+        "name": "blocks.1.attn.to_out.weight",
+        "relative_physical_m_error": 0.0006220436189323664
+      },
+      {
+        "name": "blocks.1.ff.proj_in.weight",
+        "relative_physical_m_error": 0.000613135751336813
+      },
+      {
+        "name": "blocks.1.ff.proj_out.weight",
+        "relative_physical_m_error": 0.000614324351772666
+      },
+      {
+        "name": "blocks.2.attn.to_qkv.weight",
+        "relative_physical_m_error": 0.0006230592261999846
+      },
+      {
+        "name": "blocks.2.attn.to_out.weight",
+        "relative_physical_m_error": 0.0006487283972091973
+      },
+      {
+        "name": "blocks.2.ff.proj_in.weight",
+        "relative_physical_m_error": 0.00062704918673262
+      },
+      {
+        "name": "blocks.2.ff.proj_out.weight",
+        "relative_physical_m_error": 0.0006230654544197023
+      },
+      {
+        "name": "blocks.3.attn.to_qkv.weight",
+        "relative_physical_m_error": 0.0006103164050728083
+      },
+      {
+        "name": "blocks.3.attn.to_out.weight",
+        "relative_physical_m_error": 0.000636161828879267
+      },
+      {
+        "name": "blocks.3.ff.proj_in.weight",
+        "relative_physical_m_error": 0.0006177665200084448
+      },
+      {
+        "name": "blocks.3.ff.proj_out.weight",
+        "relative_physical_m_error": 0.0006174112786538899
+      },
+      {
+        "name": "blocks.4.attn.to_qkv.weight",
+        "relative_physical_m_error": 0.0006056588608771563
+      },
+      {
+        "name": "blocks.4.attn.to_out.weight",
+        "relative_physical_m_error": 0.0006427059415727854
+      },
+      {
+        "name": "blocks.4.ff.proj_in.weight",
+        "relative_physical_m_error": 0.0006195363821461797
+      },
+      {
+        "name": "blocks.4.ff.proj_out.weight",
+        "relative_physical_m_error": 0.0006146852974779904
+      },
+      {
+        "name": "blocks.5.attn.to_qkv.weight",
+        "relative_physical_m_error": 0.0006136362790130079
+      },
+      {
+        "name": "blocks.5.attn.to_out.weight",
+        "relative_physical_m_error": 0.0006365083972923458
+      },
+      {
+        "name": "blocks.5.ff.proj_in.weight",
+        "relative_physical_m_error": 0.0006127887754701078
+      },
+      {
+        "name": "blocks.5.ff.proj_out.weight",
+        "relative_physical_m_error": 0.0006143231876194477
+      },
+      {
+        "name": "blocks.6.attn.to_qkv.weight",
+        "relative_physical_m_error": 0.0006302144029177725
+      },
+      {
+        "name": "blocks.6.attn.to_out.weight",
+        "relative_physical_m_error": 0.0006340865511447191
+      },
+      {
+        "name": "blocks.6.ff.proj_in.weight",
+        "relative_physical_m_error": 0.0006169226253405213
+      },
+      {
+        "name": "blocks.6.ff.proj_out.weight",
+        "relative_physical_m_error": 0.0006174183799885213
+      },
+      {
+        "name": "blocks.7.attn.to_qkv.weight",
+        "relative_physical_m_error": 0.0006374286604113877
+      },
+      {
+        "name": "blocks.7.attn.to_out.weight",
+        "relative_physical_m_error": 0.000631712144240737
+      },
+      {
+        "name": "blocks.7.ff.proj_in.weight",
+        "relative_physical_m_error": 0.0006192325381562114
+      },
+      {
+        "name": "blocks.7.ff.proj_out.weight",
+        "relative_physical_m_error": 0.0006136945448815823
+      },
+      {
+        "name": "blocks.8.attn.to_qkv.weight",
+        "relative_physical_m_error": 0.0006363162538036704
+      },
+      {
+        "name": "blocks.8.attn.to_out.weight",
+        "relative_physical_m_error": 0.0006394810625351965
+      },
+      {
+        "name": "blocks.8.ff.proj_in.weight",
+        "relative_physical_m_error": 0.0006213999586179852
+      },
+      {
+        "name": "blocks.8.ff.proj_out.weight",
+        "relative_physical_m_error": 0.0006123720668256283
+      },
+      {
+        "name": "blocks.9.attn.to_qkv.weight",
+        "relative_physical_m_error": 0.0006349755567498505
+      },
+      {
+        "name": "blocks.9.attn.to_out.weight",
+        "relative_physical_m_error": 0.0006332231569103897
+      },
+      {
+        "name": "blocks.9.ff.proj_in.weight",
+        "relative_physical_m_error": 0.0006216507172212005
+      },
+      {
+        "name": "blocks.9.ff.proj_out.weight",
+        "relative_physical_m_error": 0.0006116630393080413
+      },
+      {
+        "name": "blocks.10.attn.to_qkv.weight",
+        "relative_physical_m_error": 0.0006283630500547588
+      },
+      {
+        "name": "blocks.10.attn.to_out.weight",
+        "relative_physical_m_error": 0.0006274808547459543
+      },
+      {
+        "name": "blocks.10.ff.proj_in.weight",
+        "relative_physical_m_error": 0.0006151894340291619
+      },
+      {
+        "name": "blocks.10.ff.proj_out.weight",
+        "relative_physical_m_error": 0.0006086311768740416
+      },
+      {
+        "name": "blocks.11.attn.to_qkv.weight",
+        "relative_physical_m_error": 0.0006290868041105568
+      },
+      {
+        "name": "blocks.11.attn.to_out.weight",
+        "relative_physical_m_error": 0.0006261225207708776
+      },
+      {
+        "name": "blocks.11.ff.proj_in.weight",
+        "relative_physical_m_error": 0.0006200273055583239
+      },
+      {
+        "name": "blocks.11.ff.proj_out.weight",
+        "relative_physical_m_error": 0.0006146175437606871
+      }
+    ],
+    "max_absolute_gram": 5.0928672862937674e-05,
+    "max_normalized_gram": 1.0610140179778682e-06,
+    "max_physical_m_error": 0.0006487283972091973
+  }
+]

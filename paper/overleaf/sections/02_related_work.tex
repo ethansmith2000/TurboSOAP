@@ -1,0 +1,41 @@
+\hypertarget{relationship-to-existing-work}{%
+\section{2. Relationship to existing
+work}\label{relationship-to-existing-work}}
+
+Vyas et al.~describe SOAP's rotated-coordinate adaptive updates and the
+use of infrequent basis refinement: a warm-started power iteration
+followed by QR (Algorithm 4). Thus both arms already reuse the preceding
+basis. SOAP also discusses lower-precision state and the FP32 minimum
+for its QR implementation (§§7.2.1, 7.3.1, 8). We retain the FP32 solver
+island, use QR every 50 ages with intermediate dense motion, and store
+persistent matrix state in BF16. Our stock matrix memory settings, model
+and auxiliary recipe are specified separately.
+\citep{vyas2024soap}.
+
+Milligan et al.~store the basis-coordinate preconditioner and use
+subspace updates, including QR within selected blocks; they also study
+BF16 storage. Our implementation instead stores world-coordinate
+covariance factors and updates the full basis with dense damped motion
+and fixed QR repair. We do not maintain their persistent
+basis-coordinate representation or establish a performance ranking
+against it. \citep{milligan2026reparametrizing}, §§3.1--3.2.
+
+Eschenhagen et al.~use approximation-error criteria to adapt eigenbasis
+computation and examine the effects of stale bases. Our schedule is
+fixed across factors and training stages; no residual controls refresh
+decisions. Their analysis is relevant context, rather than a directly
+measured comparator in this study.
+\citep{eschenhagen2025purifying}, §4.
+
+Warm reuse, subspace updates, low-precision storage, and compilation are
+existing ideas. The distinction studied here is their particular dense
+update, repair, state-history, and precision policy. Direct comparisons
+with subspace or adaptive implementations remain outside this
+experiment. Low-precision bases plus orthogonality correction are also
+prior work: Wang et al.~quantize Shampoo eigenvector matrices and apply
+Björck orthonormalization (§3.2). Our BF16 dense SOAP policy is not a
+new instance of that general idea.
+\citep{wang2024fourbit}. The
+numerical ingredients also have classical lineage: Jacobi eigensolvers
+use plane rotations \citep{forsythe1960cyclic}, and iterative polar orthogonalization predates this
+work \citep{bjorck1971iterative}.

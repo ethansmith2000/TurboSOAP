@@ -1,0 +1,19 @@
+{
+  "program": "soap-bf16-controls204",
+  "bundle": "/workspace/optimizer_replay_results/soap_bf16_refresh_controls_20261027_seed204_v1",
+  "runner": "source/benchmarks/bf16_refresh_controls.py",
+  "manifest_sha256": "fe16253a8d3167ce2e1503a24a8526c64b2326b0a9085afc2d617b2c3f8558ee",
+  "service_files": {
+    "/workspace/optimizer_replay_results/soap_bf16_refresh_controls_20261027_seed204_v1/service/soap-bf16-controls204.sh": "e6392143ad80528d1f87a11cda51d4f523074fc10e65f77a12209baf59620989",
+    "/workspace/optimizer_replay_results/soap_bf16_refresh_controls_20261027_seed204_v1/service/soap-bf16-controls204.conf": "06fed22778c351e865695fdc468da98bc6454faeeeb47c5b8018bf56dfb909aa"
+  },
+  "gpu_execution_cap_seconds": 1800,
+  "watchdog": {
+    "term_after_seconds": 1790,
+    "kill_after_additional_seconds": 10
+  },
+  "queue_wait_cap_seconds": 7200,
+  "expected_unique_graphs": 8,
+  "no_retries": true,
+  "cpu_tests_passed": 17
+}

@@ -1,0 +1,26 @@
+{
+  "created_at_utc": "2026-10-28T20:02:38.140676+00:00",
+  "kind": "first_manuscript_working_package",
+  "git_head": "da610328c63a168112bc43b132d3fd17c3b40d13",
+  "working_tree_is_clean": false,
+  "code_identity": "Explicit source hashes, not a clean release tag.",
+  "files": {
+    "CLAIMS.md": "64a6b6afee2debcf54dcdfa664b2625d2d722b47467b1f393418908e332518a6",
+    "DRAFT.md": "56f71b53c88af7c6213aaf82a630750f037ad488c896a92e7ca521b3f597d694",
+    "OUTLINE.md": "3cf6a54400bd290d96251362dac5f7e37c049af5a4973f234e9a0dd50726f496",
+    "README.md": "c8958388139f6aa224c465dc0faf79ab5f290e377c1d5bdf041b36f7a053b1ec",
+    "REPRODUCIBILITY.md": "f07804aa6fd5ad7ebc1ac1abf0a818cc83efc43bad0623687b336212faa069da",
+    "build_artifacts.py": "c1107af756d1ecf8ceb0a99544a61d9ae03ce78bea200acbb8e1597cedd5ee2f",
+    "configuration.json": "c6756603d951f847e6efb3f6d53c48caa189a481ff07170d947ac7ea1ef3e0af",
+    "evidence.json": "f22d3f4adb25b60df50481a6f52a1276b3b433afdb3342ac2b3b05db86eca638",
+    "figures/controls_and_profile.svg": "80a88ee1bdfa18be0667eac0256e64d01b006f68b4be2bb3d93135c18b1f15e0",
+    "figures/full_horizon.svg": "7f03e747789c307691dd9b95716dec1140b6b6659dec1a99a0625d7baa4f75b5",
+    "references.bib": "e7edc8e1652c42a6a9cbf2459c72b9d105983236eb31ba5f709925b10dd1397f",
+    "tables.md": "f2a5c4a679c05b6d4ea4342b2588c9930961395a63887b975d40fe47577801d1",
+    "validation.json": "a73f947172e8f3e2c6b0a4c72c8a1397c72a3401d97390bb6db545975f1b97f3"
+  },
+  "production_optimizer_changed": false,
+  "training_or_gpu_execution": false,
+  "completed_experiment_backup_unchanged": true,
+  "backup": "/workspace/soap-paper-draft-20261028.tar.gz"
+}

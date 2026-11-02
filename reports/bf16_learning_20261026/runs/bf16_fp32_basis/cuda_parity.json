@@ -1,0 +1,43 @@
+{
+  "eager_compiled": [
+    {
+      "event": "ordinary",
+      "parameter_max_absolute": 0.0,
+      "state_relative_errors": {
+        "m": 0.0,
+        "v": 0.0,
+        "cl": 0.0,
+        "cr": 0.0,
+        "ql": 0.0,
+        "qr": 0.0
+      }
+    },
+    {
+      "event": "warm",
+      "parameter_max_absolute": 0.0,
+      "state_relative_errors": {
+        "m": 0.0,
+        "v": 0.0,
+        "cl": 0.0,
+        "cr": 0.0,
+        "ql": 0.0,
+        "qr": 0.0
+      }
+    },
+    {
+      "event": "qr",
+      "parameter_max_absolute": 0.0,
+      "state_relative_errors": {
+        "m": 0.0,
+        "v": 0.0,
+        "cl": 0.0,
+        "cr": 0.0,
+        "ql": 0.0,
+        "qr": 0.0
+      }
+    }
+  ],
+  "same_state_update_relative_error": 0.003736048238351941,
+  "same_state_update_cosine": 0.9999929666519165,
+  "arithmetic_screen_passed": true
+}

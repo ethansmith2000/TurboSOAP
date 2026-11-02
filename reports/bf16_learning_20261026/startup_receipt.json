@@ -1,0 +1,18 @@
+{
+  "status": "running",
+  "verified_at_utc": "2026-10-26T09:43:46.071355+00:00",
+  "program": "soap-bf16-learning",
+  "pid": 107156,
+  "started_at_utc": "2026-10-26T09:41:41+00:00",
+  "gpu_index": 1,
+  "gpu_uuid": "GPU-9fc129d9-4185-4aa6-1582-779d6c8c0582",
+  "first_arm": "qr10",
+  "initial_backward_repeat_passed": true,
+  "initial_hashes_match": true,
+  "initial_full_panel_ce_match": true,
+  "call50_full_panel_ce": 7.10740265250206,
+  "call50_ce_exactly_matches_prior_primary": true,
+  "latest_training_call": 238,
+  "completed_arms": [],
+  "note": "Initial checks will be enforced independently when each later arm starts. This receipt is launch evidence, not final results."
+}

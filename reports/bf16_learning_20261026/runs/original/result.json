@@ -1,0 +1,149 @@
+{
+  "status": "completed",
+  "case": "original",
+  "calls": 2000,
+  "initial_parameters_sha256": "24da908288be7ee828bd2a8221ac637b870c0c219b05964b3517c576b0a7da79",
+  "initial_gradient_sha256": "7936c3f658be84b84ee780a52876bc2a3cda2771d0b30596cff715f47a81deb2",
+  "validation": [
+    {
+      "call": 0,
+      "ce": 10.966108478605747,
+      "targets": 1047552,
+      "listed_tensor_hash_preservation_checked": true
+    },
+    {
+      "call": 50,
+      "ce": 7.170239437371492,
+      "targets": 1047552,
+      "listed_tensor_hash_preservation_checked": false
+    },
+    {
+      "call": 100,
+      "ce": 6.363765295594931,
+      "targets": 1047552,
+      "listed_tensor_hash_preservation_checked": false
+    },
+    {
+      "call": 200,
+      "ce": 5.771974928677082,
+      "targets": 1047552,
+      "listed_tensor_hash_preservation_checked": false
+    },
+    {
+      "call": 500,
+      "ce": 4.995946664363146,
+      "targets": 1047552,
+      "listed_tensor_hash_preservation_checked": false
+    },
+    {
+      "call": 1000,
+      "ce": 4.369404040277004,
+      "targets": 1047552,
+      "listed_tensor_hash_preservation_checked": true
+    },
+    {
+      "call": 1500,
+      "ce": 4.128185560926795,
+      "targets": 1047552,
+      "listed_tensor_hash_preservation_checked": false
+    },
+    {
+      "call": 2000,
+      "ce": 3.9957525469362736,
+      "targets": 1047552,
+      "listed_tensor_hash_preservation_checked": true
+    }
+  ],
+  "parity": null,
+  "matrix_state_bytes": 2491416576,
+  "peak_gpu_bytes": 10090664960,
+  "mean_optimizer_ms": 51.57237667412693,
+  "mean_step_ms": 337.1719814386635,
+  "optimizer_by_kind": {
+    "ordinary": 31.7355333885984,
+    "warm": 124.55306159283377,
+    "qr": 652.3075848480834
+  },
+  "max_absolute_gram": 0.017659854143857956,
+  "max_normalized_gram": 0.0003243251521915692,
+  "max_physical_m_error": 0.001548946718685329,
+  "original_geometry_guard_passed": true,
+  "precision_specific_guard_passed": true,
+  "dynamo_counters": {
+    "stats": {
+      "calls_captured": 384,
+      "unique_graphs": 8
+    },
+    "inductor": {
+      "fxgraph_cache_miss": 8,
+      "extern_calls": 56,
+      "async_compile_cache_miss": 176,
+      "async_compile_cache_hit": 88,
+      "triton_bundler_save_kernel": 1408,
+      "triton_bundler_save_static_autotuner": 8,
+      "benchmarking.InductorBenchmarker.benchmark": 128,
+      "benchmarking.InductorBenchmarker.benchmark_gpu": 128
+    },
+    "graph_break": {}
+  },
+  "elapsed_seconds": 754.5864185579121,
+  "clean_cycle_calls": 1900,
+  "protocol": {
+    "validation_rows": 1024,
+    "validation_calls": [
+      50,
+      100,
+      200,
+      500,
+      1000,
+      1500,
+      2000
+    ],
+    "evaluation_hash_calls": [
+      0,
+      1000,
+      2000
+    ],
+    "diagnostic_calls": [
+      11,
+      21,
+      51,
+      101,
+      151,
+      201,
+      501,
+      511,
+      1001,
+      1011,
+      1501,
+      1511,
+      1991
+    ],
+    "residual_calls": [
+      501,
+      1001,
+      1501,
+      1991
+    ],
+    "capture_calls": [
+      51,
+      101,
+      201,
+      501,
+      1001,
+      1501,
+      2000
+    ],
+    "repeat_initial_backward": true,
+    "expected_startup": {
+      "initial_parameters_sha256": "24da908288be7ee828bd2a8221ac637b870c0c219b05964b3517c576b0a7da79",
+      "initial_gradient_sha256": "7936c3f658be84b84ee780a52876bc2a3cda2771d0b30596cff715f47a81deb2",
+      "initial_loss": 10.963447570800781,
+      "initial_norm": 11.2014741897583,
+      "initial_validation_ce": 10.966108478605747
+    },
+    "startup_reference": "completed stock OWT + bf16 storage screen, pinned receipt JSONs",
+    "arm_timeout_seconds": 1800
+  },
+  "initial_backward_repeat_passed": true
+}

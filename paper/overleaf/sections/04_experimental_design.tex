@@ -1,0 +1,60 @@
+\hypertarget{experimental-design}{%
+\section{4. Experimental design}\label{experimental-design}}
+
+We use a 109,396,992-parameter Transformer: width 768, 12 layers, 12
+attention heads, feed-forward hidden width 1,536, fused QKV and SwiGLU
+projections, tied embeddings, RoPE, QK normalization, and no bias or
+dropout. Model forward uses BF16 autocast with FlashAttention; the model
+is eager and FP32 cross-entropy is compiled. Every experiment uses one
+RTX 5090, PyTorch 2.11.0+cu128, and CUDA 12.8 as recorded by the
+workers.
+
+The cached OpenWebText corpus uses pinned dataset and GPT-2 tokenizer
+revisions. Documents are split before tokenization/packing;
+EOS-separated packed rows use 1,024 tokens with causal attention across
+document boundaries. The experiment selects 320,000 training rows and
+1,024 validation rows without replacement, then fixes their order. A
+global batch contains 32 rows, implemented as four microbatches of
+eight; each row contributes 1,023 prediction targets. A full run
+processes 327,360,000 targets over 10,000 calls. Seeds 204 and 205
+change model initialization, not data order. Evaluation uses 1,047,552
+targets.
+
+The matrix peak learning rate is 0.0015, epsilon is \(10^{-8}\), weight
+decay is 0.05 for the declared decayed groups, and global gradient norm
+is clipped at 1. Auxiliary AdamW uses betas (0.9, 0.999), epsilon
+\(10^{-8}\), peak learning rate 0.0006, and the same declared grouping.
+Both rates use 200 calls of linear warmup followed by cosine decay to
+10\% of peak at call 10,000. Learning-rate selection and variant
+development used this research validation panel; it is not an untouched
+test set. The 0.0015 matrix peak was selected on the seed-204 stock QR10
+baseline: three 500-call calibrations at 0.0005, 0.0015 and 0.003 used
+the full 10k schedule, selecting the lowest call-500 validation CE. That
+rate was then shared with the warm candidates, without
+candidate-specific LR retuning.
+
+The primary control is \texttt{ResearchSOAP} with FP32 matrix state and
+QR10. Its update ordering, bias/epsilon convention, QR sorting, and
+variance permutation are checked against a pinned upstream
+implementation. Here \textbf{stock} denotes the matrix memory settings
+(0.95, 0.95, covariance 0.95), rather than a claim to reproduce the
+original SOAP paper's complete training recipe. These values are
+explicit campaign settings, overriding the local reference constructor's
+different defaults.
+
+Seed 205 runs reference and candidate sequentially on one claimed GPU.
+Seed 204 reuses its completed full reference for learning quality and
+first runs a fresh 201-call stock replay. The replay must reproduce
+initial weights, gradients, loss/norm, and validation at calls 0, 50,
+100, and 200 exactly. Each candidate repeats its initial backward and
+matches the paired startup. No model or optimizer tensor checkpoints are
+reused or saved.
+
+All raw results use frozen source/input hashes and record evaluations,
+refresh-event counts, finite state, nonnegative variance, and graph
+captures. Numerical observations cover all factors and physical moments
+at selected early and late refresh ages. Evaluation checks preserve
+listed tensors, RNG, and gradient identities; the tensor hash is not a
+claim to cover every Python scalar or model buffer. Finite moment/Gram
+measurements are diagnostics rather than validated loss-quality
+acceptance thresholds.

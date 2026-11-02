@@ -1,0 +1,32 @@
+{
+  "checked_utc": "2026-10-29T07:38:04.707121+00:00",
+  "status": "partial_review_revision_verified",
+  "completed_reviews": [
+    "astra",
+    "sol"
+  ],
+  "remaining_reviews": [
+    "fable",
+    "opus"
+  ],
+  "files": {
+    "DRAFT.md": "a0afb4d4789ef4beb000b1a001b069243a5cd7ddfac337940b5bbd274eab8aa6",
+    "REPRODUCIBILITY.md": "20151ec1654b63c45a82ef5ec9f4ebff5976e613687d471aefd09c766fb1373a",
+    "CLAIMS.md": "ce972f3a9749ef6a1f5c400a18225e8685cf818beffaf7e20683a50ebaa62484",
+    "README.md": "9fdfcdd1f8ac1529bba951bd2cf06ff214f57d9311265cd219596933861778de",
+    "configuration.json": "11f1f514026ad47abc346af3e0c926c7b5965aa6afacdcbf45b11ab01be585a4",
+    "build_artifacts.py": "8e606756c7fdffd69fd133cf2403be8cb1e9dc1063bf0a4a3bfcd5c3fc7ca77e",
+    "build_pdf.py": "7a83be2eddc4bb7091f5d35b586acc30c84c3329673cc0c04de81645ca9b978a",
+    "TurboSOAP-review.pdf": "ad52afab37640196e7af67bf3313f3850670377037b79f078f00f6df14958b59",
+    "typeset/build.json": "5f3387ac35a8cd667201365e20904040bafd34822cc780a71aecf9dbb9d53d6e",
+    "reviews_20261029/astra_math.md": "38911712b5aaf963d85cc867be5fe75e0be02116e8aa0596724565c725a41868",
+    "reviews_20261029/sol_evidence.md": "07375cbbac25b17247ff915a4ab8a28b33188b3bcf722827a68b4069d3bee64f",
+    "reviews_20261029/RESPONSES.md": "fee11fab73871a3646d27c64cc0cee92003fca01f5c022e48ae1930e27ca4f6e"
+  },
+  "snapshot_unchanged": true,
+  "scalar_evidence_unchanged": true,
+  "production_sources_unchanged": true,
+  "gpu_execution": false,
+  "pdf_pages_visually_inspected": 8,
+  "layout_note": "All pages inspected; table scope captions kept with their tables and final appendix pages inspected again."
+}

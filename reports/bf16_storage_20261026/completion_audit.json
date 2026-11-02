@@ -1,0 +1,105 @@
+{
+  "status": "passed",
+  "source_files_verified": 575,
+  "input_hashes_verified": {
+    "train.npy": "09e8fdeb7cf65d342b4909b8a8e9869390d66ab1673c9eb8e47912657c0684c8",
+    "validation.npy": "47ae2f8f9fd457d4abe59dd3f7db04471df5e968ecb9d81dcfcb7680f4d6fbce"
+  },
+  "same_initial_parameters": true,
+  "same_initial_gradients": true,
+  "same_initial_ce": true,
+  "total_training_calls": 804,
+  "total_training_targets": 26319744,
+  "total_actual_m_observations": 960,
+  "arms": [
+    {
+      "case": "original",
+      "update_events": 201,
+      "kinds": {
+        "cold": 1,
+        "ordinary": 180,
+        "warm": 16,
+        "qr": 4
+      },
+      "clean_cycles": 2,
+      "factor_observations": 576,
+      "actual_m_observations": 240,
+      "graph_counts": [
+        4,
+        8,
+        8,
+        8
+      ],
+      "graph_breaks": 0,
+      "original_geometry_guard_passed": true,
+      "precision_specific_guard_passed": true
+    },
+    {
+      "case": "compiled_fp32",
+      "update_events": 201,
+      "kinds": {
+        "cold": 1,
+        "ordinary": 180,
+        "warm": 16,
+        "qr": 4
+      },
+      "clean_cycles": 2,
+      "factor_observations": 576,
+      "actual_m_observations": 240,
+      "graph_counts": [
+        12,
+        12,
+        12,
+        12
+      ],
+      "graph_breaks": 0,
+      "original_geometry_guard_passed": true,
+      "precision_specific_guard_passed": true
+    },
+    {
+      "case": "bf16",
+      "update_events": 201,
+      "kinds": {
+        "cold": 1,
+        "ordinary": 180,
+        "warm": 16,
+        "qr": 4
+      },
+      "clean_cycles": 2,
+      "factor_observations": 576,
+      "actual_m_observations": 240,
+      "graph_counts": [
+        12,
+        12,
+        12,
+        12
+      ],
+      "graph_breaks": 0,
+      "original_geometry_guard_passed": false,
+      "precision_specific_guard_passed": true
+    },
+    {
+      "case": "bf16_fp32_basis",
+      "update_events": 201,
+      "kinds": {
+        "cold": 1,
+        "ordinary": 180,
+        "warm": 16,
+        "qr": 4
+      },
+      "clean_cycles": 2,
+      "factor_observations": 576,
+      "actual_m_observations": 240,
+      "graph_counts": [
+        12,
+        12,
+        12,
+        12
+      ],
+      "graph_breaks": 0,
+      "original_geometry_guard_passed": true,
+      "precision_specific_guard_passed": true
+    }
+  ],
+  "model_or_optimizer_tensor_checkpoints_written": false
+}

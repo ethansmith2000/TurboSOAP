@@ -1,0 +1,55 @@
+{
+  "created_utc": "2026-10-29T16:53:36.551986+00:00",
+  "author": {
+    "name": "Ethan Smith",
+    "email": "ethansmith2000@gmail.com",
+    "affiliation": null,
+    "venue": null
+  },
+  "main_document": "main.tex",
+  "compiler": "pdfLaTeX",
+  "bibliography": "natbib/plainnat + BibTeX",
+  "citations": [
+    "bjorck1971iterative",
+    "eschenhagen2025purifying",
+    "forsythe1960cyclic",
+    "milligan2026reparametrizing",
+    "vyas2024soap",
+    "wang2024fourbit"
+  ],
+  "inputs": {
+    "DRAFT.md": "4905d7242b89022d7eb2f3916442bfdcf2280aa0ff54bb82925e0f1f298770ff",
+    "author.json": "5a10840c14083f3518a4385c7a2116f4295145fd0451ed14a83cd37903d1d4fe",
+    "references.bib": "36f8da3bffb56bbac5a8fd67682545056adc7531757f5f91d85efff2cb016328",
+    "typeset/manuscript.tex": "2fa676e993d646fcb3007fc97172e4e67bf1a0937e5c111f982fab36aa26560e",
+    "export_overleaf.py": "bf589d85a1c06fb705368ee57de3df99592ef9ecf2805d4ddf9290fc4ed75f75",
+    "typeset/figures/full_horizon.pdf": "73f4f59eb015511b583b8ab1eb4af8122c05deb960ff759a7caa3a67fc37f22f",
+    "typeset/figures/review_tradeoff.pdf": "44fdc4cfc6e35406912aab5c66c6f86c221455dcd99d5899172ff5b4b14168b1"
+  },
+  "project_files": {
+    "README.md": "92b4fff6e120c524cd1e9ca1a1379e98791fe01240098314790e40bcf7f42847",
+    "figures/full_horizon.pdf": "73f4f59eb015511b583b8ab1eb4af8122c05deb960ff759a7caa3a67fc37f22f",
+    "figures/review_tradeoff.pdf": "44fdc4cfc6e35406912aab5c66c6f86c221455dcd99d5899172ff5b4b14168b1",
+    "main.tex": "8b1fcf7d11488beda5c2ac51fcb9d8395a7d7ee0ea4f68b0874758a6f18542cf",
+    "metadata.tex": "ec7c2252db7f6d283b1c160fc5f3018318e99fc33aa90f27510dadbf9eb7498d",
+    "preamble.tex": "15369743ccac7f6554fa476bd0eb6f186299fec7968dc3d60a9d50ce66ef6f84",
+    "references.bib": "f1e2ebf031ae34042188ec59cafa23959ef7944d30ccc9eebe9a34cfe868fa5e",
+    "sections/00_abstract.tex": "0692eb72b96a5a0b69a80ca428b0c891055058a847ae28d6fbe0e3d93d3d86b2",
+    "sections/01_introduction.tex": "dea242676b15ce9b4e94513d986a888e5f8fd6770654d62f1477e983283df1a8",
+    "sections/02_related_work.tex": "7c222e0757a28eb73f3f263db640a828824710b6a20aad05f36c111b4ca2ed98",
+    "sections/03_method.tex": "3fed0a6bf6d589e6ae48d383bd1e628a6853a289eeb5eb4af0c2c548f18ee37d",
+    "sections/04_experimental_design.tex": "6c9f525832c721f3ab21fa8f76c5b4d853ff4c75532eb6dd1db3621e0076a699",
+    "sections/05_results.tex": "ee52e160099df51b5a81c3601c934dbf1cfb3ce62f65b33e6f4e0c05b378500f",
+    "sections/06_discussion.tex": "d5bd3e01059f2a6b9600ca36c243eee08ce00eed2a89fcad87e370d8483ad05a",
+    "sections/07_conclusion.tex": "fdf25656f50f0193478e098d2bb8543ca2ac31911bb9e00fb0b1c8b8a675b385",
+    "sections/08_pilot_appendix.tex": "9cb5a857eaf82f740a4f3985ab5fd39e1549b2740087763e686ce4400462476f",
+    "sections/09_reproducibility_appendix.tex": "c29093e4802fdb0a88663642a15d999c7a3b41f3acaefd53471757194938fcfa"
+  },
+  "zip_sha256": "125a82456fd0fd61d5d3656145c382ee9ad0bc0024342c6db83cc359776824c4",
+  "pdf_sha256": "a8193c79ea8a096de820ac721d382b469a6b21a9a249491cdc726135ace8c68f",
+  "pdfinfo": "Title:           TurboSOAP: Compiled Dense Basis Tracking with BF16 State\nSubject:         \nKeywords:        \nAuthor:          Ethan Smith\nCreator:         LaTeX with hyperref\nProducer:        pdfTeX-1.40.25\nCreationDate:    Thu Oct 29 16:53:35 2026 UTC\nModDate:         Thu Oct 29 16:53:35 2026 UTC\nCustom Metadata: yes\nMetadata Stream: no\nTagged:          no\nUserProperties:  no\nSuspects:        no\nForm:            none\nJavaScript:      no\nPages:           10\nEncrypted:       no\nPage size:       612 x 792 pts (letter)\nPage rot:        0\nFile size:       476582 bytes\nOptimized:       no\nPDF version:     1.5\n",
+  "final_tex_warnings": [],
+  "fresh_zip_compilation": "passed",
+  "gpu_execution": false,
+  "external_upload": false
+}

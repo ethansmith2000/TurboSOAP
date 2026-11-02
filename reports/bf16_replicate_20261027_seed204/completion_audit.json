@@ -1,0 +1,42 @@
+{
+  "status": "passed",
+  "arms": [
+    {
+      "status": "passed",
+      "case": "qr10",
+      "calls": 201,
+      "diagnostics_advisory": true,
+      "original_geometry_guard_passed": true,
+      "precision_specific_guard_passed": true,
+      "exactly_reproduced_validation_calls": [
+        0,
+        50,
+        100,
+        200
+      ]
+    },
+    {
+      "case": "bf16",
+      "status": "passed",
+      "calls": 10000,
+      "seed": 204,
+      "event_counts": {
+        "cold": 1,
+        "ordinary": 9000,
+        "warm": 800,
+        "qr": 199
+      },
+      "factor_observations": 2112,
+      "actual_m_observations": 1008,
+      "coordinate_residual_observations": 768,
+      "graph_breaks": 0,
+      "original_geometry_guard_passed": false,
+      "precision_specific_guard_passed": true
+    }
+  ],
+  "cached_reference_verified": true,
+  "cached_reference_call50_100_200_reproduced": true,
+  "new_training_calls": 10201,
+  "new_training_targets": 333939936,
+  "model_or_optimizer_tensor_checkpoints_written": false
+}

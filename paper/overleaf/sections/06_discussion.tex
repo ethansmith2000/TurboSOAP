@@ -1,0 +1,35 @@
+\hypertarget{discussion-and-limitations}{%
+\section{6. Discussion and
+limitations}\label{discussion-and-limitations}}
+
+The measured approximation follows the reference with a modest final gap
+on this workload, halves matrix-state storage, and lowers measured step
+time. That result is useful as an implementation operating point. It
+does not show that warm tracking, BF16 storage, or the particular repair
+schedule is generally optimal. Storage and compute changes also alter
+numerical trajectories.
+
+The evidence covers one model scale, one dataset cohort/order, two model
+initializations, one GPU family, and a validation panel used during
+development. There are no generalization claims across architectures,
+corpora, or hardware, and no untouched test result or statistical
+equivalence test. Short QR20/QR50 controls cannot determine a
+final-horizon ranking. Synthetic QR inputs and one-factor probes do not
+represent the trained distribution of all factor pairs.
+
+The primary time comparison uses the original audited FP32 QR10
+implementation. Our isolated reuse profile narrows one implementation
+attribution question but does not replace a newly trained
+efficient-reference comparison. There is no direct matched evaluation
+against subspace or adaptive-refresh methods, and the warm step has no
+standalone diagonalization guarantee.
+
+The early-gap pattern is qualitatively consistent with Eschenhagen et
+al.'s finding that accurate bases mattered more early in their Imagewoof
+ViT experiments (§4.4). That different workload does not establish the
+mechanism of our gap. Our fixed schedule and reference-calibrated LR
+leave that question open. Ignoring startup and other excluded work, the
+seed205 mean-step ratio assigns 10,000 candidate calls the same measured
+steady cost as approximately 8,134 stock calls. Whether a reference with
+an appropriately shortened LR horizon would reach the same loss is
+unmeasured. This arithmetic is not a time-to-quality result.

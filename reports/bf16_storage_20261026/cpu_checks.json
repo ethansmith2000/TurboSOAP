@@ -1,0 +1,17 @@
+{
+  "final_candidate_tests": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=2 /venv/main/bin/python -m pytest tests/test_bf16_soap.py -q --disable-warnings --maxfail=1",
+    "passed": 13,
+    "seconds": 11.69
+  },
+  "earlier_combined_checks": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=2 /venv/main/bin/python -m pytest tests/test_bf16_soap.py tests/test_soap_reference.py -q --disable-warnings --maxfail=1",
+    "passed": 32,
+    "seconds": 10.97,
+    "note": "Before compiler-wrapper fix and its additional regression test; 20 reference tests plus 12 candidate tests."
+  },
+  "source_sha256": {
+    "bf16_soap.py": "65812bc620addd902e75ed1b79bac26ec68ced4de44cfd5c65d3bc4acbbf50df",
+    "tests/test_bf16_soap.py": "6c3e8131f6c473d22023e302a2bbe2563748f6149fc575d5a79f5ff733b9fd79"
+  }
+}

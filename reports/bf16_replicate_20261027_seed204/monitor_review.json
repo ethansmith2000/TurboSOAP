@@ -1,0 +1,80 @@
+{
+  "status": "passed",
+  "frozen_sources_verified": 583,
+  "production_source_hashes_verified": true,
+  "inputs_and_support_verified": true,
+  "repeated_audits": [
+    {
+      "status": "passed",
+      "case": "qr10",
+      "calls": 201,
+      "diagnostics_advisory": true,
+      "original_geometry_guard_passed": true,
+      "precision_specific_guard_passed": true,
+      "exactly_reproduced_validation_calls": [
+        0,
+        50,
+        100,
+        200
+      ]
+    },
+    {
+      "case": "bf16",
+      "status": "passed",
+      "calls": 10000,
+      "seed": 204,
+      "event_counts": {
+        "cold": 1,
+        "ordinary": 9000,
+        "warm": 800,
+        "qr": 199
+      },
+      "factor_observations": 2112,
+      "actual_m_observations": 1008,
+      "coordinate_residual_observations": 768,
+      "graph_breaks": 0,
+      "original_geometry_guard_passed": false,
+      "precision_specific_guard_passed": true
+    }
+  ],
+  "per_seed": [
+    {
+      "seed": 204,
+      "stock_ce": 3.4111515320837498,
+      "bf16_ce": 3.422388957813382,
+      "ce_delta": 0.011237425729632378,
+      "perplexity_increase_percent": 1.1300802773944505,
+      "candidate_mean_step_ms": 314.05783515723397,
+      "matrix_state_bytes": 1245708320,
+      "max_physical_m_error": 0.009924227371811867,
+      "max_normalized_gram": 0.0023658532627864807
+    },
+    {
+      "seed": 205,
+      "stock_ce": 3.4092715363949537,
+      "bf16_ce": 3.4193537402898073,
+      "ce_delta": 0.010082203894853592,
+      "perplexity_increase_percent": 1.013320055469048,
+      "candidate_mean_step_ms": 309.5329194916342,
+      "matrix_state_bytes": 1245708320,
+      "max_physical_m_error": 0.010355544276535511,
+      "max_normalized_gram": 0.0023670758307713026
+    }
+  ],
+  "mean_paired_ce_delta": 0.010659814812242985,
+  "seed204_matched_prefix_timing": {
+    "calls": [
+      101,
+      200
+    ],
+    "number_of_calls": 100,
+    "mean_step_ms": {
+      "qr10": 380.74003388290294,
+      "bf16": 314.6378758782521
+    },
+    "measured_step_time_saving_percent": 17.36149396492953
+  },
+  "seed205_paired_full_timing_saving_percent": 18.661371754633137,
+  "numerical_error_role": "diagnostic",
+  "scope": "Two model-initialization seeds, fixed data order; no statistical equivalence claim."
+}

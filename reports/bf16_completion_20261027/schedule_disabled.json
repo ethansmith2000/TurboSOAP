@@ -1,0 +1,13 @@
+{
+  "recorded_at_utc": "2026-10-27T10:26:35.158Z",
+  "scheduledTaskId": "scheduled-task:command:mcp:a97f4f60-c5d0-4424-aeba-8ee065f395b6:schedule-task:turbosoap-completion-monitor-20261027-v1",
+  "enabled": false,
+  "nextRunAt": null,
+  "boundThreadId": "3af4f8fb-234a-495b-b6b1-08dd25dbfe46",
+  "schedule": {
+    "type": "interval",
+    "everyMs": 1800000
+  },
+  "lastRunStatus": "succeeded",
+  "reason": "Bounded TurboSOAP experiment plan completed; no remaining GPU work."
+}

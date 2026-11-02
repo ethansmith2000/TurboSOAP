@@ -1,0 +1,22 @@
+Title:           TurboSOAP: Compiled Dense Basis Tracking with BF16 State
+Subject:         Working manuscript; empirical optimizer case study
+Keywords:        
+Author:          Ethan Smith
+Creator:         LaTeX via pandoc
+Producer:        pdfTeX-1.40.25
+CreationDate:    Thu Oct 29 16:49:32 2026 UTC
+ModDate:         Thu Oct 29 16:49:32 2026 UTC
+Custom Metadata: yes
+Metadata Stream: no
+Tagged:          no
+UserProperties:  no
+Suspects:        no
+Form:            none
+JavaScript:      no
+Pages:           9
+Encrypted:       no
+Page size:       612 x 792 pts (letter)
+Page rot:        0
+File size:       477491 bytes
+Optimized:       no
+PDF version:     1.5

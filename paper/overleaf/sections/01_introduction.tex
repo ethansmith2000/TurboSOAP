@@ -1,0 +1,33 @@
+\hypertarget{introduction}{%
+\section{1. Introduction}\label{introduction}}
+
+SOAP~\citep{vyas2024soap} applies Adam-style
+adaptation in the coordinate system of matrix preconditioners. Computing
+and maintaining that coordinate system adds work beyond diagonal
+optimizers. A practical approximation must address both its numerical
+history and how that history is stored and executed on a GPU.
+
+We investigate one concrete implementation point: full dense factors and
+two-sided matrix coverage, BF16 persistent state, a fixed mixture of
+cheaper dense tracking steps and periodic QR refreshes, and compilation
+of the complete matrix-update regions. The objective is to document how
+closely this fixed implementation follows an audited SOAP reference on
+an affordable language modeling workload, together with the measured
+time and memory tradeoff.
+
+The evidence has three parts. First, two initialization seeds compare
+the declared 10,000-call endpoint against stock-beta QR10. Second, short
+full-BF16 QR20 and QR50 controls test whether intermediate tracking
+provides useful learning behavior relative to simpler refresh schedules.
+Third, a fixed-input profile separates redundant products in QR
+refinement from the solver cost. The policy, precision rules, production
+optimizer hashes, and shared training-worker hash remain fixed across
+the two main candidate runs; campaign-specific runners are separately
+pinned.
+
+Our contribution is the specified dense tracking/repair/precision
+implementation and its reproducible case study. The learning curves
+retain a measurable loss gap, especially early in training. The timing
+comparison includes storage, batching, arithmetic, compilation, and
+cadence changes relative to the original reference. These components
+should remain visible when interpreting efficiency.

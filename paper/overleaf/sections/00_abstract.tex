@@ -1,0 +1,21 @@
+SOAP's matrix preconditioners introduce state and basis-refresh costs
+that can limit its practical efficiency. We describe TurboSOAP, a dense
+two-sided SOAP approximation combining damped basis tracking, periodic
+QR repair, BF16 persistent state, and compiled updates over equal-shaped
+matrices. Its precision policy retains FP32 master parameters and
+decomposition islands while using BF16 for moments, covariance factors,
+bases, and most matrix operands. On one 109-million-parameter language
+model trained on a fixed OpenWebText cohort, two model-initialization
+seeds finish 10,000 optimizer calls with cross-entropy increases of
+0.01124 and 0.01008 relative to a stock-beta SOAP QR10 reference,
+corresponding to 1.13\% and 1.01\% higher perplexity. These endpoints
+follow larger observed gaps of 0.118--0.124 CE at call 500. Persistent
+matrix state falls from 2.320 to 1.160 GiB. Complete-step time falls
+18.66\% in a paired 9,900-call window for one seed and 17.36\% in a
+matched 100-call prefix for the other. Per-event accounting places most
+optimizer-time saving in changed refresh work. Short matched-precision
+QR20/QR50 controls and a same-state QR profile provide cadence and
+implementation context. These measurements support a scoped
+quality/time/memory tradeoff; they do not establish statistical
+equivalence or attribute the combined speed improvement solely to basis
+tracking.

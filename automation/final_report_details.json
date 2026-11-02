@@ -1,0 +1,9 @@
+{
+  "status": "completed",
+  "report": "/workspace/TurboSOAP/reports/bf16_completion_20261027/REPORT.md",
+  "summary": "/workspace/TurboSOAP/reports/bf16_completion_20261027/summary.json",
+  "artifact_manifest": "/workspace/TurboSOAP/reports/bf16_completion_20261027/artifact_manifest.json",
+  "backup": "/workspace/soap-bf16-completed-backup-20261027.tar.gz",
+  "no_remaining_gpu_work": true,
+  "numerical_error_role": "diagnostic"
+}

@@ -1,0 +1,36 @@
+{
+  "status": "reviewed",
+  "measurement_audit": "passed",
+  "numerical_qualification": "failed",
+  "seed": 205,
+  "final_reference_ce": 3.4092715363949537,
+  "final_bf16_ce": 3.4193537402898073,
+  "final_ce_delta": 0.010082203894853592,
+  "relative_perplexity_increase_percent": 1.013320055469048,
+  "measured_step_time_saving_percent": 18.661371754633137,
+  "matrix_state_saving_percent": 49.999998715590145,
+  "maximum_actual_m_error": 0.010355544276535511,
+  "late_maximum_actual_m_error": 0.005423921160399914,
+  "threshold": 0.01,
+  "violating_observations": [
+    {
+      "call": 11,
+      "name": "blocks.7.ff.proj_in.weight",
+      "relative_physical_m_error": 0.01032466534525156
+    },
+    {
+      "call": 11,
+      "name": "blocks.8.ff.proj_in.weight",
+      "relative_physical_m_error": 0.010004237294197083
+    },
+    {
+      "call": 11,
+      "name": "blocks.9.ff.proj_in.weight",
+      "relative_physical_m_error": 0.010355544276535511
+    }
+  ],
+  "original_gram_guard_passed": false,
+  "precision_specific_guard_passed": false,
+  "next": "BF16 M/V/C with FP32 bases at seed205, reusing completed control for quality and replaying a short timing prefix",
+  "optimizer_math_changes": false
+}

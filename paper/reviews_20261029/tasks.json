@@ -1,0 +1,118 @@
+{
+  "astra": {
+    "taskId": "node:delegated-task:command%3Amcp%3A52bce355-313c-4dd5-9a67-a14f3de2b697%3Adelegate-task%3Asoap-paper-20261029-astra-review-r1",
+    "childThreadId": "thread:delegated-task:command%3Amcp%3A52bce355-313c-4dd5-9a67-a14f3de2b697%3Adelegate-task%3Asoap-paper-20261029-astra-review-r1",
+    "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A52bce355-313c-4dd5-9a67-a14f3de2b697%253Adelegate-task%253Asoap-paper-20261029-astra-review-r1:ordinal:1",
+    "childNodeId": "node:delegated-task:command%3Amcp%3A52bce355-313c-4dd5-9a67-a14f3de2b697%3Adelegate-task%3Asoap-paper-20261029-astra-review-r1",
+    "status": "running",
+    "workState": "working",
+    "hasPendingChildRuns": false,
+    "latestTerminalRunId": null,
+    "latestTerminalStatus": null,
+    "latestTerminalSummary": null,
+    "latestTerminalResultContextTransferId": null,
+    "providerInstanceId": "codex",
+    "model": "gpt-6-astra",
+    "options": [
+      {
+        "id": "reasoningEffort",
+        "value": "high"
+      },
+      {
+        "id": "serviceTier",
+        "value": "default"
+      }
+    ],
+    "summary": null,
+    "resultContextTransferId": null,
+    "hasPendingQuestion": false,
+    "pendingApproval": null,
+    "waitTimedOut": false
+  },
+  "sol": {
+    "taskId": "node:delegated-task:command%3Amcp%3A52bce355-313c-4dd5-9a67-a14f3de2b697%3Adelegate-task%3Asoap-paper-20261029-sol-review-r1",
+    "childThreadId": "thread:delegated-task:command%3Amcp%3A52bce355-313c-4dd5-9a67-a14f3de2b697%3Adelegate-task%3Asoap-paper-20261029-sol-review-r1",
+    "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A52bce355-313c-4dd5-9a67-a14f3de2b697%253Adelegate-task%253Asoap-paper-20261029-sol-review-r1:ordinal:1",
+    "childNodeId": "node:delegated-task:command%3Amcp%3A52bce355-313c-4dd5-9a67-a14f3de2b697%3Adelegate-task%3Asoap-paper-20261029-sol-review-r1",
+    "status": "running",
+    "workState": "working",
+    "hasPendingChildRuns": false,
+    "latestTerminalRunId": null,
+    "latestTerminalStatus": null,
+    "latestTerminalSummary": null,
+    "latestTerminalResultContextTransferId": null,
+    "providerInstanceId": "codex",
+    "model": "gpt-6.1-sol",
+    "options": [
+      {
+        "id": "reasoningEffort",
+        "value": "high"
+      },
+      {
+        "id": "serviceTier",
+        "value": "default"
+      }
+    ],
+    "summary": null,
+    "resultContextTransferId": null,
+    "hasPendingQuestion": false,
+    "pendingApproval": null,
+    "waitTimedOut": false
+  },
+  "fable": {
+    "taskId": "node:delegated-task:command%3Amcp%3A52bce355-313c-4dd5-9a67-a14f3de2b697%3Adelegate-task%3Asoap-paper-20261029-fable-review-r1",
+    "childThreadId": "thread:delegated-task:command%3Amcp%3A52bce355-313c-4dd5-9a67-a14f3de2b697%3Adelegate-task%3Asoap-paper-20261029-fable-review-r1",
+    "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A52bce355-313c-4dd5-9a67-a14f3de2b697%253Adelegate-task%253Asoap-paper-20261029-fable-review-r1:ordinal:1",
+    "childNodeId": "node:delegated-task:command%3Amcp%3A52bce355-313c-4dd5-9a67-a14f3de2b697%3Adelegate-task%3Asoap-paper-20261029-fable-review-r1",
+    "status": "running",
+    "workState": "working",
+    "hasPendingChildRuns": false,
+    "latestTerminalRunId": null,
+    "latestTerminalStatus": null,
+    "latestTerminalSummary": null,
+    "latestTerminalResultContextTransferId": null,
+    "providerInstanceId": "claudeAgent",
+    "model": "claude-fable-5-1",
+    "options": [
+      {
+        "id": "effort",
+        "value": "high"
+      }
+    ],
+    "summary": null,
+    "resultContextTransferId": null,
+    "hasPendingQuestion": false,
+    "pendingApproval": null,
+    "waitTimedOut": false
+  },
+  "opus": {
+    "taskId": "node:delegated-task:command%3Amcp%3A52bce355-313c-4dd5-9a67-a14f3de2b697%3Adelegate-task%3Asoap-paper-20261029-opus-review-r1",
+    "childThreadId": "thread:delegated-task:command%3Amcp%3A52bce355-313c-4dd5-9a67-a14f3de2b697%3Adelegate-task%3Asoap-paper-20261029-opus-review-r1",
+    "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A52bce355-313c-4dd5-9a67-a14f3de2b697%253Adelegate-task%253Asoap-paper-20261029-opus-review-r1:ordinal:1",
+    "childNodeId": "node:delegated-task:command%3Amcp%3A52bce355-313c-4dd5-9a67-a14f3de2b697%3Adelegate-task%3Asoap-paper-20261029-opus-review-r1",
+    "status": "running",
+    "workState": "working",
+    "hasPendingChildRuns": false,
+    "latestTerminalRunId": null,
+    "latestTerminalStatus": null,
+    "latestTerminalSummary": null,
+    "latestTerminalResultContextTransferId": null,
+    "providerInstanceId": "claudeAgent",
+    "model": "claude-opus-5-5",
+    "options": [
+      {
+        "id": "effort",
+        "value": "high"
+      },
+      {
+        "id": "fastMode",
+        "value": false
+      }
+    ],
+    "summary": null,
+    "resultContextTransferId": null,
+    "hasPendingQuestion": false,
+    "pendingApproval": null,
+    "waitTimedOut": false
+  }
+}

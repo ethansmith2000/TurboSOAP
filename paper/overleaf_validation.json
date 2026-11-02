@@ -1,0 +1,32 @@
+{
+  "status": "passed",
+  "checked_utc": "2026-10-29T16:57:54.268149+00:00",
+  "author": {
+    "name": "Ethan Smith",
+    "email": "ethansmith2000@gmail.com",
+    "affiliation": null,
+    "venue": null
+  },
+  "overleaf_main": "main.tex",
+  "compiler": "pdfLaTeX",
+  "editable_section_files": 10,
+  "zip_files": 17,
+  "zip_bytes": 139559,
+  "zip_sha256": "125a82456fd0fd61d5d3656145c382ee9ad0bc0024342c6db83cc359776824c4",
+  "pdf_sha256": "a8193c79ea8a096de820ac721d382b469a6b21a9a249491cdc726135ace8c68f",
+  "mathematics_preserved": 54,
+  "tables_preserved": 5,
+  "bibtex_entries_resolved": 6,
+  "fresh_zip_compilation": "passed",
+  "tex_warnings": [],
+  "pages_visually_inspected": 10,
+  "format": "Neutral article, no venue or affiliation",
+  "previous_review_archive_unchanged": true,
+  "optimizer_sources_unchanged": true,
+  "experiment_ledger_completed": true,
+  "monitor_disabled": true,
+  "gpu_execution": false,
+  "external_upload": false,
+  "editing_policy": "Edit the Overleaf LaTeX copy; exporter refuses to overwrite an existing project.",
+  "next_discussion": "TransportMuon: read the saved method/roadmap and audit current evidence before experiments."
+}

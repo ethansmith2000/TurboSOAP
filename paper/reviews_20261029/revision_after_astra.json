@@ -1,0 +1,28 @@
+{
+  "checked_utc": "2026-10-29T07:34:02.751192+00:00",
+  "status": "partial_review_revision_verified",
+  "completed_reviews": [
+    "astra"
+  ],
+  "remaining_reviews": [
+    "sol",
+    "fable",
+    "opus"
+  ],
+  "files": {
+    "DRAFT.md": "2f355fd356e80b383736b4744755038a8e44330744749abeb7ac0183b627f5bf",
+    "REPRODUCIBILITY.md": "2d1d662fbd68776297ccbbea8c6b0fc7c10ced88b2a6619a99fd5e13e0e62669",
+    "CLAIMS.md": "ce972f3a9749ef6a1f5c400a18225e8685cf818beffaf7e20683a50ebaa62484",
+    "configuration.json": "54e8060504af8dd0df93dd325d7257b31122064d917b0dd21bf0fcc2e3332214",
+    "build_artifacts.py": "4ab58623ec7b38767fc5217d81f823fab063e08c33f56f2902f227606cba74ad",
+    "build_pdf.py": "0b4bd90e5a2bfe254293fa96afc53dcb4fa3e3acf17eca116c92500e72bf1986",
+    "TurboSOAP-review.pdf": "f070c4795d78a962c39f074fd873a20fbc72dbf7c710e3dbb552c8de4062745c",
+    "typeset/build.json": "ca528ad89ef6c9eb3af0740ec5574c1f1556886415eee54a791dc9f337e8102e",
+    "reviews_20261029/astra_math.md": "38911712b5aaf963d85cc867be5fe75e0be02116e8aa0596724565c725a41868",
+    "reviews_20261029/RESPONSES.md": "9e688159445844e20b717fd4c754dd3a4dad29f6247ccfc6b046f2c47136dce5"
+  },
+  "snapshot_unchanged": true,
+  "scalar_evidence_unchanged": true,
+  "production_sources_unchanged": true,
+  "gpu_execution": false
+}

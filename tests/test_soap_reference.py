@@ -16,12 +16,12 @@ def upstream_class():
 
 
 @pytest.mark.parametrize('shape',[(4,4),(7,3),(3,7)])
-@pytest.mark.parametrize('beta2,shampoo_beta,eps',[(.99,.999,1e-8),(.999,.99,.03)])
-def test_qr_matches_pinned_upstream_across_refreshes(shape,beta2,shampoo_beta,eps):
+@pytest.mark.parametrize('beta1,beta2,shampoo_beta,eps',[(.9,.99,.999,1e-8),(.9,.999,.99,.03),(.95,.95,-1,1e-8)])
+def test_qr_matches_pinned_upstream_across_refreshes(shape,beta1,beta2,shampoo_beta,eps):
     torch.manual_seed(12)
     a=torch.nn.Parameter(torch.randn(shape))
     b=torch.nn.Parameter(a.detach().clone())
-    common=dict(lr=.003,betas=(.9,beta2),shampoo_beta=shampoo_beta,
+    common=dict(lr=.003,betas=(beta1,beta2),shampoo_beta=shampoo_beta,
                 eps=eps,weight_decay=.07,precondition_frequency=3)
     original=upstream_class()([a],**common)
     reference=ResearchSOAP([b],hard_reset_interval=0,**common)

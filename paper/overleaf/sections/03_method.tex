@@ -1,0 +1,214 @@
+\hypertarget{method}{%
+\section{3. Method}\label{method}}
+
+\hypertarget{state-precision-and-update-ordering}{%
+\subsection{3.1. State, precision, and update
+ordering}\label{state-precision-and-update-ordering}}
+
+For a matrix parameter \(W\in\mathbb{R}^{m\times n}\), the optimizer
+stores first and second moments \(M,V\), covariance factors \(C_L,C_R\),
+and square bases \(Q_L,Q_R\). All six persistent tensors use BF16.
+Parameters, scalar age and learning-rate tensors, pointwise moment
+temporaries, and decomposition inputs/outputs before basis storage use
+FP32. Auxiliary parameters use the separate AdamW optimizer described in
+Section 4.
+
+Let \(R_b\) denote rounding to BF16. We distinguish two matrix products:
+
+\[
+\mathcal B(X,Y)=R_b(XY),\qquad
+\mathcal F(X,Y)=\operatorname{FP32out}(XY),
+\]
+
+where both operators receive BF16 operands and use FP32 accumulation.
+The notation specifies tensor rounding boundaries; it does not promise a
+single GPU kernel or the absence of other temporary buffers.
+
+The reported CUDA runs disable BF16 reduced-precision reductions and set
+FP32 matmul precision to ``high''. FP32 denotes tensor and solver
+precision; FP32-tensor matrix products inherit that backend setting,
+which can use lower-precision internal multiplication. Geometry
+diagnostics temporarily use ``highest''. These settings apply to
+reference and candidate; casting QR inputs to FP32 does not request
+``highest'' matmul precision. The harness also enables deterministic
+algorithms; the reproduction guide records the cuBLAS workspace, thread
+and compiler-cache settings.
+
+On call \(k=1\), the matrix optimizer initializes zero moments,
+accumulates covariances from the clipped gradient, and obtains
+descending initial bases by FP32 eigendecomposition of symmetrized
+factors. It skips the matrix parameter update. Auxiliary AdamW still
+updates on that call. For subsequent calls define the matrix age
+\(t=k-1\), and let \(G_b=R_b(G)\) for the current clipped gradient. In
+the existing bases,
+
+\[
+\bar G=\mathcal B(\mathcal B(Q_L^\top,G_b),Q_R),
+\]
+
+\[
+M_f=\beta_1\operatorname{float}(M)+(1-\beta_1)\operatorname{float}(\bar G),
+\quad
+V_f=\beta_2\operatorname{float}(V)+(1-\beta_2)\operatorname{float}(\bar G)^2.
+\]
+
+The current direction uses these unrounded FP32 moment temporaries:
+
+\[
+U=\mathcal F\!\left(\mathcal B\!\left(Q_L,
+ R_b\!\left[\frac{M_f}{\sqrt{V_f}+\epsilon}\right]\right),Q_R^\top\right),
+\qquad
+W^+=\left(W-\eta_k\frac{\sqrt{1-\beta_2^t}}{1-\beta_1^t}U\right)
+ (1-\eta_k\lambda).
+\]
+
+The optimizer then stores \(R_b(M_f),R_b(V_f)\), updates the
+covariances, and performs any scheduled basis change and moment
+transport. Thus the direction precedes this call's basis refresh.
+Rounding moments before using them for the current direction would
+specify a different implementation.
+
+The tensor-level covariance update is expressed as
+
+\[
+C_L^+=R_b\!\left[\beta_C\operatorname{float}(C_L)
+ +(1-\beta_C)G_bG_b^\top\right],
+\quad
+C_R^+=R_b\!\left[\beta_C\operatorname{float}(C_R)
+ +(1-\beta_C)G_b^\top G_b\right].
+\]
+
+The implementation uses BF16 \texttt{baddbmm} with FP32 accumulation for
+this operation. The equations specify the weighted update and its output
+dtype; they do not establish the vendor kernel's exact internal rounding
+sequence. All main experiments use \(\beta_1=\beta_2=\beta_C=0.95\).
+
+\hypertarget{dense-warm-tracking}{%
+\subsection{3.2. Dense warm tracking}\label{dense-warm-tracking}}
+
+For either updated covariance factor \(C\) and its current basis \(Q\),
+form (with \(\operatorname{sym}(X)=(X+X^\top)/2\))
+
+\[
+B=\operatorname{sym}\bigl(\mathcal F(\mathcal B(Q^\top,C),Q)\bigr),
+\quad d_i=B_{ii},\quad
+s=\max(\max_i|d_i|,10^{-30}),\quad h_{ij}=(d_i-d_j)/s.
+\]
+
+We apply a damped skew motion in the estimated basis coordinates:
+
+\[
+A_{ij}=-\frac12\frac{B_{ij}}s\frac{h_{ij}}{h_{ij}^2+0.01^2},
+\quad
+a=\min\left(1,\frac{0.5}{\max(\|A\|_F/\sqrt2,10^{-12})}\right),
+\quad
+Y_0=R_b\bigl(\operatorname{float}(Q)+\mathcal F(Q,R_b(aA))\bigr).
+\]
+
+Two residual corrections follow:
+
+\[
+E_j=\mathcal F(Y_j^\top,Y_j)-I,\qquad
+Y_{j+1}=R_b\bigl(\operatorname{float}(Y_j)
+ -\tfrac12\mathcal F(Y_j,R_b(E_j))\bigr),\quad j=0,1.
+\]
+
+The stored new basis is \(Y_2\). This is an approximate orthogonality
+correction, not exact QR. All products are dense: the motivation is GPU
+execution and numerical policy, not a reduction in cubic asymptotic
+order. The skew direction is a damped first-order Jacobi-type motion
+applied to all coordinate pairs. For a small skew \(A\), the unrounded
+change is \(B^+\approx B+BA-AB\); its diagonal approximation gives the
+gap-dependent off-diagonal correction. Without rounding, each residual
+map is \(Y\mapsto(3Y-YY^\top Y)/2\), the cubic Newton--Schulz polar
+iteration in the Björck--Bowie family. These primitives themselves are
+not new. Before the global cap, the damping weights the undamped
+reciprocal-gap formula by \(\tfrac12 h_{ij}^2/(h_{ij}^2+0.01^2)\). It
+therefore suppresses motion relative to that formula when
+coordinate-diagonal gaps are much smaller than 1\% of \(s\); at equal
+diagonals the motion vanishes. These diagonals need not be eigenvalues,
+and we did not save spectra or count how many pairs lie in this regime.
+The statement does not bound absolute motion.
+
+\hypertarget{qr-repair-and-history-transport}{%
+\subsection{3.3. QR repair and history
+transport}\label{qr-repair-and-history-transport}}
+
+At positive ages divisible by 10, we refresh both factors. Ages
+divisible by 50 use QR repair; the remaining refresh ages use Section
+3.2. For QR, cast stored \(C,Q\) to FP32 and reuse one product:
+
+\[
+Z=\operatorname{float}(C)\operatorname{float}(Q),\quad
+\pi=\operatorname{argsort}_{\downarrow}
+ \left(\sum_i\operatorname{float}(Q)_{ij}Z_{ij}\right),\quad
+Q^+=R_b\bigl(\operatorname{qr}(Z_{:,\pi}).Q\bigr).
+\]
+
+In exact arithmetic the sorting score equals
+\(\operatorname{diag}(Q^\top C Q)\), even for nonorthogonal \(Q\). Its
+finite-precision evaluation can change near-tie orderings. The existing
+reference instead materializes \(Q^\top C Q\) for the diagonal and
+separately forms \(CQ_{:,\pi}\), using three dense products rather than
+one. QR repair is one warm-started orthogonal power step, not an exact
+eigendecomposition. Over 10,000 calls the candidate performs 9,999
+matrix updates with 800 warm and 199 QR refreshes; the reference
+performs 999 QR refreshes. Auxiliary AdamW performs 10,000 updates in
+either arm.
+
+After either refresh, transport the newly rounded first moment by
+reconstructing its world-coordinate representation and projecting into
+the new bases:
+
+\[
+M^{\rm world}=\mathcal B(\mathcal B(Q_L,M),Q_R^\top),\qquad
+M^+=\mathcal B(\mathcal B((Q_L^+)^\top,M^{\rm world}),Q_R^+).
+\]
+
+Here the unprimed bases are the old bases and \(M\) denotes
+\(R_b(M_f)\). QR repair permutes \(R_b(V_f)\) along both axes according
+to the sorting orders. Warm refresh leaves that rounded diagonal history
+unchanged. Neither choice represents an exact rotation of a full
+second-moment tensor. Eschenhagen et al.~report that a basis-aware
+second-moment correction hurt in their EShampoo experiments (Appendix
+D.2); this motivates care with such corrections but does not validate
+our history approximation.
+
+Transpose-based first-moment transport is also approximate when stored
+bases are nonorthogonal. QR repair has a substantive recovery role: with
+\(Q=I\) and
+\(C=\left[\begin{smallmatrix}1&0.5\\0.5&1\end{smallmatrix}\right]\), all
+\(h_{ij}=0\), so the warm step leaves the basis unchanged despite
+nonzero off-diagonal covariance. This counterexample precludes a claim
+that warm motion alone always diagonalizes a factor; it does not
+establish incidence in training.
+
+\hypertarget{compilation-and-storage}{%
+\subsection{3.4. Compilation and
+storage}\label{compilation-and-storage}}
+
+Equal-shaped parameter matrices are batched, retaining independent
+covariance, basis, and moment tensors. Four groups, each containing 12
+matrices, cover shapes \(2304\times768\), \(768\times768\),
+\(3072\times768\), and \(768\times1536\). Both sides of every matrix are
+preconditioned: 48 matrices and 96 factors in total. There is no
+blocking, one-sided approximation, or coverage change relative to the
+reference.
+
+Separate full-graph compiled regions for ordinary, warm, and QR events
+include packing parameters/gradients, the matrix update, covariance
+accumulation, refresh/transport, and parameter writes. Initial
+eigendecompositions are eager. The measured candidate captures 12 graphs
+without graph breaks. The compiler uses
+\texttt{emulate\_precision\_casts=True}. The saved small synthetic CUDA
+parity probe reports zero maximum parameter difference and zero relative
+error in all six states for ordinary, warm and QR events. This supports
+the requested rounding policy on that probe, not an equality proof for
+every training state. FP32 packing buffers and solver workspaces remain
+possible.
+
+Per matrix, the six persistent tensors contain \(2mn+2m^2+2n^2\)
+elements. BF16 halves their tensor-byte contribution relative to FP32,
+while FP32 parameters and auxiliary optimizer state remain. Total GPU
+peak allocation falls by a smaller fraction than matrix-state storage in
+these measurements (Section 5.2).

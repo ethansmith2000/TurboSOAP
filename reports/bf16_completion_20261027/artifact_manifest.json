@@ -1,0 +1,24 @@
+{
+  "created_at_utc": "2026-10-27T10:25:41.786770+00:00",
+  "status": "science_and_report_complete",
+  "report_generator": {
+    "path": "benchmarks/summarize_bf16_completion.py",
+    "sha256": "7d687ef262248a904243749b8e025ae3db0694bdd91c38a4d791ccf4f38608d2"
+  },
+  "artifacts": {
+    "summary.json": "8631d5585a22a89e2e9f51b0422a57f655e8c4a3d6e4099b5092956d211844cb",
+    "full_horizon.png": "92296b1999f8bdb267fafe6b6187a64c526fb345f36d7f636affac468c2a200b",
+    "full_horizon.svg": "7f03e747789c307691dd9b95716dec1140b6b6659dec1a99a0625d7baa4f75b5",
+    "controls_and_profile.png": "e4f4c7bf1484d99bd4771bbb2f5a6c5d6bb6766b8740ae48b8aaec92be996a8e",
+    "controls_and_profile.svg": "80a88ee1bdfa18be0667eac0256e64d01b006f68b4be2bb3d93135c18b1f15e0",
+    "REPORT.md": "ad90a9f6b6c0bf43f9207795d374dd60590b26674b8484e89df8691cd4da8736",
+    "review.html": "e1f04df4a83028a0f741c639123368bcedb563993c4b5fd790f2ae9a8e050fc5"
+  },
+  "controls_gpu_execution_cap_seconds": 1800,
+  "profile_gpu_execution_cap_seconds": 600,
+  "total_gpu_execution_authorized_seconds": 2700,
+  "supervised_wall_upper_bound_seconds": 1500,
+  "backup_path": "/workspace/soap-bf16-completed-backup-20261027.tar.gz",
+  "frozen_evidence_rewritten": false,
+  "remaining_gpu_work": 0
+}

@@ -1,0 +1,30 @@
+{
+  "status": "running",
+  "program": "soap-bf16-repl204",
+  "pid": 389168,
+  "verified_at_utc": "2026-10-27T07:26:27.450021+00:00",
+  "seed": 204,
+  "gpu_index": 0,
+  "gpu_uuid": "GPU-50ab2a93-8d63-700d-db09-1dd934e6c09a",
+  "replay_reproduced_validation_calls": [
+    0,
+    50,
+    100,
+    200
+  ],
+  "candidate_initial_state_matches_reference": true,
+  "initial_backward_repeat_passed": true,
+  "initial_validation_match": true,
+  "latest_candidate_call": 305,
+  "observed_geometry_calls": [
+    1,
+    11,
+    21,
+    51,
+    101,
+    151,
+    201
+  ],
+  "numerical_error_role": "diagnostic",
+  "note": "Startup evidence only. Full learning results are pending. No numerical threshold rejection or automatic successor."
+}

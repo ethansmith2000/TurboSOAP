@@ -1,0 +1,41 @@
+{
+  "reviewed_on": "2026-10-27",
+  "status": "reviewed",
+  "measurement_audit": "passed",
+  "methods": [
+    {
+      "method": "stock_qr10",
+      "final_ce": 3.4092715363949537,
+      "delta_ce_vs_stock": 0.0,
+      "perplexity_increase_percent": 0.0,
+      "matrix_state_gib": 2.3203125,
+      "max_actual_m_error": 0.0006824965821579099,
+      "legacy_precision_guard_passed": true
+    },
+    {
+      "method": "full_bf16",
+      "final_ce": 3.4193537402898073,
+      "delta_ce_vs_stock": 0.010082203894853592,
+      "perplexity_increase_percent": 1.013320055469048,
+      "matrix_state_gib": 1.1601562798023224,
+      "max_actual_m_error": 0.010355544276535511,
+      "legacy_precision_guard_passed": false
+    },
+    {
+      "method": "bf16_fp32_bases",
+      "final_ce": 3.4220546763390303,
+      "delta_ce_vs_stock": 0.012783139944076538,
+      "perplexity_increase_percent": 1.2865193538917745,
+      "matrix_state_gib": 1.6083984673023224,
+      "max_actual_m_error": 0.0051551819778978825,
+      "legacy_precision_guard_passed": true
+    }
+  ],
+  "hybrid_minus_full_bf16_final_ce": 0.002700936049222946,
+  "interpretation": "On seed205, FP32 bases improve the moment/Gram diagnostics but demonstrate no loss advantage. Full BF16 remains the leading precision option for replication because it has less state and the lower observed endpoint CE; this is not a statistically established population ranking.",
+  "user_preference_update": "Treat the 1% moment threshold as an engineering diagnostic, not a method-rejection or loss-equivalence criterion. Keep frozen thresholds and historical flags unchanged; choose methods using loss/efficiency evidence and actual stability.",
+  "recommended_next": "Replicate fixed full BF16 at seed204 for10000 calls, reuse the completed stock204 quality control and include a short matched-device timing replay.",
+  "next_run_launched": false,
+  "estimated_next_gpu_hours": 1.0,
+  "remaining_demonstration_gpu_hours": "approximately1\u20131.5 including this proposed replication and short refresh/profile controls"
+}

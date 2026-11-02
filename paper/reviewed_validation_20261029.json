@@ -1,0 +1,160 @@
+{
+  "status": "passed",
+  "checked_utc": "2026-10-29T08:00:11.588138+00:00",
+  "independent_model_reviews": 4,
+  "claude_supervised_mode_verified": true,
+  "generated_tables": 5,
+  "scalar_evidence_sources": 12,
+  "review_context_sources": 8,
+  "bibliography_entries": 6,
+  "original_report_figures_preserved": 2,
+  "new_review_figure": 1,
+  "pdf_pages": 9,
+  "pages_visually_inspected": 9,
+  "pdf_warnings": [],
+  "local_links": [
+    {
+      "file": "DRAFT.md",
+      "target": "figures/full_horizon.svg"
+    },
+    {
+      "file": "DRAFT.md",
+      "target": "figures/review_tradeoff.svg"
+    },
+    {
+      "file": "DRAFT.md",
+      "target": "REPRODUCIBILITY.md"
+    },
+    {
+      "file": "DRAFT.md",
+      "target": "CLAIMS.md"
+    },
+    {
+      "file": "README.md",
+      "target": "TurboSOAP-review.pdf"
+    },
+    {
+      "file": "README.md",
+      "target": "reviews_20261029/RESPONSES.md"
+    },
+    {
+      "file": "README.md",
+      "target": "typeset/README.md"
+    },
+    {
+      "file": "README.md",
+      "target": "DRAFT.md"
+    },
+    {
+      "file": "README.md",
+      "target": "OUTLINE.md"
+    },
+    {
+      "file": "README.md",
+      "target": "DRAFT.md"
+    },
+    {
+      "file": "README.md",
+      "target": "CLAIMS.md"
+    },
+    {
+      "file": "README.md",
+      "target": "REPRODUCIBILITY.md"
+    },
+    {
+      "file": "README.md",
+      "target": "evidence.json"
+    },
+    {
+      "file": "README.md",
+      "target": "configuration.json"
+    },
+    {
+      "file": "README.md",
+      "target": "review_context.json"
+    },
+    {
+      "file": "README.md",
+      "target": "tables.md"
+    },
+    {
+      "file": "README.md",
+      "target": "references.bib"
+    },
+    {
+      "file": "README.md",
+      "target": "figures"
+    },
+    {
+      "file": "README.md",
+      "target": "ARTIFACTS.md"
+    },
+    {
+      "file": "OUTLINE.md",
+      "target": "reviews_20261029/RESPONSES.md"
+    },
+    {
+      "file": "OUTLINE.md",
+      "target": "DRAFT.md"
+    },
+    {
+      "file": "OUTLINE.md",
+      "target": "CLAIMS.md"
+    },
+    {
+      "file": "OUTLINE.md",
+      "target": "REPRODUCIBILITY.md"
+    },
+    {
+      "file": "CLAIMS.md",
+      "target": "evidence.json"
+    },
+    {
+      "file": "REPRODUCIBILITY.md",
+      "target": "configuration.json"
+    },
+    {
+      "file": "REPRODUCIBILITY.md",
+      "target": "evidence.json"
+    },
+    {
+      "file": "ARTIFACTS.md",
+      "target": "TurboSOAP-review.pdf"
+    },
+    {
+      "file": "ARTIFACTS.md",
+      "target": "DRAFT.md"
+    },
+    {
+      "file": "ARTIFACTS.md",
+      "target": "typeset"
+    },
+    {
+      "file": "ARTIFACTS.md",
+      "target": "reviews_20261029"
+    },
+    {
+      "file": "ARTIFACTS.md",
+      "target": "typeset/README.md"
+    },
+    {
+      "file": "ARTIFACTS.md",
+      "target": "REPRODUCIBILITY.md"
+    }
+  ],
+  "original_review_snapshot_unchanged": true,
+  "raw_scalar_sources_unchanged": true,
+  "optimizer_source_pins_unchanged": 4,
+  "transformer_source_unchanged": true,
+  "previous_backups_sha256": {
+    "soap-bf16-completed-backup-20261027.tar.gz": "abfaa0881accde3e514b61776b69090d35f8724018d2b92c6c4b41e2d8b6d475",
+    "soap-paper-draft-20261028.tar.gz": "b9a9e2f9643309ab89c32fc2cc096ee3c0c80b14bbeda5f6ccbb26cef52e8975"
+  },
+  "experiment_ledger_completed": true,
+  "monitor_disabled": true,
+  "gpu_or_training_execution": false,
+  "author_or_venue_invented": false,
+  "draft_words": 4891,
+  "archive": "/workspace/soap-paper-reviewed-20261029.tar.gz",
+  "archive_verification_receipt": "/workspace/soap-paper-reviewed-20261029.audit.json"
+}

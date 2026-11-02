@@ -1,0 +1,189 @@
+{
+  "status": "reviewed",
+  "campaign_seconds": 3896.3382098890143,
+  "rows": [
+    {
+      "case": "qr10",
+      "final_ce": 3.9859051536768675,
+      "mean_step_ms": 382.7728177131595,
+      "mean_optimizer_ms": 96.3580424654126,
+      "matrix_state_gib": 2.3203125,
+      "peak_gpu_gib": 9.393929481506348,
+      "elapsed_seconds": 833.0397006300045,
+      "late_max_physical_m_error": 0.0006526268552988768,
+      "coordinate_residuals": [
+        {
+          "call": 501,
+          "mean": 0.18775988365814555,
+          "maximum": 0.5017691850662231
+        },
+        {
+          "call": 1001,
+          "mean": 0.2102884032598619,
+          "maximum": 0.6195976734161377
+        },
+        {
+          "call": 1501,
+          "mean": 0.2178119299278478,
+          "maximum": 0.6612599492073059
+        },
+        {
+          "call": 1991,
+          "mean": 0.21443695090177547,
+          "maximum": 0.6479243040084839
+        }
+      ],
+      "max_physical_m_error": 0.0006776838563382626,
+      "precision_guard_passed": true,
+      "original_guard_passed": true
+    },
+    {
+      "case": "original",
+      "final_ce": 3.9957525469362736,
+      "mean_step_ms": 337.1719814386635,
+      "mean_optimizer_ms": 51.57237667412693,
+      "matrix_state_gib": 2.3203125,
+      "peak_gpu_gib": 9.397664070129395,
+      "elapsed_seconds": 754.5864185579121,
+      "late_max_physical_m_error": 0.0008859591325744987,
+      "coordinate_residuals": [
+        {
+          "call": 501,
+          "mean": 0.3140763859555591,
+          "maximum": 0.6915767192840576
+        },
+        {
+          "call": 1001,
+          "mean": 0.2317240811389638,
+          "maximum": 0.6372708678245544
+        },
+        {
+          "call": 1501,
+          "mean": 0.24481163740711054,
+          "maximum": 0.7167120575904846
+        },
+        {
+          "call": 1991,
+          "mean": 0.3863693825066245,
+          "maximum": 0.9629262089729309
+        }
+      ],
+      "max_physical_m_error": 0.001548946718685329,
+      "precision_guard_passed": true,
+      "original_guard_passed": true
+    },
+    {
+      "case": "compiled_fp32",
+      "final_ce": 3.9915604423731565,
+      "mean_step_ms": 316.2814653940548,
+      "mean_optimizer_ms": 29.874888150830213,
+      "matrix_state_gib": 2.3203125298023224,
+      "peak_gpu_gib": 9.38212251663208,
+      "elapsed_seconds": 777.8025293960236,
+      "late_max_physical_m_error": 0.004804116208106279,
+      "coordinate_residuals": [
+        {
+          "call": 501,
+          "mean": 0.2923580950688726,
+          "maximum": 0.6627336740493774
+        },
+        {
+          "call": 1001,
+          "mean": 0.24994159452520157,
+          "maximum": 0.6719010472297668
+        },
+        {
+          "call": 1501,
+          "mean": 0.237625297534881,
+          "maximum": 0.6488726139068604
+        },
+        {
+          "call": 1991,
+          "mean": 0.3851738091034349,
+          "maximum": 0.9618794918060303
+        }
+      ],
+      "max_physical_m_error": 0.0053938282653689384,
+      "precision_guard_passed": true,
+      "original_guard_passed": true
+    },
+    {
+      "case": "bf16",
+      "final_ce": 3.9939393140375614,
+      "mean_step_ms": 313.1617355663452,
+      "mean_optimizer_ms": 26.43638345762156,
+      "matrix_state_gib": 1.1601562798023224,
+      "peak_gpu_gib": 8.219295501708984,
+      "elapsed_seconds": 754.363523017033,
+      "late_max_physical_m_error": 0.005323310848325491,
+      "coordinate_residuals": [
+        {
+          "call": 501,
+          "mean": 0.29090439655313577,
+          "maximum": 0.6955958008766174
+        },
+        {
+          "call": 1001,
+          "mean": 0.22639738870202564,
+          "maximum": 0.635908305644989
+        },
+        {
+          "call": 1501,
+          "mean": 0.2331613162677968,
+          "maximum": 0.6471073627471924
+        },
+        {
+          "call": 1991,
+          "mean": 0.3885571798309684,
+          "maximum": 0.9608075618743896
+        }
+      ],
+      "max_physical_m_error": 0.009924227371811867,
+      "precision_guard_passed": true,
+      "original_guard_passed": false
+    },
+    {
+      "case": "bf16_fp32_basis",
+      "final_ce": 3.9956105817109346,
+      "mean_step_ms": 315.37604234849204,
+      "mean_optimizer_ms": 28.600481775785354,
+      "matrix_state_gib": 1.6083984673023224,
+      "peak_gpu_gib": 8.668853282928467,
+      "elapsed_seconds": 748.8083870830014,
+      "late_max_physical_m_error": 0.004868900403380394,
+      "coordinate_residuals": [
+        {
+          "call": 501,
+          "mean": 0.2784778506999525,
+          "maximum": 0.6903674602508545
+        },
+        {
+          "call": 1001,
+          "mean": 0.2777747836468431,
+          "maximum": 0.738983690738678
+        },
+        {
+          "call": 1501,
+          "mean": 0.26509279712142114,
+          "maximum": 0.7343223690986633
+        },
+        {
+          "call": 1991,
+          "mean": 0.3912580462541276,
+          "maximum": 0.9657571911811829
+        }
+      ],
+      "max_physical_m_error": 0.005326319020241499,
+      "precision_guard_passed": true,
+      "original_guard_passed": true
+    }
+  ],
+  "selected_next": "paired seed205 stock QR10 versus full BF16 warm10/QR50, 10000 calls each",
+  "selection_reason": "Half matrix-state storage and stable sampled late transport; the single-seed CE spread does not establish a quality winner.",
+  "limitations": [
+    "One model seed, fixed data order, shared validation used in earlier LR selection.",
+    "BF16 fails original absolute Gram criterion; precision-specific normalized criterion passes.",
+    "Comparisons are against the original QR implementation; efficient and sparse QR attribution remains open.",
+    "Coordinate offdiagonal maxima approach .96 for warm arms at age1990; finite Gram and M checks do not certify diagonalization."
+  ]
+}

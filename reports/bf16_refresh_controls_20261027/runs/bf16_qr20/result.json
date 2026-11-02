@@ -1,0 +1,188 @@
+{
+  "status": "completed",
+  "case": "bf16_qr20",
+  "calls": 2000,
+  "seed": 204,
+  "initial_parameters_sha256": "24da908288be7ee828bd2a8221ac637b870c0c219b05964b3517c576b0a7da79",
+  "initial_gradient_sha256": "7936c3f658be84b84ee780a52876bc2a3cda2771d0b30596cff715f47a81deb2",
+  "validation": [
+    {
+      "call": 0,
+      "ce": 10.966108478605747,
+      "targets": 1047552,
+      "listed_tensor_hash_preservation_checked": true
+    },
+    {
+      "call": 50,
+      "ce": 7.15756281465292,
+      "targets": 1047552,
+      "listed_tensor_hash_preservation_checked": false
+    },
+    {
+      "call": 100,
+      "ce": 6.334601294249296,
+      "targets": 1047552,
+      "listed_tensor_hash_preservation_checked": false
+    },
+    {
+      "call": 200,
+      "ce": 5.733952008187771,
+      "targets": 1047552,
+      "listed_tensor_hash_preservation_checked": false
+    },
+    {
+      "call": 500,
+      "ce": 4.936851505190134,
+      "targets": 1047552,
+      "listed_tensor_hash_preservation_checked": false
+    },
+    {
+      "call": 1000,
+      "ce": 4.341771213337779,
+      "targets": 1047552,
+      "listed_tensor_hash_preservation_checked": true
+    },
+    {
+      "call": 1500,
+      "ce": 4.123380791395903,
+      "targets": 1047552,
+      "listed_tensor_hash_preservation_checked": false
+    },
+    {
+      "call": 2000,
+      "ce": 3.990382792428136,
+      "targets": 1047552,
+      "listed_tensor_hash_preservation_checked": true
+    }
+  ],
+  "parity": {
+    "eager_compiled": [
+      {
+        "event": "ordinary",
+        "parameter_max_absolute": 0.0,
+        "state_relative_errors": {
+          "m": 0.0,
+          "v": 0.0,
+          "cl": 0.0,
+          "cr": 0.0,
+          "ql": 0.0,
+          "qr": 0.0
+        }
+      },
+      {
+        "event": "warm",
+        "parameter_max_absolute": 0.0,
+        "state_relative_errors": {
+          "m": 0.0,
+          "v": 0.0,
+          "cl": 0.0,
+          "cr": 0.0,
+          "ql": 0.0,
+          "qr": 0.0
+        }
+      },
+      {
+        "event": "qr",
+        "parameter_max_absolute": 0.0,
+        "state_relative_errors": {
+          "m": 0.0,
+          "v": 0.0,
+          "cl": 0.0,
+          "cr": 0.0,
+          "ql": 0.0,
+          "qr": 0.0
+        }
+      }
+    ],
+    "same_state_update_relative_error": 0.0027622138150036335,
+    "same_state_update_cosine": 0.9999961853027344,
+    "arithmetic_screen_passed": true
+  },
+  "matrix_state_bytes": 1245708320,
+  "peak_gpu_bytes": 8829511680,
+  "mean_optimizer_ms": 40.45993206685556,
+  "mean_step_ms": 329.6406275997747,
+  "optimizer_by_kind": {
+    "ordinary": 10.182922433705748,
+    "qr": 615.723115096702
+  },
+  "max_absolute_gram": 0.13038045167922974,
+  "max_normalized_gram": 0.0023641621002468962,
+  "max_physical_m_error": 0.005499082151800394,
+  "original_geometry_guard_passed": false,
+  "precision_specific_guard_passed": true,
+  "dynamo_counters": {
+    "stats": {
+      "calls_captured": 760,
+      "unique_graphs": 8
+    },
+    "inductor": {
+      "pattern_matcher_count": 64,
+      "pattern_matcher_nodes": 64,
+      "fxgraph_cache_miss": 8,
+      "async_compile_cache_miss": 318,
+      "extern_calls": 104,
+      "async_compile_cache_hit": 159,
+      "triton_bundler_save_kernel": 2248,
+      "triton_bundler_save_static_autotuner": 8,
+      "benchmarking.InductorBenchmarker.benchmark": 244,
+      "benchmarking.InductorBenchmarker.benchmark_gpu": 244
+    },
+    "graph_break": {}
+  },
+  "elapsed_seconds": 762.4725410189712,
+  "clean_cycle_calls": 1900,
+  "protocol": {
+    "model_seed": 204,
+    "validation_rows": 1024,
+    "validation_calls": [
+      50,
+      100,
+      200,
+      500,
+      1000,
+      1500,
+      2000
+    ],
+    "evaluation_hash_calls": [
+      0,
+      1000,
+      2000
+    ],
+    "diagnostic_calls": [
+      21,
+      101,
+      201,
+      501,
+      1001,
+      1501,
+      1981
+    ],
+    "residual_calls": [
+      501,
+      1001,
+      1501,
+      1981
+    ],
+    "capture_calls": [
+      101,
+      201,
+      501,
+      1001,
+      1501,
+      2000
+    ],
+    "repeat_initial_backward": true,
+    "expected_startup": {
+      "initial_parameters_sha256": "24da908288be7ee828bd2a8221ac637b870c0c219b05964b3517c576b0a7da79",
+      "initial_gradient_sha256": "7936c3f658be84b84ee780a52876bc2a3cda2771d0b30596cff715f47a81deb2",
+      "initial_loss": 10.963447570800781,
+      "initial_norm": 11.2014741897583,
+      "initial_validation_ce": 10.966108478605747
+    },
+    "startup_reference": "verified full BF16 seed204 replication",
+    "check_final_state_finite": true,
+    "arm_timeout_seconds": 1800
+  },
+  "initial_backward_repeat_passed": true
+}

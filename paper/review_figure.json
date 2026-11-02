@@ -1,0 +1,15 @@
+{
+  "generator": "plot_review_context.py",
+  "generator_sha256": "f8821c139ed8d0116e0074485ca803c55353fd1127a737a277ebe42e97fced8d",
+  "matplotlib": "3.11.2",
+  "inputs": {
+    "paper/review_context.json": "c8394887b39fcc3f611c24d7724bea637126113c541e0d60ab177ae3f30e5056",
+    "reports/bf16_refresh_controls_20261027/comparison.json": "fa16841114a04e4c1d226096e83ff60baababcc453495a51e74fb50a0fbd597b",
+    "reports/bf16_learning_20261026/comparison.json": "4d9c3bdba1a0d9c760792be8046a9a7bc032fc6165f2decb25d716ab7013bdda"
+  },
+  "outputs": {
+    "figures/review_tradeoff.svg": "863e25c5bafa906cb8770b8d5cfcfa2ce1f83735a8e5ebc0b3dc4ebff8959ecd",
+    "figures/review_tradeoff.png": "e77c99d8304a5fe523e49831a779f4a11bad57d5ff1b84150729559dd943b28b"
+  },
+  "execution": "CPU plotting from saved scalars; no GPU or new training"
+}

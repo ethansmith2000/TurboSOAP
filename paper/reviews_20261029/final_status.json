@@ -1,0 +1,152 @@
+{
+  "astra": {
+    "taskId": "node:delegated-task:command%3Amcp%3A52bce355-313c-4dd5-9a67-a14f3de2b697%3Adelegate-task%3Asoap-paper-20261029-astra-review-r1",
+    "childThreadId": "thread:delegated-task:command%3Amcp%3A52bce355-313c-4dd5-9a67-a14f3de2b697%3Adelegate-task%3Asoap-paper-20261029-astra-review-r1",
+    "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A52bce355-313c-4dd5-9a67-a14f3de2b697%253Adelegate-task%253Asoap-paper-20261029-astra-review-r1:ordinal:1",
+    "childNodeId": "node:delegated-task:command%3Amcp%3A52bce355-313c-4dd5-9a67-a14f3de2b697%3Adelegate-task%3Asoap-paper-20261029-astra-review-r1",
+    "status": "completed",
+    "workState": "result_available",
+    "hasPendingChildRuns": false,
+    "latestTerminalRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A52bce355-313c-4dd5-9a67-a14f3de2b697%253Adelegate-task%253Asoap-paper-20261029-astra-review-r1:ordinal:1",
+    "latestTerminalStatus": "completed",
+    "latestTerminalSummary": null,
+    "latestTerminalResultContextTransferId": null,
+    "providerInstanceId": "codex",
+    "model": "gpt-6-astra",
+    "options": [
+      {
+        "id": "reasoningEffort",
+        "value": "high"
+      },
+      {
+        "id": "serviceTier",
+        "value": "default"
+      }
+    ],
+    "summary": "Wrote [astra_math.md](/workspace/TurboSOAP/paper/reviews_20261029/astra_math.md).\n\nDisposition: minor revision. No substantive equation or update-order errors found. Three findings address omitted precision settings, diagnostic definitions, and “orthogonality floor” wording. Manuscript and production sources remain unchanged.",
+    "resultContextTransferId": "context-transfer:type:subagent_result:source-thread:thread%3Adelegated-task%3Acommand%253Amcp%253A52bce355-313c-4dd5-9a67-a14f3de2b697%253Adelegate-task%253Asoap-paper-20261029-astra-review-r1:target-thread:3af4f8fb-234a-495b-b6b1-08dd25dbfe46:200564c7-3cd8-4e52-9c85-e07e1d7feb51",
+    "hasPendingQuestion": false,
+    "pendingApproval": null,
+    "waitTimedOut": false
+  },
+  "sol": {
+    "taskId": "node:delegated-task:command%3Amcp%3A52bce355-313c-4dd5-9a67-a14f3de2b697%3Adelegate-task%3Asoap-paper-20261029-sol-review-r1",
+    "childThreadId": "thread:delegated-task:command%3Amcp%3A52bce355-313c-4dd5-9a67-a14f3de2b697%3Adelegate-task%3Asoap-paper-20261029-sol-review-r1",
+    "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A52bce355-313c-4dd5-9a67-a14f3de2b697%253Adelegate-task%253Asoap-paper-20261029-sol-review-r1:ordinal:1",
+    "childNodeId": "node:delegated-task:command%3Amcp%3A52bce355-313c-4dd5-9a67-a14f3de2b697%3Adelegate-task%3Asoap-paper-20261029-sol-review-r1",
+    "status": "completed",
+    "workState": "result_available",
+    "hasPendingChildRuns": false,
+    "latestTerminalRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A52bce355-313c-4dd5-9a67-a14f3de2b697%253Adelegate-task%253Asoap-paper-20261029-sol-review-r1:ordinal:1",
+    "latestTerminalStatus": "completed",
+    "latestTerminalSummary": null,
+    "latestTerminalResultContextTransferId": null,
+    "providerInstanceId": "codex",
+    "model": "gpt-6.1-sol",
+    "options": [
+      {
+        "id": "reasoningEffort",
+        "value": "high"
+      },
+      {
+        "id": "serviceTier",
+        "value": "default"
+      }
+    ],
+    "summary": "Wrote [sol_evidence.md](/workspace/TurboSOAP/paper/reviews_20261029/sol_evidence.md).\n\nDisposition: **minor revision**. Headline numbers and all five tables verified. Findings concern precision settings, provenance wording, archive filenames, and CPU-check scope. No manuscript or production source edits.",
+    "resultContextTransferId": "context-transfer:type:subagent_result:source-thread:thread%3Adelegated-task%3Acommand%253Amcp%253A52bce355-313c-4dd5-9a67-a14f3de2b697%253Adelegate-task%253Asoap-paper-20261029-sol-review-r1:target-thread:3af4f8fb-234a-495b-b6b1-08dd25dbfe46:645eafe6-883f-43d4-a854-d4c5a3e194a7",
+    "hasPendingQuestion": false,
+    "pendingApproval": null,
+    "waitTimedOut": false
+  },
+  "fable": {
+    "taskId": "node:delegated-task:command%3Amcp%3A52bce355-313c-4dd5-9a67-a14f3de2b697%3Adelegate-task%3Asoap-paper-20261029-fable-review-r1",
+    "childThreadId": "thread:delegated-task:command%3Amcp%3A52bce355-313c-4dd5-9a67-a14f3de2b697%3Adelegate-task%3Asoap-paper-20261029-fable-review-r1",
+    "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A52bce355-313c-4dd5-9a67-a14f3de2b697%253Adelegate-task%253Asoap-paper-20261029-fable-review-r1:ordinal:1",
+    "childNodeId": "node:delegated-task:command%3Amcp%3A52bce355-313c-4dd5-9a67-a14f3de2b697%3Adelegate-task%3Asoap-paper-20261029-fable-review-r1",
+    "status": "completed",
+    "workState": "result_available",
+    "hasPendingChildRuns": false,
+    "latestTerminalRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A52bce355-313c-4dd5-9a67-a14f3de2b697%253Adelegate-task%253Asoap-paper-20261029-fable-review-r1:ordinal:1",
+    "latestTerminalStatus": "completed",
+    "latestTerminalSummary": null,
+    "latestTerminalResultContextTransferId": null,
+    "providerInstanceId": "claudeAgent",
+    "model": "claude-fable-5-1",
+    "options": [
+      {
+        "id": "effort",
+        "value": "high"
+      }
+    ],
+    "summary": "The review is written to `/workspace/TurboSOAP/paper/reviews_20261029/fable_science.md`. Nothing else was created or modified.\n\n**What I verified.** Every number in the five tables and the in-text claims reproduces from the saved JSON reports. The §3 equations match `bf16_soap.py` at every rounding boundary. The \"three dense products\" reference claim matches the pinned upstream SOAP fixture. All three primary papers were fetched from arXiv, and the bibliography versions, dates, and section attributions are correct.\n\n**Disposition:** accept the science with minor-to-moderate textual revision, no new experiments.\n\n**Main findings, in severity order:**\n\n- **Major (F1):** The 18% step-time saving is mostly a cadence effect. The saved per-event timings decompose the optimizer saving exactly: about 68% comes from a QR every 50 calls instead of every 10, and 32% from the compiled ordinary step. The QR event itself costs nearly the same in both arms. The abstract and title credit BF16 state and basis tracking instead.\n- **Major (F2):** The loss gap is also mostly cadence, not precision. All five pilot arms show the same roughly +0.12 CE early gap regardless of storage precision, and the QR20 control halves it. The precision-attributable share at 2,000 calls is about 0.002 CE.\n- **Moderate (F3):** QR20 beats warm10/QR50 on loss at 5% more step time over the 2,000-call prefix. The draft only disclaims the reverse ordering and should state both are open.\n- **Moderate (F4):** The warm step is a damped first-order Jacobi rotation and the corrections are Newton–Schulz iterations. Neither lineage is named.\n- **Moderate (F5, F6):** SOAP v2 itself names low-precision preconditioners as future work and uses the same warm-started QR primitive. Eschenhagen et al. report that basis accuracy matters most early and that rotating second moments hurt. Both support the draft's choices and explain its early gap but go unused.\n- **Minor (F7, F8):** The peak-memory sentence in §3.4 is only true in relative terms, and \"the gap then narrows\" understates a late plateau near +0.01 CE.\n\n**Unresolved questions** for the authors cover which arm the learning rate was tuned on, cuBLAS rounding behaviour for the BF16 covariance update, and clock state across sequential arms. Each is a disclosure item, not an experiment.",
+    "resultContextTransferId": "context-transfer:type:subagent_result:source-thread:thread%3Adelegated-task%3Acommand%253Amcp%253A52bce355-313c-4dd5-9a67-a14f3de2b697%253Adelegate-task%253Asoap-paper-20261029-fable-review-r1:target-thread:3af4f8fb-234a-495b-b6b1-08dd25dbfe46:42a3668d-bb83-4d54-9b31-54f0c8670799",
+    "hasPendingQuestion": false,
+    "pendingApproval": null,
+    "waitTimedOut": false,
+    "verified_configuration": {
+      "threadId": "thread:delegated-task:command%3Amcp%3A52bce355-313c-4dd5-9a67-a14f3de2b697%3Adelegate-task%3Asoap-paper-20261029-fable-review-r1",
+      "modelSelection": {
+        "instanceId": "claudeAgent",
+        "model": "claude-fable-5-1",
+        "options": [
+          {
+            "id": "effort",
+            "value": "high"
+          }
+        ]
+      },
+      "runtimeMode": "approval-required",
+      "interactionMode": "default"
+    }
+  },
+  "opus": {
+    "taskId": "node:delegated-task:command%3Amcp%3A52bce355-313c-4dd5-9a67-a14f3de2b697%3Adelegate-task%3Asoap-paper-20261029-opus-review-r1",
+    "childThreadId": "thread:delegated-task:command%3Amcp%3A52bce355-313c-4dd5-9a67-a14f3de2b697%3Adelegate-task%3Asoap-paper-20261029-opus-review-r1",
+    "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A52bce355-313c-4dd5-9a67-a14f3de2b697%253Adelegate-task%253Asoap-paper-20261029-opus-review-r1:ordinal:1",
+    "childNodeId": "node:delegated-task:command%3Amcp%3A52bce355-313c-4dd5-9a67-a14f3de2b697%3Adelegate-task%3Asoap-paper-20261029-opus-review-r1",
+    "status": "completed",
+    "workState": "result_available",
+    "hasPendingChildRuns": false,
+    "latestTerminalRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A52bce355-313c-4dd5-9a67-a14f3de2b697%253Adelegate-task%253Asoap-paper-20261029-opus-review-r1:ordinal:1",
+    "latestTerminalStatus": "completed",
+    "latestTerminalSummary": null,
+    "latestTerminalResultContextTransferId": null,
+    "providerInstanceId": "claudeAgent",
+    "model": "claude-opus-5-5",
+    "options": [
+      {
+        "id": "effort",
+        "value": "high"
+      },
+      {
+        "id": "fastMode",
+        "value": false
+      }
+    ],
+    "summary": "I've written the review to `paper/reviews_20261029/opus_manuscript.md`. Every number I checked matches the saved evidence, and the §3 formulas match `bf16_soap.py`. **Verdict:** the draft is ready as a narrow systems/optimizer case study after one focused text revision. Its weakness is interpretation, not accuracy, and every fix uses only existing evidence.\n\n**Major findings:**\n1. **The loss gap goes with the QR schedule, not BF16 storage.** In the seed-204 pilot at call 500:\n   - An FP32-state warm10/QR50 arm is +0.118 CE behind stock QR10; full BF16 is +0.124.\n   - BF16 QR20 is +0.059 and BF16 QR50 is +0.140.\n   - At call 2000, full BF16 is slightly ahead of the FP32-state warm arm.\n\n   The draft puts \"BF16 state\" first and leaves this evidence in Appendix A.\n2. **Optimizer-only timing is missing.** For seed 205, optimizer time falls from 95.2 to 26.1 ms (3.65×), which accounts for essentially all of the step saving. FP32 QR events cost about 600–650 ms in both implementations. So about 75% of the optimizer saving comes from running QR every 50 calls instead of 10. The faster ordinary step gives about 32%, and warm events add back about 7%.\n3. **\"The gap then narrows substantially\" is misleading.** It narrows from call 500 to 2000. After that it stays at about 0.007–0.012 CE in both seeds and ends near the top of that band.\n4. **The warm step needs a plain-language explanation.** It is half a damped Jacobi-style rotation followed by two Newton–Schulz orthonormalization steps. Because the damping is relative to the largest eigenvalue, directions far below 1% of it barely move between QR repairs. The equal-diagonal stall the draft mentions is just the extreme case of that.\n\n**Moderate findings:**\n- **Diagonalization diagnostic not reported.** The saved geometry files measure how well each basis diagonalizes its covariance. Four warm steps after a QR, the candidate averages about 0.39 against about 0.21 for QR10.\n- **Gram \"crossings\" are just BF16 rounding.** No BF16 basis larger than about 450 dimensions can pass the old 0.05 absolute Gram screen. The 1% moment-error crossing happens only at age 10.\n- **The reference uses TF32 matmuls, not full FP32.** The global precision and determinism flags that `CompiledSOAP`'s precision claims depend on are missing from the reproducibility snippet.\n- **Timing method not described.** Step times synchronize the GPU between phases, which likely penalizes the eager reference more than the compiled candidate.\n- **The efficiency question could be stated exactly.** Stock QR10 would need to reach the candidate's final loss within about 8,100 calls to break even, and the data can't say whether it would.\n- **The controls table lacks a stock QR10 row and call-500 values.**\n\n**Also in the report:**\n- Minor items, including two related-work citations (4-bit Shampoo, Björck–Bowie 1971), both verified against arXiv/OpenAlex.\n- Concrete figure and table changes: drop or rescale Fig. 1 left, and replace Fig. 2 right with a per-event optimizer-time breakdown.\n- Suggested wording for the strongest defensible claim, and five open questions.\n\nI didn't use the GPU, run any training, edit code or the manuscript, or read other reviewers' new reports.",
+    "resultContextTransferId": "context-transfer:type:subagent_result:source-thread:thread%3Adelegated-task%3Acommand%253Amcp%253A52bce355-313c-4dd5-9a67-a14f3de2b697%253Adelegate-task%253Asoap-paper-20261029-opus-review-r1:target-thread:3af4f8fb-234a-495b-b6b1-08dd25dbfe46:b001d729-c7c7-452d-bfd5-61ac2c127fff",
+    "hasPendingQuestion": false,
+    "pendingApproval": null,
+    "waitTimedOut": false,
+    "verified_configuration": {
+      "threadId": "thread:delegated-task:command%3Amcp%3A52bce355-313c-4dd5-9a67-a14f3de2b697%3Adelegate-task%3Asoap-paper-20261029-opus-review-r1",
+      "modelSelection": {
+        "instanceId": "claudeAgent",
+        "model": "claude-opus-5-5",
+        "options": [
+          {
+            "id": "effort",
+            "value": "high"
+          },
+          {
+            "id": "fastMode",
+            "value": false
+          }
+        ]
+      },
+      "runtimeMode": "approval-required",
+      "interactionMode": "default"
+    }
+  }
+}

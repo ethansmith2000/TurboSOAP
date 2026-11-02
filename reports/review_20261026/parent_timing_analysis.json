@@ -1,0 +1,294 @@
+{
+  "stock": {
+    "qr": {
+      "qr": {
+        "count": 990,
+        "mean_optimizer_ms": 652.3957050532441,
+        "mean_fb_ms": 285.52091964320607,
+        "mean_step_ms": 937.9166246964502
+      },
+      "ordinary": {
+        "count": 8910,
+        "mean_optimizer_ms": 32.574038082727476,
+        "mean_fb_ms": 285.49742351779213,
+        "mean_step_ms": 318.0714616005196
+      }
+    },
+    "warm": {
+      "qr": {
+        "count": 198,
+        "mean_optimizer_ms": 654.1495954410898,
+        "mean_fb_ms": 286.2260465573689,
+        "mean_step_ms": 940.3756419984586
+      },
+      "ordinary": {
+        "count": 8910,
+        "mean_optimizer_ms": 32.6467570414982,
+        "mean_fb_ms": 286.02767320344327,
+        "mean_step_ms": 318.67443024494145
+      },
+      "warm": {
+        "count": 792,
+        "mean_optimizer_ms": 130.69062601175804,
+        "mean_fb_ms": 286.08277264169317,
+        "mean_step_ms": 416.77339865345124
+      }
+    },
+    "warm_minus_qr_ce": [
+      {
+        "call": 0,
+        "ce_gap": 0.0
+      },
+      {
+        "call": 50,
+        "ce_gap": 0.06283678486943245
+      },
+      {
+        "call": 51,
+        "ce_gap": 0.07025996595621109
+      },
+      {
+        "call": 100,
+        "ce_gap": 0.07972297444939613
+      },
+      {
+        "call": 200,
+        "ce_gap": 0.0810232162475586
+      },
+      {
+        "call": 500,
+        "ce_gap": 0.11834581568837166
+      },
+      {
+        "call": 1000,
+        "ce_gap": 0.060650914907455444
+      },
+      {
+        "call": 1500,
+        "ce_gap": 0.019820427522063255
+      },
+      {
+        "call": 2000,
+        "ce_gap": 0.00984739325940609
+      },
+      {
+        "call": 2500,
+        "ce_gap": 0.007025433704257011
+      },
+      {
+        "call": 3000,
+        "ce_gap": 0.005940545350313187
+      },
+      {
+        "call": 3500,
+        "ce_gap": 0.008446317166090012
+      },
+      {
+        "call": 4000,
+        "ce_gap": 0.008183334022760391
+      },
+      {
+        "call": 4500,
+        "ce_gap": 0.0058466587215662
+      },
+      {
+        "call": 5000,
+        "ce_gap": 0.008294135332107544
+      },
+      {
+        "call": 5500,
+        "ce_gap": 0.007251907140016556
+      },
+      {
+        "call": 6000,
+        "ce_gap": 0.007077457383275032
+      },
+      {
+        "call": 6500,
+        "ce_gap": 0.007164649665355682
+      },
+      {
+        "call": 7000,
+        "ce_gap": 0.005884351208806038
+      },
+      {
+        "call": 7500,
+        "ce_gap": 0.0063296034932136536
+      },
+      {
+        "call": 8000,
+        "ce_gap": 0.005835220217704773
+      },
+      {
+        "call": 8500,
+        "ce_gap": 0.0059869904071092606
+      },
+      {
+        "call": 9000,
+        "ce_gap": 0.006689641624689102
+      },
+      {
+        "call": 9500,
+        "ce_gap": 0.007039867341518402
+      },
+      {
+        "call": 10000,
+        "ce_gap": 0.006975993514060974
+      }
+    ],
+    "early_qr_1000_cost_estimate": {
+      "extra_seconds": 41.099605957420124,
+      "mean_step_ms": 343.06633254843456,
+      "estimated_step_percent_saving": 9.732683476018522,
+      "scope": "Hypothetical first1000 calls at observed average QR cost then9000 at observed warm cost. Excludes changed learning, state/cadence effects and compilation/setup; not measured candidate performance."
+    },
+    "warm_surcharge_zero_upper_bound_percent": 2.314017427209036,
+    "warm_surcharge_zero_scope": "Conditional arithmetic ceiling if every warm-refresh surcharge could vanish, all other complete-step costs unchanged; not measured or feasible speedup."
+  },
+  "previous": {
+    "qr": {
+      "qr": {
+        "count": 990,
+        "mean_optimizer_ms": 653.3918644781365,
+        "mean_fb_ms": 286.37366590696865,
+        "mean_step_ms": 939.7655303851052
+      },
+      "ordinary": {
+        "count": 8910,
+        "mean_optimizer_ms": 32.505862774770584,
+        "mean_fb_ms": 286.3033370066912,
+        "mean_step_ms": 318.80919978146176
+      }
+    },
+    "warm": {
+      "qr": {
+        "count": 198,
+        "mean_optimizer_ms": 654.4007378156448,
+        "mean_fb_ms": 286.5295762759445,
+        "mean_step_ms": 940.9303140915893
+      },
+      "ordinary": {
+        "count": 8910,
+        "mean_optimizer_ms": 32.02727940735772,
+        "mean_fb_ms": 286.4134454756989,
+        "mean_step_ms": 318.4407248830566
+      },
+      "warm": {
+        "count": 792,
+        "mean_optimizer_ms": 126.09202827584478,
+        "mean_fb_ms": 286.4533735148437,
+        "mean_step_ms": 412.54540179068846
+      }
+    },
+    "warm_minus_qr_ce": [
+      {
+        "call": 0,
+        "ce_gap": 0.0
+      },
+      {
+        "call": 50,
+        "ce_gap": 0.042712315917015076
+      },
+      {
+        "call": 51,
+        "ce_gap": 0.04326867684721947
+      },
+      {
+        "call": 100,
+        "ce_gap": 0.03185267373919487
+      },
+      {
+        "call": 200,
+        "ce_gap": 0.05288020521402359
+      },
+      {
+        "call": 500,
+        "ce_gap": 0.06859083101153374
+      },
+      {
+        "call": 1000,
+        "ce_gap": 0.04491659253835678
+      },
+      {
+        "call": 1500,
+        "ce_gap": 0.02796449512243271
+      },
+      {
+        "call": 2000,
+        "ce_gap": 0.02046242542564869
+      },
+      {
+        "call": 2500,
+        "ce_gap": 0.017062202095985413
+      },
+      {
+        "call": 3000,
+        "ce_gap": 0.016886204481124878
+      },
+      {
+        "call": 3500,
+        "ce_gap": 0.01468406617641449
+      },
+      {
+        "call": 4000,
+        "ce_gap": 0.014434602111577988
+      },
+      {
+        "call": 4500,
+        "ce_gap": 0.013261733576655388
+      },
+      {
+        "call": 5000,
+        "ce_gap": 0.011171944439411163
+      },
+      {
+        "call": 5500,
+        "ce_gap": 0.012050803750753403
+      },
+      {
+        "call": 6000,
+        "ce_gap": 0.010319875553250313
+      },
+      {
+        "call": 6500,
+        "ce_gap": 0.010572241619229317
+      },
+      {
+        "call": 7000,
+        "ce_gap": 0.009987438097596169
+      },
+      {
+        "call": 7500,
+        "ce_gap": 0.009804654866456985
+      },
+      {
+        "call": 8000,
+        "ce_gap": 0.009820248931646347
+      },
+      {
+        "call": 8500,
+        "ce_gap": 0.009016722440719604
+      },
+      {
+        "call": 9000,
+        "ce_gap": 0.008951663970947266
+      },
+      {
+        "call": 9500,
+        "ce_gap": 0.009311161935329437
+      },
+      {
+        "call": 10000,
+        "ce_gap": 0.008903278037905693
+      }
+    ],
+    "early_qr_1000_cost_estimate": {
+      "extra_seconds": 42.48594202198831,
+      "mean_step_ms": 342.66748502203666,
+      "estimated_step_percent_saving": 10.038556753011285,
+      "scope": "Hypothetical first1000 calls at observed average QR cost then9000 at observed warm cost. Excludes changed learning, state/cadence effects and compilation/setup; not measured candidate performance."
+    },
+    "warm_surcharge_zero_upper_bound_percent": 2.2236287966220845,
+    "warm_surcharge_zero_scope": "Conditional arithmetic ceiling if every warm-refresh surcharge could vanish, all other complete-step costs unchanged; not measured or feasible speedup."
+  }
+}

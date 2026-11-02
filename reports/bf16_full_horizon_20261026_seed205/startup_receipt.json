@@ -1,0 +1,17 @@
+{
+  "status": "running",
+  "verified_at_utc": "2026-10-26T14:07:15.059382+00:00",
+  "program": "soap-bf16-full205",
+  "pid": 132094,
+  "seed": 205,
+  "gpu_index": 2,
+  "gpu_uuid": "GPU-ce5f5c81-9f74-b454-4262-59d56d9ac683",
+  "first_arm": "qr10",
+  "initial_parameters_sha256": "7c39c511983fe2fb997bdedaa109b9d2d62b98da2764881dfaf8561f9509e698",
+  "initial_gradient_sha256": "518451bdc852e68130fc3d648c3f63136f8c36b57af92f31b510467112389642",
+  "fresh_model_initialization_verified": true,
+  "initial_backward_repeat_passed": true,
+  "initial_evaluation_preservation_passed": true,
+  "latest_training_call": 310,
+  "note": "BF16 starts after the control and must match its initial weights/gradients/loss/norm/CE. This is startup evidence, not a completed pair."
+}

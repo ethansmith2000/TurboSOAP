@@ -1,0 +1,274 @@
+{
+  "interpretation": "Descriptive accounting and development context, not a causal partition.",
+  "inputs": {
+    "seed205": {
+      "path": "reports/bf16_full_horizon_20261026_seed205/comparison.json",
+      "sha256": "626af378bafa6b8b09d71bde4ec5a05d4e8376d1918f8e3b0a7028c32631a48d"
+    },
+    "seed204": {
+      "path": "reports/bf16_replicate_20261027_seed204/comparison.json",
+      "sha256": "351726521bf640a73324a068feb7282e4fca22e332525bd5028cd0f9bb9acdae"
+    },
+    "pilot": {
+      "path": "reports/bf16_learning_20261026/comparison.json",
+      "sha256": "4d9c3bdba1a0d9c760792be8046a9a7bc032fc6165f2decb25d716ab7013bdda"
+    },
+    "controls": {
+      "path": "reports/bf16_refresh_controls_20261027/comparison.json",
+      "sha256": "fa16841114a04e4c1d226096e83ff60baababcc453495a51e74fb50a0fbd597b"
+    },
+    "calibration": {
+      "path": "reports/owt_restart_20261026/calibration.json",
+      "sha256": "6447f5334659a5c687e41431ebfa501a96bc9c820cdcb87a446aea541d78073b"
+    },
+    "geometry_stock205": {
+      "path": "reports/bf16_full_horizon_20261026_seed205/runs/qr10/geometry.json",
+      "sha256": "b873c67b39109957faddeacfa87caad42c1ee88b77064b12a5e7e0ffb82fa91b"
+    },
+    "geometry_bf16205": {
+      "path": "reports/bf16_full_horizon_20261026_seed205/runs/bf16/geometry.json",
+      "sha256": "b2ac1fc06b7bfc4288bcaa146f76d467e34ff7ef84de85390050f1411d75abd3"
+    },
+    "cuda_parity205": {
+      "path": "reports/bf16_full_horizon_20261026_seed205/runs/bf16/cuda_parity.json",
+      "sha256": "bf2671145d038d257044ab0fdaef72d03da963b6205b5b6993e6d77339d3331a"
+    }
+  },
+  "seed205_optimizer_event_means_ms": {
+    "stock": {
+      "ordinary": 34.43861808767647,
+      "qr": 642.3659506760716
+    },
+    "full_bf16": {
+      "ordinary": 10.138807401759289,
+      "warm": 61.609507958031955,
+      "qr": 601.1834978378811
+    }
+  },
+  "seed205_optimizer_mean_ms": {
+    "stock": 95.23135134651598,
+    "full_bf16": 26.077357254983536
+  },
+  "seed205_optimizer_time_ratio": 3.651878923747793,
+  "seed205_event_accounting": {
+    "window": [
+      101,
+      10000
+    ],
+    "count": 9900,
+    "fractions": {
+      "stock_ordinary": 0.9,
+      "stock_qr": 0.1,
+      "candidate_ordinary": 0.9,
+      "candidate_warm": 0.08,
+      "candidate_qr": 0.02
+    },
+    "ordinary_saving_ms_per_call": 21.86982961732546,
+    "refresh_saving_ms_per_call": 47.28416447420699,
+    "optimizer_saving_ms_per_call": 69.15399409153244,
+    "refresh_share_percent": 68.37517499223765,
+    "ordinary_share_percent": 31.62482500776237,
+    "complete_step_saving_ms_per_call": 71.0155679476847
+  },
+  "pilot_ce_deltas_vs_stock": {
+    "qr10": {
+      "0": 0.0,
+      "50": 0.0,
+      "100": 0.0,
+      "200": 0.0,
+      "500": 0.0,
+      "1000": 0.0,
+      "1500": 0.0,
+      "2000": 0.0
+    },
+    "original": {
+      "0": 0.0,
+      "50": 0.06283678486943245,
+      "100": 0.07972297444939613,
+      "200": 0.0810232162475586,
+      "500": 0.11834581568837166,
+      "1000": 0.060650914907455444,
+      "1500": 0.019820427522063255,
+      "2000": 0.00984739325940609
+    },
+    "compiled_fp32": {
+      "0": 0.0,
+      "50": 0.05331439897418022,
+      "100": 0.07745923474431038,
+      "200": 0.08440806716680527,
+      "500": 0.1253948174417019,
+      "1000": 0.06174982339143753,
+      "1500": 0.019713934510946274,
+      "2000": 0.0056552886962890625
+    },
+    "bf16": {
+      "0": 0.0,
+      "50": 0.05193185433745384,
+      "100": 0.06675418093800545,
+      "200": 0.08302600681781769,
+      "500": 0.12391336262226105,
+      "1000": 0.0528431162238121,
+      "1500": 0.014003682881593704,
+      "2000": 0.008034160360693932
+    },
+    "bf16_fp32_basis": {
+      "0": 0.0,
+      "50": 0.03794717788696289,
+      "100": 0.06705344840884209,
+      "200": 0.08010507375001907,
+      "500": 0.12159214913845062,
+      "1000": 0.05400821939110756,
+      "1500": 0.018003715202212334,
+      "2000": 0.009705428034067154
+    }
+  },
+  "prefix_amortized_optimizer_events": [
+    {
+      "label": "Stock QR10",
+      "case": "qr10",
+      "amortized_ms": {
+        "ordinary": 31.245508041404385,
+        "warm": 0,
+        "qr": 65.11253442400822
+      },
+      "calls": [
+        101,
+        2000
+      ],
+      "source": "pilot"
+    },
+    {
+      "label": "Original warm",
+      "case": "original",
+      "amortized_ms": {
+        "ordinary": 28.561980049738562,
+        "warm": 9.964244927426702,
+        "qr": 13.046151696961667
+      },
+      "calls": [
+        101,
+        2000
+      ],
+      "source": "pilot"
+    },
+    {
+      "label": "Compiled FP32 state",
+      "case": "compiled_fp32",
+      "amortized_ms": {
+        "ordinary": 11.450729263811619,
+        "warm": 6.114959692533471,
+        "qr": 12.309199194485124
+      },
+      "calls": [
+        101,
+        2000
+      ],
+      "source": "pilot"
+    },
+    {
+      "label": "Full BF16 warm",
+      "case": "bf16",
+      "amortized_ms": {
+        "ordinary": 9.210115768333996,
+        "warm": 4.976820107181801,
+        "qr": 12.249447582105763
+      },
+      "calls": [
+        101,
+        2000
+      ],
+      "source": "pilot"
+    },
+    {
+      "label": "BF16 QR20",
+      "case": "bf16_qr20",
+      "amortized_ms": {
+        "ordinary": 9.673776312020461,
+        "warm": 0,
+        "qr": 30.786155754835104
+      },
+      "calls": [
+        101,
+        2000
+      ],
+      "source": "controls"
+    },
+    {
+      "label": "BF16 QR50",
+      "case": "bf16_qr50",
+      "amortized_ms": {
+        "ordinary": 10.519598055765718,
+        "warm": 0,
+        "qr": 12.344704425133962
+      },
+      "calls": [
+        101,
+        2000
+      ],
+      "source": "controls"
+    }
+  ],
+  "coordinate_offdiagonal_diagnostics": {
+    "stock": [
+      {
+        "call": 1991,
+        "age": 1990,
+        "factors": 96,
+        "mean": 0.20086679271359267,
+        "maximum": 0.6375352740287781
+      },
+      {
+        "call": 9991,
+        "age": 9990,
+        "factors": 96,
+        "mean": 0.21388809112340823,
+        "maximum": 0.6639134287834167
+      }
+    ],
+    "bf16": [
+      {
+        "call": 1991,
+        "age": 1990,
+        "factors": 96,
+        "mean": 0.3937424127943814,
+        "maximum": 0.9646075963973999
+      },
+      {
+        "call": 9991,
+        "age": 9990,
+        "factors": 96,
+        "mean": 0.3802156855381327,
+        "maximum": 0.9753633737564087
+      }
+    ]
+  },
+  "seed205_later_sampled_m_error_max": 0.005423921160399914,
+  "hypothetical_stock_calls_at_equal_steady_cost": 8133.862824536686,
+  "pilot_full_bf16_minus_compiled_fp32_endpoint": 0.002378871664404869,
+  "control_qr20_step_increase_vs_cached_warm_percent": 4.933650941546031,
+  "late_observed_gap_bands": {
+    "204": {
+      "minimum": 0.007210657000541687,
+      "maximum": 0.011608902364969254
+    },
+    "205": {
+      "minimum": 0.007438080385327339,
+      "maximum": 0.010082203894853592
+    }
+  },
+  "learning_rate_selection": {
+    "selected_matrix_peak_lr": 0.0015,
+    "arm": "Stock QR10 baseline only",
+    "model_seed": 204,
+    "candidate_rates": [
+      0.0005,
+      0.0015,
+      0.003
+    ],
+    "calls": 500,
+    "full_schedule_horizon": 10000,
+    "criterion": "Lowest call-500 validation CE",
+    "candidate_specific_retuning": false
+  },
+  "gpu_execution": false
+}

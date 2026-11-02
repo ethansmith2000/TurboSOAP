@@ -1,0 +1,31 @@
+{
+  "status": "running",
+  "program": "soap-bf16-hybrid205",
+  "pid": 194027,
+  "verified_at_utc": "2026-10-26T18:08:37.148742+00:00",
+  "seed": 205,
+  "gpu_index": 0,
+  "gpu_uuid": "GPU-50ab2a93-8d63-700d-db09-1dd934e6c09a",
+  "control_reproduced_calls": [
+    0,
+    50,
+    100,
+    200
+  ],
+  "candidate_startup_match": true,
+  "latest_candidate_call": 361,
+  "observed_geometry_calls": [
+    1,
+    11,
+    21,
+    51,
+    101,
+    151,
+    201
+  ],
+  "max_actual_m_error_so_far": 0.005123451817780733,
+  "original_gram_guard_passes_so_far": true,
+  "compiled_graphs": 12,
+  "graph_breaks": 0,
+  "note": "Startup/early precision receipt only. Final learning/qualification remains pending; no automatic next experiment."
+}

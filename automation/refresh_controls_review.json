@@ -1,0 +1,205 @@
+{
+  "status": "passed",
+  "bundle": "/workspace/optimizer_replay_results/soap_bf16_refresh_controls_20261027_seed204_v1",
+  "audits": [
+    {
+      "status": "passed",
+      "case": "bf16_qr20",
+      "event_counts": {
+        "cold": 1,
+        "ordinary": 1900,
+        "qr": 99
+      },
+      "unique_graphs": 8,
+      "clean_cycle_calls": 1900,
+      "final_state_finite": true,
+      "numerical_error_role": "diagnostic"
+    },
+    {
+      "status": "passed",
+      "case": "bf16_qr50",
+      "event_counts": {
+        "cold": 1,
+        "ordinary": 1960,
+        "qr": 39
+      },
+      "unique_graphs": 8,
+      "clean_cycle_calls": 1900,
+      "final_state_finite": true,
+      "numerical_error_role": "diagnostic"
+    }
+  ],
+  "production_hashes_verified": true,
+  "source_input_support_hashes_verified": true,
+  "elapsed_seconds": 1459.462208164041,
+  "results": [
+    {
+      "case": "cached_bf16_warm10_qr50",
+      "validation": [
+        {
+          "call": 0,
+          "ce": 10.966108478605747,
+          "targets": 1047552,
+          "listed_tensor_hash_preservation_checked": true
+        },
+        {
+          "call": 50,
+          "ce": 7.159334506839514,
+          "targets": 1047552,
+          "listed_tensor_hash_preservation_checked": false
+        },
+        {
+          "call": 100,
+          "ce": 6.35079650208354,
+          "targets": 1047552,
+          "listed_tensor_hash_preservation_checked": false
+        },
+        {
+          "call": 200,
+          "ce": 5.773977719247341,
+          "targets": 1047552,
+          "listed_tensor_hash_preservation_checked": false
+        },
+        {
+          "call": 500,
+          "ce": 5.001514211297035,
+          "targets": 1047552,
+          "listed_tensor_hash_preservation_checked": false
+        },
+        {
+          "call": 1000,
+          "ce": 4.361596241593361,
+          "targets": 1047552,
+          "listed_tensor_hash_preservation_checked": true
+        },
+        {
+          "call": 1500,
+          "ce": 4.1223688162863255,
+          "targets": 1047552,
+          "listed_tensor_hash_preservation_checked": false
+        },
+        {
+          "call": 2000,
+          "ce": 3.9939393140375614,
+          "targets": 1047552,
+          "listed_tensor_hash_preservation_checked": false
+        }
+      ],
+      "mean_step_ms": 314.14195984032153,
+      "mean_optimizer_ms": 26.415084154884283,
+      "matrix_state_bytes": 1245708320
+    },
+    {
+      "case": "bf16_qr20",
+      "validation": [
+        {
+          "call": 0,
+          "ce": 10.966108478605747,
+          "targets": 1047552,
+          "listed_tensor_hash_preservation_checked": true
+        },
+        {
+          "call": 50,
+          "ce": 7.15756281465292,
+          "targets": 1047552,
+          "listed_tensor_hash_preservation_checked": false
+        },
+        {
+          "call": 100,
+          "ce": 6.334601294249296,
+          "targets": 1047552,
+          "listed_tensor_hash_preservation_checked": false
+        },
+        {
+          "call": 200,
+          "ce": 5.733952008187771,
+          "targets": 1047552,
+          "listed_tensor_hash_preservation_checked": false
+        },
+        {
+          "call": 500,
+          "ce": 4.936851505190134,
+          "targets": 1047552,
+          "listed_tensor_hash_preservation_checked": false
+        },
+        {
+          "call": 1000,
+          "ce": 4.341771213337779,
+          "targets": 1047552,
+          "listed_tensor_hash_preservation_checked": true
+        },
+        {
+          "call": 1500,
+          "ce": 4.123380791395903,
+          "targets": 1047552,
+          "listed_tensor_hash_preservation_checked": false
+        },
+        {
+          "call": 2000,
+          "ce": 3.990382792428136,
+          "targets": 1047552,
+          "listed_tensor_hash_preservation_checked": true
+        }
+      ],
+      "mean_step_ms": 329.6406275997747,
+      "mean_optimizer_ms": 40.45993206685556,
+      "matrix_state_bytes": 1245708320
+    },
+    {
+      "case": "bf16_qr50",
+      "validation": [
+        {
+          "call": 0,
+          "ce": 10.966108478605747,
+          "targets": 1047552,
+          "listed_tensor_hash_preservation_checked": true
+        },
+        {
+          "call": 50,
+          "ce": 7.204366810619831,
+          "targets": 1047552,
+          "listed_tensor_hash_preservation_checked": false
+        },
+        {
+          "call": 100,
+          "ce": 6.404539309442043,
+          "targets": 1047552,
+          "listed_tensor_hash_preservation_checked": false
+        },
+        {
+          "call": 200,
+          "ce": 5.830097418278456,
+          "targets": 1047552,
+          "listed_tensor_hash_preservation_checked": false
+        },
+        {
+          "call": 500,
+          "ce": 5.018046278506517,
+          "targets": 1047552,
+          "listed_tensor_hash_preservation_checked": false
+        },
+        {
+          "call": 1000,
+          "ce": 4.364714320749044,
+          "targets": 1047552,
+          "listed_tensor_hash_preservation_checked": true
+        },
+        {
+          "call": 1500,
+          "ce": 4.1323130670934916,
+          "targets": 1047552,
+          "listed_tensor_hash_preservation_checked": false
+        },
+        {
+          "call": 2000,
+          "ce": 3.9986794628202915,
+          "targets": 1047552,
+          "listed_tensor_hash_preservation_checked": true
+        }
+      ],
+      "mean_step_ms": 313.5512978235554,
+      "mean_optimizer_ms": 22.86430248089968,
+      "matrix_state_bytes": 1245708320
+    }
+  ]
+}

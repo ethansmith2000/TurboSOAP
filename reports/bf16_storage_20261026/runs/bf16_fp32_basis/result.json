@@ -1,0 +1,106 @@
+{
+  "status": "completed",
+  "case": "bf16_fp32_basis",
+  "calls": 201,
+  "initial_parameters_sha256": "24da908288be7ee828bd2a8221ac637b870c0c219b05964b3517c576b0a7da79",
+  "initial_gradient_sha256": "7936c3f658be84b84ee780a52876bc2a3cda2771d0b30596cff715f47a81deb2",
+  "validation": [
+    {
+      "call": 0,
+      "ce": 10.968449592590332,
+      "targets": 130944
+    },
+    {
+      "call": 50,
+      "ce": 7.161352246999741,
+      "targets": 130944
+    },
+    {
+      "call": 100,
+      "ce": 6.371130049228668,
+      "targets": 130944
+    },
+    {
+      "call": 201,
+      "ce": 5.770980715751648,
+      "targets": 130944
+    }
+  ],
+  "parity": {
+    "eager_compiled": [
+      {
+        "event": "ordinary",
+        "parameter_max_absolute": 0.0,
+        "state_relative_errors": {
+          "m": 0.0,
+          "v": 0.0,
+          "cl": 0.0,
+          "cr": 0.0,
+          "ql": 0.0,
+          "qr": 0.0
+        }
+      },
+      {
+        "event": "warm",
+        "parameter_max_absolute": 0.0,
+        "state_relative_errors": {
+          "m": 0.0,
+          "v": 0.0,
+          "cl": 0.0,
+          "cr": 0.0,
+          "ql": 0.0,
+          "qr": 0.0
+        }
+      },
+      {
+        "event": "qr",
+        "parameter_max_absolute": 0.0,
+        "state_relative_errors": {
+          "m": 0.0,
+          "v": 0.0,
+          "cl": 0.0,
+          "cr": 0.0,
+          "ql": 0.0,
+          "qr": 0.0
+        }
+      }
+    ],
+    "same_state_update_relative_error": 0.003736048238351941,
+    "same_state_update_cosine": 0.9999929666519165,
+    "arithmetic_screen_passed": true
+  },
+  "matrix_state_bytes": 1727004704,
+  "peak_gpu_bytes": 9304557568,
+  "mean_optimizer_ms": 28.425034547690302,
+  "mean_step_ms": 314.57931369775906,
+  "optimizer_by_kind": {
+    "ordinary": 11.356769397389144,
+    "warm": 74.57175086892676,
+    "qr": 611.9101010262966
+  },
+  "max_absolute_gram": 0.016539400443434715,
+  "max_normalized_gram": 0.00031221809331327677,
+  "max_physical_m_error": 0.005045490339398384,
+  "original_geometry_guard_passed": true,
+  "precision_specific_guard_passed": true,
+  "dynamo_counters": {
+    "stats": {
+      "calls_captured": 1564,
+      "unique_graphs": 12
+    },
+    "inductor": {
+      "pattern_matcher_count": 156,
+      "pattern_matcher_nodes": 156,
+      "fxgraph_cache_miss": 12,
+      "async_compile_cache_miss": 606,
+      "extern_calls": 200,
+      "async_compile_cache_hit": 303,
+      "triton_bundler_save_kernel": 3608,
+      "triton_bundler_save_static_autotuner": 12,
+      "benchmarking.InductorBenchmarker.benchmark": 288,
+      "benchmarking.InductorBenchmarker.benchmark_gpu": 288
+    },
+    "graph_break": {}
+  },
+  "elapsed_seconds": 133.11043169605546
+}

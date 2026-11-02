@@ -1,0 +1,411 @@
+{
+  "status": "passed",
+  "eager_ce": 10.963447332382202,
+  "compiled_ce": 10.963447093963623,
+  "gradient_relative": 0.0013853617929129342,
+  "gradient_cosine": 0.999999040401329,
+  "parameter_gradients": [
+    {
+      "parameter": "token_embedding.weight",
+      "gradient_relative": 0.0016652488848792652
+    },
+    {
+      "parameter": "blocks.0.attn_norm.weight",
+      "gradient_relative": 0.0022957198897010154
+    },
+    {
+      "parameter": "blocks.0.attn.to_qkv.weight",
+      "gradient_relative": 0.0025005016771785507
+    },
+    {
+      "parameter": "blocks.0.attn.to_out.weight",
+      "gradient_relative": 0.001870767177351452
+    },
+    {
+      "parameter": "blocks.0.attn.q_norm.weight",
+      "gradient_relative": 0.003955183823995222
+    },
+    {
+      "parameter": "blocks.0.attn.k_norm.weight",
+      "gradient_relative": 0.004037994300180635
+    },
+    {
+      "parameter": "blocks.0.ff_norm.weight",
+      "gradient_relative": 0.0017260481580205116
+    },
+    {
+      "parameter": "blocks.0.ff.proj_in.weight",
+      "gradient_relative": 0.0021813452406309213
+    },
+    {
+      "parameter": "blocks.0.ff.proj_out.weight",
+      "gradient_relative": 0.0019551525799279827
+    },
+    {
+      "parameter": "blocks.1.attn_norm.weight",
+      "gradient_relative": 0.0011500843074380932
+    },
+    {
+      "parameter": "blocks.1.attn.to_qkv.weight",
+      "gradient_relative": 0.001569805182405414
+    },
+    {
+      "parameter": "blocks.1.attn.to_out.weight",
+      "gradient_relative": 0.0013617131723177086
+    },
+    {
+      "parameter": "blocks.1.attn.q_norm.weight",
+      "gradient_relative": 0.0029292254122476012
+    },
+    {
+      "parameter": "blocks.1.attn.k_norm.weight",
+      "gradient_relative": 0.0035053986869510918
+    },
+    {
+      "parameter": "blocks.1.ff_norm.weight",
+      "gradient_relative": 0.001323695622021407
+    },
+    {
+      "parameter": "blocks.1.ff.proj_in.weight",
+      "gradient_relative": 0.0018434101462602927
+    },
+    {
+      "parameter": "blocks.1.ff.proj_out.weight",
+      "gradient_relative": 0.0016491596989365387
+    },
+    {
+      "parameter": "blocks.2.attn_norm.weight",
+      "gradient_relative": 0.0007634761216686368
+    },
+    {
+      "parameter": "blocks.2.attn.to_qkv.weight",
+      "gradient_relative": 0.0013280306525249588
+    },
+    {
+      "parameter": "blocks.2.attn.to_out.weight",
+      "gradient_relative": 0.0011538752943666358
+    },
+    {
+      "parameter": "blocks.2.attn.q_norm.weight",
+      "gradient_relative": 0.0025928778837728548
+    },
+    {
+      "parameter": "blocks.2.attn.k_norm.weight",
+      "gradient_relative": 0.002442681094052221
+    },
+    {
+      "parameter": "blocks.2.ff_norm.weight",
+      "gradient_relative": 0.0009640986352671514
+    },
+    {
+      "parameter": "blocks.2.ff.proj_in.weight",
+      "gradient_relative": 0.0015798947370320292
+    },
+    {
+      "parameter": "blocks.2.ff.proj_out.weight",
+      "gradient_relative": 0.001458844593236669
+    },
+    {
+      "parameter": "blocks.3.attn_norm.weight",
+      "gradient_relative": 0.0006055976578303825
+    },
+    {
+      "parameter": "blocks.3.attn.to_qkv.weight",
+      "gradient_relative": 0.0011464691172358853
+    },
+    {
+      "parameter": "blocks.3.attn.to_out.weight",
+      "gradient_relative": 0.0010875657652861775
+    },
+    {
+      "parameter": "blocks.3.attn.q_norm.weight",
+      "gradient_relative": 0.002391137846260657
+    },
+    {
+      "parameter": "blocks.3.attn.k_norm.weight",
+      "gradient_relative": 0.002314875022177148
+    },
+    {
+      "parameter": "blocks.3.ff_norm.weight",
+      "gradient_relative": 0.0009219575621129236
+    },
+    {
+      "parameter": "blocks.3.ff.proj_in.weight",
+      "gradient_relative": 0.001537125668425027
+    },
+    {
+      "parameter": "blocks.3.ff.proj_out.weight",
+      "gradient_relative": 0.0013373555752784851
+    },
+    {
+      "parameter": "blocks.4.attn_norm.weight",
+      "gradient_relative": 0.0005185910380334003
+    },
+    {
+      "parameter": "blocks.4.attn.to_qkv.weight",
+      "gradient_relative": 0.0010976328214458277
+    },
+    {
+      "parameter": "blocks.4.attn.to_out.weight",
+      "gradient_relative": 0.001006145326529827
+    },
+    {
+      "parameter": "blocks.4.attn.q_norm.weight",
+      "gradient_relative": 0.0020132427194433813
+    },
+    {
+      "parameter": "blocks.4.attn.k_norm.weight",
+      "gradient_relative": 0.002346180316487346
+    },
+    {
+      "parameter": "blocks.4.ff_norm.weight",
+      "gradient_relative": 0.0009261304148458824
+    },
+    {
+      "parameter": "blocks.4.ff.proj_in.weight",
+      "gradient_relative": 0.0014525803186781836
+    },
+    {
+      "parameter": "blocks.4.ff.proj_out.weight",
+      "gradient_relative": 0.0012587725116295953
+    },
+    {
+      "parameter": "blocks.5.attn_norm.weight",
+      "gradient_relative": 0.0005082012278797284
+    },
+    {
+      "parameter": "blocks.5.attn.to_qkv.weight",
+      "gradient_relative": 0.0010208080689766324
+    },
+    {
+      "parameter": "blocks.5.attn.to_out.weight",
+      "gradient_relative": 0.0009120884506682783
+    },
+    {
+      "parameter": "blocks.5.attn.q_norm.weight",
+      "gradient_relative": 0.0013971753232208826
+    },
+    {
+      "parameter": "blocks.5.attn.k_norm.weight",
+      "gradient_relative": 0.0018165559275558844
+    },
+    {
+      "parameter": "blocks.5.ff_norm.weight",
+      "gradient_relative": 0.0007211416972040915
+    },
+    {
+      "parameter": "blocks.5.ff.proj_in.weight",
+      "gradient_relative": 0.0013503999713439735
+    },
+    {
+      "parameter": "blocks.5.ff.proj_out.weight",
+      "gradient_relative": 0.001182670928878021
+    },
+    {
+      "parameter": "blocks.6.attn_norm.weight",
+      "gradient_relative": 0.00041742867552461277
+    },
+    {
+      "parameter": "blocks.6.attn.to_qkv.weight",
+      "gradient_relative": 0.0009304866634918175
+    },
+    {
+      "parameter": "blocks.6.attn.to_out.weight",
+      "gradient_relative": 0.0008757863081052356
+    },
+    {
+      "parameter": "blocks.6.attn.q_norm.weight",
+      "gradient_relative": 0.0013051629682687823
+    },
+    {
+      "parameter": "blocks.6.attn.k_norm.weight",
+      "gradient_relative": 0.0013539486140828475
+    },
+    {
+      "parameter": "blocks.6.ff_norm.weight",
+      "gradient_relative": 0.000752051833682923
+    },
+    {
+      "parameter": "blocks.6.ff.proj_in.weight",
+      "gradient_relative": 0.0013255833432736215
+    },
+    {
+      "parameter": "blocks.6.ff.proj_out.weight",
+      "gradient_relative": 0.0010663648517412702
+    },
+    {
+      "parameter": "blocks.7.attn_norm.weight",
+      "gradient_relative": 0.00039709270622844637
+    },
+    {
+      "parameter": "blocks.7.attn.to_qkv.weight",
+      "gradient_relative": 0.0009338263006149313
+    },
+    {
+      "parameter": "blocks.7.attn.to_out.weight",
+      "gradient_relative": 0.0008271198790258153
+    },
+    {
+      "parameter": "blocks.7.attn.q_norm.weight",
+      "gradient_relative": 0.0012842186207409573
+    },
+    {
+      "parameter": "blocks.7.attn.k_norm.weight",
+      "gradient_relative": 0.0015316049565985014
+    },
+    {
+      "parameter": "blocks.7.ff_norm.weight",
+      "gradient_relative": 0.000701451725383455
+    },
+    {
+      "parameter": "blocks.7.ff.proj_in.weight",
+      "gradient_relative": 0.0012655344638978633
+    },
+    {
+      "parameter": "blocks.7.ff.proj_out.weight",
+      "gradient_relative": 0.0010211817766707795
+    },
+    {
+      "parameter": "blocks.8.attn_norm.weight",
+      "gradient_relative": 0.00033635826212968
+    },
+    {
+      "parameter": "blocks.8.attn.to_qkv.weight",
+      "gradient_relative": 0.0008906434487032528
+    },
+    {
+      "parameter": "blocks.8.attn.to_out.weight",
+      "gradient_relative": 0.000762220614584339
+    },
+    {
+      "parameter": "blocks.8.attn.q_norm.weight",
+      "gradient_relative": 0.001353160871392986
+    },
+    {
+      "parameter": "blocks.8.attn.k_norm.weight",
+      "gradient_relative": 0.0016054236973241148
+    },
+    {
+      "parameter": "blocks.8.ff_norm.weight",
+      "gradient_relative": 0.0006031517543668296
+    },
+    {
+      "parameter": "blocks.8.ff.proj_in.weight",
+      "gradient_relative": 0.001156911647851956
+    },
+    {
+      "parameter": "blocks.8.ff.proj_out.weight",
+      "gradient_relative": 0.0009093423868177524
+    },
+    {
+      "parameter": "blocks.9.attn_norm.weight",
+      "gradient_relative": 0.00029353160645588885
+    },
+    {
+      "parameter": "blocks.9.attn.to_qkv.weight",
+      "gradient_relative": 0.0007984898610265814
+    },
+    {
+      "parameter": "blocks.9.attn.to_out.weight",
+      "gradient_relative": 0.0006341380672960756
+    },
+    {
+      "parameter": "blocks.9.attn.q_norm.weight",
+      "gradient_relative": 0.0013715587322900204
+    },
+    {
+      "parameter": "blocks.9.attn.k_norm.weight",
+      "gradient_relative": 0.0012964648026381972
+    },
+    {
+      "parameter": "blocks.9.ff_norm.weight",
+      "gradient_relative": 0.0005716944950014014
+    },
+    {
+      "parameter": "blocks.9.ff.proj_in.weight",
+      "gradient_relative": 0.0010055272286441737
+    },
+    {
+      "parameter": "blocks.9.ff.proj_out.weight",
+      "gradient_relative": 0.0007026390511063934
+    },
+    {
+      "parameter": "blocks.10.attn_norm.weight",
+      "gradient_relative": 0.00019069667409699626
+    },
+    {
+      "parameter": "blocks.10.attn.to_qkv.weight",
+      "gradient_relative": 0.0006417282535728261
+    },
+    {
+      "parameter": "blocks.10.attn.to_out.weight",
+      "gradient_relative": 0.00041982391902763963
+    },
+    {
+      "parameter": "blocks.10.attn.q_norm.weight",
+      "gradient_relative": 0.001075635247321648
+    },
+    {
+      "parameter": "blocks.10.attn.k_norm.weight",
+      "gradient_relative": 0.0008297843154594639
+    },
+    {
+      "parameter": "blocks.10.ff_norm.weight",
+      "gradient_relative": 0.00026194111404604585
+    },
+    {
+      "parameter": "blocks.10.ff.proj_in.weight",
+      "gradient_relative": 0.0006018637390738183
+    },
+    {
+      "parameter": "blocks.10.ff.proj_out.weight",
+      "gradient_relative": 0.0002861005207644879
+    },
+    {
+      "parameter": "blocks.11.attn_norm.weight",
+      "gradient_relative": 2.854789061675845e-05
+    },
+    {
+      "parameter": "blocks.11.attn.to_qkv.weight",
+      "gradient_relative": 0.00014231503487665225
+    },
+    {
+      "parameter": "blocks.11.attn.to_out.weight",
+      "gradient_relative": 6.70155257923832e-05
+    },
+    {
+      "parameter": "blocks.11.attn.q_norm.weight",
+      "gradient_relative": 7.060825057072352e-05
+    },
+    {
+      "parameter": "blocks.11.attn.k_norm.weight",
+      "gradient_relative": 0.00012380020114116143
+    },
+    {
+      "parameter": "blocks.11.ff_norm.weight",
+      "gradient_relative": 1.3959958701046551e-05
+    },
+    {
+      "parameter": "blocks.11.ff.proj_in.weight",
+      "gradient_relative": 7.562318598180819e-05
+    },
+    {
+      "parameter": "blocks.11.ff.proj_out.weight",
+      "gradient_relative": 1.7699149437476348e-05
+    },
+    {
+      "parameter": "final_norm.weight",
+      "gradient_relative": 3.9643186047400925e-07
+    }
+  ],
+  "initial_parameters_sha256": "24da908288be7ee828bd2a8221ac637b870c0c219b05964b3517c576b0a7da79",
+  "model_unchanged": true,
+  "elapsed_seconds": 10.177953058038838,
+  "criteria": {
+    "maximum_gradient_relative": 0.02,
+    "minimum_cosine": 0.999,
+    "maximum_ce_difference": 0.002
+  },
+  "scope": "Numerical execution screen at one initial real batch; not a learning equivalence guarantee",
+  "script_sha256": "899f9bfe92ced607e67add0b63577542bbbd3ec44d6d00e16605e00bb18814f3"
+}

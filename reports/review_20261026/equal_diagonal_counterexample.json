@@ -1,0 +1,26 @@
+{
+  "case": "equal diagonal but nonzero offdiagonal",
+  "input_covariance": [
+    [
+      1.0,
+      0.5
+    ],
+    [
+      0.5,
+      1.0
+    ]
+  ],
+  "warm_basis": [
+    [
+      1.0,
+      0.0
+    ],
+    [
+      0.0,
+      1.0
+    ]
+  ],
+  "basis_unchanged": true,
+  "relative_offdiagonal": 0.4472135901451111,
+  "scope": "CPU arithmetic counterexample to guaranteed standalone diagonalization; not evidence of incidence or learning harm in the completed training runs."
+}

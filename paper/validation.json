@@ -1,0 +1,100 @@
+{
+  "status": "passed",
+  "checked_at_utc": "2026-10-28T20:01:36.193205+00:00",
+  "tables": 5,
+  "source_artifacts": 12,
+  "figures": 2,
+  "production_pins": 4,
+  "local_links": 20,
+  "reference_entries": 3,
+  "reference_versions_checked": true,
+  "build_is_stdlib_only": true,
+  "previous_completion_backup_sha256": "abfaa0881accde3e514b61776b69090d35f8724018d2b92c6c4b41e2d8b6d475",
+  "previous_completion_backup_unchanged": true,
+  "experiment_ledger_status": "completed",
+  "monitor_disabled": true,
+  "gpu_execution_or_training": false,
+  "draft_words": 3423,
+  "links": [
+    {
+      "file": "DRAFT.md",
+      "target": "figures/full_horizon.svg"
+    },
+    {
+      "file": "DRAFT.md",
+      "target": "figures/controls_and_profile.svg"
+    },
+    {
+      "file": "DRAFT.md",
+      "target": "REPRODUCIBILITY.md"
+    },
+    {
+      "file": "DRAFT.md",
+      "target": "CLAIMS.md"
+    },
+    {
+      "file": "OUTLINE.md",
+      "target": "DRAFT.md"
+    },
+    {
+      "file": "OUTLINE.md",
+      "target": "CLAIMS.md"
+    },
+    {
+      "file": "OUTLINE.md",
+      "target": "REPRODUCIBILITY.md"
+    },
+    {
+      "file": "CLAIMS.md",
+      "target": "evidence.json"
+    },
+    {
+      "file": "README.md",
+      "target": "DRAFT.md"
+    },
+    {
+      "file": "README.md",
+      "target": "OUTLINE.md"
+    },
+    {
+      "file": "README.md",
+      "target": "DRAFT.md"
+    },
+    {
+      "file": "README.md",
+      "target": "CLAIMS.md"
+    },
+    {
+      "file": "README.md",
+      "target": "REPRODUCIBILITY.md"
+    },
+    {
+      "file": "README.md",
+      "target": "evidence.json"
+    },
+    {
+      "file": "README.md",
+      "target": "configuration.json"
+    },
+    {
+      "file": "README.md",
+      "target": "tables.md"
+    },
+    {
+      "file": "README.md",
+      "target": "references.bib"
+    },
+    {
+      "file": "README.md",
+      "target": "figures"
+    },
+    {
+      "file": "REPRODUCIBILITY.md",
+      "target": "configuration.json"
+    },
+    {
+      "file": "REPRODUCIBILITY.md",
+      "target": "evidence.json"
+    }
+  ]
+}

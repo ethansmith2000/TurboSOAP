@@ -1,0 +1,41 @@
+\hypertarget{appendix-a.-implementation-family-context}{%
+\section{Appendix A. Implementation-family
+context}\label{appendix-a.-implementation-family-context}}
+
+An earlier five-arm 2,000-call pilot used the same seed-204 recipe and a
+newly paired timing campaign. It included original stock QR10, original
+FP32-state warm, a compiled FP32-storage mode with BF16 matrix
+arithmetic, full BF16, and BF16 moments/covariance with FP32 bases.
+
+\begin{minipage}{\linewidth}
+
+\emph{Development pilot, seed 204; call-2000 CE and calls 101--2000
+timing on the full 10k LR horizon; not an additional independent seed.}
+
+\begin{center}
+\begin{tabular}{@{}lrrr@{}}
+\toprule\noalign{}
+Development arm & CE at 2000 & Step ms & Matrix-state GiB \\
+\midrule\noalign{}
+Stock QR10 & 3.985905 & 382.773 & 2.320 \\
+Original warm, FP32 state & 3.995753 & 337.172 & 2.320 \\
+Compiled FP32 storage / BF16 arithmetic & 3.991560 & 316.281 & 2.320 \\
+Full BF16 & 3.993939 & 313.162 & 1.160 \\
+BF16 M/V/C, FP32 bases & 3.995611 & 315.376 & 1.608 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\end{minipage}
+
+The compiled FP32-storage mode's name describes storage, not all-FP32
+arithmetic. Switching to full BF16 changes stored bases and their
+associated correction arithmetic as well as moment/covariance storage.
+Its roughly 0.99\% lower step time in this pilot is consequently a
+within-family option comparison, not a pure storage-only causal
+attribution. The pilot is development evidence, not additional
+independent seed replication; its shared prefix must not be counted as a
+new independent full-BF16 observation. The full-BF16 endpoint is
+0.002379 CE above the compiled FP32-storage arm. Because basis precision
+and correction arithmetic also differ, that contrast does not identify a
+pure storage penalty or partition the final-horizon gap.

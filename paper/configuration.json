@@ -1,0 +1,99 @@
+{
+  "model": {
+    "parameters": 109396992,
+    "width": 768,
+    "layers": 12,
+    "heads": 12,
+    "ff_hidden": 1536,
+    "vocab": 50257,
+    "sequence_length": 1024,
+    "tied_embeddings": true,
+    "rope": true,
+    "qk_norm": true,
+    "bias": false,
+    "dropout": 0
+  },
+  "data": {
+    "dataset": "Skylion007/openwebtext",
+    "dataset_revision": "79d93d786212f7344586290adb811d4ae6a1762c",
+    "tokenizer": "openai-community/gpt2",
+    "tokenizer_revision": "607a30d783dfa663caf39e06633721c8d4cfcd7e",
+    "tokenizer_sha256": "8414cab924d8b9b33013f0d221c5862f365ee9be39c5c2bfae8a5a9e970478a6",
+    "split_policy": "First round(5% * document_count) source documents are validation; remainder train. Split before tokenization/packing.",
+    "packing": "GPT-2, no automatic special tokens, append EOS50256 after each document; concatenate within each source shard and split; full1024-token blocks; discard only final shard/split tails.",
+    "causal_policy": "Unpadded blocks, causal attention across EOS/document boundaries. No block-diagonal document mask."
+  },
+  "selected_rows": {
+    "train": 320000,
+    "validation": 1024
+  },
+  "row_selection_seeds": {
+    "train": 2205,
+    "validation": 4205
+  },
+  "data_sha256": {
+    "train.npy": "09e8fdeb7cf65d342b4909b8a8e9869390d66ab1673c9eb8e47912657c0684c8",
+    "validation.npy": "47ae2f8f9fd457d4abe59dd3f7db04471df5e968ecb9d81dcfcb7680f4d6fbce"
+  },
+  "optimization": {
+    "matrix_betas": [
+      0.95,
+      0.95
+    ],
+    "covariance_beta": 0.95,
+    "matrix_peak_lr": 0.0015,
+    "auxiliary_betas": [
+      0.9,
+      0.999
+    ],
+    "auxiliary_peak_lr": 0.0006,
+    "epsilon": 1e-08,
+    "decay_for_declared_groups": 0.05,
+    "clip_norm": 1.0,
+    "global_batch": 32,
+    "microbatch": 8,
+    "accumulation": 4,
+    "calls": 10000,
+    "matrix_updates": 9999,
+    "auxiliary_updates": 10000,
+    "targets_per_call": 32736,
+    "warmup_calls": 200,
+    "min_lr_ratio": 0.1,
+    "schedule": "linear warmup then cosine",
+    "state_dtype": "bfloat16",
+    "basis_dtype": "bfloat16",
+    "matrix_compute_dtype": "bfloat16",
+    "master_parameter_dtype": "float32",
+    "refresh_every": 10,
+    "qr_repair_every": 50,
+    "warm_damping": 0.01,
+    "warm_motion_cap": 0.5,
+    "residual_corrections": 2
+  },
+  "recorded_runtime": {
+    "torch": "2.11.0+cu128",
+    "cuda": "12.8",
+    "gpu": "NVIDIA GeForce RTX 5090",
+    "float32_matmul_precision": "high",
+    "allow_bf16_reduced_precision_reduction": false,
+    "geometry_float32_matmul_precision": "highest",
+    "deterministic_algorithms": true,
+    "torch_num_threads": 4,
+    "service_environment": {
+      "CUBLAS_WORKSPACE_CONFIG": ":4096:8",
+      "OMP_NUM_THREADS": "4",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "4",
+      "TORCHINDUCTOR_COMPILE_THREADS": "2",
+      "HF_HUB_OFFLINE": "1",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "compiler_cache_policy": "Bundle-local compiler_cache, shared sequentially within each campaign"
+  },
+  "production_source_sha256": {
+    "bf16_soap.py": "65812bc620addd902e75ed1b79bac26ec68ced4de44cfd5c65d3bc4acbbf50df",
+    "soap_reference.py": "10f8b77a83742b849946177ee7c3f28cc169c638beedce4949132082ee0e119d",
+    "fast_soap.py": "5df19bf9112840ddf70a82af24f5bfcc8fc05940fd2d1d6071b7e9b3af5f47aa",
+    "soap.py": "7e0d811daac8247f28284c61846b85dfa290a8faa4182979cc870051ee32070e"
+  }
+}

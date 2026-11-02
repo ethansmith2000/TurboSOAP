@@ -1,0 +1,57 @@
+{
+  "captured_graphs_per_compiled_arm": 12,
+  "stable_from_call": 51,
+  "stable_through_call": 201,
+  "graph_breaks": 0,
+  "generated_large_bf16_covariance_wrappers": [
+    {
+      "path": "/workspace/optimizer_replay_results/soap_bf16_storage_20261026_v3/compiler_cache/b6/cb6flbrjnzgikbyvm2pxcoj4hr54q2uvi677ff25zw3yazioswt3.py",
+      "sha256": "d6825339942e8670051cf11e02b5120d08f192e949d3c96ca524f3a362115b07",
+      "covariance_calls": [
+        "extern_kernels.baddbmm(arg31_1, reinterpret_tensor(buf14, (12, 768, 3072), (2359296, 1, 768), 0), buf14, alpha=0.050000000000000044, beta=0.95, out=buf21)",
+        "extern_kernels.baddbmm(arg30_1, buf14, reinterpret_tensor(buf14, (12, 768, 3072), (2359296, 1, 768), 0), alpha=0.050000000000000044, beta=0.95, out=buf20)"
+      ]
+    },
+    {
+      "path": "/workspace/optimizer_replay_results/soap_bf16_storage_20261026_v3/compiler_cache/7u/c7un5wrtoiuu4pcbcvqh4nwocvft2j2qtmzwn746ldhpqpuckvhh.py",
+      "sha256": "fc79b8345b8222325313c74b8e0167de9f7de30626ddac13fd0e1c4c420ff202",
+      "covariance_calls": [
+        "extern_kernels.baddbmm(arg31_1, reinterpret_tensor(buf13, (12, 768, 3072), (2359296, 1, 768), 0), buf13, alpha=0.050000000000000044, beta=0.95, out=buf40)",
+        "extern_kernels.baddbmm(arg30_1, buf13, reinterpret_tensor(buf13, (12, 768, 3072), (2359296, 1, 768), 0), alpha=0.050000000000000044, beta=0.95, out=buf17)"
+      ]
+    },
+    {
+      "path": "/workspace/optimizer_replay_results/soap_bf16_storage_20261026_v3/compiler_cache/6k/c6kf42lqvl2zzhnljptxu6mgdn3xye4ax35t56pxvkibtsqkuq4b.py",
+      "sha256": "ac8db3f8c6289b57fa864c03bc3ae54efa2b19e63589a10e6a731e347d6f9a33",
+      "covariance_calls": [
+        "extern_kernels.baddbmm(arg31_1, reinterpret_tensor(buf13, (12, 768, 3072), (2359296, 1, 768), 0), buf13, alpha=0.050000000000000044, beta=0.95, out=buf19)",
+        "extern_kernels.baddbmm(arg30_1, buf13, reinterpret_tensor(buf13, (12, 768, 3072), (2359296, 1, 768), 0), alpha=0.050000000000000044, beta=0.95, out=buf18)"
+      ]
+    },
+    {
+      "path": "/workspace/optimizer_replay_results/soap_bf16_storage_20261026_v3/compiler_cache/nq/cnqj3wpobwqxv5vo5q6klnqhuywggxifuueh7ixzb4jmwgoi45dj.py",
+      "sha256": "e4097d296706bbf62dbb590fc1723d12f927df4eb4807eb46624e0059a4f0780",
+      "covariance_calls": [
+        "extern_kernels.baddbmm(arg30_1, buf14, reinterpret_tensor(buf14, (12, 768, 3072), (2359296, 1, 768), 0), alpha=0.050000000000000044, beta=0.95, out=buf19)",
+        "extern_kernels.baddbmm(arg31_1, reinterpret_tensor(buf14, (12, 768, 3072), (2359296, 1, 768), 0), buf14, alpha=0.050000000000000044, beta=0.95, out=buf48)"
+      ]
+    },
+    {
+      "path": "/workspace/optimizer_replay_results/soap_bf16_storage_20261026_v3/compiler_cache/ui/cuifiuwtyjzlolugrgwuviqgruv3icjev2kzcbto66hmuv5mriwf.py",
+      "sha256": "93690b74f907cb747bb42a55ec12600776528f8f2db7797b20b6084c6f285558",
+      "covariance_calls": [
+        "extern_kernels.baddbmm(arg30_1, buf13, reinterpret_tensor(buf13, (12, 768, 3072), (2359296, 1, 768), 0), alpha=0.050000000000000044, beta=0.95, out=buf14)",
+        "extern_kernels.baddbmm(arg31_1, reinterpret_tensor(buf13, (12, 768, 3072), (2359296, 1, 768), 0), buf13, alpha=0.050000000000000044, beta=0.95, out=buf26)"
+      ]
+    },
+    {
+      "path": "/workspace/optimizer_replay_results/soap_bf16_storage_20261026_v3/compiler_cache/is/cisvlxtg6oqoupsgs36lgbk5hkzu3vtaz3eqbstuozhmluseshzh.py",
+      "sha256": "9f31fcbde60ab020740fa5b272c030bde16830305b929a18f8006ce60e1da256",
+      "covariance_calls": [
+        "extern_kernels.baddbmm(arg30_1, buf13, reinterpret_tensor(buf13, (12, 768, 3072), (2359296, 1, 768), 0), alpha=0.050000000000000044, beta=0.95, out=buf14)",
+        "extern_kernels.baddbmm(arg31_1, reinterpret_tensor(buf13, (12, 768, 3072), (2359296, 1, 768), 0), buf13, alpha=0.050000000000000044, beta=0.95, out=buf25)"
+      ]
+    }
+  ],
+  "observation": "Generated wrappers use BF16 covariance EMA input/output buffers and BF16 projection/transport operands. FP32 master-parameter packing and warm reduction/solver intermediates remain. No claim that all pointwise casts are free or that a captured region is one GPU kernel."
+}

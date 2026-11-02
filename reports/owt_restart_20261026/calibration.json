@@ -1,0 +1,5560 @@
+{
+  "status": "completed",
+  "runs": [
+    {
+      "status": "completed",
+      "name": "calibrate_stock_0.0005",
+      "profile": "stock",
+      "arm": "qr",
+      "peak_matrix_lr": 0.0005,
+      "seed": 204,
+      "calls": 500,
+      "targets": 16368000,
+      "initial_parameters_sha256": "24da908288be7ee828bd2a8221ac637b870c0c219b05964b3517c576b0a7da79",
+      "initial_gradient": {
+        "loss": 10.963447570800781,
+        "norm": 11.2014741897583,
+        "hash": "7936c3f658be84b84ee780a52876bc2a3cda2771d0b30596cff715f47a81deb2"
+      },
+      "initial_ce": 10.966108478605747,
+      "validation": [
+        {
+          "event": "validation",
+          "elapsed_seconds": 15.725606899010018,
+          "call": 0,
+          "ce": 10.966108478605747,
+          "panel_ce": [
+            10.97006008028984,
+            10.962156876921654
+          ],
+          "targets": 1047552,
+          "seconds": 4.284998135990463,
+          "state_preservation_checked": true
+        },
+        {
+          "event": "validation",
+          "elapsed_seconds": 38.698901670984924,
+          "call": 50,
+          "ce": 7.3956310376524925,
+          "panel_ce": [
+            7.390042833983898,
+            7.401219241321087
+          ],
+          "targets": 1047552,
+          "seconds": 2.863984229043126,
+          "state_preservation_checked": false
+        },
+        {
+          "event": "validation",
+          "elapsed_seconds": 54.473009526962414,
+          "call": 51,
+          "ce": 7.342372860759497,
+          "panel_ce": [
+            7.336948029696941,
+            7.347797691822052
+          ],
+          "targets": 1047552,
+          "seconds": 8.688654973986559,
+          "state_preservation_checked": true
+        },
+        {
+          "event": "validation",
+          "elapsed_seconds": 75.42031195992604,
+          "call": 100,
+          "ce": 6.417492929846048,
+          "panel_ce": [
+            6.4155979081988335,
+            6.419387951493263
+          ],
+          "targets": 1047552,
+          "seconds": 2.873904315987602,
+          "state_preservation_checked": false
+        },
+        {
+          "event": "validation",
+          "elapsed_seconds": 116.1376716879895,
+          "call": 200,
+          "ce": 5.763745855540037,
+          "panel_ce": [
+            5.761025927960873,
+            5.766465783119202
+          ],
+          "targets": 1047552,
+          "seconds": 2.877922386978753,
+          "state_preservation_checked": false
+        },
+        {
+          "event": "validation",
+          "elapsed_seconds": 244.57484220596962,
+          "call": 500,
+          "ce": 4.9423598498106,
+          "panel_ce": [
+            4.939508207142353,
+            4.9452114924788475
+          ],
+          "targets": 1047552,
+          "seconds": 8.736976691987365,
+          "state_preservation_checked": true
+        }
+      ],
+      "final_ce": 4.9423598498106,
+      "parameter_count": 109396992,
+      "geometry": [
+        {
+          "call": 1,
+          "factors": 96,
+          "max_absolute_gram": 6.941060564713553e-05
+        },
+        {
+          "call": 11,
+          "factors": 96,
+          "max_absolute_gram": 4.9900911108125e-05
+        },
+        {
+          "call": 21,
+          "factors": 96,
+          "max_absolute_gram": 4.991942478227429e-05
+        },
+        {
+          "call": 51,
+          "factors": 96,
+          "max_absolute_gram": 4.997309952159412e-05
+        },
+        {
+          "call": 61,
+          "factors": 96,
+          "max_absolute_gram": 5.017065268475562e-05
+        },
+        {
+          "call": 250,
+          "factors": 96,
+          "max_absolute_gram": 5.0140803068643436e-05
+        },
+        {
+          "call": 500,
+          "factors": 96,
+          "max_absolute_gram": 5.08956509293057e-05
+        }
+      ],
+      "momentum_checks": [
+        {
+          "age": 10,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005745831876993179
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005526309832930565
+        },
+        {
+          "age": 10,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005897568189539015
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005587111227214336
+        },
+        {
+          "age": 10,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005663877818733454
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005676767323166132
+        },
+        {
+          "age": 10,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0006055129342712462
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0006434193346649408
+        },
+        {
+          "age": 10,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0006343214772641659
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005600227741524577
+        },
+        {
+          "age": 10,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0006026466726325452
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005732625722885132
+        },
+        {
+          "age": 10,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005735950544476509
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0006188427796587348
+        },
+        {
+          "age": 10,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.000605366425588727
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005692943814210594
+        },
+        {
+          "age": 10,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.000574993493501097
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005630496307276189
+        },
+        {
+          "age": 10,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0006352853961288929
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.000621009967289865
+        },
+        {
+          "age": 10,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005554545787163079
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0006236032932065427
+        },
+        {
+          "age": 10,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0006322137778624892
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0006011782679706812
+        },
+        {
+          "age": 10,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005798973143100739
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0006072787800803781
+        },
+        {
+          "age": 10,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005875441711395979
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005853137699887156
+        },
+        {
+          "age": 10,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0006106541259214282
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005751277203671634
+        },
+        {
+          "age": 10,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005864349659532309
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005848088767379522
+        },
+        {
+          "age": 10,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0006226330297067761
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005988076445646584
+        },
+        {
+          "age": 10,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0006158335600048304
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0006212114240042865
+        },
+        {
+          "age": 10,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005642609903588891
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005623549805022776
+        },
+        {
+          "age": 10,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0006390519556589425
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005853551556356251
+        },
+        {
+          "age": 10,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005718806060031056
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005960232811048627
+        },
+        {
+          "age": 10,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005768381524831057
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0006071088137105107
+        },
+        {
+          "age": 10,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005719697219319642
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005853046895936131
+        },
+        {
+          "age": 10,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005750943091697991
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005878442316316068
+        },
+        {
+          "age": 50,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0006037940620444715
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005850581219419837
+        },
+        {
+          "age": 50,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005962970899417996
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.000598534825257957
+        },
+        {
+          "age": 50,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0006293559563346207
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.000568032672163099
+        },
+        {
+          "age": 50,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005837140488438308
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005704716313630342
+        },
+        {
+          "age": 50,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005729798576794565
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.000555163249373436
+        },
+        {
+          "age": 50,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005935652879998088
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005764222587458789
+        },
+        {
+          "age": 50,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005794358439743519
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005923600401729345
+        },
+        {
+          "age": 50,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005655942368321121
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005964597803540528
+        },
+        {
+          "age": 50,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005600586300715804
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005887337611056864
+        },
+        {
+          "age": 50,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.000610757851973176
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005859960801899433
+        },
+        {
+          "age": 50,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005775810568593442
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005969348130747676
+        },
+        {
+          "age": 50,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0006023504538461566
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005845015402883291
+        },
+        {
+          "age": 50,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005919586983509362
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0006329333409667015
+        },
+        {
+          "age": 50,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005740978522226214
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005810178117826581
+        },
+        {
+          "age": 50,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005622971220873296
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0006205757963471115
+        },
+        {
+          "age": 50,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.000603779568336904
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005930304760113358
+        },
+        {
+          "age": 50,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005768495611846447
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005958836991339922
+        },
+        {
+          "age": 50,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005713984137400985
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005842234822921455
+        },
+        {
+          "age": 50,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005827727145515382
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0006341608241200447
+        },
+        {
+          "age": 50,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0006091634859330952
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005732958670705557
+        },
+        {
+          "age": 50,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0006056667189113796
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005978078115731478
+        },
+        {
+          "age": 50,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0006566853844560683
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005696717416867614
+        },
+        {
+          "age": 50,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005627782666124403
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.00059901038184762
+        },
+        {
+          "age": 50,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0006834378000348806
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005901131080463529
+        }
+      ],
+      "clean_cycle_calls": 400,
+      "mean_step_ms": 378.472032858117,
+      "mean_optimizer_ms": 93.88469880796038,
+      "elapsed_seconds": 244.57640072901268,
+      "peak_gpu_bytes": 10086454272,
+      "registered_release": {
+        "tracked_tensors": 635,
+        "tracked_unique_storages": 634,
+        "live_tensors": 0,
+        "live_unique_storages": 0,
+        "live_tensor_labels": [],
+        "live_storage_labels": [],
+        "live_unique_storage_bytes": 0,
+        "registered_unique_storage_bytes": 3675537608,
+        "all_registered_released": true,
+        "scope": "Registered tensors and their storage aliases only; not whole-process allocation ownership"
+      },
+      "allocated_before_library_workspace_clear": 67108864,
+      "released_allocated_bytes": 0
+    },
+    {
+      "status": "completed",
+      "name": "calibrate_stock_0.0015",
+      "profile": "stock",
+      "arm": "qr",
+      "peak_matrix_lr": 0.0015,
+      "seed": 204,
+      "calls": 500,
+      "targets": 16368000,
+      "initial_parameters_sha256": "24da908288be7ee828bd2a8221ac637b870c0c219b05964b3517c576b0a7da79",
+      "initial_gradient": {
+        "loss": 10.963447570800781,
+        "norm": 11.2014741897583,
+        "hash": "7936c3f658be84b84ee780a52876bc2a3cda2771d0b30596cff715f47a81deb2"
+      },
+      "initial_ce": 10.966108478605747,
+      "validation": [
+        {
+          "event": "validation",
+          "elapsed_seconds": 15.838579555042088,
+          "call": 0,
+          "ce": 10.966108478605747,
+          "panel_ce": [
+            10.97006008028984,
+            10.962156876921654
+          ],
+          "targets": 1047552,
+          "seconds": 4.336092131095938,
+          "state_preservation_checked": true
+        },
+        {
+          "event": "validation",
+          "elapsed_seconds": 38.852952593006194,
+          "call": 50,
+          "ce": 7.10740265250206,
+          "panel_ce": [
+            7.100642204284668,
+            7.114163100719452
+          ],
+          "targets": 1047552,
+          "seconds": 2.866886238916777,
+          "state_preservation_checked": false
+        },
+        {
+          "event": "validation",
+          "elapsed_seconds": 55.26871569210198,
+          "call": 51,
+          "ce": 7.066236544400454,
+          "panel_ce": [
+            7.0600549429655075,
+            7.0724181458354
+          ],
+          "targets": 1047552,
+          "seconds": 9.021976136020385,
+          "state_preservation_checked": true
+        },
+        {
+          "event": "validation",
+          "elapsed_seconds": 76.23568028805312,
+          "call": 100,
+          "ce": 6.2840423211455345,
+          "panel_ce": [
+            6.282569125294685,
+            6.285515516996384
+          ],
+          "targets": 1047552,
+          "seconds": 2.8662241350393742,
+          "state_preservation_checked": false
+        },
+        {
+          "event": "validation",
+          "elapsed_seconds": 116.92520276398864,
+          "call": 200,
+          "ce": 5.6909517124295235,
+          "panel_ce": [
+            5.6864029839634895,
+            5.695500440895557
+          ],
+          "targets": 1047552,
+          "seconds": 2.864304668037221,
+          "state_preservation_checked": false
+        },
+        {
+          "event": "validation",
+          "elapsed_seconds": 245.94432222202886,
+          "call": 500,
+          "ce": 4.877600848674774,
+          "panel_ce": [
+            4.8745604902505875,
+            4.880641207098961
+          ],
+          "targets": 1047552,
+          "seconds": 9.010570598999038,
+          "state_preservation_checked": true
+        }
+      ],
+      "final_ce": 4.877600848674774,
+      "parameter_count": 109396992,
+      "geometry": [
+        {
+          "call": 1,
+          "factors": 96,
+          "max_absolute_gram": 6.941060564713553e-05
+        },
+        {
+          "call": 11,
+          "factors": 96,
+          "max_absolute_gram": 4.989997614757158e-05
+        },
+        {
+          "call": 21,
+          "factors": 96,
+          "max_absolute_gram": 4.994532355340198e-05
+        },
+        {
+          "call": 51,
+          "factors": 96,
+          "max_absolute_gram": 5.028823215980083e-05
+        },
+        {
+          "call": 61,
+          "factors": 96,
+          "max_absolute_gram": 4.998676376999356e-05
+        },
+        {
+          "call": 250,
+          "factors": 96,
+          "max_absolute_gram": 5.104967931401916e-05
+        },
+        {
+          "call": 500,
+          "factors": 96,
+          "max_absolute_gram": 5.079093170934357e-05
+        }
+      ],
+      "momentum_checks": [
+        {
+          "age": 10,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005781000363640487
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0006088301306590438
+        },
+        {
+          "age": 10,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005907524609938264
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005962722352705896
+        },
+        {
+          "age": 10,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005976103711873293
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005542626604437828
+        },
+        {
+          "age": 10,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005882265395484865
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005701882764697075
+        },
+        {
+          "age": 10,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005736211896874011
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.000556826067622751
+        },
+        {
+          "age": 10,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005830168374814093
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005659559974446893
+        },
+        {
+          "age": 10,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005816302727907896
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005687547964043915
+        },
+        {
+          "age": 10,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.000580670137424022
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005838985671289265
+        },
+        {
+          "age": 10,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005785925895906985
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005896147922612727
+        },
+        {
+          "age": 10,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005821656086482108
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.000573284924030304
+        },
+        {
+          "age": 10,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005963881267234683
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005951287457719445
+        },
+        {
+          "age": 10,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005810179281979799
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005975787644274533
+        },
+        {
+          "age": 10,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005753033910878003
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005659966263920069
+        },
+        {
+          "age": 10,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005844786646775901
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005863972473889589
+        },
+        {
+          "age": 10,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0006003663875162601
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005794708267785609
+        },
+        {
+          "age": 10,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005846460699103773
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005828512948937714
+        },
+        {
+          "age": 10,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0006102400948293507
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005720817134715617
+        },
+        {
+          "age": 10,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.000598191050812602
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005891572800464928
+        },
+        {
+          "age": 10,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005834325565956533
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.000586598354857415
+        },
+        {
+          "age": 10,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005887258448638022
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005836685304529965
+        },
+        {
+          "age": 10,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005923899007029831
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005875758943147957
+        },
+        {
+          "age": 10,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005846816929988563
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005735242739319801
+        },
+        {
+          "age": 10,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005907434970140457
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005856177303940058
+        },
+        {
+          "age": 10,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005970788770355284
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005971884820610285
+        },
+        {
+          "age": 50,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005906969308853149
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005859740194864571
+        },
+        {
+          "age": 50,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005875568022020161
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005880945827811956
+        },
+        {
+          "age": 50,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005854356568306684
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005972090293653309
+        },
+        {
+          "age": 50,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005816941265948117
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005774347810074687
+        },
+        {
+          "age": 50,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.000578390434384346
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005807391135022044
+        },
+        {
+          "age": 50,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005805009859614074
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005774154560640454
+        },
+        {
+          "age": 50,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.00058087392244488
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005844087572768331
+        },
+        {
+          "age": 50,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005789419519715011
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005840520607307553
+        },
+        {
+          "age": 50,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005935096414759755
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.000573118741158396
+        },
+        {
+          "age": 50,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005833539762534201
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005835370975546539
+        },
+        {
+          "age": 50,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005781073705293238
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005882569239474833
+        },
+        {
+          "age": 50,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005951505154371262
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005797953926958144
+        },
+        {
+          "age": 50,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.000598984188400209
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005744852824136615
+        },
+        {
+          "age": 50,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005855739000253379
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005663172341883183
+        },
+        {
+          "age": 50,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005788324633613229
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005674428539350629
+        },
+        {
+          "age": 50,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0006017850246280432
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005796022014692426
+        },
+        {
+          "age": 50,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.00057410349836573
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005825411644764245
+        },
+        {
+          "age": 50,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005905409925617278
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005840064259245992
+        },
+        {
+          "age": 50,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005739184562116861
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005884158308617771
+        },
+        {
+          "age": 50,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005926170269958675
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005777397891506553
+        },
+        {
+          "age": 50,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005668410449288785
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005785038811154664
+        },
+        {
+          "age": 50,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0006159652257338166
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005724826478399336
+        },
+        {
+          "age": 50,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005798149504698813
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005937526584602892
+        },
+        {
+          "age": 50,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005689735990017653
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0006030218792147934
+        }
+      ],
+      "clean_cycle_calls": 400,
+      "mean_step_ms": 378.47128040506504,
+      "mean_optimizer_ms": 93.68804082361748,
+      "elapsed_seconds": 245.94589443306904,
+      "peak_gpu_bytes": 10090431488,
+      "registered_release": {
+        "tracked_tensors": 635,
+        "tracked_unique_storages": 634,
+        "live_tensors": 0,
+        "live_unique_storages": 0,
+        "live_tensor_labels": [],
+        "live_storage_labels": [],
+        "live_unique_storage_bytes": 0,
+        "registered_unique_storage_bytes": 3675537608,
+        "all_registered_released": true,
+        "scope": "Registered tensors and their storage aliases only; not whole-process allocation ownership"
+      },
+      "allocated_before_library_workspace_clear": 67108864,
+      "released_allocated_bytes": 0
+    },
+    {
+      "status": "completed",
+      "name": "calibrate_stock_0.003",
+      "profile": "stock",
+      "arm": "qr",
+      "peak_matrix_lr": 0.003,
+      "seed": 204,
+      "calls": 500,
+      "targets": 16368000,
+      "initial_parameters_sha256": "24da908288be7ee828bd2a8221ac637b870c0c219b05964b3517c576b0a7da79",
+      "initial_gradient": {
+        "loss": 10.963447570800781,
+        "norm": 11.2014741897583,
+        "hash": "7936c3f658be84b84ee780a52876bc2a3cda2771d0b30596cff715f47a81deb2"
+      },
+      "initial_ce": 10.966108478605747,
+      "validation": [
+        {
+          "event": "validation",
+          "elapsed_seconds": 15.787878545932472,
+          "call": 0,
+          "ce": 10.966108478605747,
+          "panel_ce": [
+            10.97006008028984,
+            10.962156876921654
+          ],
+          "targets": 1047552,
+          "seconds": 4.337806180934422,
+          "state_preservation_checked": true
+        },
+        {
+          "event": "validation",
+          "elapsed_seconds": 38.790668760892004,
+          "call": 50,
+          "ce": 7.039131265133619,
+          "panel_ce": [
+            7.033410429954529,
+            7.04485210031271
+          ],
+          "targets": 1047552,
+          "seconds": 2.8713625979144126,
+          "state_preservation_checked": false
+        },
+        {
+          "event": "validation",
+          "elapsed_seconds": 54.96025829995051,
+          "call": 51,
+          "ce": 7.005228579044342,
+          "panel_ce": [
+            6.999689117074013,
+            7.010768041014671
+          ],
+          "targets": 1047552,
+          "seconds": 8.989885539980605,
+          "state_preservation_checked": true
+        },
+        {
+          "event": "validation",
+          "elapsed_seconds": 75.92712246789597,
+          "call": 100,
+          "ce": 6.255651231855154,
+          "panel_ce": [
+            6.254748925566673,
+            6.256553538143635
+          ],
+          "targets": 1047552,
+          "seconds": 2.882249082904309,
+          "state_preservation_checked": false
+        },
+        {
+          "event": "validation",
+          "elapsed_seconds": 116.84154079493601,
+          "call": 200,
+          "ce": 5.725118655711412,
+          "panel_ce": [
+            5.718536525964737,
+            5.731700785458088
+          ],
+          "targets": 1047552,
+          "seconds": 2.886922605917789,
+          "state_preservation_checked": false
+        },
+        {
+          "event": "validation",
+          "elapsed_seconds": 246.0309607560048,
+          "call": 500,
+          "ce": 4.904493201524019,
+          "panel_ce": [
+            4.903708651661873,
+            4.905277751386166
+          ],
+          "targets": 1047552,
+          "seconds": 8.896537818945944,
+          "state_preservation_checked": true
+        }
+      ],
+      "final_ce": 4.904493201524019,
+      "parameter_count": 109396992,
+      "geometry": [
+        {
+          "call": 1,
+          "factors": 96,
+          "max_absolute_gram": 6.941060564713553e-05
+        },
+        {
+          "call": 11,
+          "factors": 96,
+          "max_absolute_gram": 4.9933831178350374e-05
+        },
+        {
+          "call": 21,
+          "factors": 96,
+          "max_absolute_gram": 5.079847323941067e-05
+        },
+        {
+          "call": 51,
+          "factors": 96,
+          "max_absolute_gram": 5.050259278505109e-05
+        },
+        {
+          "call": 61,
+          "factors": 96,
+          "max_absolute_gram": 5.048085586167872e-05
+        },
+        {
+          "call": 250,
+          "factors": 96,
+          "max_absolute_gram": 5.085377051727846e-05
+        },
+        {
+          "call": 500,
+          "factors": 96,
+          "max_absolute_gram": 5.084834265289828e-05
+        }
+      ],
+      "momentum_checks": [
+        {
+          "age": 10,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005709394463337958
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005700248875655234
+        },
+        {
+          "age": 10,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005931000341661274
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005946055753156543
+        },
+        {
+          "age": 10,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005721611669287086
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005879817181266844
+        },
+        {
+          "age": 10,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005961822462268174
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005851464811712503
+        },
+        {
+          "age": 10,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005594322574324906
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.000610321993008256
+        },
+        {
+          "age": 10,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.000577165512368083
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005747367395088077
+        },
+        {
+          "age": 10,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0006096780416555703
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.000612560601439327
+        },
+        {
+          "age": 10,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005955059896223247
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005819830694235861
+        },
+        {
+          "age": 10,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005653119296766818
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0006231694715097547
+        },
+        {
+          "age": 10,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005830979789607227
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0006072681280784309
+        },
+        {
+          "age": 10,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.000577434606384486
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.000571429671254009
+        },
+        {
+          "age": 10,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005908830207772553
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.000598442682530731
+        },
+        {
+          "age": 10,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005708233220502734
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005953547661192715
+        },
+        {
+          "age": 10,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005824045510962605
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005922993295826018
+        },
+        {
+          "age": 10,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0006079308222979307
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005724158836528659
+        },
+        {
+          "age": 10,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005834533949382603
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005650388193316758
+        },
+        {
+          "age": 10,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005649550585076213
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005916958907619119
+        },
+        {
+          "age": 10,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005853396723978221
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005760323838330805
+        },
+        {
+          "age": 10,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005853718612343073
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005797791527584195
+        },
+        {
+          "age": 10,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005906959413550794
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005903028068132699
+        },
+        {
+          "age": 10,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005810002912767231
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005924804718233645
+        },
+        {
+          "age": 10,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005870302557013929
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005832146853208542
+        },
+        {
+          "age": 10,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0006022118614055216
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005671147373504937
+        },
+        {
+          "age": 10,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005977552500553429
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0006061567110009491
+        },
+        {
+          "age": 50,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005897076334804296
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005832895985804498
+        },
+        {
+          "age": 50,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005877011572010815
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005846803542226553
+        },
+        {
+          "age": 50,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005862581310793757
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.000592139083892107
+        },
+        {
+          "age": 50,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005866082501597703
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005907785380259156
+        },
+        {
+          "age": 50,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005877111689187586
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005834745825268328
+        },
+        {
+          "age": 50,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005884810816496611
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005909797619096935
+        },
+        {
+          "age": 50,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005833080504089594
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005714240833185613
+        },
+        {
+          "age": 50,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005821350496262312
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005778847262263298
+        },
+        {
+          "age": 50,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005856886855326593
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0006016548140905797
+        },
+        {
+          "age": 50,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005886777653358877
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005943854921497405
+        },
+        {
+          "age": 50,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005834658513776958
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.000607347406912595
+        },
+        {
+          "age": 50,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005841863458044827
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005822973325848579
+        },
+        {
+          "age": 50,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005806097760796547
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005880574462935328
+        },
+        {
+          "age": 50,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005928133032284677
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0006236519548110664
+        },
+        {
+          "age": 50,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005784700042568147
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005962959839962423
+        },
+        {
+          "age": 50,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005763991503044963
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005728405667468905
+        },
+        {
+          "age": 50,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005779766361229122
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0006205222452990711
+        },
+        {
+          "age": 50,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005860397359356284
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.000608281057793647
+        },
+        {
+          "age": 50,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005969354533590376
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0006097565055824816
+        },
+        {
+          "age": 50,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005891351029276848
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005622152239084244
+        },
+        {
+          "age": 50,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005866626743227243
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005886668222956359
+        },
+        {
+          "age": 50,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005816358607262373
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005641119205392897
+        },
+        {
+          "age": 50,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005911149783059955
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0006103360210545361
+        },
+        {
+          "age": 50,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0006008836789987981
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005726148374378681
+        }
+      ],
+      "clean_cycle_calls": 400,
+      "mean_step_ms": 380.18099950655596,
+      "mean_optimizer_ms": 94.60302502993727,
+      "elapsed_seconds": 246.03253745590337,
+      "peak_gpu_bytes": 10090431488,
+      "registered_release": {
+        "tracked_tensors": 635,
+        "tracked_unique_storages": 634,
+        "live_tensors": 0,
+        "live_unique_storages": 0,
+        "live_tensor_labels": [],
+        "live_storage_labels": [],
+        "live_unique_storage_bytes": 0,
+        "registered_unique_storage_bytes": 3675537608,
+        "all_registered_released": true,
+        "scope": "Registered tensors and their storage aliases only; not whole-process allocation ownership"
+      },
+      "allocated_before_library_workspace_clear": 67108864,
+      "released_allocated_bytes": 0
+    },
+    {
+      "status": "completed",
+      "name": "calibrate_previous_0.0005",
+      "profile": "previous",
+      "arm": "qr",
+      "peak_matrix_lr": 0.0005,
+      "seed": 204,
+      "calls": 500,
+      "targets": 16368000,
+      "initial_parameters_sha256": "24da908288be7ee828bd2a8221ac637b870c0c219b05964b3517c576b0a7da79",
+      "initial_gradient": {
+        "loss": 10.963447570800781,
+        "norm": 11.2014741897583,
+        "hash": "7936c3f658be84b84ee780a52876bc2a3cda2771d0b30596cff715f47a81deb2"
+      },
+      "initial_ce": 10.966108478605747,
+      "validation": [
+        {
+          "event": "validation",
+          "elapsed_seconds": 16.06444966001436,
+          "call": 0,
+          "ce": 10.966108478605747,
+          "panel_ce": [
+            10.97006008028984,
+            10.962156876921654
+          ],
+          "targets": 1047552,
+          "seconds": 4.341622139909305,
+          "state_preservation_checked": true
+        },
+        {
+          "event": "validation",
+          "elapsed_seconds": 39.13951214705594,
+          "call": 50,
+          "ce": 7.296963356435299,
+          "panel_ce": [
+            7.290921650826931,
+            7.303005062043667
+          ],
+          "targets": 1047552,
+          "seconds": 2.8527273889631033,
+          "state_preservation_checked": false
+        },
+        {
+          "event": "validation",
+          "elapsed_seconds": 55.71527209901251,
+          "call": 51,
+          "ce": 7.2478304244577885,
+          "panel_ce": [
+            7.242105543613434,
+            7.253555305302143
+          ],
+          "targets": 1047552,
+          "seconds": 9.100746077951044,
+          "state_preservation_checked": true
+        },
+        {
+          "event": "validation",
+          "elapsed_seconds": 76.68700180505402,
+          "call": 100,
+          "ce": 6.383359976112843,
+          "panel_ce": [
+            6.381664387881756,
+            6.385055564343929
+          ],
+          "targets": 1047552,
+          "seconds": 2.8633214480942115,
+          "state_preservation_checked": false
+        },
+        {
+          "event": "validation",
+          "elapsed_seconds": 117.47557846305426,
+          "call": 200,
+          "ce": 5.73860315233469,
+          "panel_ce": [
+            5.7335193902254105,
+            5.74368691444397
+          ],
+          "targets": 1047552,
+          "seconds": 2.855208081076853,
+          "state_preservation_checked": false
+        },
+        {
+          "event": "validation",
+          "elapsed_seconds": 246.71300945908297,
+          "call": 500,
+          "ce": 4.906798880547285,
+          "panel_ce": [
+            4.903134234249592,
+            4.910463526844978
+          ],
+          "targets": 1047552,
+          "seconds": 9.076392549090087,
+          "state_preservation_checked": true
+        }
+      ],
+      "final_ce": 4.906798880547285,
+      "parameter_count": 109396992,
+      "geometry": [
+        {
+          "call": 1,
+          "factors": 96,
+          "max_absolute_gram": 6.935384590178728e-05
+        },
+        {
+          "call": 11,
+          "factors": 96,
+          "max_absolute_gram": 4.987601641914807e-05
+        },
+        {
+          "call": 21,
+          "factors": 96,
+          "max_absolute_gram": 4.9948092055274174e-05
+        },
+        {
+          "call": 51,
+          "factors": 96,
+          "max_absolute_gram": 4.9952905101235956e-05
+        },
+        {
+          "call": 61,
+          "factors": 96,
+          "max_absolute_gram": 4.991728928871453e-05
+        },
+        {
+          "call": 250,
+          "factors": 96,
+          "max_absolute_gram": 5.005910134059377e-05
+        },
+        {
+          "call": 500,
+          "factors": 96,
+          "max_absolute_gram": 5.0259477575309575e-05
+        }
+      ],
+      "momentum_checks": [
+        {
+          "age": 10,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005533744115382433
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005702392663806677
+        },
+        {
+          "age": 10,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005832489114254713
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0006156779127195477
+        },
+        {
+          "age": 10,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0006043788162060082
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005791786825284362
+        },
+        {
+          "age": 10,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005986044998280704
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005766539834439754
+        },
+        {
+          "age": 10,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005889476160518825
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0006310749449767172
+        },
+        {
+          "age": 10,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0006093074334785342
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005764409434050322
+        },
+        {
+          "age": 10,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005595324328169227
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0006589654949493706
+        },
+        {
+          "age": 10,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.00058071716921404
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005744058289565146
+        },
+        {
+          "age": 10,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005786001565866172
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.000590700947213918
+        },
+        {
+          "age": 10,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005896501243114471
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005791930016130209
+        },
+        {
+          "age": 10,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005639581941068172
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005510225309990346
+        },
+        {
+          "age": 10,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.000563685898669064
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005639701848849654
+        },
+        {
+          "age": 10,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0006178459152579308
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005607675993815064
+        },
+        {
+          "age": 10,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005915849469602108
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005570037174038589
+        },
+        {
+          "age": 10,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005694148130714893
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0006237542256712914
+        },
+        {
+          "age": 10,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005942354327999055
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0006607035174965858
+        },
+        {
+          "age": 10,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005733072757720947
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005633920663967729
+        },
+        {
+          "age": 10,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0006137253949418664
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005729557015001774
+        },
+        {
+          "age": 10,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0006185980746522546
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005685240030288696
+        },
+        {
+          "age": 10,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005928726168349385
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005802906816825271
+        },
+        {
+          "age": 10,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.000636894372291863
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005669030360877514
+        },
+        {
+          "age": 10,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005976510583423078
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005786052788607776
+        },
+        {
+          "age": 10,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005686089280061424
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005864372360520065
+        },
+        {
+          "age": 10,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005878115189261734
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005754850571975112
+        },
+        {
+          "age": 50,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.000588522176258266
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005909223109483719
+        },
+        {
+          "age": 50,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005907818558625877
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005834358744323254
+        },
+        {
+          "age": 50,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005982535658404231
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005726931849494576
+        },
+        {
+          "age": 50,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005879020900465548
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005817206110805273
+        },
+        {
+          "age": 50,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0006112626870162785
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005743946530856192
+        },
+        {
+          "age": 50,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005909999599680305
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005872638430446386
+        },
+        {
+          "age": 50,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005857408978044987
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005775081226602197
+        },
+        {
+          "age": 50,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005791982403025031
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005934172659181058
+        },
+        {
+          "age": 50,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0006040393491275609
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0006014211685396731
+        },
+        {
+          "age": 50,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005688142846338451
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005813842872157693
+        },
+        {
+          "age": 50,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005652523250319064
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.000587036891374737
+        },
+        {
+          "age": 50,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.000585622969083488
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005653375410474837
+        },
+        {
+          "age": 50,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.000596740806940943
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005833779578097165
+        },
+        {
+          "age": 50,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005637890426442027
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0006001507863402367
+        },
+        {
+          "age": 50,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005743871442973614
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005712314159609377
+        },
+        {
+          "age": 50,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.000583540415391326
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005675235879607499
+        },
+        {
+          "age": 50,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005735685117542744
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005769601557403803
+        },
+        {
+          "age": 50,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005966421449556947
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005875431234017015
+        },
+        {
+          "age": 50,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005904726567678154
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0006138255703262985
+        },
+        {
+          "age": 50,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.000596904254052788
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.000583498040214181
+        },
+        {
+          "age": 50,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005762304062955081
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005814664182253182
+        },
+        {
+          "age": 50,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005746161914430559
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005677948356606066
+        },
+        {
+          "age": 50,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.000579889107029885
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.000596345285885036
+        },
+        {
+          "age": 50,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.000572505930904299
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0006062621250748634
+        }
+      ],
+      "clean_cycle_calls": 400,
+      "mean_step_ms": 378.9353546439088,
+      "mean_optimizer_ms": 93.87110971787479,
+      "elapsed_seconds": 246.71457975904923,
+      "peak_gpu_bytes": 10090431488,
+      "registered_release": {
+        "tracked_tensors": 635,
+        "tracked_unique_storages": 634,
+        "live_tensors": 0,
+        "live_unique_storages": 0,
+        "live_tensor_labels": [],
+        "live_storage_labels": [],
+        "live_unique_storage_bytes": 0,
+        "registered_unique_storage_bytes": 3675537608,
+        "all_registered_released": true,
+        "scope": "Registered tensors and their storage aliases only; not whole-process allocation ownership"
+      },
+      "allocated_before_library_workspace_clear": 67108864,
+      "released_allocated_bytes": 0
+    },
+    {
+      "status": "completed",
+      "name": "calibrate_previous_0.0015",
+      "profile": "previous",
+      "arm": "qr",
+      "peak_matrix_lr": 0.0015,
+      "seed": 204,
+      "calls": 500,
+      "targets": 16368000,
+      "initial_parameters_sha256": "24da908288be7ee828bd2a8221ac637b870c0c219b05964b3517c576b0a7da79",
+      "initial_gradient": {
+        "loss": 10.963447570800781,
+        "norm": 11.2014741897583,
+        "hash": "7936c3f658be84b84ee780a52876bc2a3cda2771d0b30596cff715f47a81deb2"
+      },
+      "initial_ce": 10.966108478605747,
+      "validation": [
+        {
+          "event": "validation",
+          "elapsed_seconds": 15.63537630904466,
+          "call": 0,
+          "ce": 10.966108478605747,
+          "panel_ce": [
+            10.97006008028984,
+            10.962156876921654
+          ],
+          "targets": 1047552,
+          "seconds": 4.306321270065382,
+          "state_preservation_checked": true
+        },
+        {
+          "event": "validation",
+          "elapsed_seconds": 38.70756998099387,
+          "call": 50,
+          "ce": 7.098023932427168,
+          "panel_ce": [
+            7.091743536293507,
+            7.104304328560829
+          ],
+          "targets": 1047552,
+          "seconds": 2.8720646190922707,
+          "state_preservation_checked": false
+        },
+        {
+          "event": "validation",
+          "elapsed_seconds": 55.52674399106763,
+          "call": 51,
+          "ce": 7.063327174633741,
+          "panel_ce": [
+            7.0578335747122765,
+            7.068820774555206
+          ],
+          "targets": 1047552,
+          "seconds": 9.27128410199657,
+          "state_preservation_checked": true
+        },
+        {
+          "event": "validation",
+          "elapsed_seconds": 76.4818328670226,
+          "call": 100,
+          "ce": 6.288011733442545,
+          "panel_ce": [
+            6.28536769002676,
+            6.29065577685833
+          ],
+          "targets": 1047552,
+          "seconds": 2.8664280539378524,
+          "state_preservation_checked": false
+        },
+        {
+          "event": "validation",
+          "elapsed_seconds": 117.29103573807515,
+          "call": 200,
+          "ce": 5.742157660424709,
+          "panel_ce": [
+            5.737047292292118,
+            5.747268028557301
+          ],
+          "targets": 1047552,
+          "seconds": 2.865411187056452,
+          "state_preservation_checked": false
+        },
+        {
+          "event": "validation",
+          "elapsed_seconds": 247.1270660350565,
+          "call": 500,
+          "ce": 4.927356977015734,
+          "panel_ce": [
+            4.92657932639122,
+            4.928134627640247
+          ],
+          "targets": 1047552,
+          "seconds": 9.278905160026625,
+          "state_preservation_checked": true
+        }
+      ],
+      "final_ce": 4.927356977015734,
+      "parameter_count": 109396992,
+      "geometry": [
+        {
+          "call": 1,
+          "factors": 96,
+          "max_absolute_gram": 6.935384590178728e-05
+        },
+        {
+          "call": 11,
+          "factors": 96,
+          "max_absolute_gram": 5.0700105930445716e-05
+        },
+        {
+          "call": 21,
+          "factors": 96,
+          "max_absolute_gram": 4.9990208935923874e-05
+        },
+        {
+          "call": 51,
+          "factors": 96,
+          "max_absolute_gram": 4.992742105969228e-05
+        },
+        {
+          "call": 61,
+          "factors": 96,
+          "max_absolute_gram": 4.9992311687674373e-05
+        },
+        {
+          "call": 250,
+          "factors": 96,
+          "max_absolute_gram": 5.0168422603746876e-05
+        },
+        {
+          "call": 500,
+          "factors": 96,
+          "max_absolute_gram": 5.0772185204550624e-05
+        }
+      ],
+      "momentum_checks": [
+        {
+          "age": 10,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005659743910655379
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0006336828228086233
+        },
+        {
+          "age": 10,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005833057803101838
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005589715437963605
+        },
+        {
+          "age": 10,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005750192794948816
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0006120408070273697
+        },
+        {
+          "age": 10,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0006009807111695409
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0006331963231787086
+        },
+        {
+          "age": 10,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0006350006442517042
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005795201286673546
+        },
+        {
+          "age": 10,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005843834369443357
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005986867472529411
+        },
+        {
+          "age": 10,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0006215880275703967
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005870230379514396
+        },
+        {
+          "age": 10,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005708597018383443
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0006076043355278671
+        },
+        {
+          "age": 10,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005772031145170331
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0006170335691422224
+        },
+        {
+          "age": 10,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005791095900349319
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005838378565385938
+        },
+        {
+          "age": 10,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005804386455565691
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0006098180310800672
+        },
+        {
+          "age": 10,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005805029068142176
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005887641455046833
+        },
+        {
+          "age": 10,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005840984522365034
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005814663600176573
+        },
+        {
+          "age": 10,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005941282724961638
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005801607039757073
+        },
+        {
+          "age": 10,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005981093272566795
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005788225098513067
+        },
+        {
+          "age": 10,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005777438054792583
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005896452930755913
+        },
+        {
+          "age": 10,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005801069200970232
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005918037495575845
+        },
+        {
+          "age": 10,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.000582014094106853
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005820091464556754
+        },
+        {
+          "age": 10,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005721994093619287
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005781000363640487
+        },
+        {
+          "age": 10,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005902896518819034
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005853557959198952
+        },
+        {
+          "age": 10,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005946976016275585
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005860439268872142
+        },
+        {
+          "age": 10,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005804089014418423
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005912985070608556
+        },
+        {
+          "age": 10,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005745215457864106
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0006011247751303017
+        },
+        {
+          "age": 10,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005859080119989812
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005887679872103035
+        },
+        {
+          "age": 50,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005818070494569838
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005840717349201441
+        },
+        {
+          "age": 50,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005845282576046884
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005839858786202967
+        },
+        {
+          "age": 50,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005882357363589108
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.000592942291405052
+        },
+        {
+          "age": 50,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005877608782611787
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005872340989299119
+        },
+        {
+          "age": 50,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005867634899914265
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005876137292943895
+        },
+        {
+          "age": 50,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005801071529276669
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005776236648671329
+        },
+        {
+          "age": 50,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005849020089954138
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005889114690944552
+        },
+        {
+          "age": 50,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005913882632739842
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005837613716721535
+        },
+        {
+          "age": 50,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0006091372924856842
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005821609520353377
+        },
+        {
+          "age": 50,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005816680495627224
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.000600442523136735
+        },
+        {
+          "age": 50,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005883399862796068
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005826837732456625
+        },
+        {
+          "age": 50,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005897723603993654
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0006905028130859137
+        },
+        {
+          "age": 50,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.000598556362092495
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005642991163767874
+        },
+        {
+          "age": 50,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005962796276435256
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005895326030440629
+        },
+        {
+          "age": 50,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005691077094525099
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005813363241031766
+        },
+        {
+          "age": 50,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005806481931358576
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005873336922377348
+        },
+        {
+          "age": 50,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005851369933225214
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005644598859362304
+        },
+        {
+          "age": 50,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005851323949173093
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0006149192340672016
+        },
+        {
+          "age": 50,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005784343229606748
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005765145178884268
+        },
+        {
+          "age": 50,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.000615202181506902
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005832957685925066
+        },
+        {
+          "age": 50,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.000580881314817816
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005862358957529068
+        },
+        {
+          "age": 50,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005763437948189676
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005740004708059132
+        },
+        {
+          "age": 50,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005941290874034166
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005609888467006385
+        },
+        {
+          "age": 50,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005768453702330589
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0006386059685610235
+        }
+      ],
+      "clean_cycle_calls": 400,
+      "mean_step_ms": 379.4359069742495,
+      "mean_optimizer_ms": 94.37585195031716,
+      "elapsed_seconds": 247.12851345399395,
+      "peak_gpu_bytes": 10090431488,
+      "registered_release": {
+        "tracked_tensors": 635,
+        "tracked_unique_storages": 634,
+        "live_tensors": 0,
+        "live_unique_storages": 0,
+        "live_tensor_labels": [],
+        "live_storage_labels": [],
+        "live_unique_storage_bytes": 0,
+        "registered_unique_storage_bytes": 3675537608,
+        "all_registered_released": true,
+        "scope": "Registered tensors and their storage aliases only; not whole-process allocation ownership"
+      },
+      "allocated_before_library_workspace_clear": 67108864,
+      "released_allocated_bytes": 0
+    },
+    {
+      "status": "completed",
+      "name": "calibrate_previous_0.003",
+      "profile": "previous",
+      "arm": "qr",
+      "peak_matrix_lr": 0.003,
+      "seed": 204,
+      "calls": 500,
+      "targets": 16368000,
+      "initial_parameters_sha256": "24da908288be7ee828bd2a8221ac637b870c0c219b05964b3517c576b0a7da79",
+      "initial_gradient": {
+        "loss": 10.963447570800781,
+        "norm": 11.2014741897583,
+        "hash": "7936c3f658be84b84ee780a52876bc2a3cda2771d0b30596cff715f47a81deb2"
+      },
+      "initial_ce": 10.966108478605747,
+      "validation": [
+        {
+          "event": "validation",
+          "elapsed_seconds": 15.626243841019459,
+          "call": 0,
+          "ce": 10.966108478605747,
+          "panel_ce": [
+            10.97006008028984,
+            10.962156876921654
+          ],
+          "targets": 1047552,
+          "seconds": 4.300450184964575,
+          "state_preservation_checked": true
+        },
+        {
+          "event": "validation",
+          "elapsed_seconds": 38.607522057020105,
+          "call": 50,
+          "ce": 7.07779298722744,
+          "panel_ce": [
+            7.068376295268536,
+            7.087209679186344
+          ],
+          "targets": 1047552,
+          "seconds": 2.857505453983322,
+          "state_preservation_checked": false
+        },
+        {
+          "event": "validation",
+          "elapsed_seconds": 54.4630885879742,
+          "call": 51,
+          "ce": 7.027987316250801,
+          "panel_ce": [
+            7.022546291351318,
+            7.033428341150284
+          ],
+          "targets": 1047552,
+          "seconds": 8.7159448369639,
+          "state_preservation_checked": true
+        },
+        {
+          "event": "validation",
+          "elapsed_seconds": 75.36190272204112,
+          "call": 100,
+          "ce": 6.320829454809427,
+          "panel_ce": [
+            6.317450143396854,
+            6.324208766222
+          ],
+          "targets": 1047552,
+          "seconds": 2.8529230669373646,
+          "state_preservation_checked": false
+        },
+        {
+          "event": "validation",
+          "elapsed_seconds": 116.09599273395725,
+          "call": 200,
+          "ce": 5.776068530976772,
+          "panel_ce": [
+            5.768146313726902,
+            5.783990748226643
+          ],
+          "targets": 1047552,
+          "seconds": 2.861433507059701,
+          "state_preservation_checked": false
+        },
+        {
+          "event": "validation",
+          "elapsed_seconds": 244.6641498300014,
+          "call": 500,
+          "ce": 4.956997267901897,
+          "panel_ce": [
+            4.95544458180666,
+            4.958549953997135
+          ],
+          "targets": 1047552,
+          "seconds": 8.718645199085586,
+          "state_preservation_checked": true
+        }
+      ],
+      "final_ce": 4.956997267901897,
+      "parameter_count": 109396992,
+      "geometry": [
+        {
+          "call": 1,
+          "factors": 96,
+          "max_absolute_gram": 6.935384590178728e-05
+        },
+        {
+          "call": 11,
+          "factors": 96,
+          "max_absolute_gram": 5.020347816753201e-05
+        },
+        {
+          "call": 21,
+          "factors": 96,
+          "max_absolute_gram": 5.039761890657246e-05
+        },
+        {
+          "call": 51,
+          "factors": 96,
+          "max_absolute_gram": 5.0122554966947064e-05
+        },
+        {
+          "call": 61,
+          "factors": 96,
+          "max_absolute_gram": 5.016651266487315e-05
+        },
+        {
+          "call": 250,
+          "factors": 96,
+          "max_absolute_gram": 5.0748643843689933e-05
+        },
+        {
+          "call": 500,
+          "factors": 96,
+          "max_absolute_gram": 5.111426435178146e-05
+        }
+      ],
+      "momentum_checks": [
+        {
+          "age": 10,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005951427156105638
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005799821810796857
+        },
+        {
+          "age": 10,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005750344134867191
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005883077974431217
+        },
+        {
+          "age": 10,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0006622231449000537
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005602024612016976
+        },
+        {
+          "age": 10,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005765995592810214
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005799331702291965
+        },
+        {
+          "age": 10,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.000602727581281215
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.000569274416193366
+        },
+        {
+          "age": 10,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005699027678929269
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005677841836586595
+        },
+        {
+          "age": 10,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0006140501936897635
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005864293198101223
+        },
+        {
+          "age": 10,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005808327114209533
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005906643345952034
+        },
+        {
+          "age": 10,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005908660823479295
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005786543479189277
+        },
+        {
+          "age": 10,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005844858824275434
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005810860311612487
+        },
+        {
+          "age": 10,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005730502307415009
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005928637110628188
+        },
+        {
+          "age": 10,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005811884766444564
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005884149577468634
+        },
+        {
+          "age": 10,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005809758440591395
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0006008883938193321
+        },
+        {
+          "age": 10,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.000588621711358428
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005755429156124592
+        },
+        {
+          "age": 10,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005857647047378123
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005867576110176742
+        },
+        {
+          "age": 10,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005950870108790696
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005852755275554955
+        },
+        {
+          "age": 10,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005873024929314852
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005973938968963921
+        },
+        {
+          "age": 10,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005876838113181293
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005841131787747145
+        },
+        {
+          "age": 10,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005954226944595575
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005925818113610148
+        },
+        {
+          "age": 10,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005862114485353231
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005886749131605029
+        },
+        {
+          "age": 10,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005888239829801023
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005968079785816371
+        },
+        {
+          "age": 10,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005807317211292684
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005827124114148319
+        },
+        {
+          "age": 10,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005712364218197763
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005957161774858832
+        },
+        {
+          "age": 10,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005888139712624252
+        },
+        {
+          "age": 10,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005950377089902759
+        },
+        {
+          "age": 50,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005875220522284508
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005934173241257668
+        },
+        {
+          "age": 50,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005880666431039572
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005902636330574751
+        },
+        {
+          "age": 50,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005848412401974201
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005845593404956162
+        },
+        {
+          "age": 50,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005871034227311611
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005933971842750907
+        },
+        {
+          "age": 50,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005888672894798219
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005867623840458691
+        },
+        {
+          "age": 50,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005845300620421767
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005998170236125588
+        },
+        {
+          "age": 50,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005774754099547863
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005809103022329509
+        },
+        {
+          "age": 50,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005820611258968711
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005912625347264111
+        },
+        {
+          "age": 50,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.000589219736866653
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005928457831032574
+        },
+        {
+          "age": 50,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005948349134996533
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005751766730099916
+        },
+        {
+          "age": 50,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005817462224513292
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0006121047772467136
+        },
+        {
+          "age": 50,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005866342107765377
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005781591753475368
+        },
+        {
+          "age": 50,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005761642823927104
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005622221506200731
+        },
+        {
+          "age": 50,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005882853292860091
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0006150802364572883
+        },
+        {
+          "age": 50,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005807066336274147
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005919861723668873
+        },
+        {
+          "age": 50,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005912652122788131
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005836960044689476
+        },
+        {
+          "age": 50,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.000580168270971626
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005932446219958365
+        },
+        {
+          "age": 50,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.000588136026635766
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005901650292798877
+        },
+        {
+          "age": 50,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005908338935114443
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005713726859539747
+        },
+        {
+          "age": 50,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005978643312118948
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.000571187527384609
+        },
+        {
+          "age": 50,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005781345535069704
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005992520600557327
+        },
+        {
+          "age": 50,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005877640214748681
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0005895395297557116
+        },
+        {
+          "age": 50,
+          "shape": [
+            2304,
+            768
+          ],
+          "relative_physical_m_error": 0.0005710397963412106
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            768
+          ],
+          "relative_physical_m_error": 0.0005862708203494549
+        },
+        {
+          "age": 50,
+          "shape": [
+            3072,
+            768
+          ],
+          "relative_physical_m_error": 0.0005742612411268055
+        },
+        {
+          "age": 50,
+          "shape": [
+            768,
+            1536
+          ],
+          "relative_physical_m_error": 0.0006013056263327599
+        }
+      ],
+      "clean_cycle_calls": 400,
+      "mean_step_ms": 379.1791133215884,
+      "mean_optimizer_ms": 93.95895586319966,
+      "elapsed_seconds": 244.6655755690299,
+      "peak_gpu_bytes": 10086454272,
+      "registered_release": {
+        "tracked_tensors": 635,
+        "tracked_unique_storages": 634,
+        "live_tensors": 0,
+        "live_unique_storages": 0,
+        "live_tensor_labels": [],
+        "live_storage_labels": [],
+        "live_unique_storage_bytes": 0,
+        "registered_unique_storage_bytes": 3675537608,
+        "all_registered_released": true,
+        "scope": "Registered tensors and their storage aliases only; not whole-process allocation ownership"
+      },
+      "allocated_before_library_workspace_clear": 67108864,
+      "released_allocated_bytes": 0
+    }
+  ],
+  "selected": {
+    "stock": 0.0015,
+    "previous": 0.0005
+  },
+  "limitation": "Single-seed 500-call baseline calibration, using the full 10000-call schedule; shared selected LR per QR/warm pair."
+}

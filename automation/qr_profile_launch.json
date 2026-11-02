@@ -1,0 +1,18 @@
+{
+  "program": "soap-bf16-qr-profile",
+  "bundle": "/workspace/optimizer_replay_results/soap_bf16_qr_profile_20261027_v1",
+  "runner": "source/benchmarks/bf16_qr_attribution.py",
+  "manifest_sha256": "d7af1e02598e9be626297f676bf81d90e14af9c88533b11fb8fb0f26866b1c10",
+  "service_files": {
+    "/workspace/optimizer_replay_results/soap_bf16_qr_profile_20261027_v1/service/soap-bf16-qr-profile.sh": "a0ebecd4c2a91439c363d8ca8ffa35b264812553dab39bffbcd78e5743ccd496",
+    "/workspace/optimizer_replay_results/soap_bf16_qr_profile_20261027_v1/service/soap-bf16-qr-profile.conf": "eb8d5382db7a2c80ed6a199e16bdc875fe57e9a675c8a6b753e6695bdade8a4f"
+  },
+  "gpu_execution_cap_seconds": 600,
+  "watchdog": {
+    "term_after_seconds": 590,
+    "kill_after_additional_seconds": 10
+  },
+  "queue_wait_cap_seconds": 7200,
+  "cpu_tests_passed": 4,
+  "no_retries": true
+}
