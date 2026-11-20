@@ -1,0 +1,41 @@
+=== one refresh from the same input ===
+n=256 rot=0.2: input r_C=0.2171 rho_rms=0.4885
+   prod_bf16    r_C=0.1675 rho_rms=0.3996 topk_dist_to_QR=0.0154 gram=1.8e-03
+   prod         r_C=0.1675 rho_rms=0.3995 topk_dist_to_QR=0.0155 gram=3.8e-15
+   prod_nocap   r_C=0.1145 rho_rms=0.3309 topk_dist_to_QR=0.0058 gram=3.7e-15
+   jac1         r_C=0.0520 rho_rms=0.2784 topk_dist_to_QR=0.0044 gram=3.9e-15
+   qrtan        r_C=0.0813 rho_rms=0.2596 topk_dist_to_QR=0.0021 gram=4.1e-15
+   qrtan_sort   r_C=0.0813 rho_rms=0.2596 topk_dist_to_QR=0.0021 gram=3.9e-15
+   neon_b1      r_C=0.1213 rho_rms=0.3408 topk_dist_to_QR=0.0116 gram=3.8e-15
+   neon_b1_r4   r_C=0.1179 rho_rms=0.3362 topk_dist_to_QR=0.0123 gram=5.0e-06
+   qr           r_C=0.0384 rho_rms=0.2121 topk_dist_to_QR=0.0000 gram=1.3e-15
+n=256 rot=0.5: input r_C=0.4533 rho_rms=1.0307
+   prod_bf16    r_C=0.4076 rho_rms=0.8064 topk_dist_to_QR=0.0955 gram=1.8e-03
+   prod         r_C=0.4081 rho_rms=0.8075 topk_dist_to_QR=0.0956 gram=3.8e-15
+   prod_nocap   r_C=0.2952 rho_rms=0.4850 topk_dist_to_QR=0.0244 gram=3.9e-15
+   jac1         r_C=0.2599 rho_rms=0.5650 topk_dist_to_QR=0.0234 gram=3.7e-15
+   qrtan        r_C=0.2910 rho_rms=0.6761 topk_dist_to_QR=0.0182 gram=3.7e-15
+   qrtan_sort   r_C=0.2910 rho_rms=0.6761 topk_dist_to_QR=0.0182 gram=3.8e-15
+   neon_b1      r_C=0.3429 rho_rms=0.7158 topk_dist_to_QR=0.0525 gram=3.8e-15
+   neon_b1_r4   r_C=0.3394 rho_rms=0.7073 topk_dist_to_QR=0.0520 gram=7.0e-07
+   qr           r_C=0.0484 rho_rms=0.2393 topk_dist_to_QR=0.0000 gram=1.4e-15
+n=512 rot=0.2: input r_C=0.2111 rho_rms=0.5396
+   prod_bf16    r_C=0.1583 rho_rms=0.4254 topk_dist_to_QR=0.0165 gram=1.8e-03
+   prod         r_C=0.1581 rho_rms=0.4253 topk_dist_to_QR=0.0320 gram=4.9e-15
+   prod_nocap   r_C=0.1109 rho_rms=0.3598 topk_dist_to_QR=0.0088 gram=4.9e-15
+   jac1         r_C=0.0473 rho_rms=0.3095 topk_dist_to_QR=0.0029 gram=4.8e-15
+   qrtan        r_C=0.0986 rho_rms=0.2961 topk_dist_to_QR=0.0027 gram=5.2e-15
+   qrtan_sort   r_C=0.0986 rho_rms=0.2961 topk_dist_to_QR=0.0027 gram=5.0e-15
+   neon_b1      r_C=0.1274 rho_rms=0.3701 topk_dist_to_QR=0.0276 gram=5.2e-15
+   neon_b1_r4   r_C=0.1238 rho_rms=0.3650 topk_dist_to_QR=0.0278 gram=4.6e-06
+   qr           r_C=0.0293 rho_rms=0.2108 topk_dist_to_QR=0.0000 gram=1.9e-15
+=== chained open-loop toy (n=128, refresh every 10, QR at 50s) ===
+   qr10               mean r_C=0.0759 mean rho_rms=0.2404
+   qr50               mean r_C=0.1343 mean rho_rms=0.3528
+   prod_bf1610/qr50   mean r_C=0.0977 mean rho_rms=0.2938
+   prod10/qr50        mean r_C=0.0977 mean rho_rms=0.2938
+   prod_nocap10/qr50  mean r_C=0.0841 mean rho_rms=0.2709
+   jac110/qr50        mean r_C=0.0742 mean rho_rms=0.2526
+   qrtan10/qr50       mean r_C=0.0767 mean rho_rms=0.2427
+   qrtan_sort10/qr50  mean r_C=0.0767 mean rho_rms=0.2427
+   neon_b110/qr50     mean r_C=0.0785 mean rho_rms=0.2541

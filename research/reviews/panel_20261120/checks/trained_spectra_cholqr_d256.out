@@ -1,0 +1,84 @@
+d=256 age=500 f0 to_qkv.L n=768 | lmin/lmax=+9.4e-05 neg=0.000 <1e-6=0.000 <1e-4=0.001
+     chol2        top96_dist=-1.2e-07 col=-3.5e-08 gram=0.0024
+     sgram        top96_dist=-1.2e-07 col=-5.3e-08 gram=0.0024
+     fukaya       top96_dist=-1.2e-07 col=-3.0e-08 gram=0.0024
+     ridge1e-06   top96_dist=-1.2e-07 col=7.0e-10 gram=0.0024
+     ridge1e-05   top96_dist=-1.2e-07 col=5.1e-06 gram=0.0024
+     ridge0.0001  top96_dist=8.9e-07 col=3.5e-04 gram=0.0024
+d=256 age=500 f1 to_qkv.R n=256 | lmin/lmax=+9.4e-06 neg=0.000 <1e-6=0.000 <1e-4=0.098
+     chol2        top32_dist=6.0e-08 col=-3.4e-08 gram=0.0024
+     sgram        top32_dist=-1.2e-07 col=-4.1e-08 gram=0.0024
+     fukaya       top32_dist=6.0e-08 col=-3.1e-08 gram=0.0024
+     ridge1e-06   top32_dist=6.0e-08 col=1.6e-05 gram=0.0024
+     ridge1e-05   top32_dist=6.0e-08 col=9.8e-04 gram=0.0024
+     ridge0.0001  top32_dist=4.6e-06 col=1.7e-02 gram=0.0024
+d=256 age=500 f2 to_out.L n=256 | lmin/lmax=+1.2e-03 neg=0.000 <1e-6=0.000 <1e-4=0.000
+     chol2        top32_dist=-1.2e-07 col=-3.9e-08 gram=0.0024
+     sgram        top32_dist=6.0e-08 col=-4.3e-08 gram=0.0024
+     fukaya       top32_dist=6.0e-08 col=-4.8e-08 gram=0.0024
+     ridge1e-06   top32_dist=6.0e-08 col=-4.8e-08 gram=0.0024
+     ridge1e-05   top32_dist=6.0e-08 col=4.2e-08 gram=0.0024
+     ridge0.0001  top32_dist=6.0e-08 col=7.7e-06 gram=0.0024
+d=256 age=500 f3 to_out.R n=256 | lmin/lmax=+2.4e-05 neg=0.000 <1e-6=0.000 <1e-4=0.035
+     chol2        top32_dist=6.0e-08 col=-4.1e-08 gram=0.0024
+     sgram        top32_dist=-1.2e-07 col=-3.8e-08 gram=0.0024
+     fukaya       top32_dist=6.0e-08 col=-4.3e-08 gram=0.0024
+     ridge1e-06   top32_dist=-1.2e-07 col=2.3e-06 gram=0.0024
+     ridge1e-05   top32_dist=6.0e-08 col=1.7e-04 gram=0.0024
+     ridge0.0001  top32_dist=3.6e-06 col=4.3e-03 gram=0.0024
+d=256 age=500 f4 proj_in.L n=1024 | lmin/lmax=+8.2e-05 neg=0.000 <1e-6=0.000 <1e-4=0.002
+     chol2        top128_dist=6.0e-08 col=-4.0e-08 gram=0.0024
+     sgram        top128_dist=6.0e-08 col=-6.1e-08 gram=0.0024
+     fukaya       top128_dist=6.0e-08 col=-4.5e-08 gram=0.0024
+     ridge1e-06   top128_dist=6.0e-08 col=3.2e-08 gram=0.0024
+     ridge1e-05   top128_dist=6.0e-08 col=8.0e-06 gram=0.0024
+     ridge0.0001  top128_dist=1.9e-06 col=5.1e-04 gram=0.0024
+d=256 age=500 f5 proj_in.R n=256 | lmin/lmax=+1.7e-04 neg=0.000 <1e-6=0.000 <1e-4=0.000
+     chol2        top32_dist=6.0e-08 col=-2.7e-08 gram=0.0024
+     sgram        top32_dist=6.0e-08 col=-2.6e-08 gram=0.0024
+     fukaya       top32_dist=6.0e-08 col=-2.1e-08 gram=0.0024
+     ridge1e-06   top32_dist=6.0e-08 col=7.5e-08 gram=0.0024
+     ridge1e-05   top32_dist=6.0e-08 col=9.6e-06 gram=0.0024
+     ridge0.0001  top32_dist=1.1e-06 col=6.2e-04 gram=0.0024
+d=256 age=500 f6 proj_out.L n=256 | lmin/lmax=+1.1e-03 neg=0.000 <1e-6=0.000 <1e-4=0.000
+     chol2        top32_dist=-3.6e-07 col=-3.0e-08 gram=0.0024
+     sgram        top32_dist=-1.2e-07 col=-3.3e-08 gram=0.0024
+     fukaya       top32_dist=-3.6e-07 col=-3.7e-08 gram=0.0024
+     ridge1e-06   top32_dist=-1.2e-07 col=-3.7e-08 gram=0.0024
+     ridge1e-05   top32_dist=-1.2e-07 col=1.9e-07 gram=0.0024
+     ridge0.0001  top32_dist=6.0e-08 col=2.1e-05 gram=0.0024
+d=256 age=500 f7 proj_out.R n=512 | lmin/lmax=+9.5e-05 neg=0.000 <1e-6=0.000 <1e-4=0.002
+     chol2        top64_dist=0.0e+00 col=-6.0e-08 gram=0.0024
+     sgram        top64_dist=0.0e+00 col=-6.1e-08 gram=0.0024
+     fukaya       top64_dist=0.0e+00 col=-5.6e-08 gram=0.0024
+     ridge1e-06   top64_dist=0.0e+00 col=2.1e-08 gram=0.0024
+     ridge1e-05   top64_dist=0.0e+00 col=7.7e-06 gram=0.0024
+     ridge0.0001  top64_dist=3.8e-06 col=4.9e-04 gram=0.0024
+d=256 age=1000 f0 to_qkv.L n=768 | lmin/lmax=+1.7e-04 neg=0.000 <1e-6=0.000 <1e-4=0.000
+     chol2        top96_dist=-1.2e-07 col=-3.4e-08 gram=0.0024
+     sgram        top96_dist=-1.2e-07 col=-5.6e-08 gram=0.0024
+     fukaya       top96_dist=-1.2e-07 col=-4.1e-08 gram=0.0024
+     ridge1e-06   top96_dist=-1.2e-07 col=-4.2e-08 gram=0.0024
+     ridge1e-05   top96_dist=-1.2e-07 col=9.6e-07 gram=0.0024
+     ridge0.0001  top96_dist=1.8e-07 col=8.2e-05 gram=0.0024
+d=256 age=1000 f1 to_qkv.R n=256 | lmin/lmax=+1.1e-04 neg=0.000 <1e-6=0.000 <1e-4=0.000
+     chol2        top32_dist=-1.2e-07 col=-3.7e-08 gram=0.0024
+     sgram        top32_dist=-1.2e-07 col=-4.8e-08 gram=0.0024
+     fukaya       top32_dist=-1.2e-07 col=-4.4e-08 gram=0.0024
+     ridge1e-06   top32_dist=-1.2e-07 col=3.2e-07 gram=0.0024
+     ridge1e-05   top32_dist=6.0e-08 col=3.5e-05 gram=0.0024
+     ridge0.0001  top32_dist=4.4e-06 col=1.9e-03 gram=0.0024
+d=256 age=1000 f2 to_out.L n=256 | lmin/lmax=+2.0e-03 neg=0.000 <1e-6=0.000 <1e-4=0.000
+     chol2        top32_dist=6.0e-08 col=-4.3e-08 gram=0.0024
+     sgram        top32_dist=-1.2e-07 col=-5.1e-08 gram=0.0024
+     fukaya       top32_dist=-1.2e-07 col=-3.9e-08 gram=0.0024
+     ridge1e-06   top32_dist=6.0e-08 col=-4.1e-08 gram=0.0024
+     ridge1e-05   top32_dist=-1.2e-07 col=-1.6e-08 gram=0.0024
+     ridge0.0001  top32_dist=6.0e-08 col=2.1e-06 gram=0.0024
+d=256 age=1000 f3 to_out.R n=256 | lmin/lmax=+1.5e-04 neg=0.000 <1e-6=0.000 <1e-4=0.000
+     chol2        top32_dist=6.0e-08 col=-1.9e-08 gram=0.0024
+     sgram        top32_dist=6.0e-08 col=-2.2e-08 gram=0.0024
+     fukaya       top32_dist=6.0e-08 col=-2.1e-08 gram=0.0024
+     ridge1e-06   top32_dist=-1.2e-07 col=3.5e-08 gram=0.0024
+     ridge1e-05   top32_dist=6.0e-08 col=4.8e-06 gram=0.0024
+     ridge0.0001  top32_dist=2.4e-06 col=3.2e-04 gram=0.0023

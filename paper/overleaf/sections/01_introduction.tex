@@ -2,32 +2,75 @@
 \section{1. Introduction}\label{introduction}}
 
 SOAP~\citep{vyas2024soap} applies Adam-style
-adaptation in the coordinate system of matrix preconditioners. Computing
+adaptation~\citep{kingma2014adam} in the coordinate system of matrix preconditioners. Computing
 and maintaining that coordinate system adds work beyond diagonal
 optimizers. A practical approximation must address both its numerical
 history and how that history is stored and executed on a GPU.
 
-We investigate one concrete implementation point: full dense factors and
-two-sided matrix coverage, BF16 persistent state, a fixed mixture of
-cheaper dense tracking steps and periodic QR refreshes, and compilation
-of the complete matrix-update regions. The objective is to document how
-closely this fixed implementation follows an audited SOAP reference on
-an affordable language modeling workload, together with the measured
-time and memory tradeoff.
+We study one way to reduce the cost of keeping that coordinate system
+current. TurboSOAP keeps SOAP's refresh cadence, but four of every five
+refreshes are approximate: a \emph{warm refresh} updates each basis
+with a cheap tracking step built from matrix products and elementwise
+operations, and only every fifth refresh is a QR repair. The tracking
+step needs no decomposition. CUDA QR and eigendecomposition routines do
+not accept BF16 inputs, and SOAP recommends at least FP32 for its QR, so
+each QR refresh needs FP32 operands even when the state is stored in
+BF16; the tracking step's products take BF16 operands with FP32
+accumulation. Our implementation also stores the persistent matrix
+state in BF16 and compiles the complete matrix-update regions. These
+are implementation choices that are compatible with warm refreshes but
+do not depend on them: the QR-only controls of Section 5.3 use the same
+full-BF16 arithmetic. We keep full covariance factors and two-sided
+coverage of every matrix.
 
-The evidence has three parts. First, two initialization seeds compare
-the declared 10,000-call endpoint against stock-beta QR10. Second, short
-full-BF16 QR20 and QR50 controls test whether intermediate tracking
-provides useful learning behavior relative to simpler refresh schedules.
-Third, a fixed-input profile separates redundant products in QR
-refinement from the solver cost. The policy, precision rules, production
+\begin{center}
+\includegraphics{figures/hero.pdf}
+\end{center}
+
+\emph{Figure 1.} (a) Optimizer time over one 50-call refresh cycle.
+TurboSOAP and QR10 both refresh every 10 ages; TurboSOAP makes four of
+the five refreshes warm (approximate). Segment widths are per-call
+event means measured for both schedules in one launch of the compiled
+BF16 implementation (seed 204, calls 101--2000; Section 5.3), and each
+refresh call includes its ordinary update. They come from a later
+launch than the seed-205 means of Section 5.2 (61.6 and 601.2 ms for
+warm and QR refresh calls). (b) Validation CE minus
+TurboSOAP's for the same seed over the 10,000-call horizon (Section
+5.1); the vertical axis is split at $-0.016$. The matched BF16 QR10
+(solid) is well ahead early; from about call 2000 it stays within 0.006
+CE of TurboSOAP without leading it. The original FP32 eager QR10
+reference (dashed) stays about 0.01 ahead to the end. The grey band is
+$\pm 0.003$, the spread between the two TurboSOAP seeds at call 10,000.
+Two seeds do not establish equivalence.
+
+Two comparators bracket the approximation. QR10 refreshes as often as
+TurboSOAP but always by QR, and so measures what approximating four
+of five refreshes costs in loss and saves in time. QR50 performs as many
+QR refreshes as TurboSOAP but holds the bases fixed in between, and so
+measures what the warm refreshes add. The objective is to document how
+this fixed schedule and precision policy behave against an audited SOAP
+reference on an affordable language modeling workload, together with
+the measured time and memory tradeoff.
+
+The evidence has four parts. First, two initialization seeds compare
+the declared 10,000-call endpoint against stock-beta QR10. Second, a
+QR10 control in the same full-BF16 implementation, the same-cadence
+comparator above, runs to 10,000 calls on both seeds and is timed in
+one launch with a fresh TurboSOAP run. Third, short full-BF16 QR20 and
+QR50 controls test whether intermediate warm refreshes provide useful
+learning behavior relative to simpler refresh schedules. Fourth, a
+fixed-input profile separates redundant products in QR refinement from
+the solver cost. The policy, precision rules, production
 optimizer hashes, and shared training-worker hash remain fixed across
 the two main candidate runs; campaign-specific runners are separately
 pinned.
 
-Our contribution is the specified dense tracking/repair/precision
-implementation and its reproducible case study. The learning curves
-retain a measurable loss gap, especially early in training. The timing
+Our contribution is the basis-tracking step and warm/QR refresh
+schedule, the BF16 precision policy implemented around them, and a
+reproducible case study of the combination. Against the original
+reference the learning curves retain a measurable loss gap, especially
+early in training; against QR10 in the same implementation the gap
+closes by about call 2000. The timing
 comparison includes storage, batching, arithmetic, compilation, and
 cadence changes relative to the original reference. These components
 should remain visible when interpreting efficiency.

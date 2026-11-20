@@ -1,0 +1,346 @@
+{
+ "manifest": {
+  "calls": 10000,
+  "seed": 204,
+  "arms": [
+   "bf16_hh_qr50"
+  ]
+ },
+ "results": [
+  {
+   "arm": "bf16_hh_qr50",
+   "spec": {
+    "cls": "production",
+    "frequency": 50,
+    "repair": 50
+   },
+   "validation": [
+    {
+     "call": 0,
+     "ce": 10.966108478605747,
+     "targets": 1047552,
+     "listed_tensor_hash_preservation_checked": true
+    },
+    {
+     "call": 50,
+     "ce": 7.204366810619831,
+     "targets": 1047552,
+     "listed_tensor_hash_preservation_checked": false
+    },
+    {
+     "call": 100,
+     "ce": 6.404539309442043,
+     "targets": 1047552,
+     "listed_tensor_hash_preservation_checked": false
+    },
+    {
+     "call": 200,
+     "ce": 5.830097418278456,
+     "targets": 1047552,
+     "listed_tensor_hash_preservation_checked": false
+    },
+    {
+     "call": 500,
+     "ce": 5.018046278506517,
+     "targets": 1047552,
+     "listed_tensor_hash_preservation_checked": false
+    },
+    {
+     "call": 1000,
+     "ce": 4.364714320749044,
+     "targets": 1047552,
+     "listed_tensor_hash_preservation_checked": false
+    },
+    {
+     "call": 1500,
+     "ce": 4.1323130670934916,
+     "targets": 1047552,
+     "listed_tensor_hash_preservation_checked": false
+    },
+    {
+     "call": 2000,
+     "ce": 3.9986794628202915,
+     "targets": 1047552,
+     "listed_tensor_hash_preservation_checked": false
+    },
+    {
+     "call": 2500,
+     "ce": 3.9067188259214163,
+     "targets": 1047552,
+     "listed_tensor_hash_preservation_checked": false
+    },
+    {
+     "call": 3000,
+     "ce": 3.8353639598935843,
+     "targets": 1047552,
+     "listed_tensor_hash_preservation_checked": false
+    },
+    {
+     "call": 4000,
+     "ce": 3.7265683989971876,
+     "targets": 1047552,
+     "listed_tensor_hash_preservation_checked": false
+    },
+    {
+     "call": 5000,
+     "ce": 3.6433176584541798,
+     "targets": 1047552,
+     "listed_tensor_hash_preservation_checked": true
+    },
+    {
+     "call": 6000,
+     "ce": 3.573855150490999,
+     "targets": 1047552,
+     "listed_tensor_hash_preservation_checked": false
+    },
+    {
+     "call": 7000,
+     "ce": 3.5165874361991882,
+     "targets": 1047552,
+     "listed_tensor_hash_preservation_checked": false
+    },
+    {
+     "call": 7500,
+     "ce": 3.4930176865309477,
+     "targets": 1047552,
+     "listed_tensor_hash_preservation_checked": false
+    },
+    {
+     "call": 8000,
+     "ce": 3.472053101286292,
+     "targets": 1047552,
+     "listed_tensor_hash_preservation_checked": false
+    },
+    {
+     "call": 9000,
+     "ce": 3.4420500472187996,
+     "targets": 1047552,
+     "listed_tensor_hash_preservation_checked": false
+    },
+    {
+     "call": 10000,
+     "ce": 3.4230686333030462,
+     "targets": 1047552,
+     "listed_tensor_hash_preservation_checked": true
+    }
+   ],
+   "mean_step_ms": 314.8845217221962,
+   "mean_optimizer_ms": 22.342666108913797,
+   "mean_fb_ms": 292.5418556132824,
+   "clean_calls": 9900,
+   "optimizer_by_kind": {
+    "ordinary": {
+     "n": 9702,
+     "mean_ms": 10.386185782382327,
+     "median_ms": 10.339434957131743
+    },
+    "qr": {
+     "n": 198,
+     "mean_ms": 608.2102021089557,
+     "median_ms": 608.2053328864276
+    }
+   },
+   "peak_gpu_bytes": 8827773440,
+   "matrix_state_bytes": 1245708320,
+   "elapsed_seconds": 3301.0059419202153,
+   "max_normalized_gram": 0.0023669304001215762,
+   "max_physical_m_error": 0.005105160642415285,
+   "max_spectral_gram": 0.005388985387980938,
+   "spectral_gram_by_call": {
+    "1": 0.004752823151648045,
+    "51": 0.004736430011689663,
+    "101": 0.004757504444569349,
+    "201": 0.00497469725087285,
+    "501": 0.004786923993378878,
+    "541": 0.004786923993378878,
+    "1001": 0.005316857248544693,
+    "1041": 0.005316857248544693,
+    "1501": 0.005241637118160725,
+    "1541": 0.005241637118160725,
+    "1951": 0.005179226398468018,
+    "1991": 0.005179226398468018,
+    "5001": 0.005154911894351244,
+    "5041": 0.005154911894351244,
+    "9951": 0.005388985387980938,
+    "9991": 0.005388985387980938
+   },
+   "refresh_counts": null,
+   "fallback_log": []
+  }
+ ],
+ "paper_cached_warm_prefix": {
+  "case": "cached_bf16_warm10_qr50",
+  "validation": [
+   {
+    "call": 0,
+    "ce": 10.966108478605747,
+    "targets": 1047552,
+    "listed_tensor_hash_preservation_checked": true
+   },
+   {
+    "call": 50,
+    "ce": 7.159334506839514,
+    "targets": 1047552,
+    "listed_tensor_hash_preservation_checked": false
+   },
+   {
+    "call": 100,
+    "ce": 6.35079650208354,
+    "targets": 1047552,
+    "listed_tensor_hash_preservation_checked": false
+   },
+   {
+    "call": 200,
+    "ce": 5.773977719247341,
+    "targets": 1047552,
+    "listed_tensor_hash_preservation_checked": false
+   },
+   {
+    "call": 500,
+    "ce": 5.001514211297035,
+    "targets": 1047552,
+    "listed_tensor_hash_preservation_checked": false
+   },
+   {
+    "call": 1000,
+    "ce": 4.361596241593361,
+    "targets": 1047552,
+    "listed_tensor_hash_preservation_checked": true
+   },
+   {
+    "call": 1500,
+    "ce": 4.1223688162863255,
+    "targets": 1047552,
+    "listed_tensor_hash_preservation_checked": false
+   },
+   {
+    "call": 2000,
+    "ce": 3.9939393140375614,
+    "targets": 1047552,
+    "listed_tensor_hash_preservation_checked": false
+   }
+  ],
+  "mean_step_ms": 314.14195984032153,
+  "mean_optimizer_ms": 26.415084154884283,
+  "clean_cycle_calls": 1900,
+  "event_counts": {
+   "qr": 38,
+   "ordinary": 1710,
+   "warm": 152
+  },
+  "matrix_state_bytes": 1245708320,
+  "timing_scope": "Cached prefix on original claimed device, contextual across launches"
+ },
+ "paper_qr20_qr50": [
+  {
+   "case": "bf16_qr20",
+   "validation": [
+    {
+     "call": 0,
+     "ce": 10.966108478605747,
+     "targets": 1047552,
+     "listed_tensor_hash_preservation_checked": true
+    },
+    {
+     "call": 50,
+     "ce": 7.15756281465292,
+     "targets": 1047552,
+     "listed_tensor_hash_preservation_checked": false
+    },
+    {
+     "call": 100,
+     "ce": 6.334601294249296,
+     "targets": 1047552,
+     "listed_tensor_hash_preservation_checked": false
+    },
+    {
+     "call": 200,
+     "ce": 5.733952008187771,
+     "targets": 1047552,
+     "listed_tensor_hash_preservation_checked": false
+    },
+    {
+     "call": 500,
+     "ce": 4.936851505190134,
+     "targets": 1047552,
+     "listed_tensor_hash_preservation_checked": false
+    },
+    {
+     "call": 1000,
+     "ce": 4.341771213337779,
+     "targets": 1047552,
+     "listed_tensor_hash_preservation_checked": true
+    },
+    {
+     "call": 1500,
+     "ce": 4.123380791395903,
+     "targets": 1047552,
+     "listed_tensor_hash_preservation_checked": false
+    },
+    {
+     "call": 2000,
+     "ce": 3.990382792428136,
+     "targets": 1047552,
+     "listed_tensor_hash_preservation_checked": true
+    }
+   ],
+   "mean_step_ms": 329.6406275997747,
+   "mean_optimizer_ms": 40.45993206685556
+  },
+  {
+   "case": "bf16_qr50",
+   "validation": [
+    {
+     "call": 0,
+     "ce": 10.966108478605747,
+     "targets": 1047552,
+     "listed_tensor_hash_preservation_checked": true
+    },
+    {
+     "call": 50,
+     "ce": 7.204366810619831,
+     "targets": 1047552,
+     "listed_tensor_hash_preservation_checked": false
+    },
+    {
+     "call": 100,
+     "ce": 6.404539309442043,
+     "targets": 1047552,
+     "listed_tensor_hash_preservation_checked": false
+    },
+    {
+     "call": 200,
+     "ce": 5.830097418278456,
+     "targets": 1047552,
+     "listed_tensor_hash_preservation_checked": false
+    },
+    {
+     "call": 500,
+     "ce": 5.018046278506517,
+     "targets": 1047552,
+     "listed_tensor_hash_preservation_checked": false
+    },
+    {
+     "call": 1000,
+     "ce": 4.364714320749044,
+     "targets": 1047552,
+     "listed_tensor_hash_preservation_checked": true
+    },
+    {
+     "call": 1500,
+     "ce": 4.1323130670934916,
+     "targets": 1047552,
+     "listed_tensor_hash_preservation_checked": false
+    },
+    {
+     "call": 2000,
+     "ce": 3.9986794628202915,
+     "targets": 1047552,
+     "listed_tensor_hash_preservation_checked": true
+    }
+   ],
+   "mean_step_ms": 313.5512978235554,
+   "mean_optimizer_ms": 22.86430248089968
+  }
+ ]
+}

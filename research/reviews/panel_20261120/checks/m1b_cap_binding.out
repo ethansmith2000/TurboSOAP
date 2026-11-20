@@ -1,0 +1,9 @@
+--- cap binding ---
+n=128 rot=0.05 rC_in=0.1049 fro/sqrt2=0.735 cap_scale=0.681 spec=0.226 rC[prod cap]=0.0718 rC[spectral cap .5]=0.0569 rC[no cap]=0.0569
+n=128 rot=0.2 rC_in=0.2069 fro/sqrt2=0.862 cap_scale=0.580 spec=0.288 rC[prod cap]=0.1482 rC[spectral cap .5]=0.1070 rC[no cap]=0.1070
+n=256 rot=0.05 rC_in=0.1158 fro/sqrt2=0.857 cap_scale=0.584 spec=0.244 rC[prod cap]=0.0851 rC[spectral cap .5]=0.0642 rC[no cap]=0.0642
+n=256 rot=0.2 rC_in=0.2203 fro/sqrt2=1.097 cap_scale=0.456 spec=0.304 rC[prod cap]=0.1718 rC[spectral cap .5]=0.1163 rC[no cap]=0.1163
+n=512 rot=0.05 rC_in=0.0960 fro/sqrt2=0.773 cap_scale=0.646 spec=0.196 rC[prod cap]=0.0686 rC[spectral cap .5]=0.0544 rC[no cap]=0.0544
+n=512 rot=0.2 rC_in=0.2103 fro/sqrt2=0.946 cap_scale=0.529 spec=0.244 rC[prod cap]=0.1565 rC[spectral cap .5]=0.1102 rC[no cap]=0.1102
+n=1024 rot=0.05 rC_in=0.0816 fro/sqrt2=0.634 cap_scale=0.789 spec=0.133 rC[prod cap]=0.0535 rC[spectral cap .5]=0.0464 rC[no cap]=0.0464
+n=1024 rot=0.2 rC_in=0.2002 fro/sqrt2=0.854 cap_scale=0.585 spec=0.184 rC[prod cap]=0.1434 rC[spectral cap .5]=0.1040 rC[no cap]=0.1040

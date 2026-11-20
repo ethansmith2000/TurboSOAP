@@ -1,0 +1,20 @@
+{
+ "status": "completed",
+ "arms": [
+  "bf16_w10_qr50",
+  "bf16_hh_qr10",
+  "bf16_cq_qr10",
+  "bf16_cq_qr20",
+  "bf16_w10_cq50_ns1"
+ ],
+ "completed": [
+  "bf16_w10_qr50",
+  "bf16_hh_qr10",
+  "bf16_cq_qr10",
+  "bf16_cq_qr20",
+  "bf16_w10_cq50_ns1"
+ ],
+ "active": null,
+ "started": 1795157345.8576834,
+ "elapsed_seconds": 3844.7242245674133
+}

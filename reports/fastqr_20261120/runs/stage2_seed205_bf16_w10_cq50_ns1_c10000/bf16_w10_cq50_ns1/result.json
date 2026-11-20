@@ -1,0 +1,283 @@
+{
+  "status": "completed",
+  "case": "bf16_w10_cq50_ns1",
+  "calls": 10000,
+  "seed": 205,
+  "initial_parameters_sha256": "7c39c511983fe2fb997bdedaa109b9d2d62b98da2764881dfaf8561f9509e698",
+  "initial_gradient_sha256": "518451bdc852e68130fc3d648c3f63136f8c36b57af92f31b510467112389642",
+  "validation": [
+    {
+      "call": 0,
+      "ce": 10.95194597542286,
+      "targets": 1047552,
+      "listed_tensor_hash_preservation_checked": true
+    },
+    {
+      "call": 50,
+      "ce": 7.154717665165663,
+      "targets": 1047552,
+      "listed_tensor_hash_preservation_checked": false
+    },
+    {
+      "call": 100,
+      "ce": 6.360254101455212,
+      "targets": 1047552,
+      "listed_tensor_hash_preservation_checked": false
+    },
+    {
+      "call": 200,
+      "ce": 5.767400685697794,
+      "targets": 1047552,
+      "listed_tensor_hash_preservation_checked": false
+    },
+    {
+      "call": 500,
+      "ce": 4.989985387772322,
+      "targets": 1047552,
+      "listed_tensor_hash_preservation_checked": false
+    },
+    {
+      "call": 1000,
+      "ce": 4.354172930121422,
+      "targets": 1047552,
+      "listed_tensor_hash_preservation_checked": false
+    },
+    {
+      "call": 1500,
+      "ce": 4.124691899865866,
+      "targets": 1047552,
+      "listed_tensor_hash_preservation_checked": false
+    },
+    {
+      "call": 2000,
+      "ce": 3.990985367447138,
+      "targets": 1047552,
+      "listed_tensor_hash_preservation_checked": false
+    },
+    {
+      "call": 2500,
+      "ce": 3.9007116984575987,
+      "targets": 1047552,
+      "listed_tensor_hash_preservation_checked": false
+    },
+    {
+      "call": 3000,
+      "ce": 3.83236382342875,
+      "targets": 1047552,
+      "listed_tensor_hash_preservation_checked": false
+    },
+    {
+      "call": 4000,
+      "ce": 3.7245204895734787,
+      "targets": 1047552,
+      "listed_tensor_hash_preservation_checked": false
+    },
+    {
+      "call": 5000,
+      "ce": 3.641649032011628,
+      "targets": 1047552,
+      "listed_tensor_hash_preservation_checked": true
+    },
+    {
+      "call": 6000,
+      "ce": 3.573862539604306,
+      "targets": 1047552,
+      "listed_tensor_hash_preservation_checked": false
+    },
+    {
+      "call": 7000,
+      "ce": 3.5162659231573343,
+      "targets": 1047552,
+      "listed_tensor_hash_preservation_checked": false
+    },
+    {
+      "call": 7500,
+      "ce": 3.4921643007546663,
+      "targets": 1047552,
+      "listed_tensor_hash_preservation_checked": false
+    },
+    {
+      "call": 8000,
+      "ce": 3.472594290971756,
+      "targets": 1047552,
+      "listed_tensor_hash_preservation_checked": false
+    },
+    {
+      "call": 9000,
+      "ce": 3.4414502196013927,
+      "targets": 1047552,
+      "listed_tensor_hash_preservation_checked": false
+    },
+    {
+      "call": 10000,
+      "ce": 3.4230579137802124,
+      "targets": 1047552,
+      "listed_tensor_hash_preservation_checked": true
+    }
+  ],
+  "parity": {
+    "eager_compiled": [
+      {
+        "event": "ordinary",
+        "fast": false,
+        "parameter_max_absolute": 0.0,
+        "state_relative_errors": {
+          "m": 0.0,
+          "v": 1.4863249816698954e-05,
+          "cl": 0.0,
+          "cr": 0.0,
+          "ql": 0.0,
+          "qr": 0.0
+        }
+      },
+      {
+        "event": "warm",
+        "fast": true,
+        "parameter_max_absolute": 0.0,
+        "state_relative_errors": {
+          "m": 0.0,
+          "v": 0.0,
+          "cl": 0.0,
+          "cr": 0.0,
+          "ql": 0.0,
+          "qr": 0.0
+        }
+      },
+      {
+        "event": "qr",
+        "fast": true,
+        "parameter_max_absolute": 0.0,
+        "state_relative_errors": {
+          "m": 0.0,
+          "v": 0.0,
+          "cl": 0.0,
+          "cr": 0.0,
+          "ql": 0.0,
+          "qr": 0.0
+        },
+        "ok_flags": [
+          true,
+          true
+        ]
+      }
+    ],
+    "arm": "bf16_w10_cq50_ns1",
+    "spec": {
+      "cls": "fast",
+      "frequency": 10,
+      "repair": 50,
+      "qr_kind": "cholqr",
+      "warm_ns_steps": 1
+    }
+  },
+  "matrix_state_bytes": 1245708320,
+  "peak_gpu_bytes": 8828312576,
+  "mean_optimizer_ms": 22.818743112835694,
+  "mean_step_ms": 316.4162181937042,
+  "optimizer_by_kind": {
+    "ordinary": 10.489459613084115,
+    "warm": 49.74740533883721,
+    "qr": 469.92185169765065
+  },
+  "max_absolute_gram": 0.1304640769958496,
+  "max_normalized_gram": 0.0023659500264475402,
+  "max_physical_m_error": 0.0071586440317332745,
+  "original_geometry_guard_passed": false,
+  "precision_specific_guard_passed": true,
+  "dynamo_counters": {
+    "stats": {
+      "calls_captured": 2060,
+      "unique_graphs": 12
+    },
+    "inductor": {
+      "pattern_matcher_count": 276,
+      "pattern_matcher_nodes": 276,
+      "fxgraph_cache_miss": 12,
+      "async_compile_cache_miss": 676,
+      "extern_calls": 392,
+      "async_compile_cache_hit": 338,
+      "triton_bundler_save_kernel": 4656,
+      "triton_bundler_save_static_autotuner": 12,
+      "benchmarking.InductorBenchmarker.benchmark": 468,
+      "benchmarking.InductorBenchmarker.benchmark_gpu": 468
+    },
+    "graph_break": {}
+  },
+  "elapsed_seconds": 3352.7589059509337,
+  "clean_cycle_calls": 9900,
+  "protocol": {
+    "model_seed": 205,
+    "validation_rows": 1024,
+    "validation_calls": [
+      50,
+      100,
+      200,
+      500,
+      1000,
+      1500,
+      2000,
+      2500,
+      3000,
+      4000,
+      5000,
+      6000,
+      7000,
+      7500,
+      8000,
+      9000,
+      10000
+    ],
+    "evaluation_hash_calls": [
+      0,
+      5000,
+      10000
+    ],
+    "diagnostic_calls": [
+      51,
+      101,
+      201,
+      501,
+      541,
+      1001,
+      1041,
+      1501,
+      1541,
+      1951,
+      1991,
+      5001,
+      5041,
+      9951,
+      9991
+    ],
+    "residual_calls": [
+      501,
+      1001,
+      1501,
+      1951,
+      5001,
+      9951
+    ],
+    "capture_calls": [
+      101,
+      201,
+      501,
+      1001,
+      1501,
+      2000,
+      5000,
+      10000
+    ],
+    "repeat_initial_backward": true,
+    "expected_startup": {
+      "initial_parameters_sha256": "7c39c511983fe2fb997bdedaa109b9d2d62b98da2764881dfaf8561f9509e698",
+      "initial_gradient_sha256": "518451bdc852e68130fc3d648c3f63136f8c36b57af92f31b510467112389642",
+      "initial_loss": 10.960616111755371,
+      "initial_norm": 11.122635841369629,
+      "initial_validation_ce": 10.95194597542286
+    },
+    "startup_reference": "paper BF16 full-horizon seed205 run (bf16_full_horizon_20261026_seed205/runs/bf16)",
+    "check_final_state_finite": true,
+    "arm_timeout_seconds": 7200
+  },
+  "initial_backward_repeat_passed": true
+}

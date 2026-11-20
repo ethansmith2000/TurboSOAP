@@ -1,0 +1,26 @@
+gpu-claim: refresh-study/pb-replay-d1024 holds GPU 3 (shared, up to 3 jobs)
+d1024 dim1024 age 0 t=4s rC prod=0.002 pb1_r1e-4_c0.5=0.002 relgap_r1e-4_c0.5=0.002 jac1_c0.5=0.002
+d1024 dim1024 age 200 t=11s rC prod=0.159 pb1_r1e-4_c0.5=0.167 relgap_r1e-4_c0.5=0.174 jac1_c0.5=0.160
+d1024 dim1024 age 400 t=19s rC prod=0.129 pb1_r1e-4_c0.5=0.137 relgap_r1e-4_c0.5=0.138 jac1_c0.5=0.130
+d1024 dim1024 age 600 t=27s rC prod=0.151 pb1_r1e-4_c0.5=0.157 relgap_r1e-4_c0.5=0.162 jac1_c0.5=0.154
+d1024 dim1024 age 800 t=34s rC prod=0.132 pb1_r1e-4_c0.5=0.136 relgap_r1e-4_c0.5=0.137 jac1_c0.5=0.131
+d1024 dim1024 age 1000 t=42s rC prod=0.145 pb1_r1e-4_c0.5=0.146 relgap_r1e-4_c0.5=0.147 jac1_c0.5=0.147
+d1024 dim2048 age 0 t=43s rC prod=0.002 pb1_r1e-4_c0.5=0.002 relgap_r1e-4_c0.5=0.002 jac1_c0.5=0.002
+d1024 dim2048 age 200 t=49s rC prod=0.076 pb1_r1e-4_c0.5=0.078 relgap_r1e-4_c0.5=0.080 jac1_c0.5=0.076
+d1024 dim2048 age 400 t=54s rC prod=0.056 pb1_r1e-4_c0.5=0.069 relgap_r1e-4_c0.5=0.071 jac1_c0.5=0.056
+d1024 dim2048 age 600 t=60s rC prod=0.142 pb1_r1e-4_c0.5=0.173 relgap_r1e-4_c0.5=0.171 jac1_c0.5=0.142
+d1024 dim2048 age 800 t=65s rC prod=0.067 pb1_r1e-4_c0.5=0.077 relgap_r1e-4_c0.5=0.079 jac1_c0.5=0.067
+d1024 dim2048 age 1000 t=71s rC prod=0.093 pb1_r1e-4_c0.5=0.096 relgap_r1e-4_c0.5=0.096 jac1_c0.5=0.093
+d1024 dim3072 age 0 t=72s rC prod=0.002 pb1_r1e-4_c0.5=0.002 relgap_r1e-4_c0.5=0.002 jac1_c0.5=0.002
+d1024 dim3072 age 200 t=82s rC prod=0.243 pb1_r1e-4_c0.5=0.267 relgap_r1e-4_c0.5=0.279 jac1_c0.5=0.243
+d1024 dim3072 age 400 t=92s rC prod=0.430 pb1_r1e-4_c0.5=0.437 relgap_r1e-4_c0.5=0.445 jac1_c0.5=0.430
+d1024 dim3072 age 600 t=103s rC prod=0.446 pb1_r1e-4_c0.5=0.432 relgap_r1e-4_c0.5=0.444 jac1_c0.5=0.446
+d1024 dim3072 age 800 t=113s rC prod=0.481 pb1_r1e-4_c0.5=0.473 relgap_r1e-4_c0.5=0.492 jac1_c0.5=0.481
+d1024 dim3072 age 1000 t=123s rC prod=0.505 pb1_r1e-4_c0.5=0.518 relgap_r1e-4_c0.5=0.517 jac1_c0.5=0.505
+d1024 dim4096 age 0 t=126s rC prod=0.002 pb1_r1e-4_c0.5=0.002 relgap_r1e-4_c0.5=0.002 jac1_c0.5=0.002
+d1024 dim4096 age 200 t=149s rC prod=0.444 pb1_r1e-4_c0.5=0.440 relgap_r1e-4_c0.5=0.444 jac1_c0.5=0.447
+d1024 dim4096 age 400 t=171s rC prod=0.465 pb1_r1e-4_c0.5=0.469 relgap_r1e-4_c0.5=0.467 jac1_c0.5=0.467
+d1024 dim4096 age 600 t=193s rC prod=0.513 pb1_r1e-4_c0.5=0.516 relgap_r1e-4_c0.5=0.524 jac1_c0.5=0.514
+d1024 dim4096 age 800 t=225s rC prod=0.499 pb1_r1e-4_c0.5=0.508 relgap_r1e-4_c0.5=0.502 jac1_c0.5=0.496
+d1024 dim4096 age 1000 t=253s rC prod=0.538 pb1_r1e-4_c0.5=0.538 relgap_r1e-4_c0.5=0.537 jac1_c0.5=0.536
+wrote /workspace/TurboSOAP/reports/refresh_study_20261120/replay_pb_parts/replay_pb_d1024.json

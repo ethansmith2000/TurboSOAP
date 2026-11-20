@@ -1,0 +1,8 @@
+m=256 n=256 Q_R normalized Gram err=0.0024 rel err(B_ema vs Q^T C Q) after 10 steps=6.96e-04 offdiag-only rel err=1.80e-03
+m=512 n=256 Q_R normalized Gram err=0.0024 rel err(B_ema vs Q^T C Q) after 10 steps=9.18e-04 offdiag-only rel err=1.80e-03
+m=256 n=768 Q_R normalized Gram err=0.0024 rel err(B_ema vs Q^T C Q) after 10 steps=4.24e-04 offdiag-only rel err=1.81e-03
+Product count per warm refresh (per factor, n x n):
+  current: B = Q^T C Q (2) + Q A (1) + 2 x NS (2 each = 4)  = 7
+  B kept in frame: Q A (1) + NS (4) + rotate B: R^T B R (2) = 7, or first-order B + BA - AB (2) = 7
+  => saving needs a cheaper B rotation (e.g. only diag + first-order offdiag update) or NS done on R in the
+     small/structured frame; per ordinary step the EMA of Gbar Gbar^T costs the same as G G^T (m x n x m).

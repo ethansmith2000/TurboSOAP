@@ -2,12 +2,28 @@
 \section{2. Relationship to existing
 work}\label{relationship-to-existing-work}}
 
+Kronecker-factored methods approximate a large curvature or
+gradient-covariance matrix with small per-dimension factors: K-FAC
+approximates layerwise Fisher blocks as Kronecker products
+\citep{martens2015optimizing}, Shampoo keeps one preconditioning matrix
+per tensor dimension \citep{gupta2018shampoo}, and Shampoo has been
+engineered for large-scale distributed training
+\citep{anil2020scalable,shi2023distributed}. EKFAC tracks a diagonal
+variance in a Kronecker-factored eigenbasis rather than in parameter
+coordinates, which admits cheap partial updates \citep{george2018fast}.
+SOAP does the analogous thing for Shampoo, running Adam \citep{kingma2014adam}
+in the eigenbasis of Shampoo's preconditioner; because that basis is
+recomputed only periodically, the second-moment average keeps adapting
+in a slowly changing coordinate system between refreshes
+\citep{vyas2024soap}. TurboSOAP keeps this structure and changes how
+most of those refreshes are computed.
+
 Vyas et al.~describe SOAP's rotated-coordinate adaptive updates and the
 use of infrequent basis refinement: a warm-started power iteration
 followed by QR (Algorithm 4). Thus both arms already reuse the preceding
 basis. SOAP also discusses lower-precision state and the FP32 minimum
 for its QR implementation (§§7.2.1, 7.3.1, 8). We retain the FP32 solver
-island, use QR every 50 ages with intermediate dense motion, and store
+island, use QR every 50 ages with intermediate basis tracking, and store
 persistent matrix state in BF16. Our stock matrix memory settings, model
 and auxiliary recipe are specified separately.
 \citep{vyas2024soap}.
@@ -15,8 +31,9 @@ and auxiliary recipe are specified separately.
 Milligan et al.~store the basis-coordinate preconditioner and use
 subspace updates, including QR within selected blocks; they also study
 BF16 storage. Our implementation instead stores world-coordinate
-covariance factors and updates the full basis with dense damped motion
-and fixed QR repair. We do not maintain their persistent
+covariance factors and updates the full basis, coupling all coordinate
+pairs without blocking or subspace restriction, with damped motion and
+fixed QR repair. We do not maintain their persistent
 basis-coordinate representation or establish a performance ranking
 against it. \citep{milligan2026reparametrizing}, §§3.1--3.2.
 
@@ -27,15 +44,18 @@ decisions. Their analysis is relevant context, rather than a directly
 measured comparator in this study.
 \citep{eschenhagen2025purifying}, §4.
 
-Warm reuse, subspace updates, low-precision storage, and compilation are
-existing ideas. The distinction studied here is their particular dense
-update, repair, state-history, and precision policy. Direct comparisons
-with subspace or adaptive implementations remain outside this
+Warm reuse, subspace updates \citep{oja1982simplified,yang1995projection},
+low-precision storage \citep{micikevicius2017mixed,kalamkar2019study},
+and compilation \citep{ansel2024pytorch} are
+existing ideas. The distinction studied here is the particular full-basis
+tracking update, repair schedule, state history, and precision policy. Direct comparisons
+with subspace \citep{milligan2026reparametrizing} or adaptive
+\citep{eschenhagen2025purifying,nam2026foam} implementations remain outside this
 experiment. Low-precision bases plus orthogonality correction are also
 prior work: Wang et al.~quantize Shampoo eigenvector matrices and apply
-Björck orthonormalization (§3.2). Our BF16 dense SOAP policy is not a
+Björck orthonormalization (§3.2). Our BF16 SOAP policy is not a
 new instance of that general idea.
 \citep{wang2024fourbit}. The
 numerical ingredients also have classical lineage: Jacobi eigensolvers
 use plane rotations \citep{forsythe1960cyclic}, and iterative polar orthogonalization predates this
-work \citep{bjorck1971iterative}.
+work \citep{bjorck1971iterative,higham2008functions,jordan2024muon}.

@@ -1,0 +1,12 @@
+{
+ "status": "completed",
+ "arms": [
+  "fp32s_hh_qr10"
+ ],
+ "completed": [
+  "fp32s_hh_qr10"
+ ],
+ "active": null,
+ "started": 1795176621.8410208,
+ "elapsed_seconds": 853.5336134433746
+}

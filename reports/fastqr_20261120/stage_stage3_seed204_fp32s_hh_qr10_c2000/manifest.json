@@ -1,0 +1,110 @@
+{
+ "arms": [
+  "fp32s_hh_qr10"
+ ],
+ "calls": 2000,
+ "seed": 204,
+ "schedule_horizon": 10000,
+ "specs": {
+  "fp32s_hh_qr10": {
+   "cls": "production",
+   "frequency": 10,
+   "repair": 10,
+   "state_dtype": "float32",
+   "basis_dtype": "float32"
+  }
+ },
+ "protocols": {
+  "fp32s_hh_qr10": {
+   "model_seed": 204,
+   "validation_rows": 1024,
+   "validation_calls": [
+    50,
+    100,
+    200,
+    500,
+    1000,
+    1500,
+    2000
+   ],
+   "evaluation_hash_calls": [
+    0,
+    1000,
+    2000
+   ],
+   "diagnostic_calls": [
+    51,
+    101,
+    201,
+    501,
+    541,
+    1001,
+    1041,
+    1501,
+    1541,
+    1951,
+    1991
+   ],
+   "residual_calls": [
+    501,
+    1001,
+    1501,
+    1951
+   ],
+   "capture_calls": [
+    101,
+    201,
+    501,
+    1001,
+    1501,
+    2000
+   ],
+   "repeat_initial_backward": true,
+   "expected_startup": {
+    "initial_parameters_sha256": "24da908288be7ee828bd2a8221ac637b870c0c219b05964b3517c576b0a7da79",
+    "initial_gradient_sha256": "7936c3f658be84b84ee780a52876bc2a3cda2771d0b30596cff715f47a81deb2",
+    "initial_loss": 10.963447570800781,
+    "initial_norm": 11.2014741897583,
+    "initial_validation_ce": 10.966108478605747
+   },
+   "startup_reference": "paper verified full BF16 seed204 replication (bf16_refresh_controls manifest)",
+   "check_final_state_finite": true,
+   "arm_timeout_seconds": 3600
+  }
+ },
+ "source_files": {
+  "benchmarks/bf16_storage_screen.py": "9df9ee4834a0ea7aed9b81b82ad5180b103751e66850843537243237761cab75",
+  "benchmarks/cifar_optimizers.py": "291a754e0cffb23a15c4a35190edc97256aabbf1fc47395dcca0c378e170d7e5",
+  "benchmarks/fastqr_training.py": "5083a9f87e9282a105c357aa067857b0a8e12e6b04fd825b5c07e3f4d63eb547",
+  "benchmarks/owt_restart.py": "997d965615d0086873973fd423a63330247d0630ed3d69d214358fb38af2ce6f",
+  "benchmarks/tensor_ownership.py": "1f1beacc7040cf267f41c002de814d39fbfb18a906db7b84bd053a3f028da237",
+  "bf16_soap.py": "65812bc620addd902e75ed1b79bac26ec68ced4de44cfd5c65d3bc4acbbf50df",
+  "bf16_soap_fastqr.py": "ee696770d83817e59d8b79ff79397ba90b161cc22c74d40d72737e857ed78155",
+  "fast_soap.py": "5df19bf9112840ddf70a82af24f5bfcc8fc05940fd2d1d6071b7e9b3af5f47aa",
+  "soap.py": "7e0d811daac8247f28284c61846b85dfa290a8faa4182979cc870051ee32070e",
+  "soap_reference.py": "10f8b77a83742b849946177ee7c3f28cc169c638beedce4949132082ee0e119d",
+  "transformer.py": "276b0a4361b48c3eeb6930099267ebb8ac38dc07e5c0c48627d1f61e9580d7a9"
+ },
+ "inputs": {
+  "train.npy": "09e8fdeb7cf65d342b4909b8a8e9869390d66ab1673c9eb8e47912657c0684c8",
+  "validation.npy": "47ae2f8f9fd457d4abe59dd3f7db04471df5e968ecb9d81dcfcb7680f4d6fbce"
+ },
+ "production_bf16_soap_sha256": "65812bc620addd902e75ed1b79bac26ec68ced4de44cfd5c65d3bc4acbbf50df",
+ "paper_bf16_soap_sha256": "65812bc620addd902e75ed1b79bac26ec68ced4de44cfd5c65d3bc4acbbf50df",
+ "unit_check_receipts": {
+  "unit_cpu.json": "77e61b672c05a5e0bf0e70ecef240f30b492e6a6257dd84648c390624fd2ede3",
+  "unit_cuda_compiled.json": "6de9cdc58f2abff3a08b21f7d3fa68e54956f22086dc526f599410d067386018"
+ },
+ "created_at_utc": "2026-11-20T11:43:39.475003+00:00",
+ "save_final_weights": true,
+ "launch_environment": {
+  "CUBLAS_WORKSPACE_CONFIG": ":4096:8",
+  "OMP_NUM_THREADS": "4",
+  "OPENBLAS_NUM_THREADS": "1",
+  "MKL_NUM_THREADS": "4",
+  "TORCHINDUCTOR_COMPILE_THREADS": "2",
+  "HF_HUB_OFFLINE": "1",
+  "PYTHONDONTWRITEBYTECODE": "1"
+ },
+ "compiler_cache": "<bundle>/compiler_cache, shared sequentially by the campaign"
+}

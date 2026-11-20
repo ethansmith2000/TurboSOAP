@@ -1,0 +1,6 @@
+[32mActivated conda/uv virtual environment at [36m/venv/main[0m
+2026-11-20T09:13:46Z queued stage2_seed204_bf16_hh_qr10_c10000 pid 1392033
+2026-11-20T09:14:06Z queued stage2_seed204_bf16_w10_cq50_ns1_c10000 pid 1392746
+2026-11-20T09:14:26Z queued stage2_seed205_bf16_hh_qr10_c10000 pid 1393479
+2026-11-20T09:14:46Z queued stage2_seed205_bf16_w10_cq50_ns1_c10000 pid 1394186
+2026-11-20T11:07:49Z all done rc=0

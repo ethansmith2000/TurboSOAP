@@ -1,0 +1,13 @@
+front-loaded refresh events: [(11, 'qr'), (21, 'qr'), (31, 'qr'), (41, 'warm'), (51, 'qr'), (61, 'warm'), (71, 'warm'), (81, 'warm'), (91, 'warm'), (101, 'qr'), (111, 'warm'), (121, 'warm')]
+runner event_kind_for agrees every call: True
+events == QR10 through call 31 : True | events == warm10/QR50 after call 31 : True
+params bit-equal to CompiledSOAP(10,10) through call 41 (expected 40 i.e. first diff at the post-switch warm, call 41 )
+pb8 samples 37 error None kinds ['mid', 'post', 'pre']
+   {'call': 6, 'kind': 'mid', 'refresh_event': None, 'refresh_age': 0, 'p50': 0.175, 'p99': 0.412, 'p999': 0.427, 'max': 0.432, 'n': 81920}
+   {'call': 11, 'kind': 'pre', 'refresh_event': 'qr', 'refresh_age': 10, 'p50': 0.15, 'p99': 0.467, 'p999': 0.533, 'max': 0.58, 'n': 81920}
+   {'call': 12, 'kind': 'post', 'refresh_event': 'qr', 'refresh_age': 10, 'p50': 0.103, 'p99': 0.586, 'p999': 0.868, 'max': 2.735, 'n': 81920}
+   {'call': 16, 'kind': 'mid', 'refresh_event': None, 'refresh_age': 10, 'p50': 0.115, 'p99': 0.486, 'p999': 0.661, 'max': 0.933, 'n': 81920}
+   {'call': 21, 'kind': 'pre', 'refresh_event': 'qr', 'refresh_age': 20, 'p50': 0.12, 'p99': 0.447, 'p999': 0.578, 'max': 0.841, 'n': 81920}
+   {'call': 22, 'kind': 'post', 'refresh_event': 'qr', 'refresh_age': 20, 'p50': 0.099, 'p99': 0.473, 'p999': 0.678, 'max': 1.613, 'n': 81920}
+   {'call': 26, 'kind': 'mid', 'refresh_event': None, 'refresh_age': 20, 'p50': 0.107, 'p99': 0.439, 'p999': 0.584, 'max': 0.934, 'n': 81920}
+pb8 hook leaves trajectory unchanged: True

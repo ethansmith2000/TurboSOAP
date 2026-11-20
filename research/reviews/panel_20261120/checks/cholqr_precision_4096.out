@@ -1,0 +1,8 @@
+n=4096: kappa(C)~7.18e+03
+   chol_fp32              gram=0.0026 col_dist_mean=6.23e-06 max=2.82e-04
+   chol_tf32              gram=0.0043 col_dist_mean=1.74e-06 max=3.77e-04
+   chol2_fp32             gram=0.0024 col_dist_mean=-6.57e-08 max=4.17e-07
+   ridge0.0001_chol2_fp32 gram=0.0024 col_dist_mean=1.26e-03 max=3.12e-03
+   ridge0.0001_chol2_tf32 gram=0.0024 col_dist_mean=1.26e-03 max=3.12e-03
+   ridge0.001_chol2_fp32  gram=0.0024 col_dist_mean=1.52e-02 max=2.62e-02
+   ridge0.001_chol2_tf32  gram=0.0024 col_dist_mean=1.52e-02 max=2.62e-02

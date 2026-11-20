@@ -1,0 +1,42 @@
+2026-11-20T05:02:22Z launcher start stages=['probe'] max_concurrent=4 defer=refresh-study
+gpu-claim: untied-head/probe holds GPU 2
+{"event": "started", "elapsed_seconds": 4.731, "config": {"name": "E-adamw6.0e-4b999_H-adamw6.0e-4b999_s204_c150_probe", "seed": 204, "calls": 150, "E": {"opt": "adamw", "lr": 0.0006, "beta2": 0.999}, "H": {"opt": "adamw", "lr": 0.0006, "beta2": 0.999}, "tiny": false, "device": "cuda", "compile": true, "val_rows": 1024, "out": "/workspace/data/untied_head_20261120/runs/E-adamw6.0e-4b999_H-adamw6.0e-4b999_s204_c150_probe", "arm": "A0", "probe": true, "extra_eval_calls": []}, "initial_parameters_sha256": "1808ac86ae8ae6e0862226ff8cb2bcf84126f1a20d637a4a62c0a8fd5a89b1d7", "torch": "2.11.0+cu128", "cuda": "12.8", "gpu": "NVIDIA GeForce RTX 5090", "cuda_visible_devices": "2", "parameters": 147994368}
+/venv/main/lib/python3.12/site-packages/torch/nn/functional.py:2954: UserWarning: Mismatch dtype between input and weight: input dtype = c10::BFloat16, weight dtype = float, Cannot dispatch to fused implementation. (Triggered internally at /pytorch/aten/src/ATen/native/layer_norm.cpp:344.)
+  return torch.rms_norm(input, normalized_shape, weight, eps)
+{"event": "validation", "elapsed_seconds": 10.057, "call": 0, "ce": 10.99990977545907, "targets": 1047552, "ce_by_bucket": {"top1k": 11.011205921961368, "1k-10k": 10.976521111192664, "10k-30k": 10.976511041981897, "30k+": 10.993140673332409, "unseen": null}, "targets_by_bucket": {"top1k": 694611, "1k-10k": 242333, "10k-30k": 85983, "30k+": 24625, "unseen": 0}}
+{"event": "initial_gradient", "elapsed_seconds": 12.309, "loss": 10.993266105651855, "norm": 10.429272651672363, "sha256": "84e94452df8427b886aa9ecf652ac747e07ec7a62e0528e13ea5cdd79e9882ff"}
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+{"event": "validation", "elapsed_seconds": 48.251, "call": 50, "ce": 7.117257347632983, "targets": 1047552, "ce_by_bucket": {"top1k": 5.282328361845174, "1k-10k": 10.172947955039147, "10k-30k": 11.82545091439742, "30k+": 12.365686924542267, "unseen": null}, "targets_by_bucket": {"top1k": 694611, "1k-10k": 242333, "10k-30k": 85983, "30k+": 24625, "unseen": 0}}
+{"event": "update", "elapsed_seconds": 70.768, "call": 100, "loss": 6.501946449279785, "norm": 0.8011160492897034, "fb_ms": 289.3899150658399, "optimizer_ms": 12.184550985693932, "part_ms": {"matrix": 9.973437990993261, "rest": 0.5396408960223198, "E": 0.834861071780324, "H": 0.8366110268980265}, "diagnostic": true}
+{"event": "validation", "elapsed_seconds": 73.874, "call": 100, "ce": 6.337984890794774, "targets": 1047552, "ce_by_bucket": {"top1k": 4.348711240846785, "1k-10k": 9.497862798322199, "10k-30k": 11.680646491563976, "30k+": 12.699430327555856, "unseen": null}, "targets_by_bucket": {"top1k": 694611, "1k-10k": 242333, "10k-30k": 85983, "30k+": 24625, "unseen": 0}}
+{"event": "validation", "elapsed_seconds": 92.823, "call": 150, "ce": 6.004827331885159, "targets": 1047552, "ce_by_bucket": {"top1k": 4.023786132599353, "1k-10k": 9.09011239543015, "10k-30k": 11.400882120557137, "30k+": 12.681685982796141, "unseen": null}, "targets_by_bucket": {"top1k": 694611, "1k-10k": 242333, "10k-30k": 85983, "30k+": 24625, "unseen": 0}}
+{"event": "finished", "elapsed_seconds": 92.825, "status": "completed", "final_ce": 6.004827331885159, "step_ms": 315.80372218859895}
+{"event": "started", "elapsed_seconds": 4.551, "config": {"name": "E-soap6.0e-4b999_H-soap6.0e-4b999_s204_c150_probe", "seed": 204, "calls": 150, "E": {"opt": "soap", "lr": 0.0006, "beta2": 0.999}, "H": {"opt": "soap", "lr": 0.0006, "beta2": 0.999}, "tiny": false, "device": "cuda", "compile": true, "val_rows": 1024, "out": "/workspace/data/untied_head_20261120/runs/E-soap6.0e-4b999_H-soap6.0e-4b999_s204_c150_probe", "arm": "A2", "probe": true, "extra_eval_calls": []}, "initial_parameters_sha256": "1808ac86ae8ae6e0862226ff8cb2bcf84126f1a20d637a4a62c0a8fd5a89b1d7", "torch": "2.11.0+cu128", "cuda": "12.8", "gpu": "NVIDIA GeForce RTX 5090", "cuda_visible_devices": "2", "parameters": 147994368}
+/venv/main/lib/python3.12/site-packages/torch/nn/functional.py:2954: UserWarning: Mismatch dtype between input and weight: input dtype = c10::BFloat16, weight dtype = float, Cannot dispatch to fused implementation. (Triggered internally at /pytorch/aten/src/ATen/native/layer_norm.cpp:344.)
+  return torch.rms_norm(input, normalized_shape, weight, eps)
+{"event": "validation", "elapsed_seconds": 9.085, "call": 0, "ce": 10.99990977545907, "targets": 1047552, "ce_by_bucket": {"top1k": 11.011205921961368, "1k-10k": 10.976521111192664, "10k-30k": 10.976511041981897, "30k+": 10.993140673332409, "unseen": null}, "targets_by_bucket": {"top1k": 694611, "1k-10k": 242333, "10k-30k": 85983, "30k+": 24625, "unseen": 0}}
+{"event": "initial_gradient", "elapsed_seconds": 10.564, "loss": 10.993266105651855, "norm": 10.429272651672363, "sha256": "84e94452df8427b886aa9ecf652ac747e07ec7a62e0528e13ea5cdd79e9882ff"}
+{"event": "validation", "elapsed_seconds": 33.934, "call": 50, "ce": 8.419707416024849, "targets": 1047552, "ce_by_bucket": {"top1k": 7.202417915437137, "1k-10k": 10.702440713497401, "10k-30k": 11.041184282507494, "30k+": 11.13883934315328, "unseen": null}, "targets_by_bucket": {"top1k": 694611, "1k-10k": 242333, "10k-30k": 85983, "30k+": 24625, "unseen": 0}}
+{"event": "update", "elapsed_seconds": 51.126, "call": 100, "loss": 7.503774642944336, "norm": 1.2579113245010376, "fb_ms": 287.7045958302915, "optimizer_ms": 19.178791204467416, "part_ms": {"matrix": 10.007276199758053, "rest": 0.4870709963142872, "E": 4.245497053489089, "H": 4.438946954905987}, "diagnostic": true}
+{"event": "validation", "elapsed_seconds": 54.273, "call": 100, "ce": 7.382014173676152, "targets": 1047552, "ce_by_bucket": {"top1k": 5.870413899122407, "1k-10k": 10.017744593117852, "10k-30k": 11.026315470219751, "30k+": 11.357720171352328, "unseen": null}, "targets_by_bucket": {"top1k": 694611, "1k-10k": 242333, "10k-30k": 85983, "30k+": 24625, "unseen": 0}}
+{"event": "validation", "elapsed_seconds": 73.37, "call": 150, "ce": 6.535503252054449, "targets": 1047552, "ce_by_bucket": {"top1k": 4.765930174748563, "1k-10k": 9.440210894564842, "10k-30k": 11.152004891213414, "30k+": 11.74637623594255, "unseen": null}, "targets_by_bucket": {"top1k": 694611, "1k-10k": 242333, "10k-30k": 85983, "30k+": 24625, "unseen": 0}}
+{"event": "finished", "elapsed_seconds": 73.372, "status": "completed", "final_ce": 6.535503252054449, "step_ms": 318.055040777984}
+# Untied head/embedding study — generated tables
+
+Generated 2026-11-20 05:05 UTC; selection metric: validation CE at call 10000, seed 204.
+
+## Timing probe (150 calls, same GPU, sequential)
+
+| arm | step ms | fb ms | opt ms | matrix ms | E ms | H ms | rest ms | peak GiB | E+H state MiB |
+|---|---|---|---|---|---|---|---|---|---|
+| A0 | 315.8 | 287.8 | 28.0 | 25.8 | 0.83 | 0.83 | 0.48 | 8.81 | 589 |
+| A2 | 318.1 | 282.7 | 35.4 | 25.5 | 4.65 | 4.85 | 0.35 | 8.82 | 598 |
+
+2026-11-20T05:05:20Z probe exit 0

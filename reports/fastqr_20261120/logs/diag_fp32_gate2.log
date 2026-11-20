@@ -1,0 +1,6 @@
+gpu-claim: fastqr/diag_fp32_gate2 holds GPU 3
+[32mActivated conda/uv virtual environment at [36m/venv/main[0m
+claim 3 Fri Nov 20 14:59:04 UTC 2026
+asis exit 1 Fri Nov 20 15:00:15 UTC 2026
+bssparity exit 1 Fri Nov 20 15:01:31 UTC 2026
+cfp32_myrunner exit 1 Fri Nov 20 15:02:57 UTC 2026

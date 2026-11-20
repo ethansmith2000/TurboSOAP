@@ -1,0 +1,5 @@
+qr50: events [1, 51, 101] dtypes {'m': torch.bfloat16, 'v': torch.bfloat16, 'cl': torch.bfloat16, 'cr': torch.bfloat16, 'ql': torch.bfloat16, 'qr': torch.bfloat16}
+qr50 == cached bf16_qr50 config over 120 calls: True True
+fp32s qr10: events [1, 11, 21] dtypes {'m': torch.float32, 'v': torch.float32, 'cl': torch.float32, 'cr': torch.float32, 'ql': torch.float32, 'qr': torch.float32}
+compiled_fp32 dtypes {'m': torch.float32, 'v': torch.float32, 'cl': torch.float32, 'cr': torch.float32, 'ql': torch.float32, 'qr': torch.float32} events [1, 11, 21]
+fp32s_hh_qr10 == compiled_fp32 through call 11 (first refresh age 10 = call 11)

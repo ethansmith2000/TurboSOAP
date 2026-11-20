@@ -1,10 +1,23 @@
 \hypertarget{conclusion}{%
 \section{7. Conclusion}\label{conclusion}}
 
-TurboSOAP specifies and evaluates a dense BF16-state SOAP approximation
-with compiled matrix updates, damped tracking, and periodic QR repair.
-The two-seed case study yields a small consistent endpoint loss increase
-with lower matrix state and measured step time against the declared
-reference. Explicit precision and history rules, local QR attribution,
-and short cadence controls delimit that tradeoff and support
-reproducible follow-up comparisons.
+TurboSOAP keeps SOAP's refresh cadence but makes four of every five
+refreshes approximate: a warm refresh applies a matmul-only tracking
+step (a damped Jacobi-type rotation with Newton--Schulz orthogonality
+correction), and every fifth refresh is a QR repair. A call with a warm
+refresh costs about a tenth of one with a QR refresh. The
+implementation stores persistent matrix state in BF16 and compiles the
+matrix updates, retaining FP32 master parameters and decomposition
+islands. The two-seed case study yields a small consistent endpoint loss
+increase with lower matrix state and measured step time against the
+declared reference. Against QR10 in the same BF16 implementation,
+warm10/QR50 trails early, by 0.10--0.12 CE at call 500, and ends within
+0.002 CE on both seeds at 12.1\% lower step time, whereas with FP32
+state the approximation costs 0.007 CE at the endpoint (one seed).
+Refresh policy and implementation therefore interact, and the gap to
+the FP32 reference cannot be apportioned between them. Why the BF16
+implementation costs exact refreshes more than approximate ones, and
+whether warm refreshes improve on QR50 alone at the endpoint, are the
+main open questions. Explicit precision and
+history rules, local QR attribution, and short cadence controls delimit
+that tradeoff and support reproducible follow-up comparisons.

@@ -1,0 +1,870 @@
+queued 2026-11-20T02:15:36Z
+gpu-claim: refresh-study/microbench holds GPU 5
+started 2026-11-20T02:19:37Z gpu=5 load=51.69 175.89 156.22 16/4850 851106
+event regions {"ordinary": {"median_ms": 10.103327751159668, "p25_ms": 10.08570408821106, "p75_ms": 10.186352014541626, "wall_median_ms": 10.12604613788426, "wall_p25_ms": 10.108059912454337, "wall_p75_ms": 10.209765110630542, "matrix_only_median_ms": 9.377632141113281, "reps": 20}, "warm": {"median_ms": 61.065887451171875, "p25_ms": 60.76691913604736, "p75_ms": 62.605719566345215, "wall_median_ms": 61.08792289160192, "wall_p25_ms": 60.790780757088214, "wall_p75_ms": 62.628245214000344, "matrix_only_median_ms": 60.07068634033203, "reps": 20}, "qr": {"median_ms": 609.2183227539062, "p25_ms": 609.0062866210938, "p75_ms": 609.5002288818359, "wall_median_ms": 609.2399219051003, "wall_p25_ms": 609.0283369412646, "wall_p75_ms": 609.5241594011895, "matrix_only_median_ms": 608.2893676757812, "reps": 20}, "compile_s_first_three_events": 5.772301443153992, "warm_minus_ordinary_ms": 50.96255970001221, "qr_minus_ordinary_ms": 599.1149950027466, "note": "Synthetic random gradients; values do not affect op counts. Events forced by setting opt.call; state evolves across repetitions. 109M reference: ordinary 10.14, warm 61.61, QR 601.18 ms (synchronized host wall, training loop)."}
+== n=256 batch=1 t=37s load=['31.70', '155.20', '150.09']
+  input {'n': 256, 'batch': 1, 'input_rC_mean': 0.21231035888195038, 'input_gram_err_mean': 0.0023511452600359917, 'input_gram_err_max': 0.0023511452600359917, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E warm_bf16 1.3323520421981812 None
+   E qr 0.925216019153595 None
+   E eigh 4.7500481605529785 None
+   E cholqr 0.6009600162506104 None
+   C warm_bf16 0.7931839823722839 None
+   C qr 0.8938239812850952 None
+   C eigh 4.746784210205078 None
+   C cholqr 0.5999040007591248 None
+   E warm_fp32 1.287071943283081 None
+   C warm_fp32 0.8499199748039246 None
+   E transport_moment (256, 256) 0.3590399920940399 None
+   E v_permute (256, 256) 0.051263999193906784 None
+   C transport_moment (256, 256) 0.40761598944664 None
+   C v_permute (256, 256) 0.08726400136947632 None
+== n=512 batch=1 t=39s load=['29.72', '152.74', '149.32']
+  input {'n': 512, 'batch': 1, 'input_rC_mean': 0.20671185851097107, 'input_gram_err_mean': 0.002343070227652788, 'input_gram_err_max': 0.002343070227652788, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E warm_bf16 1.3450239896774292 None
+   E qr 1.8378880023956299 None
+   E eigh 12.016480445861816 None
+   E cholqr 0.6820160150527954 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   C warm_bf16 0.7991999983787537 None
+   C qr 1.8194880485534668 None
+   C eigh 11.998527526855469 None
+   C cholqr 0.6608960032463074 None
+   E warm_fp32 1.2920639514923096 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   C warm_fp32 0.853600025177002 None
+   E transport_moment (512, 512) 0.35843199491500854 None
+   E v_permute (512, 512) 0.05238400027155876 None
+   C transport_moment (512, 512) 0.4113920032978058 None
+   C v_permute (512, 512) 0.0883840024471283 None
+== n=768 batch=1 t=51s load=['26.32', '147.96', '147.80']
+  input {'n': 768, 'batch': 1, 'input_rC_mean': 0.2067759484052658, 'input_gram_err_mean': 0.0023609891068190336, 'input_gram_err_max': 0.0023609891068190336, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E warm_bf16 1.3759360313415527 None
+   E qr 2.8624958992004395 None
+   E eigh 6.654719829559326 None
+   E cholqr 0.8528640270233154 None
+   C warm_bf16 0.8353279829025269 None
+   C qr 2.908639907836914 None
+   C eigh 6.650656223297119 None
+   C cholqr 0.9112319946289062 None
+   E warm_fp32 1.328768014907837 None
+   C warm_fp32 0.88019198179245 None
+   E transport_moment (768, 768) 0.36928001046180725 None
+   E v_permute (768, 768) 0.05238400027155876 None
+   C transport_moment (768, 768) 0.42771199345588684 None
+   C v_permute (768, 768) 0.08767999708652496 None
+   E transport_moment (768, 1536) 0.3564159870147705 None
+   E v_permute (768, 1536) 0.05209600180387497 None
+   C transport_moment (768, 1536) 0.4143039882183075 None
+   C v_permute (768, 1536) 0.08668799698352814 None
+== n=1024 batch=1 t=53s load=['26.32', '147.96', '147.80']
+  input {'n': 1024, 'batch': 1, 'input_rC_mean': 0.20317745208740234, 'input_gram_err_mean': 0.002349137095734477, 'input_gram_err_max': 0.002349137095734477, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E warm_bf16 1.3809599876403809 None
+   E qr 4.022111892700195 None
+   E eigh 8.800800323486328 None
+   E cholqr 1.0432000160217285 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   C warm_bf16 0.8377599716186523 None
+   C qr 4.056543827056885 None
+   C eigh 8.80128002166748 None
+   C cholqr 1.0893759727478027 None
+   E warm_fp32 1.3245760202407837 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   C warm_fp32 0.8782719969749451 None
+   E transport_moment (1024, 1024) 0.374752014875412 None
+   E v_permute (1024, 1024) 0.0525440014898777 None
+   C transport_moment (1024, 1024) 0.4342400133609772 None
+   C v_permute (1024, 1024) 0.08787199854850769 None
+== n=1536 batch=1 t=60s load=['23.59', '143.36', '146.31']
+  input {'n': 1536, 'batch': 1, 'input_rC_mean': 0.2052873969078064, 'input_gram_err_mean': 0.0023436432238668203, 'input_gram_err_max': 0.0023436432238668203, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E warm_bf16 1.3672640323638916 None
+   E qr 6.879007816314697 None
+   E eigh 14.836095809936523 None
+   E cholqr 1.5029120445251465 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   C warm_bf16 0.8022720217704773 None
+   C qr 6.934144020080566 None
+   C eigh 14.865920066833496 None
+   C cholqr 1.5255999565124512 None
+   E warm_fp32 1.305184006690979 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   C warm_fp32 0.86080002784729 None
+   E transport_moment (1536, 1536) 0.37302398681640625 None
+   E v_permute (1536, 1536) 0.052000001072883606 None
+   C transport_moment (1536, 1536) 0.4127359986305237 None
+   C v_permute (1536, 1536) 0.08822400122880936 None
+== n=2048 batch=1 t=69s load=['22.26', '141.10', '145.56']
+  input {'n': 2048, 'batch': 1, 'input_rC_mean': 0.20076964795589447, 'input_gram_err_mean': 0.002343992469832301, 'input_gram_err_max': 0.002343992469832301, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E warm_bf16 1.3796160221099854 None
+   E qr 9.935903549194336 None
+   E eigh 21.464736938476562 None
+   E cholqr 2.0757761001586914 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   C warm_bf16 0.920960009098053 None
+   C qr 9.9136323928833 None
+   C eigh 21.445280075073242 None
+   C cholqr 2.0562241077423096 None
+   E warm_fp32 1.4847999811172485 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   C warm_fp32 1.143231987953186 None
+   E transport_moment (2048, 2048) 0.4903999865055084 None
+   E v_permute (2048, 2048) 0.05241600051522255 None
+   C transport_moment (2048, 2048) 0.5403519868850708 None
+   C v_permute (2048, 2048) 0.08841600269079208 None
+== n=2304 batch=1 t=78s load=['19.60', '136.62', '144.05']
+  input {'n': 2304, 'batch': 1, 'input_rC_mean': 0.19955842196941376, 'input_gram_err_mean': 0.002345699816942215, 'input_gram_err_max': 0.002345699816942215, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E warm_bf16 1.4524480104446411 None
+   E qr 11.922752380371094 None
+   E eigh 27.429311752319336 None
+   E cholqr 2.3778879642486572 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   C warm_bf16 1.0265920162200928 None
+   C qr 11.892895698547363 None
+   C eigh 27.341983795166016 None
+   C cholqr 2.3481600284576416 None
+   E warm_fp32 1.6080000400543213 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   C warm_fp32 1.2879999876022339 None
+   E transport_moment (2304, 2304) 0.5472319722175598 None
+   E v_permute (2304, 2304) 0.053247999399900436 None
+   C transport_moment (2304, 2304) 0.5998719930648804 None
+   C v_permute (2304, 2304) 0.0883840024471283 None
+   E transport_moment (2304, 768) 0.3583360016345978 None
+   E v_permute (2304, 768) 0.05276799947023392 None
+   C transport_moment (2304, 768) 0.4113920032978058 None
+   C v_permute (2304, 768) 0.08764799684286118 None
+== n=3072 batch=1 t=89s load=['16.43', '130.19', '141.83']
+  input {'n': 3072, 'batch': 1, 'input_rC_mean': 0.19972670078277588, 'input_gram_err_mean': 0.0023512747138738632, 'input_gram_err_max': 0.0023512747138738632, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E warm_bf16 3.228032112121582 None
+   E qr 18.229408264160156 None
+   E eigh 44.36329650878906 None
+   E cholqr 4.112768173217773 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   C warm_bf16 2.2860798835754395 None
+   C qr 18.15065574645996 None
+   C eigh 44.31657409667969 None
+   C cholqr 4.021376132965088 None
+   E warm_fp32 3.6437759399414062 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   C warm_fp32 2.962399959564209 None
+   E transport_moment (3072, 3072) 1.237023949623108 None
+   E v_permute (3072, 3072) 0.07107199728488922 None
+   C transport_moment (3072, 3072) 1.2884160280227661 None
+   C v_permute (3072, 3072) 0.08844800293445587 None
+   E transport_moment (3072, 768) 0.3739840090274811 None
+   E v_permute (3072, 768) 0.05225599929690361 None
+   C transport_moment (3072, 768) 0.4232960045337677 None
+   C v_permute (3072, 768) 0.08844800293445587 None
+== n=4096 batch=1 t=103s load=['14.75', '126.08', '140.37']
+  input {'n': 4096, 'batch': 1, 'input_rC_mean': 0.19824738800525665, 'input_gram_err_mean': 0.002350232796743512, 'input_gram_err_max': 0.002350232796743512, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E warm_bf16 7.870368003845215 None
+   E qr 28.07254409790039 None
+   E eigh 77.23808288574219 None
+   E cholqr 7.04640007019043 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   C warm_bf16 5.766848087310791 None
+   C qr 27.848384857177734 None
+   C eigh 76.76070404052734 None
+   C cholqr 6.8064961433410645 None
+   E warm_fp32 8.680159568786621 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   C warm_fp32 7.165791988372803 None
+   E transport_moment (4096, 4096) 3.136159896850586 None
+   E v_permute (4096, 4096) 0.12188799679279327 None
+   C transport_moment (4096, 4096) 3.177824020385742 None
+   C v_permute (4096, 4096) 0.10268799960613251 None
+== n=6144 batch=1 t=121s load=['11.91', '118.22', '137.48']
+  input {'n': 6144, 'batch': 1, 'input_rC_mean': 0.19759878516197205, 'input_gram_err_mean': 0.0023430257569998503, 'input_gram_err_max': 0.0023430257569998503, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E warm_bf16 21.132863998413086 None
+   E qr 63.048160552978516 None
+   E eigh 228.905029296875 None
+   E cholqr 18.431167602539062 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   C warm_bf16 15.2423677444458 None
+   C qr 62.51036834716797 None
+   C eigh 227.51266479492188 None
+   C cholqr 17.60848045349121 None
+   E warm_fp32 24.43267250061035 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   C warm_fp32 20.119871139526367 None
+   E transport_moment (6144, 6144) 8.179776191711426 None
+   E v_permute (6144, 6144) 0.3782399892807007 None
+   C transport_moment (6144, 6144) 8.045920372009277 None
+   C v_permute (6144, 6144) 0.2061759978532791 None
+== n=8192 batch=1 t=152s load=['10.19', '107.64', '133.34']
+  input {'n': 8192, 'batch': 1, 'input_rC_mean': 0.19933345913887024, 'input_gram_err_mean': 0.0023423228412866592, 'input_gram_err_max': 0.0023423228412866592, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E warm_bf16 46.867488861083984 None
+   E qr 113.59603118896484 None
+   E eigh 576.3619384765625 None
+   E cholqr 39.040096282958984 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   C warm_bf16 37.185054779052734 None
+   C qr 112.36803436279297 None
+   C eigh 573.4893188476562 None
+   C cholqr 37.62736129760742 None
+   E warm_fp32 55.84435272216797 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   C warm_fp32 48.44825744628906 None
+   E transport_moment (8192, 8192) 20.146047592163086 None
+   E v_permute (8192, 8192) 0.7163199782371521 None
+   C transport_moment (8192, 8192) 20.08255958557129 None
+   C v_permute (8192, 8192) 0.37667199969291687 None
+== n=256 batch=12 t=200s load=['8.14', '92.06', '126.69']
+  input {'n': 256, 'batch': 12, 'input_rC_mean': 0.2114291936159134, 'input_gram_err_mean': 0.00236573654304569, 'input_gram_err_max': 0.00237700785510242, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E warm_bf16 1.3225599527359009 None
+   E qr 7.499296188354492 None
+   E eigh 54.21971130371094 None
+   E cholqr 0.8256959915161133 None
+   C warm_bf16 0.8021119832992554 None
+   C qr 7.454048156738281 None
+   C eigh 54.12579345703125 None
+   C cholqr 0.818943977355957 None
+   E warm_fp32 1.2857919931411743 None
+   C warm_fp32 0.8422399759292603 None
+   E transport_moment (256, 256) 0.35158398747444153 None
+   E v_permute (256, 256) 0.05113599821925163 None
+   C transport_moment (256, 256) 0.40278398990631104 None
+   C v_permute (256, 256) 0.0867839977145195 None
+== n=512 batch=12 t=207s load=['8.13', '90.66', '126.06']
+  input {'n': 512, 'batch': 12, 'input_rC_mean': 0.20934706926345825, 'input_gram_err_mean': 0.0023475073006314537, 'input_gram_err_max': 0.0023594663944095373, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E warm_bf16 1.3253439664840698 None
+   E qr 18.480607986450195 None
+   E eigh 142.2678985595703 None
+   E cholqr 1.3142399787902832 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   C warm_bf16 0.8060479760169983 None
+   C qr 18.27529525756836 None
+   C eigh 141.9806671142578 None
+   C cholqr 1.2492799758911133 None
+   E warm_fp32 1.286303997039795 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   C warm_fp32 0.858784019947052 None
+   E transport_moment (512, 512) 0.3684160113334656 None
+   E v_permute (512, 512) 0.05190400034189224 None
+   C transport_moment (512, 512) 0.405023992061615 None
+   C v_permute (512, 512) 0.08816000074148178 None
+== n=768 batch=12 t=229s load=['7.35', '83.86', '122.87']
+  input {'n': 768, 'batch': 12, 'input_rC_mean': 0.20534217357635498, 'input_gram_err_mean': 0.002356133481953293, 'input_gram_err_max': 0.002362398663535714, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E warm_bf16 1.3664000034332275 None
+   E qr 30.83616065979004 None
+   E eigh 78.06169891357422 None
+   E cholqr 2.0637760162353516 None
+   C warm_bf16 0.8256319761276245 None
+   C qr 30.755807876586914 None
+   C eigh 77.7220458984375 None
+   C cholqr 2.0469439029693604 None
+   E warm_fp32 1.3202879428863525 None
+   C warm_fp32 0.9087039828300476 None
+   E transport_moment (768, 768) 0.39420801401138306 None
+   E v_permute (768, 768) 0.05251200124621391 None
+   C transport_moment (768, 768) 0.43193599581718445 None
+   C v_permute (768, 768) 0.0872960016131401 None
+   E transport_moment (768, 1536) 0.7820799946784973 None
+   E v_permute (768, 1536) 0.07958400249481201 None
+   C transport_moment (768, 1536) 0.8373439908027649 None
+   C v_permute (768, 1536) 0.08700799942016602 None
+== n=1024 batch=12 t=241s load=['7.14', '81.30', '121.61']
+  input {'n': 1024, 'batch': 12, 'input_rC_mean': 0.2032790184020996, 'input_gram_err_mean': 0.00235236775673305, 'input_gram_err_max': 0.0023570337798446417, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E warm_bf16 2.5343680381774902 None
+   E qr 45.46531295776367 None
+   E eigh 104.03404998779297 None
+   E cholqr 3.4588799476623535 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   C warm_bf16 1.224287986755371 None
+   C qr 45.36502456665039 None
+   C eigh 103.8891830444336 None
+   C cholqr 3.354464054107666 None
+   E warm_fp32 2.581376075744629 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   C warm_fp32 1.5722559690475464 None
+   E transport_moment (1024, 1024) 0.6425279974937439 None
+   E v_permute (1024, 1024) 0.07171200215816498 None
+   C transport_moment (1024, 1024) 0.6964160203933716 None
+   C v_permute (1024, 1024) 0.08854400366544724 None
+== n=1536 batch=12 t=262s load=['6.52', '76.35', '119.13']
+  input {'n': 1536, 'batch': 12, 'input_rC_mean': 0.20176191627979279, 'input_gram_err_mean': 0.002344067247274021, 'input_gram_err_max': 0.0023461400996893644, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E warm_bf16 7.882400035858154 None
+   E qr 81.36486053466797 None
+   E eigh 177.64866638183594 None
+   E cholqr 7.8697919845581055 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   C warm_bf16 3.9695680141448975 None
+   C qr 80.87904357910156 None
+   C eigh 176.88021850585938 None
+   C cholqr 7.4100799560546875 None
+   E warm_fp32 7.977695941925049 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   C warm_fp32 5.08684778213501 None
+   E transport_moment (1536, 1536) 1.8608319759368896 None
+   E v_permute (1536, 1536) 0.18143999576568604 None
+   C transport_moment (1536, 1536) 1.9017280340194702 None
+   C v_permute (1536, 1536) 0.12511999905109406 None
+== n=2048 batch=12 t=290s load=['6.26', '69.60', '115.52']
+  input {'n': 2048, 'batch': 12, 'input_rC_mean': 0.20163314044475555, 'input_gram_err_mean': 0.0023437628600125513, 'input_gram_err_max': 0.002345454413443804, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E warm_bf16 16.085920333862305 None
+   E qr 118.18256378173828 None
+   E eigh 258.87841796875 None
+   E cholqr 14.607295989990234 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   C warm_bf16 8.775391578674316 None
+   C qr 117.40380859375 None
+   C eigh 257.0798034667969 None
+   C cholqr 13.881440162658691 None
+   E warm_fp32 16.633663177490234 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   C warm_fp32 11.425919532775879 None
+   E transport_moment (2048, 2048) 4.458752155303955 None
+   E v_permute (2048, 2048) 0.3240639865398407 None
+   C transport_moment (2048, 2048) 4.207295894622803 None
+   C v_permute (2048, 2048) 0.18585599958896637 None
+== n=2304 batch=12 t=323s load=['6.03', '63.50', '112.03']
+  input {'n': 2304, 'batch': 12, 'input_rC_mean': 0.2015005499124527, 'input_gram_err_mean': 0.0023461022259046635, 'input_gram_err_max': 0.0023485985584557056, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E warm_bf16 21.519935607910156 None
+   E qr 143.459228515625 None
+   E eigh 329.9580383300781 None
+   E cholqr 19.247936248779297 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   C warm_bf16 12.19382381439209 None
+   C qr 142.1168975830078 None
+   C eigh 327.4880065917969 None
+   C cholqr 18.02796745300293 None
+   E warm_fp32 22.404544830322266 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   C warm_fp32 15.883008003234863 None
+   E transport_moment (2304, 2304) 6.285151958465576 None
+   E v_permute (2304, 2304) 0.3927040100097656 None
+   C transport_moment (2304, 2304) 6.0109758377075195 None
+   C v_permute (2304, 2304) 0.23468799889087677 None
+   E transport_moment (2304, 768) 1.4500479698181152 None
+   E v_permute (2304, 768) 0.12432000041007996 None
+   C transport_moment (2304, 768) 1.4729280471801758 None
+   C v_permute (2304, 768) 0.088128000497818 None
+== n=3072 batch=12 t=361s load=['6.45', '56.44', '107.61']
+  input {'n': 3072, 'batch': 12, 'input_rC_mean': 0.19943498075008392, 'input_gram_err_mean': 0.002351517148781568, 'input_gram_err_max': 0.0023529494646936655, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E warm_bf16 45.169151306152344 None
+   E qr 219.35804748535156 None
+   E eigh 534.0571899414062 None
+   E cholqr 38.68102264404297 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   C warm_bf16 29.55196762084961 None
+   C qr 216.96954345703125 None
+   C eigh 533.1597900390625 None
+   C cholqr 36.34988784790039 None
+   E warm_fp32 48.2968635559082 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   C warm_fp32 36.41632080078125 None
+   E transport_moment (3072, 3072) 14.984160423278809 None
+   E v_permute (3072, 3072) 0.7936000227928162 None
+   C transport_moment (3072, 3072) 14.78495979309082 None
+   C v_permute (3072, 3072) 0.37376001477241516 None
+   E transport_moment (3072, 768) 2.35097599029541 None
+   E v_permute (3072, 768) 0.17215999960899353 None
+   C transport_moment (3072, 768) 2.315455913543701 None
+   C v_permute (3072, 768) 0.12134400010108948 None
+== n=4096 batch=12 t=409s load=['4.89', '48.32', '102.16']
+  input {'n': 4096, 'batch': 12, 'input_rC_mean': 0.20069293677806854, 'input_gram_err_mean': 0.002350878707754115, 'input_gram_err_max': 0.0023514272179454565, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E warm_bf16 93.6185302734375 None
+   E qr 336.41522216796875 None
+   E eigh 925.439697265625 None
+   E cholqr 78.72003173828125 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   C warm_bf16 66.51007843017578 None
+   C qr 332.33587646484375 None
+   C eigh 924.3836059570312 None
+   C cholqr 74.79373168945312 None
+   E warm_fp32 102.54291534423828 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   C warm_fp32 81.87120056152344 None
+   E transport_moment (4096, 4096) 34.530433654785156 None
+   E v_permute (4096, 4096) 1.7514879703521729 None
+   C transport_moment (4096, 4096) 34.42524719238281 None
+   C v_permute (4096, 4096) 0.6534079909324646 None
+== n=6144 batch=12 t=485s load=['2.94', '38.10', '94.41']
+  input {'n': 6144, 'batch': 12, 'input_rC_mean': 0.19869087636470795, 'input_gram_err_mean': 0.0023419637388239303, 'input_gram_err_max': 0.0023424681276082993, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E warm_bf16 285.9455871582031 None
+   E qr 757.6093139648438 None
+   E eigh 2739.4345703125 None
+   E cholqr 237.61395263671875 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   C warm_bf16 224.3338165283203 None
+   C qr 748.0372924804688 None
+   C eigh 2723.78076171875 None
+   C cholqr 227.5984649658203 None
+   E warm_fp32 318.6172790527344 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   C warm_fp32 271.9902648925781 None
+   E transport_moment (6144, 6144) 119.1187515258789 None
+   E v_permute (6144, 6144) 4.610112190246582 None
+   C transport_moment (6144, 6144) 119.13529968261719 None
+   C v_permute (6144, 6144) 1.7935680150985718 None
+== n=8192 batch=12 t=644s load=['8.11', '25.44', '80.62']
+  input {'n': 8192, 'batch': 12, 'input_rC_mean': 0.19822287559509277, 'input_gram_err_mean': 0.002342223325589051, 'input_gram_err_max': 0.0023427815176546574, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E warm_bf16 None OOM: OutOfMemoryError: CUDA out of memory. Tried to allocate 3.00 GiB. GPU 0 has a total capacity of 31.36 GiB of which 1.99 GiB is free. Including non-PyTorch memory, this process has 29.35 GiB memory in use. Of the allocated memory 25.78 GiB is allocated by PyTorch, and 2.80 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:T
+   E qr 1359.677001953125 None
+   E eigh 6925.29150390625 None
+   E cholqr 521.2659912109375 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   C warm_bf16 545.4227905273438 None
+   C qr 1344.0181884765625 None
+   C eigh 6895.47412109375 None
+   C cholqr 506.1188049316406 None
+   E warm_fp32 None OOM: OutOfMemoryError: CUDA out of memory. Tried to allocate 1.50 GiB. GPU 0 has a total capacity of 31.36 GiB of which 503.81 MiB is free. Including non-PyTorch memory, this process has 30.86 GiB memory in use. Of the allocated memory 28.78 GiB is allocated by PyTorch, and 1.30 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   C warm_fp32 648.3887939453125 None
+   E transport_moment (8192, 8192) 302.1224670410156 None
+   E v_permute (8192, 8192) 8.759488105773926 None
+   C transport_moment (8192, 8192) 302.178466796875 None
+   C v_permute (8192, 8192) 3.7100160121917725 None
+   variant default 768 E 1.36080002784729 None
+   variant default 768 C 0.8222399950027466 None
+   variant damping=0.001 768 E 1.3753600120544434 None
+   variant damping=0.001 768 C 0.8293759822845459 None
+   variant damping=0.003 768 E 1.3747520446777344 None
+   variant damping=0.003 768 C 0.8282240033149719 None
+   variant damping=0.03 768 E 1.3784639835357666 None
+   variant damping=0.03 768 C 0.8289279937744141 None
+   variant damping=0.1 768 E 1.3710399866104126 None
+   variant damping=0.1 768 C 0.8214079737663269 None
+   variant cap=0.25 768 E 1.3775999546051025 None
+   variant cap=0.25 768 C 0.8197439908981323 None
+   variant cap=1.0 768 E 1.3750079870224 None
+   variant cap=1.0 768 C 0.8254719972610474 None
+   variant cap=None 768 E 1.277951955795288 None
+   variant cap=None 768 C 0.7848960161209106 None
+   variant ns=0 768 E 0.711679995059967 None
+   variant ns=0 768 C 0.4585919976234436 None
+   variant ns=1 768 E 1.0434880256652832 None
+   variant ns=1 768 C 0.639743983745575 None
+   variant ns=3 768 E 1.7003840208053589 None
+   variant ns=3 768 C 1.006592035293579 None
+   variant warm_steps=2 768 E 2.6706879138946533 None
+   variant warm_steps=2 768 C 1.4953919649124146 None
+   variant default 1536 E 7.926144123077393 None
+   variant default 1536 C 3.9841599464416504 None
+   variant damping=0.001 1536 E 7.922719955444336 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   variant damping=0.001 1536 C 3.9802238941192627 None
+   variant damping=0.003 1536 E 7.928607940673828 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   variant damping=0.003 1536 C 3.982271909713745 None
+   variant damping=0.03 1536 E 7.923711776733398 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   variant damping=0.03 1536 C 3.9812159538269043 None
+   variant damping=0.1 1536 E 7.922336101531982 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   variant damping=0.1 1536 C 3.977760076522827 None
+   variant cap=0.25 1536 E 7.923295974731445 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   variant cap=0.25 1536 C 3.9763519763946533 None
+   variant cap=1.0 1536 E 7.921760082244873 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   variant cap=1.0 1536 C 3.976032018661499 None
+   variant cap=None 1536 E 7.613887786865234 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   variant cap=None 1536 C 3.707263946533203 None
+   variant ns=0 1536 E 4.061024188995361 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   variant ns=0 1536 C 1.8567999601364136 None
+   variant ns=1 1536 E 6.036032199859619 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   variant ns=1 1536 C 2.9167680740356445 None
+   variant ns=3 1536 E 9.813440322875977 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   variant ns=3 1536 C 5.042880058288574 None
+   variant warm_steps=2 1536 E 15.712639808654785 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   variant warm_steps=2 1536 C 8.143168449401855 None
+   variant default 2304 E 21.582143783569336 None
+   variant default 2304 C 12.904352188110352 None
+   variant damping=0.001 2304 E 21.59119987487793 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   variant damping=0.001 2304 C 12.893919944763184 None
+   variant damping=0.003 2304 E 21.589599609375 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   variant damping=0.003 2304 C 12.904191970825195 None
+   variant damping=0.03 2304 E 21.592416763305664 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   variant damping=0.03 2304 C 12.872447967529297 None
+   variant damping=0.1 2304 E 21.590879440307617 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   variant damping=0.1 2304 C 12.90118408203125 None
+   variant cap=0.25 2304 E 21.587488174438477 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   variant cap=0.25 2304 C 12.897631645202637 None
+   variant cap=1.0 2304 E 21.592416763305664 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   variant cap=1.0 2304 C 12.905344009399414 None
+   variant cap=None 2304 E 21.117631912231445 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   variant cap=None 2304 C 12.437952041625977 None
+   variant ns=0 2304 E 10.882047653198242 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   variant ns=0 2304 C 5.471231937408447 None
+   variant ns=1 2304 E 16.227968215942383 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   variant ns=1 2304 C 9.194656372070312 None
+   variant ns=3 2304 E 26.95564842224121 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   variant ns=3 2304 C 16.654592514038086 None
+   variant warm_steps=2 2304 E 43.07487869262695 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   variant warm_steps=2 2304 C 26.05776023864746 None
+   variant default 3072 E 45.70560073852539 None
+   variant default 3072 C 30.012704849243164 None
+   variant damping=0.001 3072 E 45.76969528198242 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   variant damping=0.001 3072 C 29.992223739624023 None
+   variant damping=0.003 3072 E 45.75862503051758 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   variant damping=0.003 3072 C 29.994016647338867 None
+   variant damping=0.03 3072 E 45.76937484741211 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   variant damping=0.03 3072 C 30.011999130249023 None
+   variant damping=0.1 3072 E 45.7760009765625 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   variant damping=0.1 3072 C 30.019615173339844 None
+   variant cap=0.25 3072 E 45.797569274902344 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   variant cap=0.25 3072 C 30.04876708984375 None
+   variant cap=1.0 3072 E 45.80326461791992 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   variant cap=1.0 3072 C 30.053823471069336 None
+   variant cap=None 3072 E 45.01996612548828 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   variant cap=None 3072 C 29.210079193115234 None
+   variant ns=0 3072 E 22.253759384155273 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   variant ns=0 3072 C 13.112064361572266 None
+   variant ns=1 3072 E 34.029537200927734 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   variant ns=1 3072 C 21.615264892578125 None
+   variant ns=3 3072 E 57.591392517089844 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   variant ns=3 3072 C 38.52326583862305 None
+   variant warm_steps=2 3072 E 91.6470718383789 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   variant warm_steps=2 3072 C 60.132320404052734 None
+variant bit-exact [{'n': 768, 'batch': 12, 'compiled': False, 'bit_equal': True}, {'n': 768, 'batch': 12, 'compiled': True, 'bit_equal': True, 'compiled_vs_eager_production_equal': False}, {'n': 1536, 'batch': 12, 'compiled': False, 'bit_equal': True}, {'n': 1536, 'batch': 12, 'compiled': True, 'bit_equal': True, 'compiled_vs_eager_production_equal': False}, {'n': 2304, 'batch': 12, 'compiled': False, 'bit_equal': True}, {'n': 2304, 'batch': 12, 'compiled': True, 'bit_equal': True, 'compiled_vs_eager_production_equal': False}, {'n': 3072, 'batch': 12, 'compiled': False, 'bit_equal': True}, {'n': 3072, 'batch': 12, 'compiled': True, 'bit_equal': True, 'compiled_vs_eager_production_equal': False}]
+{
+ "eager": {
+  "transport_sum_ms": 4.977311968803406,
+  "v_permute_sum_ms": 0.4285760037600994,
+  "warm_bf16": {
+   "factor_refresh_sum_ms": 81.40348696708679,
+   "event_extra_ms": 86.3807989358902,
+   "per_dim_ms": {
+    "768": 1.3664000034332275,
+    "1536": 7.882400035858154,
+    "2304": 21.519935607910156,
+    "3072": 45.169151306152344
+   }
+  },
+  "warm_fp32": {
+   "factor_refresh_sum_ms": 85.28054404258728,
+   "event_extra_ms": 90.25785601139069,
+   "per_dim_ms": {
+    "768": 1.3202879428863525,
+    "1536": 7.977695941925049,
+    "2304": 22.404544830322266,
+    "3072": 48.2968635559082
+   }
+  },
+  "qr": {
+   "factor_refresh_sum_ms": 598.3629398345947,
+   "event_extra_ms": 603.7688278071582,
+   "per_dim_ms": {
+    "768": 30.83616065979004,
+    "1536": 81.36486053466797,
+    "2304": 143.459228515625,
+    "3072": 219.35804748535156
+   }
+  },
+  "eigh": {
+   "factor_refresh_sum_ms": 1431.9723892211914,
+   "event_extra_ms": 1437.378277193755,
+   "per_dim_ms": {
+    "768": 78.06169891357422,
+    "1536": 177.64866638183594,
+    "2304": 329.9580383300781,
+    "3072": 534.0571899414062
+   }
+  },
+  "cholqr": {
+   "factor_refresh_sum_ms": 76.11763095855713,
+   "event_extra_ms": 81.52351893112063,
+   "per_dim_ms": {
+    "768": 2.0637760162353516,
+    "1536": 7.8697919845581055,
+    "2304": 19.247936248779297,
+    "3072": 38.68102264404297
+   }
+  },
+  "warm_target_ms": 51.47,
+  "qr_target_ms": 591.04,
+  "warm_ratio_to_target": 1.6782747024653235,
+  "qr_ratio_to_target": 1.0215363220884512,
+  "qr_primitive_vs_sec54": {
+   "768": {
+    "this": 30.83616065979004,
+    "sec54": 30.914,
+    "ratio": 0.9974820683117693
+   },
+   "1536": {
+    "this": 81.36486053466797,
+    "sec54": 80.535,
+    "ratio": 1.0103043463670203
+   },
+   "2304": {
+    "this": 143.459228515625,
+    "sec54": 141.566,
+    "ratio": 1.0133734690223994
+   },
+   "3072": {
+    "this": 219.35804748535156,
+    "sec54": 215.218,
+    "ratio": 1.0192365298690238
+   }
+  }
+ },
+ "compiled": {
+  "transport_sum_ms": 5.057663947343826,
+  "v_permute_sum_ms": 0.3837760016322136,
+  "warm_bf16": {
+   "factor_refresh_sum_ms": 49.84351933002472,
+   "event_extra_ms": 54.901183277368546,
+   "per_dim_ms": {
+    "768": 0.8256319761276245,
+    "1536": 3.9695680141448975,
+    "2304": 12.19382381439209,
+    "3072": 29.55196762084961
+   }
+  },
+  "warm_fp32": {
+   "factor_refresh_sum_ms": 61.92969650030136,
+   "event_extra_ms": 66.98736044764519,
+   "per_dim_ms": {
+    "768": 0.9087039828300476,
+    "1536": 5.08684778213501,
+    "2304": 15.883008003234863,
+    "3072": 36.41632080078125
+   }
+  },
+  "qr": {
+   "factor_refresh_sum_ms": 593.7445240020752,
+   "event_extra_ms": 599.1859639510512,
+   "per_dim_ms": {
+    "768": 30.755807876586914,
+    "1536": 80.87904357910156,
+    "2304": 142.1168975830078,
+    "3072": 216.96954345703125
+   }
+  },
+  "eigh": {
+   "factor_refresh_sum_ms": 1426.1382446289062,
+   "event_extra_ms": 1431.5796845778823,
+   "per_dim_ms": {
+    "768": 77.7220458984375,
+    "1536": 176.88021850585938,
+    "2304": 327.4880065917969,
+    "3072": 533.1597900390625
+   }
+  },
+  "cholqr": {
+   "factor_refresh_sum_ms": 72.02265477180481,
+   "event_extra_ms": 77.46409472078085,
+   "per_dim_ms": {
+    "768": 2.0469439029693604,
+    "1536": 7.4100799560546875,
+    "2304": 18.02796745300293,
+    "3072": 36.34988784790039
+   }
+  },
+  "warm_target_ms": 51.47,
+  "qr_target_ms": 591.04,
+  "warm_ratio_to_target": 1.0666637512603176,
+  "qr_ratio_to_target": 1.0137824241185898,
+  "qr_primitive_vs_sec54": {
+   "768": {
+    "this": 30.755807876586914,
+    "sec54": 30.914,
+    "ratio": 0.9948828322632759
+   },
+   "1536": {
+    "this": 80.87904357910156,
+    "sec54": 80.535,
+    "ratio": 1.0042719758999388
+   },
+   "2304": {
+    "this": 142.1168975830078,
+    "sec54": 141.566,
+    "ratio": 1.0038914540426924
+   },
+   "3072": {
+    "this": 216.96954345703125,
+    "sec54": 215.218,
+    "ratio": 1.0081384617319706
+   }
+  }
+ },
+ "event_regions": {
+  "ordinary": {
+   "median_ms": 10.103327751159668,
+   "p25_ms": 10.08570408821106,
+   "p75_ms": 10.186352014541626,
+   "wall_median_ms": 10.12604613788426,
+   "wall_p25_ms": 10.108059912454337,
+   "wall_p75_ms": 10.209765110630542,
+   "matrix_only_median_ms": 9.377632141113281,
+   "reps": 20
+  },
+  "warm": {
+   "median_ms": 61.065887451171875,
+   "p25_ms": 60.76691913604736,
+   "p75_ms": 62.605719566345215,
+   "wall_median_ms": 61.08792289160192,
+   "wall_p25_ms": 60.790780757088214,
+   "wall_p75_ms": 62.628245214000344,
+   "matrix_only_median_ms": 60.07068634033203,
+   "reps": 20
+  },
+  "qr": {
+   "median_ms": 609.2183227539062,
+   "p25_ms": 609.0062866210938,
+   "p75_ms": 609.5002288818359,
+   "wall_median_ms": 609.2399219051003,
+   "wall_p25_ms": 609.0283369412646,
+   "wall_p75_ms": 609.5241594011895,
+   "matrix_only_median_ms": 608.2893676757812,
+   "reps": 20
+  },
+  "compile_s_first_three_events": 5.772301443153992,
+  "warm_minus_ordinary_ms": 50.96255970001221,
+  "qr_minus_ordinary_ms": 599.1149950027466,
+  "note": "Synthetic random gradients; values do not affect op counts. Events forced by setting opt.call; state evolves across repetitions. 109M reference: ordinary 10.14, warm 61.61, QR 601.18 ms (synchronized host wall, training loop)."
+ },
+ "event_regions_vs_109M": {
+  "ordinary": {
+   "this": 10.12604613788426,
+   "target": 10.14
+  },
+  "warm": {
+   "this": 61.08792289160192,
+   "target": 61.61
+  },
+  "qr": {
+   "this": 609.2399219051003,
+   "target": 601.18
+  }
+ },
+ "factor_groups": {
+  "factors_batch12": [
+   768,
+   768,
+   768,
+   768,
+   768,
+   1536,
+   2304,
+   3072
+  ],
+  "matrix_shapes_batch12": [
+   [
+    2304,
+    768
+   ],
+   [
+    768,
+    768
+   ],
+   [
+    3072,
+    768
+   ],
+   [
+    768,
+    1536
+   ]
+  ]
+ },
+ "targets": {
+  "ordinary_ms": 10.14,
+  "warm_event_ms": 61.61,
+  "qr_event_ms": 601.18,
+  "qr_primitive_sec54_b12": {
+   "768": 30.914,
+   "1536": 80.535,
+   "2304": 141.566,
+   "3072": 215.218
+  }
+ },
+ "note": "Event extras = sum over the 8 batch-12 factor refreshes + 4 transports (+4 V permutations for QR-type refreshes), each primitive timed in isolation; targets are 109M event means minus the ordinary-call mean, i.e. they also absorb compiled-region fusion differences."
+}
+finished 2026-11-20T02:37:34Z load=9.50 13.45 54.54 9/5142 857649

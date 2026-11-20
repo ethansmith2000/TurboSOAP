@@ -1,0 +1,444 @@
+queued 2026-11-20T03:31:28Z
+gpu-claim: refresh-study/microbench-ext holds GPU 0
+started 2026-11-20T03:57:57Z gpu=0 load=68.70 63.66 62.92 22/5348 946111
+smoke ok 2026-11-20T03:58:29Z
+== n=256 batch=1 t=0s load=['58.34', '61.36', '62.16']
+  input {'n': 256, 'batch': 1, 'input_rC_mean': 0.21231035888195038, 'input_gram_err_mean': 0.0023511452600359917, 'input_gram_err_max': 0.0023511452600359917, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E warm_bf16 1.2953599691390991 None
+   E qr 0.9073600172996521 None
+   E eigh 4.743231773376465 None
+   E cholqr 0.5989120006561279 None
+   E cholqr3 3.709343910217285 None
+   C warm_bf16 0.7689599990844727 None
+   C qr 0.8931840062141418 None
+   C eigh 4.738431930541992 None
+   C cholqr 0.5852479934692383 None
+   C cholqr3 3.0301120281219482 None
+   E warm_fp32 1.258080005645752 None
+   C warm_fp32 0.8093760013580322 None
+== n=512 batch=1 t=5s load=['55.51', '60.72', '61.95']
+  input {'n': 512, 'batch': 1, 'input_rC_mean': 0.20671185851097107, 'input_gram_err_mean': 0.002343070227652788, 'input_gram_err_max': 0.002343070227652788, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E warm_bf16 1.3056000471115112 None
+   E qr 1.8148159980773926 None
+   E eigh 11.954015731811523 None
+   E cholqr 0.669983983039856 None
+   E cholqr3 3.8128321170806885 None
+   C warm_bf16 0.7601919770240784 None
+   C qr 1.7937920093536377 None
+   C eigh 11.955519676208496 None
+   C cholqr 0.6458560228347778 None
+   C cholqr3 3.1363840103149414 None
+   E warm_fp32 1.2508480548858643 None
+   C warm_fp32 0.7992960214614868 None
+== n=768 batch=1 t=10s load=['52.82', '60.08', '61.74']
+  input {'n': 768, 'batch': 1, 'input_rC_mean': 0.2067759484052658, 'input_gram_err_mean': 0.0023609891068190336, 'input_gram_err_max': 0.0023609891068190336, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E warm_bf16 1.3382079601287842 None
+   E qr 2.8189759254455566 None
+   E eigh 6.549056053161621 None
+   E cholqr 0.8393599987030029 None
+   E cholqr3 4.307583808898926 None
+   C warm_bf16 0.7951040267944336 None
+   C qr 2.8754239082336426 None
+   C eigh 6.562143802642822 None
+   C cholqr 0.8951359987258911 None
+   C cholqr3 3.672703981399536 None
+   E warm_fp32 1.2843199968338013 None
+   C warm_fp32 0.832319974899292 None
+== n=1024 batch=1 t=13s load=['50.43', '59.46', '61.53']
+  input {'n': 1024, 'batch': 1, 'input_rC_mean': 0.20317745208740234, 'input_gram_err_mean': 0.002349137095734477, 'input_gram_err_max': 0.002349137095734477, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E warm_bf16 1.3373119831085205 None
+   E qr 3.9546239376068115 None
+   E eigh 8.675775527954102 None
+   E cholqr 1.023967981338501 None
+   E cholqr3 4.852863788604736 None
+   C warm_bf16 0.7941120266914368 None
+   C qr 3.9925119876861572 None
+   C eigh 8.680928230285645 None
+   C cholqr 1.062656044960022 None
+   C cholqr3 4.215328216552734 None
+   E warm_fp32 1.285248041152954 None
+   C warm_fp32 0.8357440233230591 None
+== n=1536 batch=1 t=16s load=['50.43', '59.46', '61.53']
+  input {'n': 1536, 'batch': 1, 'input_rC_mean': 0.2052873969078064, 'input_gram_err_mean': 0.0023436432238668203, 'input_gram_err_max': 0.0023436432238668203, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E warm_bf16 1.3156160116195679 None
+   E qr 6.77020788192749 None
+   E eigh 14.57372760772705 None
+   E cholqr 1.4805439710617065 None
+   E cholqr3 6.105792045593262 None
+   C warm_bf16 0.7643839716911316 None
+   C qr 6.81331205368042 None
+   C eigh 14.58124828338623 None
+   C cholqr 1.5005120038986206 None
+   C cholqr3 5.447391986846924 None
+   E warm_fp32 1.264672040939331 None
+   C warm_fp32 0.809984028339386 None
+== n=2048 batch=1 t=21s load=['48.24', '58.86', '61.32']
+  input {'n': 2048, 'batch': 1, 'input_rC_mean': 0.20076964795589447, 'input_gram_err_mean': 0.002343992469832301, 'input_gram_err_max': 0.002343992469832301, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E warm_bf16 1.347648024559021 None
+   E qr 9.727616310119629 None
+   E eigh 20.952959060668945 None
+   E cholqr 2.027872085571289 None
+   E cholqr3 7.47814416885376 None
+   C warm_bf16 0.8889920115470886 None
+   C qr 9.72390365600586 None
+   C eigh 20.966720581054688 None
+   C cholqr 2.004096031188965 None
+   C cholqr3 6.77177619934082 None
+   E warm_fp32 1.455680012702942 None
+   C warm_fp32 1.1182719469070435 None
+== n=2304 batch=1 t=28s load=['44.20', '57.64', '60.90']
+  input {'n': 2304, 'batch': 1, 'input_rC_mean': 0.19955842196941376, 'input_gram_err_mean': 0.002345699816942215, 'input_gram_err_max': 0.002345699816942215, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E warm_bf16 1.431391954421997 None
+   E qr 11.71571159362793 None
+   E eigh 26.884864807128906 None
+   E cholqr 2.337951898574829 None
+   E cholqr3 8.215071678161621 None
+   C warm_bf16 1.0025919675827026 None
+   C qr 11.687871932983398 None
+   C eigh 26.9486083984375 None
+   C cholqr 2.3120319843292236 None
+   C cholqr3 7.514400005340576 None
+   E warm_fp32 1.5856319665908813 None
+   C warm_fp32 1.2584320306777954 None
+== n=3072 batch=1 t=35s load=['42.42', '57.05', '60.69']
+  input {'n': 3072, 'batch': 1, 'input_rC_mean': 0.19972670078277588, 'input_gram_err_mean': 0.0023512747138738632, 'input_gram_err_max': 0.0023512747138738632, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E warm_bf16 3.1884799003601074 None
+   E qr 17.804447174072266 None
+   E eigh 43.55014419555664 None
+   E cholqr 4.046432018280029 None
+   E cholqr3 11.796863555908203 None
+   C warm_bf16 2.2304959297180176 None
+   C qr 17.700864791870117 None
+   C eigh 43.54684829711914 None
+   C cholqr 3.955872058868408 None
+   C cholqr3 11.02393627166748 None
+   E warm_fp32 3.5985920429229736 None
+   C warm_fp32 2.907423973083496 None
+== n=4096 batch=1 t=45s load=['39.43', '55.93', '60.29']
+  input {'n': 4096, 'batch': 1, 'input_rC_mean': 0.19824738800525665, 'input_gram_err_mean': 0.002350232796743512, 'input_gram_err_max': 0.002350232796743512, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E warm_bf16 7.779615879058838 None
+   E qr 27.46886444091797 None
+   E eigh 75.60646057128906 None
+   E cholqr 6.93779182434082 None
+   E cholqr3 17.90937614440918 None
+   C warm_bf16 5.682112216949463 None
+   C qr 27.258207321166992 None
+   C eigh 75.057373046875 None
+   C cholqr 6.711711883544922 None
+   C cholqr3 17.321887969970703 None
+   E warm_fp32 8.571999549865723 None
+   C warm_fp32 7.065631866455078 None
+== n=6144 batch=1 t=61s load=['42.69', '55.80', '60.17']
+  input {'n': 6144, 'batch': 1, 'input_rC_mean': 0.19759878516197205, 'input_gram_err_mean': 0.0023430257569998503, 'input_gram_err_max': 0.0023430257569998503, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E warm_bf16 20.828224182128906 None
+   E qr 61.7922248840332 None
+   E eigh 225.0220489501953 None
+   E cholqr 18.123327255249023 None
+   E cholqr3 45.56163024902344 None
+   C warm_bf16 14.899200439453125 None
+   C qr 61.31100845336914 None
+   C eigh 225.05625915527344 None
+   C cholqr 17.354368209838867 None
+   C cholqr3 44.1313591003418 None
+   E warm_fp32 24.055904388427734 None
+   C warm_fp32 19.72991943359375 None
+== n=256 batch=12 t=90s load=['34.14', '52.47', '58.92']
+  input {'n': 256, 'batch': 12, 'input_rC_mean': 0.2114291936159134, 'input_gram_err_mean': 0.00236573654304569, 'input_gram_err_max': 0.00237700785510242, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E warm_bf16 1.2935999631881714 None
+   E qr 7.350111961364746 None
+   E eigh 54.09632110595703 None
+   E cholqr 0.8241919875144958 None
+   E cholqr3 4.390624046325684 None
+   C warm_bf16 0.7644479870796204 None
+   C qr 7.341951847076416 None
+   C eigh 54.06489562988281 None
+   C cholqr 0.8142079710960388 None
+   C cholqr3 3.686176061630249 None
+   E warm_fp32 1.2579200267791748 None
+   C warm_fp32 0.8118079900741577 None
+== n=512 batch=12 t=100s load=['32.43', '51.50', '58.54']
+  input {'n': 512, 'batch': 12, 'input_rC_mean': 0.20934706926345825, 'input_gram_err_mean': 0.0023475073006314537, 'input_gram_err_max': 0.0023594663944095373, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E warm_bf16 1.3045120239257812 None
+   E qr 18.17068862915039 None
+   E eigh 141.61468505859375 None
+   E cholqr 1.2600640058517456 None
+   E cholqr3 5.477536201477051 None
+   C warm_bf16 0.768671989440918 None
+   C qr 18.126399993896484 None
+   C eigh 141.57545471191406 None
+   C cholqr 1.2007039785385132 None
+   C cholqr3 4.738783836364746 None
+   E warm_fp32 1.2613120079040527 None
+   C warm_fp32 0.8033279776573181 None
+== n=768 batch=12 t=115s load=['29.52', '49.92', '57.91']
+  input {'n': 768, 'batch': 12, 'input_rC_mean': 0.20534217357635498, 'input_gram_err_mean': 0.002356133481953293, 'input_gram_err_max': 0.002362398663535714, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E warm_bf16 1.32806396484375 None
+   E qr 30.465055465698242 None
+   E eigh 76.60038757324219 None
+   E cholqr 2.0341761112213135 None
+   E cholqr3 7.570559978485107 None
+   C warm_bf16 0.7860159873962402 None
+   C qr 30.439327239990234 None
+   C eigh 76.574462890625 None
+   C cholqr 2.008415937423706 None
+   C cholqr3 6.825695991516113 None
+   E warm_fp32 1.28329598903656 None
+   C warm_fp32 0.8785279989242554 None
+== n=1024 batch=12 t=128s load=['27.19', '48.41', '57.28']
+  input {'n': 1024, 'batch': 12, 'input_rC_mean': 0.2032790184020996, 'input_gram_err_mean': 0.00235236775673305, 'input_gram_err_max': 0.0023570337798446417, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E warm_bf16 2.5049920082092285 None
+   E qr 44.59952163696289 None
+   E eigh 102.07516479492188 None
+   E cholqr 3.41593599319458 None
+   E cholqr3 10.912128448486328 None
+   C warm_bf16 1.199936032295227 None
+   C qr 44.50156784057617 None
+   C eigh 101.99903869628906 None
+   C cholqr 3.3019840717315674 None
+   C cholqr3 10.076895713806152 None
+   E warm_fp32 2.551424026489258 None
+   C warm_fp32 1.5434880256652832 None
+== n=1536 batch=12 t=147s load=['24.85', '46.85', '56.63']
+  input {'n': 1536, 'batch': 12, 'input_rC_mean': 0.20176191627979279, 'input_gram_err_mean': 0.002344067247274021, 'input_gram_err_max': 0.0023461400996893644, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E warm_bf16 7.8157758712768555 None
+   E qr 80.15270233154297 None
+   E eigh 174.4947509765625 None
+   E cholqr 7.789247989654541 None
+   E cholqr3 21.077632904052734 None
+   C warm_bf16 3.9078080654144287 None
+   C qr 79.69193267822266 None
+   C eigh 173.71023559570312 None
+   C cholqr 7.334400177001953 None
+   C cholqr3 20.047456741333008 None
+   E warm_fp32 7.910304069519043 None
+   C warm_fp32 5.01635217666626 None
+== n=2048 batch=12 t=171s load=['22.75', '44.57', '55.62']
+  input {'n': 2048, 'batch': 12, 'input_rC_mean': 0.20163314044475555, 'input_gram_err_mean': 0.0023437628600125513, 'input_gram_err_max': 0.002345454413443804, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E warm_bf16 15.901087760925293 None
+   E qr 116.40726470947266 None
+   E eigh 252.3401336669922 None
+   E cholqr 14.373279571533203 None
+   E cholqr3 37.835105895996094 None
+   C warm_bf16 8.614239692687988 None
+   C qr 115.7356185913086 None
+   C eigh 250.71629333496094 None
+   C cholqr 13.647904396057129 None
+   C cholqr3 36.844383239746094 None
+   E warm_fp32 16.47545623779297 None
+   C warm_fp32 11.29753589630127 None
+== n=2304 batch=12 t=203s load=['18.22', '41.03', '54.02']
+  input {'n': 2304, 'batch': 12, 'input_rC_mean': 0.2015005499124527, 'input_gram_err_mean': 0.0023461022259046635, 'input_gram_err_max': 0.0023485985584557056, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E warm_bf16 21.304479598999023 None
+   E qr 141.69903564453125 None
+   E eigh 323.8071594238281 None
+   E cholqr 18.948575973510742 None
+   E cholqr3 49.70576095581055 None
+   C warm_bf16 12.064064025878906 None
+   C qr 140.18214416503906 None
+   C eigh 322.8932189941406 None
+   C cholqr 17.724159240722656 None
+   C cholqr3 48.139583587646484 None
+   E warm_fp32 22.23641586303711 None
+   C warm_fp32 15.688128471374512 None
+== n=3072 batch=12 t=240s load=['23.89', '39.94', '53.17']
+  input {'n': 3072, 'batch': 12, 'input_rC_mean': 0.19943498075008392, 'input_gram_err_mean': 0.002351517148781568, 'input_gram_err_max': 0.0023529494646936655, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E warm_bf16 44.77711868286133 None
+   E qr 215.83155822753906 None
+   E eigh 525.731689453125 None
+   E cholqr 38.19241714477539 None
+   E cholqr3 99.0713882446289 None
+   C warm_bf16 29.12761688232422 None
+   C qr 213.6529541015625 None
+   C eigh 525.4178466796875 None
+   C cholqr 35.84288024902344 None
+   C cholqr3 95.73426818847656 None
+   E warm_fp32 47.94393539428711 None
+   C warm_fp32 35.99296188354492 None
+== n=4096 batch=12 t=290s load=['22.92', '37.66', '51.73']
+  input {'n': 4096, 'batch': 12, 'input_rC_mean': 0.20069293677806854, 'input_gram_err_mean': 0.002350878707754115, 'input_gram_err_max': 0.0023514272179454565, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E warm_bf16 92.8144302368164 None
+   E qr 331.2248229980469 None
+   E eigh 910.9191284179688 None
+   E cholqr 78.06387329101562 None
+   E cholqr3 199.57533264160156 None
+   C warm_bf16 65.52275085449219 None
+   C qr 327.34405517578125 None
+   C eigh 909.639404296875 None
+   C cholqr 74.21929931640625 None
+   C cholqr3 194.2554168701172 None
+   E warm_fp32 101.86991882324219 None
+   C warm_fp32 81.03651428222656 None
+== n=6144 batch=12 t=369s load=['13.07', '31.07', '48.25']
+  input {'n': 6144, 'batch': 12, 'input_rC_mean': 0.19869087636470795, 'input_gram_err_mean': 0.0023419637388239303, 'input_gram_err_max': 0.0023424681276082993, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E warm_bf16 283.3574523925781 None
+   E qr 744.4053344726562 None
+   E eigh 2706.14208984375 None
+   E cholqr 234.84774780273438 None
+   E cholqr3 591.195068359375 None
+   C warm_bf16 220.58009338378906 None
+   C qr 734.8053588867188 None
+   C eigh 2690.42919921875 None
+   C cholqr 225.50083923339844 None
+   C cholqr3 579.3842163085938 None
+   E warm_fp32 315.5818176269531 None
+   C warm_fp32 268.6910705566406 None
+== n=8192 batch=1 t=531s load=['4.65', '20.41', '41.50']
+  input {'n': 8192, 'batch': 1, 'input_rC_mean': 0.19933345913887024, 'input_gram_err_mean': 0.0023423228412866592, 'input_gram_err_max': 0.0023423228412866592, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E warm_bf16 46.492576599121094 None
+   E qr 111.73155212402344 None
+   E eigh 573.1958618164062 None
+   E cholqr 38.56108856201172 None
+   E cholqr3 94.982177734375 None
+   C warm_bf16 36.467777252197266 None
+   C qr 110.36854553222656 None
+   C eigh 569.73388671875 None
+   C cholqr 37.11171340942383 None
+   C cholqr3 92.3785629272461 None
+   E warm_fp32 55.44076919555664 None
+   C warm_fp32 47.79235076904297 None
+== n=12288 batch=1 t=565s load=['8.48', '19.40', '40.37']
+  input {'n': 12288, 'batch': 1, 'input_rC_mean': 0.1986343413591385, 'input_gram_err_mean': 0.0023505694698542356, 'input_gram_err_max': 0.0023505694698542356, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E warm_bf16 142.77072143554688 None
+   E qr 270.7367248535156 None
+   E eigh 1952.9912109375 None
+   E cholqr 113.05404663085938 None
+   E cholqr3 270.56829833984375 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   C warm_bf16 120.10784149169922 None
+   C qr 267.70355224609375 None
+   C eigh 1945.3155517578125 None
+   C cholqr 109.84198760986328 None
+   C cholqr3 265.35791015625 None
+   E warm_fp32 171.5437469482422 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   C warm_fp32 153.92877197265625 None
+== n=16384 batch=1 t=652s load=['5.24', '15.39', '37.00']
+  input {'n': 16384, 'batch': 1, 'input_rC_mean': 0.19949586689472198, 'input_gram_err_mean': 0.002349983435124159, 'input_gram_err_max': 0.002349983435124159, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E warm_bf16 324.3597412109375 None
+   E qr 539.7570190429688 None
+   E eigh 3357.283203125 None
+   E cholqr 250.05526733398438 None
+   E cholqr3 590.3587036132812 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   C warm_bf16 283.8795166015625 None
+   C qr 533.2426147460938 None
+   C eigh 3348.177490234375 None
+   C cholqr 244.6444549560547 None
+   C cholqr3 581.5738525390625 None
+   E warm_fp32 390.9853820800781 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   C warm_fp32 359.9854431152344 None
+== n=8192 batch=4 t=788s load=['6.99', '12.22', '32.88']
+  input {'n': 8192, 'batch': 4, 'input_rC_mean': 0.19931066036224365, 'input_gram_err_mean': 0.002342293504625559, 'input_gram_err_max': 0.0023425014223903418, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E warm_bf16 212.1095428466797 None
+   E qr 445.4111328125 None
+   E eigh 2289.492919921875 None
+   E cholqr 192.0501708984375 None
+   E cholqr3 493.33880615234375 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   C warm_bf16 177.51686096191406 None
+   C qr 439.8663635253906 None
+   C eigh 2281.652587890625 None
+   C cholqr 186.47683715820312 None
+   C cholqr3 485.3485412597656 None
+   E warm_fp32 239.9785919189453 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   C warm_fp32 212.43795776367188 None
+== n=12288 batch=4 t=896s load=['5.73', '10.20', '29.93']
+  input {'n': 12288, 'batch': 4, 'input_rC_mean': 0.19891738891601562, 'input_gram_err_mean': 0.0023507678997702897, 'input_gram_err_max': 0.002350866561755538, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E warm_bf16 670.810302734375 None
+   E qr 1083.6864013671875 None
+   E eigh 7835.87255859375 None
+   E cholqr 577.489013671875 None
+   E cholqr3 1443.4981689453125 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   C warm_bf16 590.8587646484375 None
+   C qr 1070.455810546875 None
+   C eigh 7812.3173828125 None
+   C cholqr 564.9666137695312 None
+   C cholqr3 1427.9671630859375 None
+   E warm_fp32 764.08544921875 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   C warm_fp32 703.7405395507812 None
+== n=16384 batch=4 t=1158s load=['7.37', '8.35', '24.29']
+  input {'n': 16384, 'batch': 4, 'input_rC_mean': 0.19805972278118134, 'input_gram_err_mean': 0.0023500638199038804, 'input_gram_err_max': 0.0023503098636865616, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E warm_bf16 None OOM: OutOfMemoryError: CUDA out of memory. Tried to allocate 4.00 GiB. GPU 0 has a total capacity of 31.36 GiB of which 555.81 MiB is free. Including non-PyTorch memory, this process has 30.80 GiB memory in use. Of the allocated memory 27.03 GiB is allocated by PyTorch, and 3.00 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments
+   E qr 2168.8193359375 None
+   E eigh 13472.2021484375 None
+   E cholqr None OOM: OutOfMemoryError: CUDA out of memory. Tried to allocate 4.00 GiB. GPU 0 has a total capacity of 31.36 GiB of which 2.52 GiB is free. Including non-PyTorch memory, this process has 28.82 GiB memory in use. Of the allocated memory 28.03 GiB is allocated by PyTorch, and 21.50 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:
+   E cholqr3 None OOM: OutOfMemoryError: CUDA out of memory. Tried to allocate 4.00 GiB. GPU 0 has a total capacity of 31.36 GiB of which 2.52 GiB is free. Including non-PyTorch memory, this process has 28.82 GiB memory in use. Of the allocated memory 25.03 GiB is allocated by PyTorch, and 3.02 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:T
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   C warm_bf16 1393.9388427734375 None
+   C qr 2149.397216796875 None
+   C eigh 13445.263671875 None
+   C cholqr 1254.983642578125 None
+   C cholqr3 3118.82763671875 None
+   E warm_fp32 None OOM: OutOfMemoryError: CUDA out of memory. Tried to allocate 4.00 GiB. GPU 0 has a total capacity of 31.36 GiB of which 2.54 GiB is free. Including non-PyTorch memory, this process has 28.80 GiB memory in use. Of the allocated memory 28.03 GiB is allocated by PyTorch, and 2.00 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:T
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   C warm_fp32 1651.703369140625 None
+== n=8192 batch=12 t=1553s load=['19.77', '10.83', '19.33']
+  input {'n': 8192, 'batch': 12, 'input_rC_mean': 0.19822287559509277, 'input_gram_err_mean': 0.002342223325589051, 'input_gram_err_max': 0.0023427815176546574, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E warm_bf16 None OOM: OutOfMemoryError: CUDA out of memory. Tried to allocate 3.00 GiB. GPU 0 has a total capacity of 31.36 GiB of which 2.04 GiB is free. Including non-PyTorch memory, this process has 29.30 GiB memory in use. Of the allocated memory 25.78 GiB is allocated by PyTorch, and 2.75 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:T
+   E qr 1337.120849609375 None
+   E eigh 6875.83154296875 None
+   E cholqr 515.470703125 None
+   E cholqr3 1278.8101806640625 None
+   C warm_bf16 537.2269287109375 None
+   C qr 1321.263427734375 None
+   C eigh 6843.10302734375 None
+   C cholqr 499.8266906738281 None
+   C cholqr3 1258.939697265625 None
+   E warm_fp32 None OOM: OutOfMemoryError: CUDA out of memory. Tried to allocate 1.50 GiB. GPU 0 has a total capacity of 31.36 GiB of which 555.81 MiB is free. Including non-PyTorch memory, this process has 30.80 GiB memory in use. Of the allocated memory 28.78 GiB is allocated by PyTorch, and 1.25 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments
+   C warm_fp32 640.9854736328125 None
+== n=12288 batch=12 t=1776s load=['7.38', '9.95', '17.30']
+  input {'n': 12288, 'batch': 12, 'input_rC_mean': 0.19810789823532104, 'input_gram_err_mean': 0.0023506031138822436, 'input_gram_err_max': 0.0023508197627961636, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E warm_bf16 None OOM: OutOfMemoryError: CUDA out of memory. Tried to allocate 6.75 GiB. GPU 0 has a total capacity of 31.36 GiB of which 3.54 GiB is free. Including non-PyTorch memory, this process has 27.80 GiB memory in use. Of the allocated memory 27.03 GiB is allocated by PyTorch, and 2.00 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:T
+   E qr None OOM: OutOfMemoryError: CUDA out of memory. Tried to allocate 6.75 GiB. GPU 0 has a total capacity of 31.36 GiB of which 3.54 GiB is free. Including non-PyTorch memory, this process has 27.80 GiB memory in use. Of the allocated memory 27.03 GiB is allocated by PyTorch, and 0 bytes is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:Tr
+   E eigh 23520.666015625 None
+   E cholqr None OOM: OutOfMemoryError: CUDA out of memory. Tried to allocate 6.75 GiB. GPU 0 has a total capacity of 31.36 GiB of which 3.54 GiB is free. Including non-PyTorch memory, this process has 27.80 GiB memory in use. Of the allocated memory 27.03 GiB is allocated by PyTorch, and 0 bytes is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:Tr
+   E cholqr3 None OOM: OutOfMemoryError: CUDA out of memory. Tried to allocate 6.75 GiB. GPU 0 has a total capacity of 31.36 GiB of which 3.54 GiB is free. Including non-PyTorch memory, this process has 27.80 GiB memory in use. Of the allocated memory 27.03 GiB is allocated by PyTorch, and 0 bytes is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:Tr
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   C warm_bf16 1794.87646484375 None
+   C qr 3225.703369140625 None
+   C eigh 23456.013671875 None
+   C cholqr 1589.724609375 None
+   C cholqr3 3959.944091796875 None
+   E warm_fp32 None OOM: OutOfMemoryError: CUDA out of memory. Tried to allocate 6.75 GiB. GPU 0 has a total capacity of 31.36 GiB of which 173.81 MiB is free. Including non-PyTorch memory, this process has 31.18 GiB memory in use. Of the allocated memory 30.41 GiB is allocated by PyTorch, and 0 bytes is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   C warm_fp32 None OOM: OutOfMemoryError: CUDA out of memory. Tried to allocate 6.75 GiB. GPU 0 has a total capacity of 31.36 GiB of which 3.54 GiB is free. Including non-PyTorch memory, this process has 27.80 GiB memory in use. Of the allocated memory 27.03 GiB is allocated by PyTorch, and 0 bytes is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:Tr
+== n=16384 batch=12 t=2348s load=['9.70', '10.04', '13.87']
+  input {'n': 16384, 'batch': 12, 'input_rC_mean': 0.19820809364318848, 'input_gram_err_mean': 0.002350176509935409, 'input_gram_err_max': 0.0023505273275077343, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E warm_bf16 None OOM: OutOfMemoryError: CUDA out of memory. Tried to allocate 12.00 GiB. GPU 0 has a total capacity of 31.36 GiB of which 6.54 GiB is free. Including non-PyTorch memory, this process has 24.80 GiB memory in use. Of the allocated memory 24.03 GiB is allocated by PyTorch, and 0 bytes is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:T
+   E qr None OOM: OutOfMemoryError: CUDA out of memory. Tried to allocate 12.00 GiB. GPU 0 has a total capacity of 31.36 GiB of which 6.54 GiB is free. Including non-PyTorch memory, this process has 24.80 GiB memory in use. Of the allocated memory 24.03 GiB is allocated by PyTorch, and 0 bytes is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:T
+   E eigh None OOM: OutOfMemoryError: CUDA out of memory. Tried to allocate 12.00 GiB. GPU 0 has a total capacity of 31.36 GiB of which 6.54 GiB is free. Including non-PyTorch memory, this process has 24.80 GiB memory in use. Of the allocated memory 24.03 GiB is allocated by PyTorch, and 0 bytes is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:T
+   E cholqr None OOM: OutOfMemoryError: CUDA out of memory. Tried to allocate 12.00 GiB. GPU 0 has a total capacity of 31.36 GiB of which 6.54 GiB is free. Including non-PyTorch memory, this process has 24.80 GiB memory in use. Of the allocated memory 24.03 GiB is allocated by PyTorch, and 0 bytes is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:T
+   E cholqr3 None OOM: OutOfMemoryError: CUDA out of memory. Tried to allocate 12.00 GiB. GPU 0 has a total capacity of 31.36 GiB of which 6.54 GiB is free. Including non-PyTorch memory, this process has 24.80 GiB memory in use. Of the allocated memory 24.03 GiB is allocated by PyTorch, and 0 bytes is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:T
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+   C warm_bf16 None OOM: OutOfMemoryError: CUDA out of memory. Tried to allocate 12.00 GiB. GPU 0 has a total capacity of 31.36 GiB of which 6.54 GiB is free. Including non-PyTorch memory, this process has 24.80 GiB memory in use. Of the allocated memory 24.03 GiB is allocated by PyTorch, and 2.00 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:
+   C qr None OOM: OutOfMemoryError: CUDA out of memory. Tried to allocate 12.00 GiB. GPU 0 has a total capacity of 31.36 GiB of which 6.54 GiB is free. Including non-PyTorch memory, this process has 24.80 GiB memory in use. Of the allocated memory 24.03 GiB is allocated by PyTorch, and 0 bytes is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:T
+   C eigh None OOM: OutOfMemoryError: CUDA out of memory. Tried to allocate 12.00 GiB. GPU 0 has a total capacity of 31.36 GiB of which 6.54 GiB is free. Including non-PyTorch memory, this process has 24.80 GiB memory in use. Of the allocated memory 24.03 GiB is allocated by PyTorch, and 0 bytes is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:T
+   C cholqr None OOM: OutOfMemoryError: CUDA out of memory. Tried to allocate 12.00 GiB. GPU 0 has a total capacity of 31.36 GiB of which 6.54 GiB is free. Including non-PyTorch memory, this process has 24.80 GiB memory in use. Of the allocated memory 24.03 GiB is allocated by PyTorch, and 0 bytes is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:T
+   C cholqr3 None OOM: OutOfMemoryError: CUDA out of memory. Tried to allocate 12.00 GiB. GPU 0 has a total capacity of 31.36 GiB of which 6.54 GiB is free. Including non-PyTorch memory, this process has 24.80 GiB memory in use. Of the allocated memory 24.03 GiB is allocated by PyTorch, and 0 bytes is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:T
+Traceback (most recent call last):
+  File "/workspace/TurboSOAP/benchmarks/refresh_study_microbench_ext.py", line 331, in <module>
+    main()
+  File "/workspace/TurboSOAP/benchmarks/refresh_study_microbench_ext.py", line 320, in main
+    run_cells(large, [int(x) for x in args.large_ns.split(',') if x], [int(x) for x in args.large_batches.split(',')],
+  File "/workspace/TurboSOAP/benchmarks/refresh_study_microbench_ext.py", line 181, in run_cells
+    cf, qf = c.float(), q.float()
+                        ^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 12.00 GiB. GPU 0 has a total capacity of 31.36 GiB of which 6.54 GiB is free. Including non-PyTorch memory, this process has 24.80 GiB memory in use. Of the allocated memory 24.03 GiB is allocated by PyTorch, and 0 bytes is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+finished 2026-11-20T04:38:22Z load=9.35 9.88 13.63 8/4927 1080852

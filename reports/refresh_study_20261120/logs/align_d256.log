@@ -1,0 +1,9 @@
+gpu-claim: refresh-study/align-d256 holds GPU 6
+blocks.0.attn.to_qkv.weight L bit_equal_all True max diff 0.0
+blocks.0.attn.to_qkv.weight R bit_equal_all True max diff 0.0
+blocks.0.attn.to_out.weight L bit_equal_all True max diff 0.0
+blocks.0.attn.to_out.weight R bit_equal_all True max diff 0.0
+blocks.0.ff.proj_in.weight L bit_equal_all True max diff 0.0
+blocks.0.ff.proj_in.weight R bit_equal_all True max diff 0.0
+blocks.0.ff.proj_out.weight L bit_equal_all True max diff 0.0
+blocks.0.ff.proj_out.weight R bit_equal_all True max diff 0.0

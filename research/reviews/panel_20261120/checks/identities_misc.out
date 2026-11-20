@@ -1,0 +1,13 @@
+(a) ||Y0^T Y0 - (I + A^4/4)|| = 6.065133446889584e-16
+(b) ||R4^T R4 - (I + A^6/72 + A^8/576)|| = 6.0426464679319565e-16  ||R4^T R4 - I||_2 at ||A||_2=0.5: 0.00021023220486114685
+(c) polar(I+A) angle for theta=0.5: 0.46364760900080615  arctan(0.5)= 0.4636476090008061
+(d) true new variances [10000.0, 0.009999999999999796]; V unchanged [9999.000034332856, 1.0099656671444408]; (R.R)^T V [9998.000268652178, 2.0097313478218015]; ratio-rescaled [10000.0, 0.009999999999999796]
+(e) ||H^T H - I|| = 1.3709042404740199e-15  ||H Q1 + U~1|| = 6.141215118847657e-16  ||Qmid^T Qmid - I|| = 2.8051612831801095e-15  symmetric Q1^T U~1: 6.764620867324401e-16
+(f) max |warm/QR - Fable formula| over 1000 random pairs (cap a=1): 3.552713678800501e-15
+(g) unchanged                                  V+=['1', '1e-06']  |M/sqrtV|=['0.98', '198']
+(g) T.T mixing                                 V+=['0.961', '0.0395']  |M/sqrtV|=['1', '0.995']
+(g) ratio-rescale (d_new/d_old_at_refresh)     V+=['1.04', '2.53e-11']  |M/sqrtV|=['0.961', '3.93e+04']
+(g) ratio-rescale (d_new/V-implied old diag)   V+=['1', '1e-06']  |M/sqrtV|=['0.98', '198']
+(h) consistent: unchanged      V+=['0.961', '0.0395'] (true ['1', '1e-06']) |M/sqrtV|=['1.02', '0']
+(h) consistent: T.T mixing     V+=['0.924', '0.0758'] (true ['1', '1e-06']) |M/sqrtV|=['1.04', '0']
+(h) consistent: ratio-rescale  V+=['1', '1e-06'] (true ['1', '1e-06']) |M/sqrtV|=['1', '0']

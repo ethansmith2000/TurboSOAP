@@ -1,15 +1,18 @@
 \hypertarget{experimental-design}{%
 \section{4. Experimental design}\label{experimental-design}}
 
-We use a 109,396,992-parameter Transformer: width 768, 12 layers, 12
-attention heads, feed-forward hidden width 1,536, fused QKV and SwiGLU
-projections, tied embeddings, RoPE, QK normalization, and no bias or
-dropout. Model forward uses BF16 autocast with FlashAttention; the model
+We use a 109,396,992-parameter Transformer~\citep{vaswani2017attention}: width 768, 12 layers, 12
+attention heads, feed-forward hidden width 1,536, fused QKV and SwiGLU~\citep{shazeer2020glu}
+projections, tied embeddings~\citep{press2016using}, RoPE~\citep{su2021roformer},
+QK normalization~\citep{dehghani2023scaling}, and no bias or
+dropout. Model forward uses BF16 autocast~\citep{micikevicius2017mixed,kalamkar2019study}
+with FlashAttention~\citep{dao2022flashattention,dao2023flashattention2}; the model
 is eager and FP32 cross-entropy is compiled. Every experiment uses one
 RTX 5090, PyTorch 2.11.0+cu128, and CUDA 12.8 as recorded by the
 workers.
 
-The cached OpenWebText corpus uses pinned dataset and GPT-2 tokenizer
+The cached OpenWebText corpus~\citep{gokaslan2019openwebtext} uses
+pinned dataset and GPT-2~\citep{radford2019language} tokenizer
 revisions. Documents are split before tokenization/packing;
 EOS-separated packed rows use 1,024 tokens with causal attention across
 document boundaries. The experiment selects 320,000 training rows and

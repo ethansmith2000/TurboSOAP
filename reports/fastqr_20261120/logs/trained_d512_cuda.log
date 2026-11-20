@@ -1,0 +1,8 @@
+06:30:43 d=512 f0 n=1536 L: 7s, branch fails 2/100, chain fallbacks 2, late r_C interval hh 0.5598 cq 0.5617, max angle 8.36e-05, max prefix n/8 0.0e+00
+06:30:45 d=512 f1 n=512 R: 2s, branch fails 1/100, chain fallbacks 1, late r_C interval hh 0.0237 cq 0.0237, max angle 2.72e-05, max prefix n/8 0.0e+00
+06:30:47 d=512 f2 n=512 L: 2s, branch fails 0/100, chain fallbacks 0, late r_C interval hh 0.5162 cq 0.5145, max angle 5.74e-05, max prefix n/8 0.0e+00
+06:30:49 d=512 f3 n=512 R: 2s, branch fails 0/100, chain fallbacks 0, late r_C interval hh 0.0320 cq 0.0320, max angle 5.38e-05, max prefix n/8 0.0e+00
+06:30:58 d=512 f4 n=2048 L: 10s, branch fails 0/100, chain fallbacks 2, late r_C interval hh 0.5552 cq 0.5560, max angle 8.96e-05, max prefix n/8 0.0e+00
+06:31:00 d=512 f5 n=512 R: 2s, branch fails 0/100, chain fallbacks 1, late r_C interval hh 0.0284 cq 0.0284, max angle 2.45e-05, max prefix n/8 0.0e+00
+06:31:02 d=512 f6 n=512 L: 2s, branch fails 0/100, chain fallbacks 0, late r_C interval hh 0.1330 cq 0.1332, max angle 3.97e-05, max prefix n/8 0.0e+00
+06:31:05 d=512 f7 n=1024 R: 3s, branch fails 0/100, chain fallbacks 0, late r_C interval hh 0.1171 cq 0.1171, max angle 9.63e-05, max prefix n/8 0.0e+00

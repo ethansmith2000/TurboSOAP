@@ -1,21 +1,39 @@
-SOAP's matrix preconditioners introduce state and basis-refresh costs
-that can limit its practical efficiency. We describe TurboSOAP, a dense
-two-sided SOAP approximation combining damped basis tracking, periodic
-QR repair, BF16 persistent state, and compiled updates over equal-shaped
-matrices. Its precision policy retains FP32 master parameters and
-decomposition islands while using BF16 for moments, covariance factors,
-bases, and most matrix operands. On one 109-million-parameter language
-model trained on a fixed OpenWebText cohort, two model-initialization
-seeds finish 10,000 optimizer calls with cross-entropy increases of
-0.01124 and 0.01008 relative to a stock-beta SOAP QR10 reference,
-corresponding to 1.13\% and 1.01\% higher perplexity. These endpoints
-follow larger observed gaps of 0.118--0.124 CE at call 500. Persistent
-matrix state falls from 2.320 to 1.160 GiB. Complete-step time falls
-18.66\% in a paired 9,900-call window for one seed and 17.36\% in a
-matched 100-call prefix for the other. Per-event accounting places most
-optimizer-time saving in changed refresh work. Short matched-precision
-QR20/QR50 controls and a same-state QR profile provide cadence and
-implementation context. These measurements support a scoped
+SOAP adapts in the eigenbases of its matrix preconditioners and
+refreshes them periodically, here every 10 optimizer ages by a
+warm-started power step followed by QR (QR10). Calls that perform a QR
+refresh account for about two-thirds of the reference optimizer's
+measured time. We describe TurboSOAP, which keeps that refresh cadence
+but makes four of every five refreshes approximate. A warm refresh
+applies a basis-tracking step, a damped Jacobi-type rotation of the
+current basis followed by two Newton--Schulz orthogonality corrections,
+and every fiftieth age uses a QR repair (warm10/QR50). The tracking step
+needs no decomposition; its matrix products take BF16 operands with
+FP32 accumulation, whereas QR and eigendecomposition require FP32
+inputs. In the same compiled BF16 implementation, a call with a warm
+refresh costs 61.6 ms of optimizer time against 601.2 ms for a call
+with a QR refresh. Our implementation also stores all persistent matrix
+state in BF16 and compiles the matrix updates, retaining FP32 master
+parameters and decomposition islands. On one 109-million-parameter
+language model trained on a fixed OpenWebText cohort, two
+model-initialization seeds finish 10,000 optimizer calls with
+cross-entropy increases of 0.01124 and 0.01008 relative to a stock-beta
+FP32 SOAP QR10 reference, corresponding to 1.13\% and 1.01\% higher
+perplexity, after larger observed gaps of 0.118--0.124 CE at call 500.
+Persistent matrix state falls from 2.320 to 1.160 GiB. Complete-step
+time falls 18.66\% in a paired 9,900-call window for one seed and
+17.36\% in a matched 100-call prefix for the other. That reference
+differs in implementation as well as cadence. Against QR10 in the same
+compiled BF16 implementation, timed in one launch, TurboSOAP's step
+time is 12.1\% lower (320.5 against 364.8 ms). Exact refreshes help early: at
+call 500 this matched QR10 is 0.098--0.116 CE ahead. At call 10,000 it
+ends 0.0018 and 0.0003 CE above TurboSOAP on the two seeds, within
+their 0.003 spread. Within the BF16 implementation, then, approximating
+the refreshes costs no endpoint loss that two seeds can resolve,
+whereas with FP32 state it costs 0.007 on the one seed measured. Policy
+and implementation interact: moving to BF16 raises QR10's endpoint loss
+by 0.010--0.013 but warm10/QR50's by 0.004, so the gap to the FP32
+reference cannot be apportioned between them. This study does not
+identify why. These measurements support a scoped
 quality/time/memory tradeoff; they do not establish statistical
-equivalence or attribute the combined speed improvement solely to basis
-tracking.
+equivalence or attribute the speed improvement to any single
+component.

@@ -1,0 +1,38 @@
+{
+  "eager_compiled": [
+    {
+      "event": "ordinary",
+      "fast": false,
+      "parameter_max_absolute": 0.0,
+      "state_relative_errors": {
+        "m": 0.0,
+        "v": 0.0,
+        "cl": 0.0,
+        "cr": 0.0,
+        "ql": 0.0,
+        "qr": 0.0
+      }
+    },
+    {
+      "event": "qr",
+      "fast": false,
+      "parameter_max_absolute": 0.0,
+      "state_relative_errors": {
+        "m": 0.0,
+        "v": 0.0,
+        "cl": 0.0,
+        "cr": 0.0,
+        "ql": 0.0,
+        "qr": 0.0
+      }
+    }
+  ],
+  "arm": "fp32s_hh_qr10",
+  "spec": {
+    "cls": "production",
+    "frequency": 10,
+    "repair": 10,
+    "state_dtype": "float32",
+    "basis_dtype": "float32"
+  }
+}

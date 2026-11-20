@@ -1,0 +1,49 @@
+{
+ "results": {
+  "default_equals_production_warm10_qr50": true,
+  "default_equals_production_qr10": true,
+  "warm_ns2_equals_production": true,
+  "warm_ns1_differs": true,
+  "householder_from_order_equals_qr_basis": true,
+  "fast_warm_ns2_event_equals_production": true,
+  "cholqr_event_matches_qr_event": {
+   "params_and_covariances_bit_equal": true,
+   "v_permutation_bit_equal": true,
+   "max_basis_column_angle": 0.0002440424249934456,
+   "ok": true
+  },
+  "fallback": {
+   "failed_left_indices": [
+    1
+   ],
+   "refresh_log": [
+    {
+     "call": 11,
+     "factors": 6,
+     "fallbacks": 1
+    }
+   ],
+   "fallback_log": [
+    {
+     "call": 11,
+     "shape": [
+      64,
+      48
+     ],
+     "side": "L",
+     "index": 1
+    }
+   ],
+   "fallback_q_equals_householder": true,
+   "fallback_q_equals_production_qr_basis": true,
+   "fallback_m_retransported": true,
+   "untouched_elements_kept": true,
+   "states_finite": true,
+   "fallback_gram_error": 0.0
+  }
+ },
+ "torch": "2.11.0+cu128",
+ "device": "cpu",
+ "compiled": false,
+ "gpu": null
+}

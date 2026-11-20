@@ -1,0 +1,23 @@
+06:27:23 env {'torch': '2.11.0+cu128', 'cuda': '12.8', 'gpu': 'NVIDIA GeForce RTX 5090', 'claim': '3', 'loadavg_start': (13.724609375, 13.98828125, 14.72021484375), 'started': '2026-11-20T06:27:23Z'}
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+/venv/main/lib/python3.12/site-packages/torch/_inductor/compile_fx.py:322: UserWarning: TensorFloat32 tensor cores for float32 matrix multiplication available but not enabled. Consider setting `torch.set_float32_matmul_precision('high')` for better performance.
+  warnings.warn(
+06:29:15 production/ordinary: cuda 9.95 ms, wall 9.98 ms, matrix-only 9.22
+06:29:15 production/warm: cuda 60.56 ms, wall 60.59 ms, matrix-only 59.83
+06:29:15 production/qr: cuda 613.31 ms, wall 613.34 ms, matrix-only 612.29
+06:29:15 fast/ordinary: cuda 10.02 ms, wall 10.04 ms, matrix-only 9.23
+06:29:15 fast/warm: cuda 47.66 ms, wall 47.69 ms, matrix-only 46.86
+06:29:15 fast/qr: cuda 360.90 ms, wall 360.94 ms, matrix-only 359.99
+06:29:15 timed CholQR fallbacks: 0 of 5760
+06:29:21 n=768: householder_qr_basis 31.21, cholqr_basis_ieee 7.58, cholqr_basis_tf32 6.58, warm_ns2 0.80, warm_ns1 0.63, gram_ieee 0.34, gram_tf32 0.20, cholesky_ex 1.20, solve_triangular_ieee 0.67, householder_qr_only 30.87, one_fallback_eager 2.96
+06:29:30 n=1536: householder_qr_basis 81.61, cholqr_basis_ieee 33.02, cholqr_basis_tf32 23.58, warm_ns2 3.97, warm_ns1 2.92, gram_ieee 1.93, gram_tf32 0.94, cholesky_ex 4.21, solve_triangular_ieee 2.63, householder_qr_only 80.08, one_fallback_eager 7.02
+06:29:45 n=2304: householder_qr_basis 143.76, cholqr_basis_ieee 88.73, cholqr_basis_tf32 57.61, warm_ns2 12.15, warm_ns1 8.79, gram_ieee 6.32, gram_tf32 2.88, cholesky_ex 9.76, solve_triangular_ieee 6.58, householder_qr_only 139.77, one_fallback_eager 12.33
+06:30:08 n=3072: householder_qr_basis 218.04, cholqr_basis_ieee 189.49, cholqr_basis_tf32 111.35, warm_ns2 29.03, warm_ns1 20.75, gram_ieee 15.35, gram_tf32 6.30, cholesky_ex 18.33, solve_triangular_ieee 13.59, householder_qr_only 209.51, one_fallback_eager 18.74
+06:30:08 done

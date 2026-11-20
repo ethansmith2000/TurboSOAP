@@ -1,6 +1,46 @@
 \hypertarget{method}{%
 \section{3. Method}\label{method}}
 
+Algorithm~1 summarizes one call for a single matrix parameter;
+Sections 3.1--3.4 specify its precision, ordering, and execution.
+
+\begin{algorithm}[H]
+\caption{One TurboSOAP call for \(W\in\mathbb{R}^{m\times n}\) at matrix
+age \(t\ge1\) (warm10/QR50). Precision boundaries are omitted; see
+Section 3.1.}
+\begin{algorithmic}[1]
+\State \(\bar G\gets Q_L^\top G\,Q_R\) \Comment{\(G\): clipped gradient}
+\State \(M_f\gets\beta_1M+(1-\beta_1)\bar G,\quad
+ V_f\gets\beta_2V+(1-\beta_2)\bar G^{2}\)
+\State \(W\gets\bigl(W-\eta_k c_t\,Q_L\,\tfrac{M_f}{\sqrt{V_f}+\epsilon}\,Q_R^\top\bigr)(1-\eta_k\lambda)\)
+ \Comment{\(c_t=\sqrt{1-\beta_2^t}/(1-\beta_1^t)\)}
+\State \(M,V\gets M_f,V_f\);\quad
+ \(C_L\gets\beta_CC_L+(1-\beta_C)GG^\top,\ C_R\gets\beta_CC_R+(1-\beta_C)G^\top G\)
+\If{\(t\bmod 50=0\)} \Comment{QR repair: FP32 island}
+ \State \((Q_L^+,\pi_L)\gets\textsc{QRRepair}(C_L,Q_L)\);\ \((Q_R^+,\pi_R)\gets\textsc{QRRepair}(C_R,Q_R)\)
+ \State permute rows of \(V\) by \(\pi_L\) and columns by \(\pi_R\)
+\ElsIf{\(t\bmod 10=0\)} \Comment{warm refresh: matrix products only}
+ \State \(Q_L^+\gets\textsc{WarmRefresh}(C_L,Q_L)\);\ \(Q_R^+\gets\textsc{WarmRefresh}(C_R,Q_R)\)
+\Else
+ \State \Return
+\EndIf
+\State \(M\gets (Q_L^+)^\top\bigl(Q_LMQ_R^\top\bigr)Q_R^+\);\quad \(Q_L,Q_R\gets Q_L^+,Q_R^+\)
+\Statex
+\Function{WarmRefresh}{$C,Q$}
+ \State \(B\gets\operatorname{sym}(Q^\top CQ)\),\ \(d\gets\operatorname{diag}B\),\ \(s\gets\max_i|d_i|\),\ \(h_{ij}\gets(d_i-d_j)/s\)
+ \State \(A_{ij}\gets-\tfrac12\,(B_{ij}/s)\,h_{ij}/(h_{ij}^2+0.01^2)\);\quad
+ \(A\gets\min\bigl(1,\,0.5\sqrt2/\|A\|_F\bigr)A\)
+ \State \(Y\gets Q+QA\)
+ \For{\(j=1,2\)} \(Y\gets Y-\tfrac12Y(Y^\top Y-I)\) \EndFor
+ \State \Return \(Y\)
+\EndFunction
+\Function{QRRepair}{$C,Q$}
+ \State \(Z\gets CQ\);\ \(\pi\gets\operatorname{argsort}_{\downarrow}\operatorname{diag}(Q^\top Z)\)
+ \State \Return \((\operatorname{qr}(Z_{:,\pi}).Q,\ \pi)\)
+\EndFunction
+\end{algorithmic}
+\end{algorithm}
+
 \hypertarget{state-precision-and-update-ordering}{%
 \subsection{3.1. State, precision, and update
 ordering}\label{state-precision-and-update-ordering}}
@@ -10,7 +50,8 @@ stores first and second moments \(M,V\), covariance factors \(C_L,C_R\),
 and square bases \(Q_L,Q_R\). All six persistent tensors use BF16.
 Parameters, scalar age and learning-rate tensors, pointwise moment
 temporaries, and decomposition inputs/outputs before basis storage use
-FP32. Auxiliary parameters use the separate AdamW optimizer described in
+FP32. Auxiliary parameters use the separate AdamW
+optimizer~\citep{loshchilov2017decoupled} described in
 Section 4.
 
 Let \(R_b\) denote rounding to BF16. We distinguish two matrix products:
@@ -83,8 +124,8 @@ this operation. The equations specify the weighted update and its output
 dtype; they do not establish the vendor kernel's exact internal rounding
 sequence. All main experiments use \(\beta_1=\beta_2=\beta_C=0.95\).
 
-\hypertarget{dense-warm-tracking}{%
-\subsection{3.2. Dense warm tracking}\label{dense-warm-tracking}}
+\hypertarget{basis-tracking}{%
+\subsection{3.2. Basis tracking}\label{basis-tracking}}
 
 For either updated covariance factor \(C\) and its current basis \(Q\),
 form (with \(\operatorname{sym}(X)=(X+X^\top)/2\))
@@ -114,14 +155,25 @@ Y_{j+1}=R_b\bigl(\operatorname{float}(Y_j)
 \]
 
 The stored new basis is \(Y_2\). This is an approximate orthogonality
-correction, not exact QR. All products are dense: the motivation is GPU
-execution and numerical policy, not a reduction in cubic asymptotic
-order. The skew direction is a damped first-order Jacobi-type motion
+correction, not exact QR. The step needs no decomposition: its matrix
+products take BF16 operands with FP32 accumulation, and the remaining
+operations are elementwise. Its products are full
+\(m\times m\) or \(n\times n\): the motivation is GPU execution and
+numerical policy, not a reduction in cubic asymptotic order. A refresh
+that applies this step is a \emph{warm refresh}: an approximate
+refresh that moves the stored basis toward the current factor's
+eigenbasis without a decomposition. (SOAP's QR refresh is also
+warm-started from the previous basis; ``warm'' here names the
+approximate refresh only.) The schedule warm10/QR50 refreshes every 10
+ages, with a QR repair at multiples of 50 and warm refreshes otherwise.
+
+The skew direction is a damped first-order Jacobi-type motion
 applied to all coordinate pairs. For a small skew \(A\), the unrounded
 change is \(B^+\approx B+BA-AB\); its diagonal approximation gives the
 gap-dependent off-diagonal correction. Without rounding, each residual
 map is \(Y\mapsto(3Y-YY^\top Y)/2\), the cubic Newton--Schulz polar
-iteration in the Björck--Bowie family. These primitives themselves are
+iteration in the Björck--Bowie family
+\citep{bjorck1971iterative,higham2008functions}. These primitives themselves are
 not new. Before the global cap, the damping weights the undamped
 reciprocal-gap formula by \(\tfrac12 h_{ij}^2/(h_{ij}^2+0.01^2)\). It
 therefore suppresses motion relative to that formula when
@@ -133,6 +185,14 @@ The statement does not bound absolute motion.
 \hypertarget{qr-repair-and-history-transport}{%
 \subsection{3.3. QR repair and history
 transport}\label{qr-repair-and-history-transport}}
+
+QR repair is the one refresh path that requires FP32 decomposition. In the PyTorch
+2.11 build used here, CUDA QR (\texttt{geqrf}) and the symmetric
+eigensolver have no BF16 kernels,
+and SOAP recommends FP32 as the minimum precision for its QR
+\citep{vyas2024soap}. Each QR repair and the initial
+eigendecomposition therefore form FP32 decomposition islands; under
+warm10/QR50, one refresh in five enters such an island.
 
 At positive ages divisible by 10, we refresh both factors. Ages
 divisible by 50 use QR repair; the remaining refresh ages use Section
@@ -167,7 +227,7 @@ M^+=\mathcal B(\mathcal B((Q_L^+)^\top,M^{\rm world}),Q_R^+).
 
 Here the unprimed bases are the old bases and \(M\) denotes
 \(R_b(M_f)\). QR repair permutes \(R_b(V_f)\) along both axes according
-to the sorting orders. Warm refresh leaves that rounded diagonal history
+to the sorting orders. A warm refresh leaves that rounded diagonal history
 unchanged. Neither choice represents an exact rotation of a full
 second-moment tensor. Eschenhagen et al.~report that a basis-aware
 second-moment correction hurt in their EShampoo experiments (Appendix
@@ -178,10 +238,33 @@ Transpose-based first-moment transport is also approximate when stored
 bases are nonorthogonal. QR repair has a substantive recovery role: with
 \(Q=I\) and
 \(C=\left[\begin{smallmatrix}1&0.5\\0.5&1\end{smallmatrix}\right]\), all
-\(h_{ij}=0\), so the warm step leaves the basis unchanged despite
+\(h_{ij}=0\), so the tracking step leaves the basis unchanged despite
 nonzero off-diagonal covariance. This counterexample precludes a claim
-that warm motion alone always diagonalizes a factor; it does not
+that tracking alone always diagonalizes a factor; it does not
 establish incidence in training.
+
+Figure 2 illustrates the two refresh types on a synthetic drifting
+covariance. The factor dimension is 128, with power-law spectrum
+\(\lambda_i\propto i^{-1}\); a fixed random orthogonal basis rotates by
+a random skew step of Frobenius size \(0.01\sqrt2\) per step, each step
+contributes 32 Gaussian samples to a covariance EMA with
+\(\beta_C=0.95\), and the stored bases use the production
+\texttt{warm\_basis} and \texttt{qr\_basis} functions in BF16. These
+settings were fixed before inspection. The off-diagonal fraction \(r_C\)
+of Section 5.5 grows between refreshes; each warm refresh removes part
+of that growth and each QR removes most of it. Averaged over steps
+100--1000, \(r_C\) is 0.075 for QR10, 0.093 for warm10/QR50 and 0.125 for
+QR50. The synthetic magnitudes are smaller than the trained values in
+Section 5.5 (0.38--0.39 for TurboSOAP and 0.20--0.21 for QR10 after
+four warm refreshes), so the figure illustrates the mechanism only.
+
+\begin{center}
+\includegraphics{figures/tracking_toy.pdf}
+\end{center}
+
+\emph{Figure 2.} Synthetic illustration: \(r_C\) over steps 500--650 for
+three refresh schedules on the same drifting covariance. Dotted lines
+mark QR repairs at multiples of 50. Not a training measurement.
 
 \hypertarget{compilation-and-storage}{%
 \subsection{3.4. Compilation and
@@ -199,7 +282,7 @@ Separate full-graph compiled regions for ordinary, warm, and QR events
 include packing parameters/gradients, the matrix update, covariance
 accumulation, refresh/transport, and parameter writes. Initial
 eigendecompositions are eager. The measured candidate captures 12 graphs
-without graph breaks. The compiler uses
+without graph breaks. The compiler~\citep{ansel2024pytorch} uses
 \texttt{emulate\_precision\_casts=True}. The saved small synthetic CUDA
 parity probe reports zero maximum parameter difference and zero relative
 error in all six states for ordinary, warm and QR events. This supports

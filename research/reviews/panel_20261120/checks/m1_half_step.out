@@ -1,0 +1,9 @@
+n=128 rot=0.0500 rC_in=0.1078 f=0.5=0.0583 f=0.5,cap.5=0.0742 f=1.0=0.0249 f=0.75=0.0367 jacobi_exact_sim=0.0469 production_bf16=0.0743
+n=128 rot=0.2000 rC_in=0.2071 f=0.5=0.1083 f=0.5,cap.5=0.1530 f=1.0=0.0482 f=0.75=0.0670 jacobi_exact_sim=0.1073 production_bf16=0.1531
+n=128 rot=0.5000 rC_in=0.3934 f=0.5=0.2339 f=0.5,cap.5=0.3433 f=1.0=0.1901 f=0.75=0.1979 jacobi_exact_sim=0.2637 production_bf16=0.3433
+n=256 rot=0.0500 rC_in=0.1144 f=0.5=0.0643 f=0.5,cap.5=0.0871 f=1.0=0.0325 f=0.75=0.0434 jacobi_exact_sim=0.0585 production_bf16=0.0872
+n=256 rot=0.2000 rC_in=0.2244 f=0.5=0.1183 f=0.5,cap.5=0.1747 f=1.0=0.0547 f=0.75=0.0745 jacobi_exact_sim=0.1305 production_bf16=0.1748
+n=256 rot=0.5000 rC_in=0.4511 f=0.5=0.2909 f=0.5,cap.5=0.4071 f=1.0=0.2536 f=0.75=0.2604 jacobi_exact_sim=0.3372 production_bf16=0.4070
+n=512 rot=0.0500 rC_in=0.0978 f=0.5=0.0552 f=0.5,cap.5=0.0697 f=1.0=0.0270 f=0.75=0.0370 jacobi_exact_sim=0.0510 production_bf16=0.0698
+n=512 rot=0.2000 rC_in=0.2122 f=0.5=0.1113 f=0.5,cap.5=0.1602 f=1.0=0.0465 f=0.75=0.0680 jacobi_exact_sim=0.1410 production_bf16=0.1602
+n=512 rot=0.5000 rC_in=0.4539 f=0.5=0.2932 f=0.5,cap.5=0.4067 f=1.0=0.2556 f=0.75=0.2631 jacobi_exact_sim=0.3702 production_bf16=0.4065

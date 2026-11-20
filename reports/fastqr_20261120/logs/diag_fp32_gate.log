@@ -1,0 +1,68 @@
+gpu-claim: fastqr/diag_fp32_gate holds GPU 1
+[32mActivated conda/uv virtual environment at [36m/venv/main[0m
+claim 1 Fri Nov 20 12:27:24 UTC 2026
+{"event": "cuda_parity", "case": "fp32s_hh_qr10", "elapsed_seconds": 10.795669335871935, "result": {"eager_compiled": [{"event": "ordinary", "fast": false, "parameter_max_absolute": 0.0, "state_relative_errors": {"m": 0.0, "v": 0.0, "cl": 0.0, "cr": 0.0, "ql": 0.0, "qr": 0.0}}, {"event": "qr", "fast": false, "parameter_max_absolute": 0.0, "state_relative_errors": {"m": 0.0, "v": 0.0, "cl": 0.0, "cr": 0.0, "ql": 0.0, "qr": 0.0}}], "arm": "fp32s_hh_qr10", "spec": {"cls": "production", "frequency": 10, "repair": 10, "state_dtype": "float32", "basis_dtype": "float32"}}}
+{"event": "started", "case": "fp32s_hh_qr10", "elapsed_seconds": 12.891571953892708, "initial_parameters_sha256": "24da908288be7ee828bd2a8221ac637b870c0c219b05964b3517c576b0a7da79", "calls": 12, "seed": 204, "torch": "2.11.0+cu128", "cuda": "12.8", "gpu": "NVIDIA GeForce RTX 5090", "claim": "1"}
+/venv/main/lib/python3.12/site-packages/torch/nn/functional.py:2954: UserWarning: Mismatch dtype between input and weight: input dtype = c10::BFloat16, weight dtype = float, Cannot dispatch to fused implementation. (Triggered internally at /pytorch/aten/src/ATen/native/layer_norm.cpp:344.)
+  return torch.rms_norm(input, normalized_shape, weight, eps)
+{"event": "initial_gradient", "case": "fp32s_hh_qr10", "elapsed_seconds": 15.629244084935635, "loss": 10.963447570800781, "norm": 11.2014741897583, "sha256": "7936c3f658be84b84ee780a52876bc2a3cda2771d0b30596cff715f47a81deb2"}
+{"event": "initial_backward_repeat", "case": "fp32s_hh_qr10", "elapsed_seconds": 16.48438023100607, "passed": true}
+{"event": "startup_match", "case": "fp32s_hh_qr10", "elapsed_seconds": 16.48497571097687, "passed": true, "reference": "paper verified full BF16 seed204 replication (bf16_refresh_controls manifest)"}
+{"event": "validation", "case": "fp32s_hh_qr10", "elapsed_seconds": 22.112474272958934, "call": 0, "ce": 10.966108478605747, "targets": 1047552, "listed_tensor_hash_preservation_checked": true}
+{"event": "initial_validation_match", "case": "fp32s_hh_qr10", "elapsed_seconds": 22.113057712791488, "passed": true}
+{"event": "geometry", "case": "fp32s_hh_qr10", "elapsed_seconds": 25.609934312989935, "call": 1, "max_absolute_gram": 6.911566015332937e-05, "max_normalized_gram": 1.2956714921393927e-06, "max_physical_m_error": 0}
+{"event": "final_state_finite", "case": "fp32s_hh_qr10", "elapsed_seconds": 64.47258600289933, "passed": true}
+Traceback (most recent call last):
+  File "/workspace/data/fastqr_20261120/diag_fp32_gate/source/benchmarks/fastqr_training.py", line 476, in <module>
+    main()
+  File "/workspace/data/fastqr_20261120/diag_fp32_gate/source/benchmarks/fastqr_training.py", line 470, in main
+    worker(a.bundle, a.arm)
+  File "/workspace/data/fastqr_20261120/diag_fp32_gate/source/benchmarks/fastqr_training.py", line 347, in worker
+    result = bss.run(bundle, arm, m['calls'], protocol=m['protocols'][arm])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/data/fastqr_20261120/diag_fp32_gate/source/benchmarks/bf16_storage_screen.py", line 308, in run
+    mean_optimizer_ms=statistics.mean(r['optimizer_ms'] for r in clean),
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/statistics.py", line 486, in mean
+    raise StatisticsError('mean requires at least one data point')
+statistics.StatisticsError: mean requires at least one data point
+Traceback (most recent call last):
+  File "/workspace/data/fastqr_20261120/diag_fp32_gate/source/benchmarks/fastqr_training.py", line 476, in <module>
+    main()
+  File "/workspace/data/fastqr_20261120/diag_fp32_gate/source/benchmarks/fastqr_training.py", line 472, in main
+    campaign(a.bundle)
+  File "/workspace/data/fastqr_20261120/diag_fp32_gate/source/benchmarks/fastqr_training.py", line 434, in campaign
+    subprocess.run([sys.executable, str(bundle / 'source/benchmarks/fastqr_training.py'), 'worker',
+  File "/venv/main/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/venv/main/bin/python', '/workspace/data/fastqr_20261120/diag_fp32_gate/source/benchmarks/fastqr_training.py', 'worker', '--bundle', '/workspace/data/fastqr_20261120/diag_fp32_gate', '--arm', 'fp32s_hh_qr10']' returned non-zero exit status 1.
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+{"event": "cuda_parity", "case": "compiled_fp32", "elapsed_seconds": 39.01142912195064, "result": {"eager_compiled": [{"event": "ordinary", "parameter_max_absolute": 0.0, "state_relative_errors": {"m": 0.0, "v": 0.0, "cl": 0.0, "cr": 0.0, "ql": 0.0, "qr": 0.0}}, {"event": "warm", "parameter_max_absolute": 0.0, "state_relative_errors": {"m": 0.0, "v": 0.0, "cl": 0.0, "cr": 2.3811686844510405e-08, "ql": 0.0, "qr": 0.0}}, {"event": "qr", "parameter_max_absolute": 0.0, "state_relative_errors": {"m": 0.0, "v": 0.0, "cl": 0.0, "cr": 0.0, "ql": 0.0, "qr": 0.0}}], "same_state_update_relative_error": 0.003653396386653185, "same_state_update_cosine": 0.9999933242797852, "arithmetic_screen_passed": true}}
+{"event": "started", "case": "compiled_fp32", "elapsed_seconds": 41.29216578695923, "initial_parameters_sha256": "24da908288be7ee828bd2a8221ac637b870c0c219b05964b3517c576b0a7da79", "calls": 12, "seed": 204, "torch": "2.11.0+cu128", "cuda": "12.8", "gpu": "NVIDIA GeForce RTX 5090", "claim": "1"}
+/venv/main/lib/python3.12/site-packages/torch/nn/functional.py:2954: UserWarning: Mismatch dtype between input and weight: input dtype = c10::BFloat16, weight dtype = float, Cannot dispatch to fused implementation. (Triggered internally at /pytorch/aten/src/ATen/native/layer_norm.cpp:344.)
+  return torch.rms_norm(input, normalized_shape, weight, eps)
+{"event": "initial_gradient", "case": "compiled_fp32", "elapsed_seconds": 45.53893738100305, "loss": 10.963447570800781, "norm": 11.2014741897583, "sha256": "7936c3f658be84b84ee780a52876bc2a3cda2771d0b30596cff715f47a81deb2"}
+{"event": "initial_backward_repeat", "case": "compiled_fp32", "elapsed_seconds": 46.467378285946324, "passed": true}
+{"event": "startup_match", "case": "compiled_fp32", "elapsed_seconds": 46.4678737251088, "passed": true, "reference": "paper verified full BF16 seed204 replication (bf16_refresh_controls manifest)"}
+{"event": "validation", "case": "compiled_fp32", "elapsed_seconds": 52.47356929513626, "call": 0, "ce": 10.966108478605747, "targets": 1047552, "listed_tensor_hash_preservation_checked": true}
+{"event": "initial_validation_match", "case": "compiled_fp32", "elapsed_seconds": 52.474092584103346, "passed": true}
+{"event": "geometry", "case": "compiled_fp32", "elapsed_seconds": 54.79458308010362, "call": 1, "max_absolute_gram": 6.911566015332937e-05, "max_normalized_gram": 1.2956714921393927e-06, "max_physical_m_error": 0}
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+{"event": "final_state_finite", "case": "compiled_fp32", "elapsed_seconds": 103.82625123509206, "passed": true}
+Traceback (most recent call last):
+  File "/workspace/data/fastqr_20261120/diag_fp32_gate/run_compiled_fp32.py", line 12, in <module>
+    bss.run(B, "compiled_fp32", 12, protocol=m["protocols"]["fp32s_hh_qr10"])
+  File "/workspace/data/fastqr_20261120/diag_fp32_gate/source/benchmarks/bf16_storage_screen.py", line 308, in run
+    mean_optimizer_ms=statistics.mean(r['optimizer_ms'] for r in clean),
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/statistics.py", line 486, in mean
+    raise StatisticsError('mean requires at least one data point')
+statistics.StatisticsError: mean requires at least one data point

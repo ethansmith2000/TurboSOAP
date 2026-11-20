@@ -1,0 +1,6 @@
+2026-11-20T13:06:37Z stage 3 launcher exited; starting stage 4
+2026-11-20T13:06:13Z all done rc=0
+[32mActivated conda/uv virtual environment at [36m/venv/main[0m
+2026-11-20T13:06:38Z queued stage4_seed204_bf16_fl300_w10_qr50_c10000 pid 1783033
+2026-11-20T13:06:58Z queued stage4_seed204_bf16_fl1000_w10_qr50_c10000 pid 1784044
+2026-11-20T15:24:10Z all done rc=0

@@ -23,7 +23,7 @@ Seed
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
 Stock QR10 CE
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
-Full BF16 CE
+TurboSOAP CE
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
 CE increase
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
@@ -39,7 +39,7 @@ Perplexity increase
 \end{minipage}
 
 The mean paired endpoint increase is \textbf{0.010659815 CE}. Both seeds
-show a larger early gap: at call 500, BF16 exceeds the reference by
+show a larger early gap: at call 500, TurboSOAP exceeds the reference by
 0.123913 and 0.118438 CE for seeds 204 and 205. From call 2000 onward
 the observed gaps remain approximately 0.007--0.012 CE, rather than
 continuing toward zero. The pilot's FP32-state warm arm already shows a
@@ -53,12 +53,60 @@ endpoint agreement. Two initialization seeds with fixed data order
 provide limited replication; we make no statistical equivalence claim or
 confidence-interval interpretation.
 
-\includegraphics{figures/full_horizon.pdf}
+\includegraphics{figures/full_horizon_v2.pdf}
 
-\emph{Figure 1.} Left: the declared learning horizon, displaying
-observations from call 50 onward. Right: BF16 minus stock CE, including
+\emph{Figure 3.} Left: the declared learning horizon, displaying
+observations from call 50 onward. Right: TurboSOAP minus FP32 QR10 CE, including
 the shared initial value. Lines connect observed evaluations; they do
 not represent additional measurements.
+
+\paragraph{Matched-implementation endpoint.} The reference above
+differs from TurboSOAP in implementation as well as refresh policy. A
+QR10 run in the same compiled BF16 implementation (Section 5.3),
+continued to 10,000 calls on both seeds, separates the two.
+
+\begin{center}
+\begin{tabular}{@{}lrrrr@{}}
+\toprule\noalign{}
+Seed & BF16 QR10 CE & TurboSOAP CE & BF16 QR10 $-$ TurboSOAP & FP32 QR10 $-$ TurboSOAP \\
+\midrule\noalign{}
+204 & 3.424160 & 3.422389 & +0.001771 & $-$0.011237 \\
+205 & 3.419657 & 3.419354 & +0.000303 & $-$0.010082 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+From call 2000 on, the matched QR10 never has lower CE than TurboSOAP
+on either seed; the differences lie between +0.0003 and +0.0053, and
+over calls 5000--10000 they average +0.0027 and +0.0010. Before that it
+is well ahead: by 0.116 and 0.098 CE at call 500, against 0.124 and
+0.118 for the FP32 reference (Figure 1(b)). Within the BF16 implementation, approximating
+four of five refreshes therefore costs an early-training gap that
+closes by about call 2000, and no endpoint loss that two seeds can
+resolve.
+
+With FP32 state, by contrast, the approximation does cost endpoint
+loss. On seed 204 the original FP32-state warm10/QR50 implementation,
+from the same campaign and startup as the reference, was also run to
+10,000 calls (3.418128) and ended 0.0070 above the FP32 QR10. Refresh
+policy and implementation therefore interact. Moving QR10 from the FP32
+reference to the BF16 implementation raises its endpoint CE by 0.0130
+and 0.0104 on the two seeds; moving warm10/QR50 raises it by 0.0043
+(seed 204). The seed-204 gap of 0.0112 between TurboSOAP and the
+reference splits as 0.0070 of policy plus 0.0043 of implementation
+along one path, and as $-0.0018$ of policy plus 0.0130 of
+implementation along the other, so it cannot be apportioned between
+them. This design does not separate two readings of the interaction.
+At the BF16 endpoint the refresh
+cadence may simply not matter; or the BF16 QR10 path may be
+handicapped, for example by rounding the BF16 bases and moments at
+every QR transport, five times as often as under QR50, or by the
+production QR refresh's product reuse and ordering of near-tied
+eigenvalues. ``Implementation'' here bundles storage precision,
+arithmetic precision and compilation. The seed-205 TurboSOAP CE is the
+cached main run: the fresh seed-205 QR10 reproduces its per-call losses
+exactly through call 11, where the schedules first diverge, but
+TurboSOAP itself was not rerun on that seed.
 
 \hypertarget{time-and-memory}{%
 \subsection{5.2. Time and memory}\label{time-and-memory}}
@@ -71,7 +119,7 @@ startup excluded.}
 \begin{center}
 \begin{tabular}{@{}lrrrr@{}}
 \toprule\noalign{}
-Seed & Matched calls & Stock step ms & BF16 step ms & Time reduction \\
+Seed & Matched calls & Stock step ms & TurboSOAP step ms & Time reduction \\
 \midrule\noalign{}
 204 & 101--200 & 380.740 & 314.638 & 17.36\% \\
 205 & 101--10000 & 380.548 & 309.533 & 18.66\% \\
@@ -104,7 +152,7 @@ and auxiliary AdamW. Diagnostic and evaluation work is outside the timed
 step scopes and inside campaign elapsed accounting. Compiler caches are
 shared sequentially within campaigns. The step means do not estimate
 first-use compilation cost or whole-run time-to-quality, and the
-combined implementation comparison does not isolate warm tracking as the
+combined implementation comparison does not isolate basis tracking as the
 cause of all time savings. Each forward/backward and optimizer interval
 is measured with synchronized host wall time, with GPU synchronization
 at phase boundaries. This prevents overlap across those boundaries; its
@@ -125,14 +173,16 @@ a causal separation of cadence, batching, compilation, arithmetic, and
 storage. In particular, both refresh frequency and per-event execution
 differ.
 
-\hypertarget{short-sparse-qr-controls}{%
-\subsection{5.3. Short sparse-QR
-controls}\label{short-sparse-qr-controls}}
+\hypertarget{short-infrequent-qr-controls}{%
+\subsection{5.3. Short infrequent-QR
+controls}\label{short-infrequent-qr-controls}}
 
 \begin{minipage}{\linewidth}
 
-\emph{Seed 204; full 10k LR horizon; timing calls 101--2000. Original
-FP32 stock and cached warm timing come from separate launches; this is
+\emph{Seed 204; full 10k LR horizon; timing calls 101--2000. Rows
+marked * ran together in one later launch, whose forward and backward
+passes were 3--6 ms slower; compare their step times only with each
+other. The other rows come from separate launches and are
 mixed-implementation context.}
 
 \begin{center}
@@ -141,6 +191,8 @@ mixed-implementation context.}
 Policy & CE at 500 & CE at 2000 & Step ms & Optimizer ms \\
 \midrule\noalign{}
 Stock QR10 (pilot) & 4.877601 & 3.985905 & 382.773 & 96.358 \\
+BF16 QR10* & 4.885674 & 3.998092 & 364.846 & 70.959 \\
+Warm10/QR50* & 5.001514 & 3.993939 & 320.539 & 26.647 \\
 Warm10/QR50 (cached) & 5.001514 & 3.993939 & 314.142 & 26.415 \\
 QR20 & 4.936852 & 3.990383 & 329.641 & 40.460 \\
 QR50 & 5.018046 & 3.998679 & 313.551 & 22.864 \\
@@ -153,15 +205,21 @@ QR50 & 5.018046 & 3.998679 & 313.551 & 22.864 \\
 These two fresh controls use the same full-BF16 arithmetic, coverage,
 efficient QR primitive, seed 204, data, and full 10,000-call
 learning-rate horizon. QR20 sets both refresh and repair periods to 20;
-QR50 sets both to 50, producing no warm events. The warm comparison
+QR50 sets both to 50, producing no warm refreshes. The warm comparison
 reuses the first 2,000 calls of the completed main candidate. Complete
 shared timing cycles span calls 101--2000. The stock row is the original
 FP32-state reference's pilot prefix; it is not a matched full-BF16 QR10
-control.
+control. The matched control, BF16 QR10, is the production compiled
+implementation with a QR refresh at every tenth age. It ran in one
+launch with a fresh warm10/QR50 arm, which reproduced the cached warm
+run's validation CE exactly at all eight validation points, so the two
+warm rows differ only in timing.
 
 At call 2000, warm is 0.003557 CE behind QR20 and 0.004740 ahead of
 QR50. Warm has lower CE than QR50 at all seven noninitial validation
-observations; QR20 has lower CE than warm at six. These repeated panels
+observations; QR20 has lower CE than warm at six. Warm is also 0.004153
+ahead of the matched QR10, which has lower CE than warm at calls
+50--1000 and higher CE at calls 1500 and 2000. These repeated panels
 are not independent seeds. The warm prefix has extra refresh work for a
 modest quality gain over holding bases between QR50s. Its timing comes
 from the earlier launch, so the small whole-step difference from QR50 is
@@ -171,12 +229,30 @@ warm. The timing comparison spans launches and supplies no calibrated
 noise interval. The study establishes neither QR20 superiority over warm
 at the full horizon nor the converse; both orderings remain open.
 
-\includegraphics{figures/review_tradeoff.pdf}
+The controls separate the two roles of the warm refreshes. QR10 and
+warm10/QR50 refresh equally often, so their difference is the cost of
+approximating four of five refreshes; QR50 and warm10/QR50 perform the
+same QR refreshes, so their difference is what the warm refreshes add.
+Against the matched BF16 QR10, the warm refreshes close 12.5\% of the
+QR50--QR10 loss gap at call 500 and 7.9\% at call 1000. By call 1500
+the matched QR10 leads QR50 by only 0.009 CE, and by call 2000 by
+0.0006, with warm below both, so the fraction no longer has a stable
+meaning. Measured against the original FP32 QR10 prefix instead, the
+fractions are about 12\% at call 500 and 37\% at call 2000. On this
+prefix, exact refreshes at QR10 cadence buy an early-training
+advantage that the warm refreshes recover only in small part, and the
+full-BF16 schedules converge by call 2000; Section 5.1 follows the
+matched pair to call 10,000. In one launch, warm10/QR50 used 26.6
+rather than 71.0 ms of optimizer time per call and had 12.1\% lower
+step time than the matched QR10.
 
-\emph{Figure 2.} Left: seed204 CE relative to the original stock QR10
+\includegraphics{figures/review_tradeoff_v2.pdf}
+
+\emph{Figure 4.} Left: seed204 CE relative to the original stock QR10
 prefix. Right: optimizer event-class means weighted by their frequencies
 over calls 101--2000. The first four bars use the development pilot;
-QR20/QR50 use the new controls. Original/compiled warm policies use
+QR20/QR50 use the new controls, and the last bar is the matched BF16
+QR10, from a later launch. Original/compiled warm policies use
 warm10/QR50. The bars describe mixed-implementation, cross-launch
 context and are not causal ablations.
 
@@ -299,7 +375,7 @@ unweighted means across 96 factors are 0.394 and 0.380, versus 0.201 and
 poorer covariance diagonalization between repairs, despite small Gram
 errors; Frobenius weighting can obscure weaker spectral directions.
 
-Rounding the observed dense bases to BF16 introduces measurable
+Rounding the observed bases to BF16 introduces measurable
 orthogonality error even after a fresh FP32 QR; this is an empirical
 rounding baseline, not a universal lower bound. Normalized Gram and
 actual-M observations describe different aspects of the state. Neither

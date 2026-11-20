@@ -1,0 +1,9 @@
+{
+ "arm": "bf16_w10_qr50",
+ "spec": {
+  "cls": "production",
+  "frequency": 10,
+  "repair": 50
+ },
+ "last_call": 2000
+}

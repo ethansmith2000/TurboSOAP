@@ -1,0 +1,23 @@
+{
+ "status": "passed",
+ "arms": [
+  {
+   "status": "passed",
+   "arm": "fp32s_hh_qr10",
+   "event_counts": {
+    "cold": 1,
+    "ordinary": 1800,
+    "qr": 199
+   },
+   "unique_graphs_at_captures": [
+    8,
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "refresh_counts": null
+  }
+ ]
+}

@@ -1,0 +1,54 @@
+--- age 20, basis 10 ages stale, factors [1, 3, 5], n=256: input rC=0.158 rho_rms=2.222 gram=0.0024 top32_dist_to_QR=7.7e-02 finite=True
+  qr_basis         rC=0.028 rho_rms=0.428 gram=0.0024 top32_dist_to_QR=3.8e-05 finite=True
+  cq3s (1e-6,2)    rC=0.028 rho_rms=0.428 gram=0.0024 top32_dist_to_QR=3.7e-05 finite=True ok [True, True, True]
+  head_panel 1/8   rC=0.029 rho_rms=0.602 gram=0.0023 top32_dist_to_QR=1.2e-02 finite=True first-k-columns subspace dist to QR=8.9e-05
+  warm_basis prod  rC=0.081 rho_rms=1.197 gram=0.0018 top32_dist_to_QR=5.0e-02 finite=True
+  tangent frob         rC=0.152 rho_rms=1.705 gram=0.0019 top32_dist_to_QR=8.2e-02 finite=True size [18.35, 30.73, 5.48] mult [0.027, 0.016, 0.091]
+  tangent schatten4    rC=0.150 rho_rms=1.612 gram=0.0020 top32_dist_to_QR=8.1e-02 finite=True size [14.6, 24.72, 3.97] mult [0.034, 0.02, 0.126]
+  tangent spectral     rC=0.151 rho_rms=1.665 gram=0.0019 top32_dist_to_QR=8.2e-02 finite=True size [16.63, 28.1, 4.5] mult [0.03, 0.018, 0.111]
+  tangent row_spectral rC=0.132 rho_rms=1.529 gram=0.0020 top32_dist_to_QR=6.9e-02 finite=True size [1.12, 0.74, 2.61] mult [0.446, 0.675, 0.192]
+--- age 500, basis 10 ages stale, factors [1, 3, 5], n=256: input rC=0.060 rho_rms=0.522 gram=0.0024 top32_dist_to_QR=1.1e-02 finite=True
+  qr_basis         rC=0.019 rho_rms=0.238 gram=0.0024 top32_dist_to_QR=0.0e+00 finite=True
+  cq3s (1e-6,2)    rC=0.019 rho_rms=0.238 gram=0.0024 top32_dist_to_QR=0.0e+00 finite=True ok [True, True, True]
+  head_panel 1/8   rC=0.019 rho_rms=0.422 gram=0.0022 top32_dist_to_QR=0.0e+00 finite=True first-k-columns subspace dist to QR=0.0e+00
+  warm_basis prod  rC=0.032 rho_rms=0.453 gram=0.0018 top32_dist_to_QR=6.9e-03 finite=True
+  tangent frob         rC=0.054 rho_rms=0.448 gram=0.0018 top32_dist_to_QR=7.6e-03 finite=True size [4.53, 4.41, 3.09] mult [0.11, 0.113, 0.162]
+  tangent schatten4    rC=0.046 rho_rms=0.386 gram=0.0019 top32_dist_to_QR=5.0e-03 finite=True size [1.88, 2.05, 1.39] mult [0.266, 0.243, 0.359]
+  tangent spectral     rC=0.045 rho_rms=0.380 gram=0.0020 top32_dist_to_QR=4.7e-03 finite=True size [1.59, 1.97, 1.35] mult [0.315, 0.254, 0.369]
+  tangent row_spectral rC=0.045 rho_rms=0.377 gram=0.0020 top32_dist_to_QR=4.6e-03 finite=True size [1.5, 1.84, 1.35] mult [0.334, 0.272, 0.369]
+--- age 500, basis 10 ages stale, factors [0], n=768: input rC=0.582 rho_rms=2.954 gram=0.0024 top96_dist_to_QR=9.4e-02 finite=True
+  qr_basis         rC=0.299 rho_rms=0.348 gram=0.0024 top96_dist_to_QR=5.3e-05 finite=True
+  cq3s (1e-6,2)    rC=0.299 rho_rms=0.348 gram=0.0024 top96_dist_to_QR=5.3e-05 finite=True ok [True]
+  head_panel 1/8   rC=0.300 rho_rms=0.949 gram=0.0023 top96_dist_to_QR=2.2e-02 finite=True first-k-columns subspace dist to QR=1.3e-04
+  warm_basis prod  rC=0.568 rho_rms=2.418 gram=0.0017 top96_dist_to_QR=8.6e-02 finite=True
+  tangent frob         rC=0.576 rho_rms=2.431 gram=0.0017 top96_dist_to_QR=9.0e-02 finite=True size [33.5] mult [0.015]
+  tangent schatten4    rC=0.569 rho_rms=1.990 gram=0.0018 top96_dist_to_QR=8.6e-02 finite=True size [15.99] mult [0.031]
+  tangent spectral     rC=0.568 rho_rms=1.949 gram=0.0019 top96_dist_to_QR=8.6e-02 finite=True size [15.08] mult [0.033]
+  tangent row_spectral rC=0.515 rho_rms=1.728 gram=0.0019 top96_dist_to_QR=8.1e-02 finite=True size [1.06] mult [0.471]
+--- age 20, basis 50 ages stale, factors [1, 3, 5], n=256: input rC=0.899 rho_rms=7.785 gram=0.0024 top32_dist_to_QR=5.6e-01 finite=True
+  qr_basis         rC=0.087 rho_rms=0.766 gram=0.0024 top32_dist_to_QR=0.0e+00 finite=True
+  cq3s (1e-6,2)    rC=0.087 rho_rms=0.766 gram=0.0024 top32_dist_to_QR=0.0e+00 finite=True ok [True, True, True]
+  head_panel 1/8   rC=0.087 rho_rms=1.123 gram=0.0022 top32_dist_to_QR=6.2e-02 finite=True first-k-columns subspace dist to QR=0.0e+00
+  warm_basis prod  rC=0.886 rho_rms=5.431 gram=0.0019 top32_dist_to_QR=5.5e-01 finite=True
+  tangent frob         rC=0.892 rho_rms=5.712 gram=0.0019 top32_dist_to_QR=5.6e-01 finite=True size [65.39, 73.93, 37.59] mult [0.008, 0.007, 0.013]
+  tangent schatten4    rC=0.890 rho_rms=5.245 gram=0.0020 top32_dist_to_QR=5.6e-01 finite=True size [53.9, 59.82, 24.6] mult [0.009, 0.008, 0.02]
+  tangent spectral     rC=0.890 rho_rms=5.475 gram=0.0019 top32_dist_to_QR=5.6e-01 finite=True size [61.12, 67.6, 26.33] mult [0.008, 0.007, 0.019]
+  tangent row_spectral rC=0.872 rho_rms=6.039 gram=0.0019 top32_dist_to_QR=5.5e-01 finite=True size [0.42, 0.37, 0.48] mult [1.0, 1.0, 1.0]
+--- age 500, basis 50 ages stale, factors [1, 3, 5], n=256: input rC=0.096 rho_rms=0.965 gram=0.0024 top32_dist_to_QR=7.5e-02 finite=True
+  qr_basis         rC=0.023 rho_rms=0.322 gram=0.0024 top32_dist_to_QR=0.0e+00 finite=True
+  cq3s (1e-6,2)    rC=0.023 rho_rms=0.322 gram=0.0024 top32_dist_to_QR=0.0e+00 finite=True ok [True, True, True]
+  head_panel 1/8   rC=0.024 rho_rms=0.595 gram=0.0023 top32_dist_to_QR=2.1e-02 finite=True first-k-columns subspace dist to QR=0.0e+00
+  warm_basis prod  rC=0.060 rho_rms=0.751 gram=0.0018 top32_dist_to_QR=5.3e-02 finite=True
+  tangent frob         rC=0.090 rho_rms=0.809 gram=0.0018 top32_dist_to_QR=5.0e-02 finite=True size [7.54, 8.3, 6.02] mult [0.066, 0.06, 0.083]
+  tangent schatten4    rC=0.085 rho_rms=0.715 gram=0.0020 top32_dist_to_QR=4.6e-02 finite=True size [4.21, 4.46, 3.36] mult [0.119, 0.112, 0.149]
+  tangent spectral     rC=0.086 rho_rms=0.718 gram=0.0019 top32_dist_to_QR=4.6e-02 finite=True size [4.44, 4.24, 3.63] mult [0.113, 0.118, 0.138]
+  tangent row_spectral rC=0.076 rho_rms=0.671 gram=0.0020 top32_dist_to_QR=4.0e-02 finite=True size [1.74, 1.54, 2.13] mult [0.288, 0.326, 0.234]
+--- age 500, basis 50 ages stale, factors [0], n=768: input rC=0.848 rho_rms=3.077 gram=0.0023 top96_dist_to_QR=2.4e-01 finite=True
+  qr_basis         rC=0.441 rho_rms=0.495 gram=0.0023 top96_dist_to_QR=0.0e+00 finite=True
+  cq3s (1e-6,2)    rC=0.441 rho_rms=0.495 gram=0.0023 top96_dist_to_QR=0.0e+00 finite=True ok [True]
+  head_panel 1/8   rC=0.443 rho_rms=1.221 gram=0.0022 top96_dist_to_QR=3.1e-02 finite=True first-k-columns subspace dist to QR=0.0e+00
+  warm_basis prod  rC=0.840 rho_rms=2.828 gram=0.0018 top96_dist_to_QR=2.4e-01 finite=True
+  tangent frob         rC=0.841 rho_rms=2.718 gram=0.0017 top96_dist_to_QR=2.4e-01 finite=True size [36.28] mult [0.014]
+  tangent schatten4    rC=0.832 rho_rms=2.344 gram=0.0018 top96_dist_to_QR=2.4e-01 finite=True size [16.25] mult [0.031]
+  tangent spectral     rC=0.830 rho_rms=2.298 gram=0.0019 top96_dist_to_QR=2.4e-01 finite=True size [15.01] mult [0.033]
+  tangent row_spectral rC=0.810 rho_rms=2.157 gram=0.0019 top96_dist_to_QR=2.2e-01 finite=True size [0.88] mult [0.569]

@@ -1,5 +1,9 @@
 # TurboSOAP
 
+> **Status (2026-11-20): parked.** In BF16 at 109M, refresh cadence 10–50 does not change the 10k endpoint.
+> The warm step's speed advantage comes from slow batched QR kernels rather than lower arithmetic, and it shrinks
+> with factor size. See [the close-out](CLOSEOUT_20261120.md) for findings, evidence and open threads.
+
 TurboSOAP is SOAP with a warm, matmul-oriented eigenbasis tracker. It retains
 the standard SOAP update:
 

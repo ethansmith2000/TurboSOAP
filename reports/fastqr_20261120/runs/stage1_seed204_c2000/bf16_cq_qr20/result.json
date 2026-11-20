@@ -1,0 +1,186 @@
+{
+  "status": "completed",
+  "case": "bf16_cq_qr20",
+  "calls": 2000,
+  "seed": 204,
+  "initial_parameters_sha256": "24da908288be7ee828bd2a8221ac637b870c0c219b05964b3517c576b0a7da79",
+  "initial_gradient_sha256": "7936c3f658be84b84ee780a52876bc2a3cda2771d0b30596cff715f47a81deb2",
+  "validation": [
+    {
+      "call": 0,
+      "ce": 10.966108478605747,
+      "targets": 1047552,
+      "listed_tensor_hash_preservation_checked": true
+    },
+    {
+      "call": 50,
+      "ce": 7.1576817482709885,
+      "targets": 1047552,
+      "listed_tensor_hash_preservation_checked": false
+    },
+    {
+      "call": 100,
+      "ce": 6.326764944940805,
+      "targets": 1047552,
+      "listed_tensor_hash_preservation_checked": false
+    },
+    {
+      "call": 200,
+      "ce": 5.7308571226894855,
+      "targets": 1047552,
+      "listed_tensor_hash_preservation_checked": false
+    },
+    {
+      "call": 500,
+      "ce": 4.939127080142498,
+      "targets": 1047552,
+      "listed_tensor_hash_preservation_checked": false
+    },
+    {
+      "call": 1000,
+      "ce": 4.34810633957386,
+      "targets": 1047552,
+      "listed_tensor_hash_preservation_checked": true
+    },
+    {
+      "call": 1500,
+      "ce": 4.128275036811829,
+      "targets": 1047552,
+      "listed_tensor_hash_preservation_checked": false
+    },
+    {
+      "call": 2000,
+      "ce": 3.9964314457029104,
+      "targets": 1047552,
+      "listed_tensor_hash_preservation_checked": true
+    }
+  ],
+  "parity": {
+    "eager_compiled": [
+      {
+        "event": "ordinary",
+        "fast": false,
+        "parameter_max_absolute": 0.0,
+        "state_relative_errors": {
+          "m": 0.0,
+          "v": 0.0,
+          "cl": 0.0,
+          "cr": 0.0,
+          "ql": 0.0,
+          "qr": 0.0
+        }
+      },
+      {
+        "event": "qr",
+        "fast": true,
+        "parameter_max_absolute": 0.0,
+        "state_relative_errors": {
+          "m": 0.0,
+          "v": 0.0,
+          "cl": 0.0,
+          "cr": 0.0,
+          "ql": 0.0,
+          "qr": 0.0
+        },
+        "ok_flags": [
+          true,
+          true
+        ]
+      }
+    ],
+    "arm": "bf16_cq_qr20",
+    "spec": {
+      "cls": "fast",
+      "frequency": 20,
+      "repair": 20,
+      "qr_kind": "cholqr",
+      "warm_ns_steps": 2
+    }
+  },
+  "matrix_state_bytes": 1245708320,
+  "peak_gpu_bytes": 8826851840,
+  "mean_optimizer_ms": 31.671747011377622,
+  "mean_step_ms": 325.6399291757445,
+  "optimizer_by_kind": {
+    "ordinary": 10.272178687464828,
+    "qr": 438.26354516572076
+  },
+  "max_absolute_gram": 0.13053148984909058,
+  "max_normalized_gram": 0.0023655004271186486,
+  "max_physical_m_error": 0.00492424052208662,
+  "original_geometry_guard_passed": false,
+  "precision_specific_guard_passed": true,
+  "dynamo_counters": {
+    "stats": {
+      "calls_captured": 1344,
+      "unique_graphs": 8
+    },
+    "inductor": {
+      "triton_bundler_load_static_autotuner": 215,
+      "async_compile_cache_miss": 645,
+      "async_compile_cache_hit": 430,
+      "extern_calls": 312,
+      "fxgraph_cache_hit": 8
+    },
+    "graph_break": {}
+  },
+  "elapsed_seconds": 724.3422348599415,
+  "clean_cycle_calls": 1900,
+  "protocol": {
+    "model_seed": 204,
+    "validation_rows": 1024,
+    "validation_calls": [
+      50,
+      100,
+      200,
+      500,
+      1000,
+      1500,
+      2000
+    ],
+    "evaluation_hash_calls": [
+      0,
+      1000,
+      2000
+    ],
+    "diagnostic_calls": [
+      51,
+      101,
+      201,
+      501,
+      541,
+      1001,
+      1041,
+      1501,
+      1541,
+      1951,
+      1991
+    ],
+    "residual_calls": [
+      501,
+      1001,
+      1501,
+      1951
+    ],
+    "capture_calls": [
+      101,
+      201,
+      501,
+      1001,
+      1501,
+      2000
+    ],
+    "repeat_initial_backward": true,
+    "expected_startup": {
+      "initial_parameters_sha256": "24da908288be7ee828bd2a8221ac637b870c0c219b05964b3517c576b0a7da79",
+      "initial_gradient_sha256": "7936c3f658be84b84ee780a52876bc2a3cda2771d0b30596cff715f47a81deb2",
+      "initial_loss": 10.963447570800781,
+      "initial_norm": 11.2014741897583,
+      "initial_validation_ce": 10.966108478605747
+    },
+    "startup_reference": "paper verified full BF16 seed204 replication (bf16_refresh_controls manifest)",
+    "check_final_state_finite": true,
+    "arm_timeout_seconds": 3600
+  },
+  "initial_backward_repeat_passed": true
+}

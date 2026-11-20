@@ -1,5 +1,13 @@
 # TurboSOAP paper working package
 
+> **Status (2026-11-20): parked, draft not submitted.**
+> - The latest draft is [TurboSOAP-draft-20261120.pdf](TurboSOAP-draft-20261120.pdf), built from
+>   [overleaf](overleaf) and including the matched-QR10 edits.
+> - It does not include the stage 3–4 results or the close-out analysis. Its §6 QR50 limitation and §7 open
+>   question are out of date.
+> - The Overleaf ZIP below predates the 2026-11-20 edits.
+> - See [the close-out](../CLOSEOUT_20261120.md).
+
 The [Overleaf upload ZIP](TurboSOAP-Overleaf.zip) and [its compiled PDF](TurboSOAP-Overleaf.pdf)
 are ready. The editable source is in [overleaf](overleaf), with separate LaTeX
 sections and a live BibTeX bibliography. Author: Ethan Smith; contact is in

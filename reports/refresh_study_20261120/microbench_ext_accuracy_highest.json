@@ -1,0 +1,572 @@
+{
+ "env": {
+  "torch": "2.11.0+cu128",
+  "cuda": "12.8",
+  "device": "NVIDIA GeForce RTX 5090",
+  "float32_matmul_precision": "high",
+  "allow_tf32": true,
+  "bf16_reduced_precision_reduction": false,
+  "deterministic": true,
+  "cublas_workspace_config": ":4096:8",
+  "num_threads": 4,
+  "repo_head": "366e7e6e00e72ca32e84c0c9e0cc36ade81d6aea",
+  "bf16_soap_sha256": "65812bc620addd902e75ed1b79bac26ec68ced4de44cfd5c65d3bc4acbbf50df",
+  "script_sha256": "99fb57a470a155c9a6a6437a198092079bc543925b4194f97a2cb7ce430e7131",
+  "common_sha256": "b45b1b97bef6717d0ba11b481c56f1c76c9c66fb48ef0c6fa09a988d8e16ecc5",
+  "cuda_visible_devices": "1",
+  "gpu_claim_indices": null,
+  "nvidia_smi": [
+   "0, NVIDIA GeForce RTX 5090, 2872 MHz, 3105 MHz, 56, 290.68 W",
+   "1, NVIDIA GeForce RTX 5090, 2797 MHz, 3105 MHz, 51, 416.18 W",
+   "2, NVIDIA GeForce RTX 5090, 195 MHz, 3105 MHz, 35, 9.78 W",
+   "3, NVIDIA GeForce RTX 5090, 187 MHz, 3105 MHz, 18, 5.70 W",
+   "4, NVIDIA GeForce RTX 5090, 195 MHz, 3105 MHz, 29, 10.22 W",
+   "5, NVIDIA GeForce RTX 5090, 2445 MHz, 3105 MHz, 62, 524.89 W",
+   "6, NVIDIA GeForce RTX 5090, 195 MHz, 3105 MHz, 20, 4.32 W",
+   "7, NVIDIA GeForce RTX 5090, 195 MHz, 3105 MHz, 20, 8.72 W"
+  ],
+  "loadavg": [
+   "9.58",
+   "8.03",
+   "8.58"
+  ]
+ },
+ "rows": [
+  {
+   "n": 256,
+   "batch": 1,
+   "qr": {
+    "max_angle": 0.0018593198619782925,
+    "median_angle": 0.0016194459749385715,
+    "p99_angle": 0.0018269813153892756,
+    "rel_frob": 0.001659069792367518,
+    "gram_err": 0.0023549008183181286,
+    "nonfinite": false,
+    "bf16_floor": {
+     "max_angle": 0.0018911053193733096,
+     "median_angle": 0.0016194459749385715,
+     "p99_angle": 0.0018593198619782925,
+     "rel_frob": 0.0016590696759521961
+    }
+   },
+   "cholqr": {
+    "max_angle": 0.0018911053193733096,
+    "median_angle": 0.0016194459749385715,
+    "p99_angle": 0.0018269813153892756,
+    "rel_frob": 0.0016591115854680538,
+    "gram_err": 0.0023546970915049314,
+    "nonfinite": false,
+    "chol_info": 0
+   },
+   "cholqr3": {
+    "max_angle": 0.0018593198619782925,
+    "median_angle": 0.0016194459749385715,
+    "p99_angle": 0.0018269813153892756,
+    "rel_frob": 0.001659069792367518,
+    "gram_err": 0.002355020260438323,
+    "nonfinite": false,
+    "chol_info_by_pass": [
+     0,
+     0,
+     0
+    ],
+    "shift_over_norm2sq": 0.0861053466796875
+   }
+  },
+  {
+   "n": 512,
+   "batch": 1,
+   "qr": {
+    "max_angle": 0.0018911053193733096,
+    "median_angle": 0.0016194459749385715,
+    "p99_angle": 0.0018269813153892756,
+    "rel_frob": 0.0016579683870077133,
+    "gram_err": 0.002348837908357382,
+    "nonfinite": false,
+    "bf16_floor": {
+     "max_angle": 0.0018911053193733096,
+     "median_angle": 0.0016194459749385715,
+     "p99_angle": 0.0018269813153892756,
+     "rel_frob": 0.0016579674556851387
+    }
+   },
+   "cholqr": {
+    "max_angle": 0.0018593198619782925,
+    "median_angle": 0.0016194459749385715,
+    "p99_angle": 0.0018269813153892756,
+    "rel_frob": 0.0016583077376708388,
+    "gram_err": 0.002348658163100481,
+    "nonfinite": false,
+    "chol_info": 0
+   },
+   "cholqr3": {
+    "max_angle": 0.0018911053193733096,
+    "median_angle": 0.0016194459749385715,
+    "p99_angle": 0.0018269813153892756,
+    "rel_frob": 0.0016579683870077133,
+    "gram_err": 0.0023491994943469763,
+    "nonfinite": false,
+    "chol_info_by_pass": [
+     0,
+     0,
+     0
+    ],
+    "shift_over_norm2sq": 0.344085693359375
+   }
+  },
+  {
+   "n": 768,
+   "batch": 1,
+   "qr": {
+    "max_angle": 0.0018269813153892756,
+    "median_angle": 0.0016194459749385715,
+    "p99_angle": 0.0017715910216793418,
+    "rel_frob": 0.001660459442064166,
+    "gram_err": 0.0023547017481178045,
+    "nonfinite": false,
+    "bf16_floor": {
+     "max_angle": 0.0018911053193733096,
+     "median_angle": 0.0016194459749385715,
+     "p99_angle": 0.0017940601101145148,
+     "rel_frob": 0.001660457463003695
+    }
+   },
+   "cholqr": {
+    "max_angle": 0.0018269813153892756,
+    "median_angle": 0.0016194459749385715,
+    "p99_angle": 0.0017940601101145148,
+    "rel_frob": 0.0016627777367830276,
+    "gram_err": 0.0023581059649586678,
+    "nonfinite": false,
+    "chol_info": 0
+   },
+   "cholqr3": {
+    "max_angle": 0.0018269813153892756,
+    "median_angle": 0.0016194459749385715,
+    "p99_angle": 0.0017715910216793418,
+    "rel_frob": 0.0016604593256488442,
+    "gram_err": 0.002354757161810994,
+    "nonfinite": false,
+    "chol_info_by_pass": [
+     0,
+     0,
+     0
+    ],
+    "shift_over_norm2sq": 0.7739410400390625
+   }
+  },
+  {
+   "n": 1024,
+   "batch": 1,
+   "qr": {
+    "max_angle": 0.0018269813153892756,
+    "median_angle": 0.0016194459749385715,
+    "p99_angle": 0.0017605233006179333,
+    "rel_frob": 0.001660968759097159,
+    "gram_err": 0.0023512733168900013,
+    "nonfinite": false,
+    "bf16_floor": {
+     "max_angle": 0.0018269813153892756,
+     "median_angle": 0.0016194459749385715,
+     "p99_angle": 0.0017605233006179333,
+     "rel_frob": 0.0016609656158834696
+    }
+   },
+   "cholqr": {
+    "max_angle": 0.0018911053193733096,
+    "median_angle": 0.0016194459749385715,
+    "p99_angle": 0.001786347245797515,
+    "rel_frob": 0.0016665232833474874,
+    "gram_err": 0.002359706209972501,
+    "nonfinite": false,
+    "chol_info": 0
+   },
+   "cholqr3": {
+    "max_angle": 0.0018269813153892756,
+    "median_angle": 0.0016194459749385715,
+    "p99_angle": 0.0017605233006179333,
+    "rel_frob": 0.0016609689919278026,
+    "gram_err": 0.0023512965999543667,
+    "nonfinite": false,
+    "chol_info_by_pass": [
+     0,
+     0,
+     0
+    ],
+    "shift_over_norm2sq": 1.37567138671875
+   }
+  },
+  {
+   "n": 1536,
+   "batch": 1,
+   "qr": {
+    "max_angle": 0.0017940601101145148,
+    "median_angle": 0.0016194459749385715,
+    "p99_angle": 0.0017605233006179333,
+    "rel_frob": 0.0016556009650230408,
+    "gram_err": 0.0023421451915055513,
+    "nonfinite": false,
+    "bf16_floor": {
+     "max_angle": 0.0018269813153892756,
+     "median_angle": 0.0016194459749385715,
+     "p99_angle": 0.0017605233006179333,
+     "rel_frob": 0.0016555888578295708
+    }
+   },
+   "cholqr": {
+    "max_angle": 0.002537184627726674,
+    "median_angle": 0.0016558425268158317,
+    "p99_angle": 0.0021283691748976707,
+    "rel_frob": 0.0016971208387985826,
+    "gram_err": 0.002401102567091584,
+    "nonfinite": false,
+    "chol_info": 0
+   },
+   "cholqr3": {
+    "max_angle": 0.0018269813153892756,
+    "median_angle": 0.0016194459749385715,
+    "p99_angle": 0.0017605233006179333,
+    "rel_frob": 0.0016556011978536844,
+    "gram_err": 0.0023420981597155333,
+    "nonfinite": false,
+    "chol_info_by_pass": [
+     0,
+     0,
+     0
+    ],
+    "shift_over_norm2sq": 3.094757080078125
+   }
+  },
+  {
+   "n": 2048,
+   "batch": 1,
+   "qr": {
+    "max_angle": 0.0017940601101145148,
+    "median_angle": 0.0016194459749385715,
+    "p99_angle": 0.0017605233006179333,
+    "rel_frob": 0.0016553744208067656,
+    "gram_err": 0.0023434460163116455,
+    "nonfinite": false,
+    "bf16_floor": {
+     "max_angle": 0.0017940601101145148,
+     "median_angle": 0.0016194459749385715,
+     "p99_angle": 0.0017605233006179333,
+     "rel_frob": 0.0016553574241697788
+    }
+   },
+   "cholqr": {
+    "max_angle": 0.0033652479760348797,
+    "median_angle": 0.0016558425268158317,
+    "p99_angle": 0.0026294756680727005,
+    "rel_frob": 0.0017495922511443496,
+    "gram_err": 0.002476136665791273,
+    "nonfinite": false,
+    "chol_info": 0
+   },
+   "cholqr3": {
+    "max_angle": 0.0018269813153892756,
+    "median_angle": 0.0016194459749385715,
+    "p99_angle": 0.0017605233006179333,
+    "rel_frob": 0.0016553751192986965,
+    "gram_err": 0.002343471860513091,
+    "nonfinite": false,
+    "chol_info_by_pass": [
+     0,
+     0,
+     0
+    ],
+    "shift_over_norm2sq": 5.5013427734375
+   }
+  },
+  {
+   "n": 2304,
+   "batch": 1,
+   "qr": {
+    "max_angle": 0.0017940601101145148,
+    "median_angle": 0.0016194459749385715,
+    "p99_angle": 0.0017605233006179333,
+    "rel_frob": 0.0016570494044572115,
+    "gram_err": 0.002344259060919285,
+    "nonfinite": false,
+    "bf16_floor": {
+     "max_angle": 0.0017605233006179333,
+     "median_angle": 0.0016194459749385715,
+     "p99_angle": 0.00172633514739573,
+     "rel_frob": 0.0016570192528888583
+    }
+   },
+   "cholqr": {
+    "max_angle": 0.004339941777288914,
+    "median_angle": 0.001691456069238484,
+    "p99_angle": 0.0031068262178450823,
+    "rel_frob": 0.0018170492257922888,
+    "gram_err": 0.0025729197077453136,
+    "nonfinite": false,
+    "chol_info": 0
+   },
+   "cholqr3": {
+    "max_angle": 0.0017940601101145148,
+    "median_angle": 0.0016194459749385715,
+    "p99_angle": 0.0017605233006179333,
+    "rel_frob": 0.0016570499865338206,
+    "gram_err": 0.0023443575482815504,
+    "nonfinite": false,
+    "chol_info_by_pass": [
+     0,
+     0,
+     0
+    ],
+    "shift_over_norm2sq": 6.9624481201171875
+   }
+  },
+  {
+   "n": 3072,
+   "batch": 1,
+   "qr": {
+    "max_angle": 0.0018269813153892756,
+    "median_angle": 0.0016194459749385715,
+    "p99_angle": 0.0017605233006179333,
+    "rel_frob": 0.0016614594496786594,
+    "gram_err": 0.0023511198814958334,
+    "nonfinite": false,
+    "bf16_floor": {
+     "max_angle": 0.0017605233006179333,
+     "median_angle": 0.0016194459749385715,
+     "p99_angle": 0.0017605233006179333,
+     "rel_frob": 0.0016614031046628952
+    }
+   },
+   "cholqr": {
+    "max_angle": 0.006888068281114101,
+    "median_angle": 0.001691456069238484,
+    "p99_angle": 0.004982983693480492,
+    "rel_frob": 0.0021467967890203,
+    "gram_err": 0.0030397477094084024,
+    "nonfinite": false,
+    "chol_info": 0
+   },
+   "cholqr3": {
+    "max_angle": 0.0018269813153892756,
+    "median_angle": 0.0016194459749385715,
+    "p99_angle": 0.0017605233006179333,
+    "rel_frob": 0.001661460381001234,
+    "gram_err": 0.0023511776234954596,
+    "nonfinite": false,
+    "chol_info_by_pass": [
+     0,
+     0,
+     0
+    ],
+    "shift_over_norm2sq": 12.37701416015625
+   }
+  },
+  {
+   "n": 4096,
+   "batch": 1,
+   "qr": {
+    "max_angle": 0.0017605233006179333,
+    "median_angle": 0.0016194459749385715,
+    "p99_angle": 0.0017605233006179333,
+    "rel_frob": 0.0016616596840322018,
+    "gram_err": 0.002350032329559326,
+    "nonfinite": false,
+    "bf16_floor": {
+     "max_angle": 0.0017605233006179333,
+     "median_angle": 0.0016194459749385715,
+     "p99_angle": 0.00172633514739573,
+     "rel_frob": 0.001661538379266858
+    }
+   },
+   "cholqr": {
+    "max_angle": 0.012586946599185467,
+    "median_angle": 0.0017605233006179333,
+    "p99_angle": 0.00874826218932867,
+    "rel_frob": 0.002974594011902809,
+    "gram_err": 0.004222501534968615,
+    "nonfinite": false,
+    "chol_info": 0
+   },
+   "cholqr3": {
+    "max_angle": 0.0017940601101145148,
+    "median_angle": 0.0016194459749385715,
+    "p99_angle": 0.0017605233006179333,
+    "rel_frob": 0.001661661546677351,
+    "gram_err": 0.002350082853808999,
+    "nonfinite": false,
+    "chol_info_by_pass": [
+     0,
+     0,
+     0
+    ],
+    "shift_over_norm2sq": 22.002685546875
+   }
+  },
+  {
+   "n": 6144,
+   "batch": 1,
+   "qr": {
+    "max_angle": 0.0017605233006179333,
+    "median_angle": 0.0016194459749385715,
+    "p99_angle": 0.00172633514739573,
+    "rel_frob": 0.0016564038814976811,
+    "gram_err": 0.0023426737170666456,
+    "nonfinite": false,
+    "bf16_floor": {
+     "max_angle": 0.0017605233006179333,
+     "median_angle": 0.0016194459749385715,
+     "p99_angle": 0.001691456069238484,
+     "rel_frob": 0.001655935076996684
+    }
+   },
+   "cholqr": {
+    "max_angle": 0.061140306293964386,
+    "median_angle": 0.002674427116289735,
+    "p99_angle": 0.028402183204889297,
+    "rel_frob": 0.008290202356874943,
+    "gram_err": 0.012233082205057144,
+    "nonfinite": false,
+    "chol_info": 0
+   },
+   "cholqr3": {
+    "max_angle": 0.0017605233006179333,
+    "median_angle": 0.0016194459749385715,
+    "p99_angle": 0.00172633514739573,
+    "rel_frob": 0.0016564076067879796,
+    "gram_err": 0.0023426294792443514,
+    "nonfinite": false,
+    "chol_info_by_pass": [
+     0,
+     0,
+     0
+    ],
+    "shift_over_norm2sq": 49.5040283203125
+   }
+  },
+  {
+   "n": 8192,
+   "batch": 1,
+   "qr": {
+    "max_angle": 0.0017605233006179333,
+    "median_angle": 0.0016194459749385715,
+    "p99_angle": 0.00172633514739573,
+    "rel_frob": 0.0016572755994275212,
+    "gram_err": 0.002342894673347473,
+    "nonfinite": false,
+    "bf16_floor": {
+     "max_angle": 0.0017605233006179333,
+     "median_angle": 0.0016194459749385715,
+     "p99_angle": 0.00172633514739573,
+     "rel_frob": 0.0016562046948820353
+    }
+   },
+   "cholqr": {
+    "max_angle": 0.06409311294555664,
+    "median_angle": 0.0026966221630573273,
+    "p99_angle": 0.030639881268143654,
+    "rel_frob": 0.008537028916180134,
+    "gram_err": 0.012789286673069,
+    "nonfinite": false,
+    "chol_info": 0
+   },
+   "cholqr3": {
+    "max_angle": 0.0017605233006179333,
+    "median_angle": 0.0016194459749385715,
+    "p99_angle": 0.00172633514739573,
+    "rel_frob": 0.0016573112225160003,
+    "gram_err": 0.0023428925778716803,
+    "nonfinite": false,
+    "chol_info_by_pass": [
+     0,
+     0,
+     0
+    ],
+    "shift_over_norm2sq": 88.00537109375
+   }
+  },
+  {
+   "n": 12288,
+   "batch": 1,
+   "qr": {
+    "max_angle": 0.0017605233006179333,
+    "median_angle": 0.0016194459749385715,
+    "p99_angle": 0.00172633514739573,
+    "rel_frob": 0.0016652976628392935,
+    "gram_err": 0.0023505284916609526,
+    "nonfinite": false,
+    "bf16_floor": {
+     "max_angle": 0.0017605233006179333,
+     "median_angle": 0.0016194459749385715,
+     "p99_angle": 0.001691456069238484,
+     "rel_frob": 0.0016618514200672507
+    }
+   },
+   "cholqr": {
+    "max_angle": NaN,
+    "median_angle": NaN,
+    "p99_angle": NaN,
+    "rel_frob": NaN,
+    "gram_err": NaN,
+    "nonfinite": true,
+    "chol_info": 8020
+   },
+   "cholqr3": {
+    "max_angle": NaN,
+    "median_angle": NaN,
+    "p99_angle": NaN,
+    "rel_frob": NaN,
+    "gram_err": NaN,
+    "nonfinite": true,
+    "chol_info_by_pass": [
+     0,
+     11483,
+     11483
+    ],
+    "shift_over_norm2sq": 198.008056640625
+   }
+  },
+  {
+   "n": 16384,
+   "batch": 1,
+   "qr": {
+    "max_angle": 0.0017605233006179333,
+    "median_angle": 0.0016194459749385715,
+    "p99_angle": 0.00172633514739573,
+    "rel_frob": 0.0016702143475413322,
+    "gram_err": 0.0023501040413975716,
+    "nonfinite": false,
+    "bf16_floor": {
+     "max_angle": 0.0017605233006179333,
+     "median_angle": 0.0016194459749385715,
+     "p99_angle": 0.001691456069238484,
+     "rel_frob": 0.0016616827342659235
+    }
+   },
+   "cholqr": {
+    "max_angle": NaN,
+    "median_angle": NaN,
+    "p99_angle": NaN,
+    "rel_frob": NaN,
+    "gram_err": NaN,
+    "nonfinite": true,
+    "chol_info": 8396
+   },
+   "cholqr3": {
+    "max_angle": NaN,
+    "median_angle": NaN,
+    "p99_angle": NaN,
+    "rel_frob": NaN,
+    "gram_err": NaN,
+    "nonfinite": true,
+    "chol_info_by_pass": [
+     0,
+     11490,
+     11490
+    ],
+    "shift_over_norm2sq": 352.0107421875
+   }
+  }
+ ],
+ "elapsed_s": 18.476134777069092,
+ "description": "Accuracy of the Cholesky-QR variants against Householder QR (Part 1b follow-up).\n\nSame synthetic inputs as refresh_study_microbench(_ext) (seed 1000 + n + 7*batch),\nbatch 1.  For each method the Householder reference is torch.linalg.qr of the\nSAME sorted Z = C Q, using the method's own returned column order (production\nbackend settings, FP32 matmul 'high'), so near-tie sort differences cannot\nmasquerade as accuracy loss.  Column-wise angle after sign fixing, computed at\n'highest'.  The BF16 floor is the angle between BF16(Q_householder) and\nQ_householder.  Writes reports/refresh_study_20261120/microbench_ext_accuracy.json.\n",
+ "method_precision": "highest"
+}

@@ -1,0 +1,109 @@
+{
+ "status": "passed",
+ "arms": [
+  {
+   "status": "passed",
+   "arm": "bf16_w10_qr50",
+   "event_counts": {
+    "cold": 1,
+    "ordinary": 1800,
+    "warm": 160,
+    "qr": 39
+   },
+   "unique_graphs_at_captures": [
+    12,
+    12,
+    12,
+    12,
+    12,
+    12
+   ],
+   "refresh_counts": null
+  },
+  {
+   "status": "passed",
+   "arm": "bf16_hh_qr10",
+   "event_counts": {
+    "cold": 1,
+    "ordinary": 1800,
+    "qr": 199
+   },
+   "unique_graphs_at_captures": [
+    8,
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "refresh_counts": null
+  },
+  {
+   "status": "passed",
+   "arm": "bf16_cq_qr10",
+   "event_counts": {
+    "cold": 1,
+    "ordinary": 1800,
+    "qr": 199
+   },
+   "unique_graphs_at_captures": [
+    8,
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "refresh_counts": {
+    "cholqr_events": 199,
+    "cholqr_factor_refreshes": 19104,
+    "fallback_factors": 1412
+   }
+  },
+  {
+   "status": "passed",
+   "arm": "bf16_cq_qr20",
+   "event_counts": {
+    "cold": 1,
+    "ordinary": 1900,
+    "qr": 99
+   },
+   "unique_graphs_at_captures": [
+    8,
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "refresh_counts": {
+    "cholqr_events": 99,
+    "cholqr_factor_refreshes": 9504,
+    "fallback_factors": 786
+   }
+  },
+  {
+   "status": "passed",
+   "arm": "bf16_w10_cq50_ns1",
+   "event_counts": {
+    "cold": 1,
+    "ordinary": 1800,
+    "warm": 160,
+    "qr": 39
+   },
+   "unique_graphs_at_captures": [
+    12,
+    12,
+    12,
+    12,
+    12,
+    12
+   ],
+   "refresh_counts": {
+    "cholqr_events": 39,
+    "cholqr_factor_refreshes": 3744,
+    "fallback_factors": 368
+   }
+  }
+ ]
+}

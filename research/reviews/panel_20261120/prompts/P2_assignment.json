@@ -1,0 +1,25 @@
+{
+ "seed": 20261120,
+ "labels_seen_by": {
+  "gpt-6.2-astra": {
+   "fable": "X",
+   "gemini-4-carbon-high": "Y",
+   "gemini-4-neon-xhigh": "Z"
+  },
+  "fable": {
+   "gemini-4-carbon-high": "X",
+   "gpt-6.2-astra": "Y",
+   "gemini-4-neon-xhigh": "Z"
+  },
+  "gemini-4-neon-xhigh": {
+   "fable": "X",
+   "gpt-6.2-astra": "Y",
+   "gemini-4-carbon-high": "Z"
+  },
+  "gemini-4-carbon-high": {
+   "gemini-4-neon-xhigh": "X",
+   "gpt-6.2-astra": "Y",
+   "fable": "Z"
+  }
+ }
+}

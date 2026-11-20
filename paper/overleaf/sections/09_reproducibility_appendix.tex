@@ -11,3 +11,18 @@ claim map (\texttt{CLAIMS.md}) and machine-readable evidence inventory
 connect tables and figures to their source artifacts. Experiments save
 no trained model/optimizer tensor checkpoints. All reported figures and
 numeric tables can be reconstructed from the scalar evidence.
+
+The matched BF16 QR10 evidence (Sections 5.1 and 5.3) is in
+\texttt{reports/fastqr\_20261120/}. Stage 1 ran a fresh warm10/QR50
+and BF16 QR10 (seed 204, 2,000 calls) sequentially on one exclusive GPU
+in the paper's recorded launch environment. Stage 2 continued BF16 QR10
+to 10,000 calls on seeds 204 and 205, each run on its own GPU. Every
+run reproduced its seed's startup: initial weights, first gradient and
+initial CE. The fresh warm arm reproduced the cached main run's
+validation CE exactly through call 2000, and the stage-2 seed-204 run
+reproduced stage 1 exactly through call 2000. The decision rule for
+attributing the endpoint gap was fixed before the stage-2 results. The
+FP32-state warm10/QR50 endpoint (3.418128) is the
+\texttt{primary\_stock\_warm} arm of the reference's campaign
+(\texttt{reports/owt\_restart\_20261026/}), with the same initial
+parameters, first gradient, LR and seed as the FP32 QR10 reference.

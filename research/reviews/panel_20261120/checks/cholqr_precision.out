@@ -1,0 +1,24 @@
+n=512: kappa(C)~8.03e+02
+   chol_fp32              gram=0.0023 col_dist_mean=1.12e-07 max=1.41e-05
+   chol_tf32              gram=0.0027 col_dist_mean=-7.28e-08 max=1.36e-04
+   chol2_fp32             gram=0.0023 col_dist_mean=-5.75e-08 max=3.58e-07
+   ridge0.0001_chol2_fp32 gram=0.0023 col_dist_mean=2.62e-05 max=7.87e-05
+   ridge0.0001_chol2_tf32 gram=0.0024 col_dist_mean=2.62e-05 max=9.51e-05
+   ridge0.001_chol2_fp32  gram=0.0024 col_dist_mean=1.51e-03 max=3.89e-03
+   ridge0.001_chol2_tf32  gram=0.0024 col_dist_mean=1.51e-03 max=3.88e-03
+n=1024: kappa(C)~1.72e+03
+   chol_fp32              gram=0.0024 col_dist_mean=-1.54e-08 max=1.08e-04
+   chol_tf32              gram=0.0029 col_dist_mean=-2.23e-07 max=2.13e-04
+   chol2_fp32             gram=0.0024 col_dist_mean=-4.51e-08 max=3.58e-07
+   ridge0.0001_chol2_fp32 gram=0.0024 col_dist_mean=1.11e-04 max=3.14e-04
+   ridge0.0001_chol2_tf32 gram=0.0024 col_dist_mean=1.10e-04 max=3.17e-04
+   ridge0.001_chol2_fp32  gram=0.0024 col_dist_mean=4.18e-03 max=9.00e-03
+   ridge0.001_chol2_tf32  gram=0.0024 col_dist_mean=4.18e-03 max=9.01e-03
+n=2048: kappa(C)~3.48e+03
+   chol_fp32              gram=0.0024 col_dist_mean=1.76e-06 max=1.02e-04
+   chol_tf32              gram=0.0034 col_dist_mean=4.04e-06 max=2.92e-04
+   chol2_fp32             gram=0.0023 col_dist_mean=-4.82e-08 max=2.98e-07
+   ridge0.0001_chol2_fp32 gram=0.0023 col_dist_mean=3.90e-04 max=9.88e-04
+   ridge0.0001_chol2_tf32 gram=0.0024 col_dist_mean=3.90e-04 max=9.79e-04
+   ridge0.001_chol2_fp32  gram=0.0023 col_dist_mean=8.70e-03 max=1.65e-02
+   ridge0.001_chol2_tf32  gram=0.0024 col_dist_mean=8.70e-03 max=1.65e-02

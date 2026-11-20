@@ -1,0 +1,15 @@
+2026-11-20T04:55:37Z launcher start stages=['probe'] max_concurrent=4 defer=refresh-study
+2026-11-20T04:55:37Z probe deferred: refresh-study exclusive holder pid 1093321
+2026-11-20T04:55:52Z probe deferred: refresh-study exclusive holder pid 1093321
+2026-11-20T04:56:07Z probe deferred: refresh-study exclusive holder pid 1093321
+2026-11-20T04:56:22Z probe deferred: refresh-study exclusive holder pid 1093321
+2026-11-20T04:56:37Z probe deferred: refresh-study exclusive holder pid 1093321
+2026-11-20T04:56:52Z probe deferred: refresh-study exclusive holder pid 1093321
+2026-11-20T04:57:07Z probe deferred: refresh-study exclusive holder pid 1093321
+2026-11-20T04:57:22Z probe deferred: refresh-study exclusive holder pid 1093321
+2026-11-20T04:57:37Z probe deferred: refresh-study exclusive holder pid 1093321
+2026-11-20T04:57:52Z probe deferred: refresh-study exclusive holder pid 1093321
+2026-11-20T04:58:08Z probe deferred: refresh-study exclusive holder pid 1093321
+2026-11-20T05:01:21Z probe exit 0
+2026-11-20T05:02:22Z launcher start stages=['probe'] max_concurrent=4 defer=refresh-study
+2026-11-20T05:05:20Z probe exit 0

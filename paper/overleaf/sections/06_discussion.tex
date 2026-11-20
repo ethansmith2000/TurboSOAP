@@ -5,7 +5,7 @@ limitations}\label{discussion-and-limitations}}
 The measured approximation follows the reference with a modest final gap
 on this workload, halves matrix-state storage, and lowers measured step
 time. That result is useful as an implementation operating point. It
-does not show that warm tracking, BF16 storage, or the particular repair
+does not show that basis tracking, BF16 storage, or the particular repair
 schedule is generally optimal. Storage and compute changes also alter
 numerical trajectories.
 
@@ -17,12 +17,52 @@ equivalence test. Short QR20/QR50 controls cannot determine a
 final-horizon ranking. Synthetic QR inputs and one-factor probes do not
 represent the trained distribution of all factor pairs.
 
-The primary time comparison uses the original audited FP32 QR10
-implementation. Our isolated reuse profile narrows one implementation
-attribution question but does not replace a newly trained
-efficient-reference comparison. There is no direct matched evaluation
-against subspace or adaptive-refresh methods, and the warm step has no
+The headline time comparison uses the original audited FP32 QR10
+implementation. The matched BF16 QR10 of Sections 5.1 and 5.3 provides
+the same-implementation reference, but with two seeds and a single
+timed launch. There is no direct matched evaluation
+against subspace or adaptive-refresh methods, and the tracking step has no
 standalone diagonalization guarantee.
+
+Section 5.3 brackets the approximation between its two natural
+comparators. Against QR50, which performs the same number of QR
+refreshes, warm refreshes cost little: full-BF16 QR50 measured 313.551
+ms per step against 314.142 ms for cached warm10/QR50, while
+warm10/QR50 was 0.004740 CE ahead at call 2000. Against QR10, which
+refreshes as often in the same implementation, the warm refreshes
+recover only a small part of the early loss that QR50 gives up: 12.5\%
+of the QR50--QR10 gap at call 500 and 7.9\% at call 1000. That early
+gap closes by about call 2000, and at call 10,000 the matched QR10 ends
+0.0018 and 0.0003 CE above TurboSOAP (Section 5.1). In one launch,
+warm10/QR50 took 26.6 ms of optimizer time per call against 71.0 ms for
+the matched QR10, and 320.5 against 364.8 ms per step, 12.1\% less.
+The rest of the 18.66\% saving
+against the original reference coincides with the implementation
+changes (batching, compilation and BF16 arithmetic), but this study
+does not separate them. The development pilot
+(Appendix A) is consistent with BF16 storage acting mainly on memory:
+moving from compiled FP32 storage to full BF16 lowered step time by
+about 1\%. These single-seed, cross-launch contrasts are not causal
+ablations.
+
+The matched endpoint changes how the remaining loss gap should be read.
+Approximating the refreshes costs 0.007 CE at the endpoint with FP32
+state (seed 204) but nothing two seeds can resolve within the BF16
+implementation, because moving to BF16 raises QR10's endpoint loss
+about three times as much as warm10/QR50's (Section 5.1). The
+0.010--0.011 gap to the FP32 reference therefore cannot be apportioned
+between refresh policy and implementation. Whether
+refresh cadence stops mattering at the BF16 endpoint, or the BF16 QR10
+path is handicapped, is the main open question. A compiled QR10 run
+with FP32 storage would help separate the two: on seed 204 at call
+2000, a result near the FP32 reference (3.986) would implicate BF16
+storage, and one near the BF16 QR10 (3.998) the compiled path or its
+BF16 arithmetic. Until then the matched result supports no endpoint
+loss resolvable at two seeds within this implementation, not the
+stronger claim that the approximation loses nothing against exact
+refreshes. If cadence stops mattering at the BF16 endpoint, QR50 alone
+might match there as well; full-BF16 QR50 ran only to call 2000, so
+whether the warm refreshes add anything at the endpoint is untested.
 
 The early-gap pattern is qualitatively consistent with Eschenhagen et
 al.'s finding that accurate bases mattered more early in their Imagewoof

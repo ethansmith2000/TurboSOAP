@@ -1,0 +1,49 @@
+{
+  "eager_compiled": [
+    {
+      "event": "ordinary",
+      "fast": false,
+      "parameter_max_absolute": 0.0,
+      "state_relative_errors": {
+        "m": 0.0,
+        "v": 0.0,
+        "cl": 0.0,
+        "cr": 0.0,
+        "ql": 0.0,
+        "qr": 0.0
+      }
+    },
+    {
+      "event": "warm",
+      "fast": false,
+      "parameter_max_absolute": 0.0,
+      "state_relative_errors": {
+        "m": 0.0,
+        "v": 1.4863249816698954e-05,
+        "cl": 0.0,
+        "cr": 0.0,
+        "ql": 0.0,
+        "qr": 0.0
+      }
+    },
+    {
+      "event": "qr",
+      "fast": false,
+      "parameter_max_absolute": 0.0,
+      "state_relative_errors": {
+        "m": 0.0,
+        "v": 0.0,
+        "cl": 0.0,
+        "cr": 0.0,
+        "ql": 0.0,
+        "qr": 0.0
+      }
+    }
+  ],
+  "arm": "bf16_w10_qr50",
+  "spec": {
+    "cls": "production",
+    "frequency": 10,
+    "repair": 50
+  }
+}

@@ -1,0 +1,11 @@
+{
+ "arm": "fp32s_hh_qr10",
+ "spec": {
+  "cls": "production",
+  "frequency": 10,
+  "repair": 10,
+  "state_dtype": "float32",
+  "basis_dtype": "float32"
+ },
+ "last_call": 2000
+}

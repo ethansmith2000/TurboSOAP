@@ -1,0 +1,3 @@
+{"train": {"train.npy": true, "train_row_ids.npy": true}}
+{"validation": {"train.npy": true, "train_row_ids.npy": true, "validation.npy": true, "validation_row_ids.npy": true}}
+{"all_match_paper": true, "total": 327680000, "seen_tokens": 50093, "sha256": "6468df28ed19237a22f25100a38df19a9163ab94b76901a52fdd26b6f34d9ed6"}

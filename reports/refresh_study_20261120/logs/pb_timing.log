@@ -1,0 +1,173 @@
+gpu-claim: refresh-study/pb-timing holds GPU 0
+timing started 2026-11-20T04:55:27Z gpu=0 load=5.79 7.37 10.08 4/4721 1093336
+prod 768 12 E 1.3907840251922607 None
+prod 768 12 C 0.8375040292739868 None
+pb1_r1e-4_c0.5 768 12 E 1.621791958808899 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+pb1_r1e-4_c0.5 768 12 C 0.8392959833145142 None
+pb1_r1e-4_c1.0 768 12 E 1.6217600107192993 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+pb1_r1e-4_c1.0 768 12 C 0.8392000198364258 None
+pb1_r1e-3_c0.5 768 12 E 1.6231039762496948 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+pb1_r1e-3_c0.5 768 12 C 0.8349760174751282 None
+pb1_r1e-3_c1.0 768 12 E 1.6182719469070435 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+pb1_r1e-3_c1.0 768 12 C 0.8351039886474609 None
+pb1_r1e-4_spec0.5 768 12 E 3.3373119831085205 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+pb1_r1e-4_spec0.5 768 12 C 2.228192090988159 None
+relgap_r1e-4_c0.5 768 12 E 1.5032000541687012 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+relgap_r1e-4_c0.5 768 12 C 0.8366400003433228 None
+jac1_c0.5 768 12 E 1.4166079759597778 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+jac1_c0.5 768 12 C 0.8394880294799805 None
+pb1_r1e-4_c0.5_ns1 768 12 E 1.2741119861602783 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+pb1_r1e-4_c0.5_ns1 768 12 C 0.6535680294036865 None
+prod 1536 12 E 7.811552047729492 None
+prod 1536 12 C 3.883807897567749 None
+pb1_r1e-4_c0.5 1536 12 E 8.231648445129395 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+pb1_r1e-4_c0.5 1536 12 C 3.8767359256744385 None
+pb1_r1e-4_c1.0 1536 12 E 8.22652816772461 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+pb1_r1e-4_c1.0 1536 12 C 3.874527931213379 None
+pb1_r1e-3_c0.5 1536 12 E 8.231040000915527 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+pb1_r1e-3_c0.5 1536 12 C 3.876768112182617 None
+pb1_r1e-3_c1.0 1536 12 E 8.231552124023438 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+pb1_r1e-3_c1.0 1536 12 C 3.8766720294952393 None
+pb1_r1e-4_spec0.5 1536 12 E 8.761088371276855 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+pb1_r1e-4_spec0.5 1536 12 C 4.942048072814941 None
+relgap_r1e-4_c0.5 1536 12 E 8.186847686767578 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+relgap_r1e-4_c0.5 1536 12 C 3.8803200721740723 None
+jac1_c0.5 1536 12 E 7.822048187255859 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+jac1_c0.5 1536 12 C 3.876352071762085 None
+pb1_r1e-4_c0.5_ns1 1536 12 E 6.369344234466553 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+pb1_r1e-4_c0.5_ns1 1536 12 C 2.8449599742889404 None
+prod 2304 12 E 21.229631423950195 None
+prod 2304 12 C 12.40272045135498 None
+pb1_r1e-4_c0.5 2304 12 E 22.395423889160156 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+pb1_r1e-4_c0.5 2304 12 C 12.403583526611328 None
+pb1_r1e-4_c1.0 2304 12 E 22.395647048950195 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+pb1_r1e-4_c1.0 2304 12 C 12.398655891418457 None
+pb1_r1e-3_c0.5 2304 12 E 22.402816772460938 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+pb1_r1e-3_c0.5 2304 12 C 12.426495552062988 None
+pb1_r1e-3_c1.0 2304 12 E 22.400287628173828 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+pb1_r1e-3_c1.0 2304 12 C 12.415552139282227 None
+pb1_r1e-4_spec0.5 2304 12 E 24.333023071289062 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+pb1_r1e-4_spec0.5 2304 12 C 15.241920471191406 None
+relgap_r1e-4_c0.5 2304 12 E 22.07846450805664 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+relgap_r1e-4_c0.5 2304 12 C 12.450655937194824 None
+jac1_c0.5 2304 12 E 21.267040252685547 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+jac1_c0.5 2304 12 C 12.43990421295166 None
+pb1_r1e-4_c0.5_ns1 2304 12 E 17.14748764038086 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+pb1_r1e-4_c0.5_ns1 2304 12 C 8.875391960144043 None
+prod 3072 12 E 44.6748161315918 None
+prod 3072 12 C 29.128639221191406 None
+pb1_r1e-4_c0.5 3072 12 E 46.947872161865234 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+pb1_r1e-4_c0.5 3072 12 C 29.14668846130371 None
+pb1_r1e-4_c1.0 3072 12 E 46.98726272583008 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+pb1_r1e-4_c1.0 3072 12 C 29.161184310913086 None
+pb1_r1e-3_c0.5 3072 12 E 47.0261116027832 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+pb1_r1e-3_c0.5 3072 12 C 29.17852783203125 None
+pb1_r1e-3_c1.0 3072 12 E 47.03919982910156 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+pb1_r1e-3_c1.0 3072 12 C 29.191232681274414 None
+pb1_r1e-4_spec0.5 3072 12 E 50.89952087402344 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+pb1_r1e-4_spec0.5 3072 12 C 34.477054595947266 None
+relgap_r1e-4_c0.5 3072 12 E 46.33545684814453 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+relgap_r1e-4_c0.5 3072 12 C 29.256000518798828 None
+jac1_c0.5 3072 12 E 45.04332733154297 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+jac1_c0.5 3072 12 C 29.273632049560547 None
+pb1_r1e-4_c0.5_ns1 3072 12 E 35.5978889465332 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+pb1_r1e-4_c0.5_ns1 3072 12 C 21.069887161254883 None
+prod 8192 1 E 46.33590316772461 None
+prod 8192 1 C 36.49350357055664 None
+pb1_r1e-4_c0.5 8192 1 E 49.793121337890625 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+pb1_r1e-4_c0.5 8192 1 C 36.546592712402344 None
+pb1_r1e-4_c1.0 8192 1 E 49.81942367553711 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+pb1_r1e-4_c1.0 8192 1 C 36.581504821777344 None
+pb1_r1e-3_c0.5 8192 1 E 49.859615325927734 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+pb1_r1e-3_c0.5 8192 1 C 36.60736083984375 None
+pb1_r1e-3_c1.0 8192 1 E 49.865535736083984 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+pb1_r1e-3_c1.0 8192 1 C 36.635009765625 None
+pb1_r1e-4_spec0.5 8192 1 E 52.269535064697266 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+pb1_r1e-4_spec0.5 8192 1 C 39.007198333740234 None
+relgap_r1e-4_c0.5 8192 1 E 47.334049224853516 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+relgap_r1e-4_c0.5 8192 1 C 36.67145538330078 None
+jac1_c0.5 8192 1 E 46.54582214355469 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+jac1_c0.5 8192 1 C 36.7130241394043 None
+pb1_r1e-4_c0.5_ns1 8192 1 E 37.373470306396484 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/lowering.py:1960: FutureWarning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+  check(
+pb1_r1e-4_c0.5_ns1 8192 1 C 26.381792068481445 None
+timing finished 2026-11-20T04:58:16Z load=4.08 5.96 9.10 4/4779 1094455

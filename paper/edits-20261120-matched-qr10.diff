@@ -1,0 +1,616 @@
+diff -ru '--exclude=figures' /tmp/claude-0/-workspace/0a6da032-64b5-4849-ae32-0cd133db0374/scratchpad/overleaf.pre_matched/sections/00_abstract.tex overleaf/sections/00_abstract.tex
+--- /tmp/claude-0/-workspace/0a6da032-64b5-4849-ae32-0cd133db0374/scratchpad/overleaf.pre_matched/sections/00_abstract.tex	2026-11-20 11:22:38.820411020 +0000
++++ overleaf/sections/00_abstract.tex	2026-11-20 11:31:19.220215603 +0000
+@@ -22,11 +22,18 @@
+ Persistent matrix state falls from 2.320 to 1.160 GiB. Complete-step
+ time falls 18.66\% in a paired 9,900-call window for one seed and
+ 17.36\% in a matched 100-call prefix for the other. That reference
+-differs in implementation as well as cadence; projecting from measured
+-event costs, a matched BF16 QR10 would leave TurboSOAP about 12\%
+-faster per step \pending{measured}. Short full-BF16 QR20/QR50 controls
+-place warm10/QR50 between QR50 and the FP32 QR10 reference in loss, at
+-close to QR50's cost \pending{vs.\ BF16 QR10}. These measurements support a scoped
++differs in implementation as well as cadence. Against QR10 in the same
++compiled BF16 implementation, timed in one launch, TurboSOAP's step
++time is 12.1\% lower (320.5 against 364.8 ms). Exact refreshes help early: at
++call 500 this matched QR10 is 0.098--0.116 CE ahead. At call 10,000 it
++ends 0.0018 and 0.0003 CE above TurboSOAP on the two seeds, within
++their 0.003 spread. Within the BF16 implementation, then, approximating
++the refreshes costs no endpoint loss that two seeds can resolve,
++whereas with FP32 state it costs 0.007 on the one seed measured. Policy
++and implementation interact: moving to BF16 raises QR10's endpoint loss
++by 0.010--0.013 but warm10/QR50's by 0.004, so the gap to the FP32
++reference cannot be apportioned between them. This study does not
++identify why. These measurements support a scoped
+ quality/time/memory tradeoff; they do not establish statistical
+ equivalence or attribute the speed improvement to any single
+ component.
+diff -ru '--exclude=figures' /tmp/claude-0/-workspace/0a6da032-64b5-4849-ae32-0cd133db0374/scratchpad/overleaf.pre_matched/sections/01_introduction.tex overleaf/sections/01_introduction.tex
+--- /tmp/claude-0/-workspace/0a6da032-64b5-4849-ae32-0cd133db0374/scratchpad/overleaf.pre_matched/sections/01_introduction.tex	2026-11-20 11:22:38.820411020 +0000
++++ overleaf/sections/01_introduction.tex	2026-11-20 11:31:19.220215603 +0000
+@@ -29,17 +29,19 @@
+ 
+ \emph{Figure 1.} (a) Optimizer time over one 50-call refresh cycle.
+ TurboSOAP and QR10 both refresh every 10 ages; TurboSOAP makes four of
+-the five refreshes warm (approximate). Segment widths are seed-205
+-per-call event means from the compiled BF16 implementation (Section
+-5.2), and each refresh call includes its ordinary update. The QR10 row
+-is a projection from those means, not a measured run. (b) Validation CE
+-at call 2000 against mean step time for the seed-204 prefix (Section
+-5.3). Filled markers share the full-BF16 implementation; the hollow
+-marker is the original FP32 eager QR10, and the grey dashed line joins
+-the QR-only schedules. The dotted line marks the step time projected
+-for a matched BF16 QR10 from the seed-204 prefix's event means; its loss
+-is pending
+-\pending{matched BF16 QR10 point}.
++the five refreshes warm (approximate). Segment widths are per-call
++event means measured for both schedules in one launch of the compiled
++BF16 implementation (seed 204, calls 101--2000; Section 5.3), and each
++refresh call includes its ordinary update. They come from a later
++launch than the seed-205 means of Section 5.2 (61.6 and 601.2 ms for
++warm and QR refresh calls). (b) Validation CE minus
++TurboSOAP's for the same seed over the 10,000-call horizon (Section
++5.1); the vertical axis is split at $-0.016$. The matched BF16 QR10
++(solid) is well ahead early; from about call 2000 it stays within 0.006
++CE of TurboSOAP without leading it. The original FP32 eager QR10
++reference (dashed) stays about 0.01 ahead to the end. The grey band is
++$\pm 0.003$, the spread between the two TurboSOAP seeds at call 10,000.
++Two seeds do not establish equivalence.
+ 
+ Two comparators bracket the approximation. QR10 refreshes as often as
+ TurboSOAP but always by QR, and so measures what approximating four
+@@ -50,21 +52,25 @@
+ reference on an affordable language modeling workload, together with
+ the measured time and memory tradeoff.
+ 
+-The evidence has three parts. First, two initialization seeds compare
+-the declared 10,000-call endpoint against stock-beta QR10. Second, short
+-full-BF16 QR20 and QR50 controls test whether intermediate warm refreshes
+-provide useful learning behavior relative to simpler refresh schedules.
+-Third, a fixed-input profile separates redundant products in QR
+-refinement from the solver cost. A matched full-BF16 QR10 control, the
+-same-cadence comparator above, is pending \pending{BF16 QR10 runs}. The policy, precision rules, production
++The evidence has four parts. First, two initialization seeds compare
++the declared 10,000-call endpoint against stock-beta QR10. Second, a
++QR10 control in the same full-BF16 implementation, the same-cadence
++comparator above, runs to 10,000 calls on both seeds and is timed in
++one launch with a fresh TurboSOAP run. Third, short full-BF16 QR20 and
++QR50 controls test whether intermediate warm refreshes provide useful
++learning behavior relative to simpler refresh schedules. Fourth, a
++fixed-input profile separates redundant products in QR refinement from
++the solver cost. The policy, precision rules, production
+ optimizer hashes, and shared training-worker hash remain fixed across
+ the two main candidate runs; campaign-specific runners are separately
+ pinned.
+ 
+ Our contribution is the basis-tracking step and warm/QR refresh
+ schedule, the BF16 precision policy implemented around them, and a
+-reproducible case study of the combination. The learning curves
+-retain a measurable loss gap, especially early in training. The timing
++reproducible case study of the combination. Against the original
++reference the learning curves retain a measurable loss gap, especially
++early in training; against QR10 in the same implementation the gap
++closes by about call 2000. The timing
+ comparison includes storage, batching, arithmetic, compilation, and
+ cadence changes relative to the original reference. These components
+ should remain visible when interpreting efficiency.
+diff -ru '--exclude=figures' /tmp/claude-0/-workspace/0a6da032-64b5-4849-ae32-0cd133db0374/scratchpad/overleaf.pre_matched/sections/05_results.tex overleaf/sections/05_results.tex
+--- /tmp/claude-0/-workspace/0a6da032-64b5-4849-ae32-0cd133db0374/scratchpad/overleaf.pre_matched/sections/05_results.tex	2026-11-20 11:22:38.820411020 +0000
++++ overleaf/sections/05_results.tex	2026-11-20 11:31:19.224215601 +0000
+@@ -60,6 +60,54 @@
+ the shared initial value. Lines connect observed evaluations; they do
+ not represent additional measurements.
+ 
++\paragraph{Matched-implementation endpoint.} The reference above
++differs from TurboSOAP in implementation as well as refresh policy. A
++QR10 run in the same compiled BF16 implementation (Section 5.3),
++continued to 10,000 calls on both seeds, separates the two.
++
++\begin{center}
++\begin{tabular}{@{}lrrrr@{}}
++\toprule\noalign{}
++Seed & BF16 QR10 CE & TurboSOAP CE & BF16 QR10 $-$ TurboSOAP & FP32 QR10 $-$ TurboSOAP \\
++\midrule\noalign{}
++204 & 3.424160 & 3.422389 & +0.001771 & $-$0.011237 \\
++205 & 3.419657 & 3.419354 & +0.000303 & $-$0.010082 \\
++\bottomrule
++\end{tabular}
++\end{center}
++
++From call 2000 on, the matched QR10 never has lower CE than TurboSOAP
++on either seed; the differences lie between +0.0003 and +0.0053, and
++over calls 5000--10000 they average +0.0027 and +0.0010. Before that it
++is well ahead: by 0.116 and 0.098 CE at call 500, against 0.124 and
++0.118 for the FP32 reference (Figure 1(b)). Within the BF16 implementation, approximating
++four of five refreshes therefore costs an early-training gap that
++closes by about call 2000, and no endpoint loss that two seeds can
++resolve.
++
++With FP32 state, by contrast, the approximation does cost endpoint
++loss. On seed 204 the original FP32-state warm10/QR50 implementation,
++from the same campaign and startup as the reference, was also run to
++10,000 calls (3.418128) and ended 0.0070 above the FP32 QR10. Refresh
++policy and implementation therefore interact. Moving QR10 from the FP32
++reference to the BF16 implementation raises its endpoint CE by 0.0130
++and 0.0104 on the two seeds; moving warm10/QR50 raises it by 0.0043
++(seed 204). The seed-204 gap of 0.0112 between TurboSOAP and the
++reference splits as 0.0070 of policy plus 0.0043 of implementation
++along one path, and as $-0.0018$ of policy plus 0.0130 of
++implementation along the other, so it cannot be apportioned between
++them. This design does not separate two readings of the interaction.
++At the BF16 endpoint the refresh
++cadence may simply not matter; or the BF16 QR10 path may be
++handicapped, for example by rounding the BF16 bases and moments at
++every QR transport, five times as often as under QR50, or by the
++production QR refresh's product reuse and ordering of near-tied
++eigenvalues. ``Implementation'' here bundles storage precision,
++arithmetic precision and compilation. The seed-205 TurboSOAP CE is the
++cached main run: the fresh seed-205 QR10 reproduces its per-call losses
++exactly through call 11, where the schedules first diverge, but
++TurboSOAP itself was not rerun on that seed.
++
+ \hypertarget{time-and-memory}{%
+ \subsection{5.2. Time and memory}\label{time-and-memory}}
+ 
+@@ -131,8 +179,10 @@
+ 
+ \begin{minipage}{\linewidth}
+ 
+-\emph{Seed 204; full 10k LR horizon; timing calls 101--2000. Original
+-FP32 stock and cached warm timing come from separate launches; this is
++\emph{Seed 204; full 10k LR horizon; timing calls 101--2000. Rows
++marked * ran together in one later launch, whose forward and backward
++passes were 3--6 ms slower; compare their step times only with each
++other. The other rows come from separate launches and are
+ mixed-implementation context.}
+ 
+ \begin{center}
+@@ -141,7 +191,8 @@
+ Policy & CE at 500 & CE at 2000 & Step ms & Optimizer ms \\
+ \midrule\noalign{}
+ Stock QR10 (pilot) & 4.877601 & 3.985905 & 382.773 & 96.358 \\
+-BF16 QR10 & \multicolumn{4}{c}{\pending{matched control}} \\
++BF16 QR10* & 4.885674 & 3.998092 & 364.846 & 70.959 \\
++Warm10/QR50* & 5.001514 & 3.993939 & 320.539 & 26.647 \\
+ Warm10/QR50 (cached) & 5.001514 & 3.993939 & 314.142 & 26.415 \\
+ QR20 & 4.936852 & 3.990383 & 329.641 & 40.460 \\
+ QR50 & 5.018046 & 3.998679 & 313.551 & 22.864 \\
+@@ -158,12 +209,17 @@
+ reuses the first 2,000 calls of the completed main candidate. Complete
+ shared timing cycles span calls 101--2000. The stock row is the original
+ FP32-state reference's pilot prefix; it is not a matched full-BF16 QR10
+-control. That control, with a fresh warm10/QR50 arm in the same launch,
+-is pending \pending{BF16 QR10 and fresh warm10/QR50, seed 204}.
++control. The matched control, BF16 QR10, is the production compiled
++implementation with a QR refresh at every tenth age. It ran in one
++launch with a fresh warm10/QR50 arm, which reproduced the cached warm
++run's validation CE exactly at all eight validation points, so the two
++warm rows differ only in timing.
+ 
+ At call 2000, warm is 0.003557 CE behind QR20 and 0.004740 ahead of
+ QR50. Warm has lower CE than QR50 at all seven noninitial validation
+-observations; QR20 has lower CE than warm at six. These repeated panels
++observations; QR20 has lower CE than warm at six. Warm is also 0.004153
++ahead of the matched QR10, which has lower CE than warm at calls
++50--1000 and higher CE at calls 1500 and 2000. These repeated panels
+ are not independent seeds. The warm prefix has extra refresh work for a
+ modest quality gain over holding bases between QR50s. Its timing comes
+ from the earlier launch, so the small whole-step difference from QR50 is
+@@ -177,17 +233,26 @@
+ warm10/QR50 refresh equally often, so their difference is the cost of
+ approximating four of five refreshes; QR50 and warm10/QR50 perform the
+ same QR refreshes, so their difference is what the warm refreshes add.
+-On this prefix the warm refreshes close about 12\% of the QR50--QR10
+-loss gap at call 500 and about 37\% at call 2000, measured against the
+-original FP32 QR10 prefix. Figure 1(b) places the four schedules on a
+-loss--time plane.
++Against the matched BF16 QR10, the warm refreshes close 12.5\% of the
++QR50--QR10 loss gap at call 500 and 7.9\% at call 1000. By call 1500
++the matched QR10 leads QR50 by only 0.009 CE, and by call 2000 by
++0.0006, with warm below both, so the fraction no longer has a stable
++meaning. Measured against the original FP32 QR10 prefix instead, the
++fractions are about 12\% at call 500 and 37\% at call 2000. On this
++prefix, exact refreshes at QR10 cadence buy an early-training
++advantage that the warm refreshes recover only in small part, and the
++full-BF16 schedules converge by call 2000; Section 5.1 follows the
++matched pair to call 10,000. In one launch, warm10/QR50 used 26.6
++rather than 71.0 ms of optimizer time per call and had 12.1\% lower
++step time than the matched QR10.
+ 
+ \includegraphics{figures/review_tradeoff_v2.pdf}
+ 
+ \emph{Figure 4.} Left: seed204 CE relative to the original stock QR10
+ prefix. Right: optimizer event-class means weighted by their frequencies
+ over calls 101--2000. The first four bars use the development pilot;
+-QR20/QR50 use the new controls. Original/compiled warm policies use
++QR20/QR50 use the new controls, and the last bar is the matched BF16
++QR10, from a later launch. Original/compiled warm policies use
+ warm10/QR50. The bars describe mixed-implementation, cross-launch
+ context and are not causal ablations.
+ 
+diff -ru '--exclude=figures' /tmp/claude-0/-workspace/0a6da032-64b5-4849-ae32-0cd133db0374/scratchpad/overleaf.pre_matched/sections/06_discussion.tex overleaf/sections/06_discussion.tex
+--- /tmp/claude-0/-workspace/0a6da032-64b5-4849-ae32-0cd133db0374/scratchpad/overleaf.pre_matched/sections/06_discussion.tex	2026-11-20 11:22:38.820411020 +0000
++++ overleaf/sections/06_discussion.tex	2026-11-20 11:31:19.224215601 +0000
+@@ -17,10 +17,10 @@
+ final-horizon ranking. Synthetic QR inputs and one-factor probes do not
+ represent the trained distribution of all factor pairs.
+ 
+-The primary time comparison uses the original audited FP32 QR10
+-implementation. Our isolated reuse profile narrows one implementation
+-attribution question but does not replace a newly trained
+-efficient-reference comparison. There is no direct matched evaluation
++The headline time comparison uses the original audited FP32 QR10
++implementation. The matched BF16 QR10 of Sections 5.1 and 5.3 provides
++the same-implementation reference, but with two seeds and a single
++timed launch. There is no direct matched evaluation
+ against subspace or adaptive-refresh methods, and the tracking step has no
+ standalone diagonalization guarantee.
+ 
+@@ -29,24 +29,40 @@
+ refreshes, warm refreshes cost little: full-BF16 QR50 measured 313.551
+ ms per step against 314.142 ms for cached warm10/QR50, while
+ warm10/QR50 was 0.004740 CE ahead at call 2000. Against QR10, which
+-refreshes as often, the warm refreshes recover only part of the loss
+-that QR50 gives up. Using the original FP32 QR10 prefix, they recover
+-about 12\% of the QR50--QR10 gap at call 500 and about 37\% at call
+-2000. That QR10 differs in implementation, so these fractions are
+-provisional until the matched full-BF16 QR10 control is available
+-\pending{recovery fractions vs.\ BF16 QR10}. On the time side, the
+-seed-205 per-event means of Section 5.2 project a matched BF16 QR10 at
+-about 69.2 ms of optimizer time and 352.7 ms per step, so warm10/QR50
+-would be about 12\% faster per step than QR10 at equal implementation;
+-the seed-204 prefix gives a similar projection (360 ms, 12.8\%)
+-\pending{measured BF16 QR10 step time}. The rest of the 18.66\% saving
++refreshes as often in the same implementation, the warm refreshes
++recover only a small part of the early loss that QR50 gives up: 12.5\%
++of the QR50--QR10 gap at call 500 and 7.9\% at call 1000. That early
++gap closes by about call 2000, and at call 10,000 the matched QR10 ends
++0.0018 and 0.0003 CE above TurboSOAP (Section 5.1). In one launch,
++warm10/QR50 took 26.6 ms of optimizer time per call against 71.0 ms for
++the matched QR10, and 320.5 against 364.8 ms per step, 12.1\% less.
++The rest of the 18.66\% saving
+ against the original reference coincides with the implementation
+ changes (batching, compilation and BF16 arithmetic), but this study
+ does not separate them. The development pilot
+ (Appendix A) is consistent with BF16 storage acting mainly on memory:
+ moving from compiled FP32 storage to full BF16 lowered step time by
+-about 1\%. These single-seed, cross-launch contrasts and projections
+-are not causal ablations.
++about 1\%. These single-seed, cross-launch contrasts are not causal
++ablations.
++
++The matched endpoint changes how the remaining loss gap should be read.
++Approximating the refreshes costs 0.007 CE at the endpoint with FP32
++state (seed 204) but nothing two seeds can resolve within the BF16
++implementation, because moving to BF16 raises QR10's endpoint loss
++about three times as much as warm10/QR50's (Section 5.1). The
++0.010--0.011 gap to the FP32 reference therefore cannot be apportioned
++between refresh policy and implementation. Whether
++refresh cadence stops mattering at the BF16 endpoint, or the BF16 QR10
++path is handicapped, is the main open question. A compiled QR10 run
++with FP32 storage would help separate the two: on seed 204 at call
++2000, a result near the FP32 reference (3.986) would implicate BF16
++storage, and one near the BF16 QR10 (3.998) the compiled path or its
++BF16 arithmetic. Until then the matched result supports no endpoint
++loss resolvable at two seeds within this implementation, not the
++stronger claim that the approximation loses nothing against exact
++refreshes. If cadence stops mattering at the BF16 endpoint, QR50 alone
++might match there as well; full-BF16 QR50 ran only to call 2000, so
++whether the warm refreshes add anything at the endpoint is untested.
+ 
+ The early-gap pattern is qualitatively consistent with Eschenhagen et
+ al.'s finding that accurate bases mattered more early in their Imagewoof
+diff -ru '--exclude=figures' /tmp/claude-0/-workspace/0a6da032-64b5-4849-ae32-0cd133db0374/scratchpad/overleaf.pre_matched/sections/07_conclusion.tex overleaf/sections/07_conclusion.tex
+--- /tmp/claude-0/-workspace/0a6da032-64b5-4849-ae32-0cd133db0374/scratchpad/overleaf.pre_matched/sections/07_conclusion.tex	2026-11-20 11:22:38.820411020 +0000
++++ overleaf/sections/07_conclusion.tex	2026-11-20 11:31:19.224215601 +0000
+@@ -10,9 +10,14 @@
+ matrix updates, retaining FP32 master parameters and decomposition
+ islands. The two-seed case study yields a small consistent endpoint loss
+ increase with lower matrix state and measured step time against the
+-declared reference. Short controls place warm10/QR50 between QR50 and
+-the FP32 QR10 reference in loss at close to QR50's cost
+-\pending{vs.\ BF16 QR10}. A matched full-BF16 QR10
+-comparison is the main outstanding measurement. Explicit precision and
++declared reference. Against QR10 in the same BF16 implementation,
++warm10/QR50 trails early, by 0.10--0.12 CE at call 500, and ends within
++0.002 CE on both seeds at 12.1\% lower step time, whereas with FP32
++state the approximation costs 0.007 CE at the endpoint (one seed).
++Refresh policy and implementation therefore interact, and the gap to
++the FP32 reference cannot be apportioned between them. Why the BF16
++implementation costs exact refreshes more than approximate ones, and
++whether warm refreshes improve on QR50 alone at the endpoint, are the
++main open questions. Explicit precision and
+ history rules, local QR attribution, and short cadence controls delimit
+ that tradeoff and support reproducible follow-up comparisons.
+diff -ru '--exclude=figures' /tmp/claude-0/-workspace/0a6da032-64b5-4849-ae32-0cd133db0374/scratchpad/overleaf.pre_matched/sections/09_reproducibility_appendix.tex overleaf/sections/09_reproducibility_appendix.tex
+--- /tmp/claude-0/-workspace/0a6da032-64b5-4849-ae32-0cd133db0374/scratchpad/overleaf.pre_matched/sections/09_reproducibility_appendix.tex	2026-11-20 11:22:38.820411020 +0000
++++ overleaf/sections/09_reproducibility_appendix.tex	2026-11-20 11:31:19.224215601 +0000
+@@ -11,3 +11,18 @@
+ connect tables and figures to their source artifacts. Experiments save
+ no trained model/optimizer tensor checkpoints. All reported figures and
+ numeric tables can be reconstructed from the scalar evidence.
++
++The matched BF16 QR10 evidence (Sections 5.1 and 5.3) is in
++\texttt{reports/fastqr\_20261120/}. Stage 1 ran a fresh warm10/QR50
++and BF16 QR10 (seed 204, 2,000 calls) sequentially on one exclusive GPU
++in the paper's recorded launch environment. Stage 2 continued BF16 QR10
++to 10,000 calls on seeds 204 and 205, each run on its own GPU. Every
++run reproduced its seed's startup: initial weights, first gradient and
++initial CE. The fresh warm arm reproduced the cached main run's
++validation CE exactly through call 2000, and the stage-2 seed-204 run
++reproduced stage 1 exactly through call 2000. The decision rule for
++attributing the endpoint gap was fixed before the stage-2 results. The
++FP32-state warm10/QR50 endpoint (3.418128) is the
++\texttt{primary\_stock\_warm} arm of the reference's campaign
++(\texttt{reports/owt\_restart\_20261026/}), with the same initial
++parameters, first gradient, LR and seed as the FP32 QR10 reference.
+--- /tmp/claude-0/-workspace/0a6da032-64b5-4849-ae32-0cd133db0374/scratchpad/make_figures_v2.pre_matched.py	2026-11-20 11:22:38.812411021 +0000
++++ make_figures_v2.py	2026-11-20 11:24:34.104374661 +0000
+@@ -4,10 +4,8 @@
+ Writes new PDFs into overleaf/figures/ and leaves the hash-pinned figures and
+ scripts (plot_review_context.py, summarize_bf16_completion.py) untouched.
+ 
+-Optional input: reports/bf16_qr10_controls/comparison.json, same schema as
+-reports/bf16_refresh_controls_20261027/comparison.json, with `results` cases
+-'bf16_qr10' and (optionally) 'bf16_warm10_qr50'. When present, the matched
+-BF16 QR10 point replaces the projection in Figure 1(b).
++Matched BF16 QR10 evidence is read in place from reports/fastqr_20261120/
++(summary.json: stage-1 same-launch arms; stage2.json: 10k runs, seeds 204/205).
+ 
+ Usage: python make_figures_v2.py [--skip-toy]
+ """
+@@ -24,7 +22,7 @@
+ HERE = Path(__file__).resolve().parent
+ ROOT = HERE.parent
+ OUT = HERE / 'overleaf' / 'figures'
+-QR10_RESULTS = ROOT / 'reports/bf16_qr10_controls/comparison.json'
++FASTQR = 'reports/fastqr_20261120'
+ 
+ C_ORD, C_WARM, C_QR = '#9aa9b8', '#e8a33d', '#1f63d9'
+ C_TURBO, C_QR20, C_QR50, C_STOCK = '#1f63d9', '#16845b', '#c44b22', '#555555'
+@@ -45,42 +43,52 @@
+ 
+ 
+ # ---------------------------------------------------------------- hero ----
+-def hero():
+-    ctx = json.loads((HERE / 'review_context.json').read_text())
+-    ev = ctx['seed205_optimizer_event_means_ms']['full_bf16']
+-    o, w, q = ev['ordinary'], ev['warm'], ev['qr']
+-    turbo_cycle = 45 * o + 4 * w + q
+-    qr10_cycle = 45 * o + 5 * q
+-    assert abs(turbo_cycle / 50 - ctx['seed205_optimizer_mean_ms']['full_bf16']) < 0.05
++def matched_runs():
++    """Matched BF16 QR10 evidence from the fast-QR study (read in place).
+ 
+-    controls = load('reports/bf16_refresh_controls_20261027/comparison.json')
+-    pilot = load('reports/bf16_learning_20261026/comparison.json')
+-    seed205 = load('reports/bf16_full_horizon_20261026_seed205/comparison.json')
+-    stock_r, turbo_r = seed205['results']
+-    non_opt = turbo_r['mean_step_ms'] - turbo_r['mean_optimizer_ms']
+-    projected_qr10_step = non_opt + qr10_cycle / 50
+-
+-    fig, (ax, bx) = plt.subplots(1, 2, figsize=(10.2, 3.25),
+-                                 gridspec_kw={'width_ratios': [1.45, 1]})
+-
+-    # (a) one 50-age cycle, cumulative optimizer time
+-    rows = [('TurboSOAP\nwarm10/QR50', 1.0, False),
+-            ('QR10, same\nimplementation\n(projected)', 0.0, True)]
+-    for label, y, projected in rows:
++    Stage 1: seed 204, 2,000 calls, fresh warm10/QR50 and BF16 Householder QR10
++    in one launch (same-launch timing). Stage 2: BF16 QR10 to 10,000 calls on
++    seeds 204/205 against the cached main TurboSOAP runs and FP32 QR10 refs.
++    """
++    rows = {r['arm']: r for r in
++            load(f'{FASTQR}/summary.json')['training']['stage1_seed204_c2000']['rows']}
++    stage2 = load(f'{FASTQR}/stage2.json')['seeds']
++    return rows['bf16_w10_qr50'], rows['bf16_hh_qr10'], stage2
++
++
++def hero():
++    warm, qr10, stage2 = matched_runs()
++    assert warm['launch'] == qr10['launch'] == 'this'
++    wk, qk = warm['optimizer_by_kind'], qr10['optimizer_by_kind']
++    turbo_cycle = 45 * wk['ordinary']['mean_ms'] + 4 * wk['warm']['mean_ms'] + wk['qr']['mean_ms']
++    qr10_cycle = 45 * qk['ordinary']['mean_ms'] + 5 * qk['qr']['mean_ms']
++    assert abs(turbo_cycle / 50 - warm['mean_optimizer_ms']) < 0.1
++    assert abs(qr10_cycle / 50 - qr10['mean_optimizer_ms']) < 0.1
++
++    fig = plt.figure(figsize=(10.2, 3.35))
++    gs = fig.add_gridspec(2, 2, width_ratios=[1.45, 1], height_ratios=[1.25, 1],
++                          hspace=0.08)
++    ax = fig.add_subplot(gs[:, 0])
++    bx_top = fig.add_subplot(gs[0, 1])
++    bx_bot = fig.add_subplot(gs[1, 1], sharex=bx_top)
++
++    # (a) one 50-age cycle, cumulative optimizer time, measured in one launch
++    rows = [('TurboSOAP\nwarm10/QR50', 1.0, wk, False),
++            ('QR10, same\nimplementation', 0.0, qk, True)]
++    for label, y, kinds, all_qr in rows:
+         left = 0.0
+         for age in range(1, 51):
+             if age % 10:
+-                kind, cost = 'o', o
+-            elif projected or age == 50:
+-                kind, cost = 'q', q
++                kind = 'o'
++            elif all_qr or age == 50:
++                kind = 'q'
+             else:
+-                kind, cost = 'w', w
++                kind = 'w'
++            cost = kinds[{'o': 'ordinary', 'w': 'warm', 'q': 'qr'}[kind]]['mean_ms']
+             color = {'o': C_ORD, 'w': C_WARM, 'q': C_QR}[kind]
+             ax.barh(y, cost, left=left, height=0.55, color=color,
+                     edgecolor='white' if kind != 'o' else color,
+-                    linewidth=0.4 if kind != 'o' else 0,
+-                    hatch='///' if projected and kind == 'q' else None,
+-                    alpha=0.75 if projected else 1.0)
++                    linewidth=0.4 if kind != 'o' else 0)
+             left += cost
+         ax.text(left + 60, y, f'{left/1000:.2f} s', va='center', fontsize=8.5,
+                 fontweight='bold')
+@@ -90,6 +98,7 @@
+     ax.set_xlabel('Cumulative optimizer time over one 50-call cycle (ms)')
+     ax.set_title('(a) Same refresh cadence; four of five refreshes approximate',
+                  loc='left')
++    o, w, q = (wk[k]['mean_ms'] for k in ('ordinary', 'warm', 'qr'))
+     ax.legend(handles=[Patch(color=C_ORD, label=f'ordinary call ({o:.0f} ms)'),
+                        Patch(color=C_WARM, label=f'call with warm refresh ({w:.0f} ms)'),
+                        Patch(color=C_QR, label=f'call with QR refresh ({q:.0f} ms)')],
+@@ -97,64 +106,57 @@
+     ax.grid(axis='x', alpha=.18)
+     ax.set_axisbelow(True)
+ 
+-    # (b) loss vs step time at call 2000, seed 204
+-    pts = []
+-    stock_pilot = pilot['results'][0]
+-    assert stock_pilot['case'] == 'qr10'
+-    cached = controls['cached_warm_prefix']
+-    by_case = {r['case']: r for r in controls['results']}
+-    pts.append(('BF16 QR50', by_case['bf16_qr50'], C_QR50, '^'))
+-    pts.append(('BF16 QR20', by_case['bf16_qr20'], C_QR20, 's'))
+-    matched = None
+-    if QR10_RESULTS.exists():
+-        new = {r['case']: r for r in json.loads(QR10_RESULTS.read_text())['results']}
+-        matched = new.get('bf16_qr10')
+-        if matched:
+-            pts.append(('BF16 QR10', matched, '#6b21a8', 'D'))
+-        if 'bf16_warm10_qr50' in new:
+-            cached = new['bf16_warm10_qr50']
+-    for label, r, color, marker in pts:
+-        bx.scatter(r['mean_step_ms'], ce_at(r['validation'], 2000), color=color,
+-                   marker=marker, s=38, zorder=3, label=label)
+-    qr_line = sorted(pts, key=lambda p: p[1]['mean_step_ms'])
+-    bx.plot([p[1]['mean_step_ms'] for p in qr_line],
+-            [ce_at(p[1]['validation'], 2000) for p in qr_line],
+-            color='#999999', lw=0.8, ls='--', zorder=1)
+-    bx.scatter(cached['mean_step_ms'], ce_at(cached['validation'], 2000),
+-               color=C_TURBO, marker='o', s=70, zorder=4,
+-               label='TurboSOAP warm10/QR50', edgecolor='black', linewidth=0.6)
+-    bx.scatter(stock_pilot['mean_step_ms'], ce_at(stock_pilot['validation'], 2000),
+-               facecolor='none', edgecolor=C_STOCK, marker='o', s=38, zorder=3,
+-               label='QR10, original FP32 eager')
+-    # Projection on the seed-204 prefix basis: mean non-optimizer time of the
+-    # three full-BF16 prefix rows plus QR10's event mix at the controls' means.
+-    prefix_rows = [controls['cached_warm_prefix'], *controls['results']]
+-    non_opt_204 = sum(r['mean_step_ms'] - r['mean_optimizer_ms'] for r in prefix_rows) / 3
+-    ord_c = sum(r['optimizer_by_kind']['ordinary'] for r in controls['results']) / 2
+-    qr_c = sum(r['optimizer_by_kind']['qr'] for r in controls['results']) / 2
+-    projected_qr10_step_204 = non_opt_204 + 0.9 * ord_c + 0.1 * qr_c
+-    if matched is None:
+-        bx.axvline(projected_qr10_step_204, color='#6b21a8', ls=':', lw=1)
+-        bx.text(projected_qr10_step_204 + 1.5, 3.9998,
+-                f'projected BF16 QR10\nstep time ({projected_qr10_step_204:.0f} ms);\n'
+-                'loss pending', fontsize=7, color='#6b21a8', va='top')
+-    bx.set_xlabel('Mean step time, calls 101–2000 (ms)')
+-    bx.set_ylabel('Validation CE at call 2000')
+-    bx.set_title('(b) CE at call 2000 vs. step time (seed 204)', loc='left')
+-    bx.legend(frameon=False, loc='lower left', fontsize=7)
+-    bx.grid(alpha=.18)
+-    bx.set_ylim(3.983, 4.0005)
+-    bx.set_xlim(305, 392)
+-    fig.tight_layout(w_pad=2.0)
++    # (b) CE minus TurboSOAP's (same seed) over the 10k horizon; broken y-axis:
++    # top = late-training scale, bottom = the early gap.
++    seed_color = {'204': '#2563eb', '205': '#c2410c'}
++    ends = {}
++    for seed, v in stage2.items():
++        a = v['analysis']
++        turbo = a['cached_production']['ce']
++        calls = [c for c in a['calls'] if c >= 50]
++        for key, src, ls, lab in [
++                ('bf16_qr10', a['ce']['bf16_hh_qr10'], '-', 'BF16 QR10 (matched)'),
++                ('fp32_qr10', a['fp32_reference']['fp32_qr10'], '--', 'FP32 eager QR10')]:
++            d = [src[str(c)] - turbo[str(c)] for c in calls]
++            ends[(seed, key)] = d[-1]
++            for axis in (bx_top, bx_bot):
++                axis.plot(calls, d, ls=ls, color=seed_color[seed], lw=1.3,
++                          marker='.' if ls == '-' else None, markersize=3,
++                          label=f'{lab}, seed {seed}')
++    spread = abs(stage2['204']['analysis']['cached_production']['ce']['10000']
++                 - stage2['205']['analysis']['cached_production']['ce']['10000'])
++    for axis in (bx_top, bx_bot):
++        axis.axhspan(-spread, spread, color='#999999', alpha=0.2, lw=0)
++        axis.axhline(0, color='#555555', lw=0.7)
++        axis.grid(alpha=.18)
++        axis.set_xscale('log')
++        axis.set_xlim(45, 11000)
++    bx_top.set_ylim(-0.016, 0.008)
++    bx_bot.set_ylim(-0.135, -0.016)
++    bx_top.spines['bottom'].set_visible(False)
++    bx_bot.spines['top'].set_visible(False)
++    bx_top.tick_params(axis='x', which='both', bottom=False, labelbottom=False)
++    kw = dict(marker=[(-1, -0.5), (1, 0.5)], markersize=8, linestyle='none',
++              color='k', mec='k', mew=0.8, clip_on=False)
++    bx_top.plot([0], [0], transform=bx_top.transAxes, **kw)
++    bx_bot.plot([0], [1], transform=bx_bot.transAxes, **kw)
++    bx_bot.set_xlabel('Training calls (log scale)')
++    bx_top.set_title('(b) CE relative to TurboSOAP, 10k calls', loc='left')
++    bx_bot.legend(frameon=False, loc='lower right', fontsize=6.2, handlelength=1.6,
++                  borderaxespad=0.2)
++    fig.subplots_adjust(left=0.115, right=0.99, bottom=0.14, top=0.91, wspace=0.34)
++    x0 = bx_top.get_position().x0
++    fig.text(x0 - 0.072, 0.525, 'CE minus TurboSOAP (same seed)', rotation=90,
++             va='center', ha='center', fontsize=9)
+     fig.savefig(OUT / 'hero.pdf')
+     plt.close(fig)
+     return dict(turbo_cycle_ms=turbo_cycle, qr10_cycle_ms=qr10_cycle,
+-                projected_qr10_step_ms_seed205=projected_qr10_step,
+-                projected_qr10_step_ms_seed204_prefix=projected_qr10_step_204,
+-                seed204_prefix_saving_pct=100 * (1 - controls['cached_warm_prefix']['mean_step_ms']
+-                                                 / projected_qr10_step_204),
+-                projected_saving_pct_seed205=100 * (1 - turbo_r['mean_step_ms'] / projected_qr10_step),
+-                matched_qr10_present=matched is not None)
++                same_launch_step_ms=dict(warm=warm['mean_step_ms'], qr10=qr10['mean_step_ms']),
++                same_launch_optimizer_ms=dict(warm=warm['mean_optimizer_ms'],
++                                              qr10=qr10['mean_optimizer_ms']),
++                same_launch_step_saving_pct=100 * (1 - warm['mean_step_ms'] / qr10['mean_step_ms']),
++                ce_minus_turbo_at_10k={f'{s}/{k}': d for (s, k), d in ends.items()},
++                turbo_seed_spread_10k=spread)
+ 
+ 
+ # ------------------------------------------------- relabelled figures ----
+@@ -199,16 +201,23 @@
+         v = row['validation']
+         left.plot([x['call'] for x in v], [x['ce'] - reference[x['call']] for x in v],
+                   label=label, color=color, marker=marker, markersize=3)
++    _, qr10, _ = matched_runs()
++    qc = sorted((int(c), ce) for c, ce in qr10['ce'].items() if int(c) in reference)
++    left.plot([c for c, _ in qc], [ce - reference[c] for c, ce in qc],
++              label='BF16 QR10 (matched)', color='#6b21a8', marker='D', markersize=3)
+     left.axhline(0, color='#777777', lw=1, label='FP32 QR10 (original)')
+     left.set(xlabel='Training calls', ylabel='CE minus FP32 QR10',
+-             title='Seed-204 prefix learning', xlim=(0, 2000), ylim=(-.005, .15))
++             title='Seed-204 prefix learning', xlim=(0, 2000), ylim=(-.015, .15))
+     left.grid(alpha=.18)
+     left.legend(frameon=False, loc='upper right')
+     rows = ctx['prefix_amortized_optimizer_events']
+     labels = ['FP32 QR10', 'Original warm\n(FP32 state)', 'Compiled FP32 state\n(BF16 arithmetic)',
+-              'TurboSOAP', 'BF16 QR20', 'BF16 QR50']
++              'TurboSOAP', 'BF16 QR20', 'BF16 QR50', 'BF16 QR10\n(matched launch)']
+     assert [r['case'] for r in rows] == ['qr10', 'original', 'compiled_fp32', 'bf16',
+                                          'bf16_qr20', 'bf16_qr50']
++    qk = qr10['optimizer_by_kind']
++    rows = rows + [dict(case='bf16_qr10', amortized_ms=dict(
++        ordinary=0.9 * qk['ordinary']['mean_ms'], warm=0.0, qr=0.1 * qk['qr']['mean_ms']))]
+     pos = list(range(len(rows)))
+     base = [0.] * len(rows)
+     for key, label, color in [('ordinary', 'Ordinary', C_ORD), ('warm', 'Warm', C_WARM),
+@@ -222,7 +231,7 @@
+     right.invert_yaxis()
+     right.set(xlabel='Amortized optimizer ms/call', xlim=(0, 110),
+               title='Recorded prefix event accounting')
+-    right.legend(ncol=3, frameon=False, loc='lower right')
++    right.legend(ncol=1, frameon=False, loc='center right')
+     right.grid(axis='x', alpha=.18)
+     right.set_axisbelow(True)
+     fig.tight_layout(w_pad=2.0)
+@@ -312,5 +321,8 @@
+     if '--skip-toy' not in sys.argv:
+         info['toy'] = tracking_toy()
+         info['toy_settings'] = TOY
++    elif (HERE / 'figures_v2.json').exists():  # keep the last toy results
++        prev = json.loads((HERE / 'figures_v2.json').read_text())
++        info.update({k: prev[k] for k in ('toy', 'toy_settings') if k in prev})
+     (HERE / 'figures_v2.json').write_text(json.dumps(info, indent=2) + '\n')
+     print(json.dumps(info, indent=2))

@@ -1,0 +1,19 @@
+(1) ordered QR tangent
+  n=8 eps=0.001: rel err of E_ij/d_j formula=2.095e-03; of full Jacobi E/(d_j-d_i)=4.157e+00; of half Jacobi=1.761e+00
+  n=64 eps=0.001: rel err of E_ij/d_j formula=2.040e-02; of full Jacobi E/(d_j-d_i)=5.633e+01; of half Jacobi=2.809e+01
+  n=64 eps=0.01: rel err of E_ij/d_j formula=1.871e-01; of full Jacobi E/(d_j-d_i)=1.392e+02; of half Jacobi=6.952e+01
+(2) one Newton-Schulz correction
+  e0=0.25: formula e1=-0.04297 e2=-1.40e-03; matrix eig extremes after 1/2 corrections: -0.04297 / -1.40e-03
+  e0=0.09: formula e1=-0.00589 e2=-2.61e-05; matrix eig extremes after 1/2 corrections: -0.00589 / -2.61e-05
+  e0=0.01: formula e1=-0.00007 e2=-4.19e-09; matrix eig extremes after 1/2 corrections: -0.00007 / -4.19e-09
+(3) skew spectral vs Frobenius/sqrt2
+  max ||K||_2 / (||K||_F/sqrt2) over 200 random skews = 0.5101 (must be <= 1)
+(4) transport FLOPs (MACs) for the 109M shapes
+  2304x768: original 10.872 GMAC, short-side reassociation 9.966 GMAC (8.3% fewer)
+  768x768: original 1.812 GMAC, short-side reassociation 1.812 GMAC (0.0% fewer)
+  3072x768: original 18.119 GMAC, short-side reassociation 16.760 GMAC (7.5% fewer)
+  768x1536: original 5.436 GMAC, short-side reassociation 4.983 GMAC (8.3% fewer)
+(5) BF16 covariance EMA sticking
+  noise=0.0: ||C_bf16 - C_fp32||/||C_fp32|| = 0.0419; FP32 EMA lag to current target = 0.0365; fraction of BF16 entries never moved from their initial value = 0.007
+  noise=0.02: ||C_bf16 - C_fp32||/||C_fp32|| = 0.0075; FP32 EMA lag to current target = 0.0501; fraction of BF16 entries never moved from their initial value = 0.002
+  noise=0.2: ||C_bf16 - C_fp32||/||C_fp32|| = 0.0058; FP32 EMA lag to current target = 0.3102; fraction of BF16 entries never moved from their initial value = 0.002

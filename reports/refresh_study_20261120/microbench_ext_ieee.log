@@ -1,0 +1,219 @@
+gpu-claim: refresh-study/microbench-ext-ieee holds GPU 2
+started 2026-11-20T05:06:56Z gpu=2 load=8.47 7.92 8.52 7/4812 1098211
+== n=256 batch=1 t=0s load=['8.75', '7.99', '8.53']
+  input {'n': 256, 'batch': 1, 'input_rC_mean': 0.21233078837394714, 'input_gram_err_mean': 0.002350974129512906, 'input_gram_err_max': 0.002350974129512906, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E cholqr 0.6324160099029541 None
+   E cholqr3 3.870975971221924 None
+/venv/main/lib/python3.12/site-packages/torch/_inductor/compile_fx.py:322: UserWarning: TensorFloat32 tensor cores for float32 matrix multiplication available but not enabled. Consider setting `torch.set_float32_matmul_precision('high')` for better performance.
+  warnings.warn(
+   C cholqr 0.6075199842453003 None
+   C cholqr3 3.1303679943084717 None
+== n=512 batch=1 t=6s load=['9.09', '8.07', '8.56']
+  input {'n': 512, 'batch': 1, 'input_rC_mean': 0.20672278106212616, 'input_gram_err_mean': 0.002343990607187152, 'input_gram_err_max': 0.002343990607187152, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E cholqr 0.7031360268592834 None
+   E cholqr3 3.9869439601898193 None
+   C cholqr 0.6876479983329773 None
+   C cholqr3 3.3520638942718506 None
+== n=768 batch=1 t=8s load=['9.24', '8.12', '8.57']
+  input {'n': 768, 'batch': 1, 'input_rC_mean': 0.2068072408437729, 'input_gram_err_mean': 0.0023601276334375143, 'input_gram_err_max': 0.0023601276334375143, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E cholqr 0.8892480134963989 None
+   E cholqr3 4.517920017242432 None
+   C cholqr 0.9483199715614319 None
+   C cholqr3 3.881727933883667 None
+== n=1024 batch=1 t=11s load=['9.24', '8.12', '8.57']
+  input {'n': 1024, 'batch': 1, 'input_rC_mean': 0.20316338539123535, 'input_gram_err_mean': 0.0023502158001065254, 'input_gram_err_max': 0.0023502158001065254, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E cholqr 1.1073600053787231 None
+   E cholqr3 5.142335891723633 None
+   C cholqr 1.1476160287857056 None
+   C cholqr3 4.512576103210449 None
+== n=1536 batch=1 t=13s load=['9.70', '8.23', '8.61']
+  input {'n': 1536, 'batch': 1, 'input_rC_mean': 0.2052941620349884, 'input_gram_err_mean': 0.002343866741284728, 'input_gram_err_max': 0.002343866741284728, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E cholqr 1.5623359680175781 None
+   E cholqr3 6.404543876647949 None
+   C cholqr 1.5914560556411743 None
+   C cholqr3 5.75705623626709 None
+== n=2048 batch=1 t=16s load=['9.70', '8.23', '8.61']
+  input {'n': 2048, 'batch': 1, 'input_rC_mean': 0.2007703334093094, 'input_gram_err_mean': 0.002344102133065462, 'input_gram_err_max': 0.002344102133065462, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E cholqr 2.2382400035858154 None
+   E cholqr3 8.022527694702148 None
+   C cholqr 2.2202560901641846 None
+   C cholqr3 7.376895904541016 None
+== n=2304 batch=1 t=19s load=['10.05', '8.33', '8.64']
+  input {'n': 2304, 'batch': 1, 'input_rC_mean': 0.1995728760957718, 'input_gram_err_mean': 0.0023454767651855946, 'input_gram_err_max': 0.0023454767651855946, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E cholqr 2.678272008895874 None
+   E cholqr3 8.941344261169434 None
+   C cholqr 2.648832082748413 None
+   C cholqr3 8.278528213500977 None
+== n=3072 batch=1 t=22s load=['10.05', '8.33', '8.64']
+  input {'n': 3072, 'batch': 1, 'input_rC_mean': 0.1997450739145279, 'input_gram_err_mean': 0.0023510821629315615, 'input_gram_err_max': 0.0023510821629315615, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E cholqr 4.626463890075684 None
+   E cholqr3 13.16214370727539 None
+   C cholqr 4.53875207901001 None
+   C cholqr3 12.361344337463379 None
+== n=4096 batch=1 t=26s load=['10.45', '8.44', '8.67']
+  input {'n': 4096, 'batch': 1, 'input_rC_mean': 0.19823907315731049, 'input_gram_err_mean': 0.0023502272088080645, 'input_gram_err_max': 0.0023502272088080645, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E cholqr 8.426527976989746 None
+   E cholqr3 21.682687759399414 None
+   C cholqr 8.15670394897461 None
+   C cholqr3 21.180864334106445 None
+== n=6144 batch=1 t=30s load=['10.41', '8.47', '8.68']
+  input {'n': 6144, 'batch': 1, 'input_rC_mean': 0.19760261476039886, 'input_gram_err_mean': 0.0023430222645401955, 'input_gram_err_max': 0.0023430222645401955, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E cholqr 23.896928787231445 None
+   E cholqr3 62.202239990234375 None
+   C cholqr 23.084064483642578 None
+   C cholqr3 60.785343170166016 None
+== n=256 batch=12 t=41s load=['10.65', '8.58', '8.71']
+  input {'n': 256, 'batch': 12, 'input_rC_mean': 0.21143575012683868, 'input_gram_err_mean': 0.0023663907389466963, 'input_gram_err_max': 0.002375909360125661, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E cholqr 0.8586559891700745 None
+   E cholqr3 4.5373759269714355 None
+   C cholqr 0.846015989780426 None
+   C cholqr3 3.8351359367370605 None
+== n=512 batch=12 t=44s load=['10.68', '8.62', '8.73']
+  input {'n': 512, 'batch': 12, 'input_rC_mean': 0.20935074985027313, 'input_gram_err_mean': 0.002347080134010563, 'input_gram_err_max': 0.0023597246035933495, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E cholqr 1.344864010810852 None
+   E cholqr3 5.8039679527282715 None
+   C cholqr 1.2689599990844727 None
+   C cholqr3 5.036672115325928 None
+== n=768 batch=12 t=46s load=['10.68', '8.62', '8.73']
+  input {'n': 768, 'batch': 12, 'input_rC_mean': 0.20533956587314606, 'input_gram_err_mean': 0.0023560745758004487, 'input_gram_err_max': 0.0023611849173903465, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E cholqr 2.376607894897461 None
+   E cholqr3 8.590399742126465 None
+   C cholqr 2.3309121131896973 None
+   C cholqr3 7.838943958282471 None
+== n=1024 batch=12 t=50s load=['10.87', '8.70', '8.75']
+  input {'n': 1024, 'batch': 12, 'input_rC_mean': 0.2032751888036728, 'input_gram_err_mean': 0.002352423946528385, 'input_gram_err_max': 0.002357174875214696, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E cholqr 4.181600093841553 None
+   E cholqr3 12.518943786621094 None
+   C cholqr 4.065855979919434 None
+   C cholqr3 11.646047592163086 None
+== n=1536 batch=12 t=53s load=['10.88', '8.74', '8.76']
+  input {'n': 1536, 'batch': 12, 'input_rC_mean': 0.20176464319229126, 'input_gram_err_mean': 0.002343979741757115, 'input_gram_err_max': 0.002346178749576211, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E cholqr 10.457695960998535 None
+   E cholqr3 29.925823211669922 None
+   C cholqr 9.981247901916504 None
+   C cholqr3 28.87398338317871 None
+== n=2048 batch=12 t=59s load=['10.73', '8.74', '8.76']
+  input {'n': 2048, 'batch': 12, 'input_rC_mean': 0.2016332745552063, 'input_gram_err_mean': 0.002343724307138473, 'input_gram_err_max': 0.0023455205373466015, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E cholqr 20.473888397216797 None
+   E cholqr3 55.28700637817383 None
+   C cholqr 19.796415328979492 None
+   C cholqr3 54.22995376586914 None
+== n=2304 batch=12 t=69s load=['10.61', '8.78', '8.78']
+  input {'n': 2304, 'batch': 12, 'input_rC_mean': 0.20149870216846466, 'input_gram_err_mean': 0.002345956047065556, 'input_gram_err_max': 0.002348345471546054, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E cholqr 28.748863220214844 None
+   E cholqr3 80.3012466430664 None
+   C cholqr 27.519264221191406 None
+   C cholqr3 78.78470611572266 None
+== n=3072 batch=12 t=81s load=['10.68', '8.86', '8.80']
+  input {'n': 3072, 'batch': 12, 'input_rC_mean': 0.19943571090698242, 'input_gram_err_mean': 0.002351448560754458, 'input_gram_err_max': 0.0023528295569121838, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E cholqr 62.46739196777344 None
+   E cholqr3 176.6436767578125 None
+   C cholqr 60.37910461425781 None
+   C cholqr3 173.7539825439453 None
+== n=4096 batch=12 t=101s load=['11.22', '9.09', '8.88']
+  input {'n': 4096, 'batch': 12, 'input_rC_mean': 0.2006925344467163, 'input_gram_err_mean': 0.002350821625441313, 'input_gram_err_max': 0.0023513666819781065, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E cholqr 135.95237731933594 None
+   E cholqr3 355.9682922363281 None
+   C cholqr 132.5116729736328 None
+   C cholqr3 351.2176208496094 None
+== n=6144 batch=12 t=128s load=['11.81', '9.44', '9.00']
+  input {'n': 6144, 'batch': 12, 'input_rC_mean': 0.19869445264339447, 'input_gram_err_mean': 0.00234194608250012, 'input_gram_err_max': 0.002342482330277562, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E cholqr 440.85357666015625 None
+   E cholqr3 1240.5478515625 None
+   C cholqr 431.5298156738281 None
+   C cholqr3 1226.902099609375 None
+== n=8192 batch=1 t=186s load=['29.78', '13.56', '10.37']
+  input {'n': 8192, 'batch': 1, 'input_rC_mean': 0.19933439791202545, 'input_gram_err_mean': 0.0023422183003276587, 'input_gram_err_max': 0.0023422183003276587, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E cholqr 52.40188980102539 None
+   E cholqr3 131.33929443359375 None
+   C cholqr 51.035518646240234 None
+   C cholqr3 128.88287353515625 None
+== n=12288 batch=1 t=198s load=['46.06', '17.84', '11.81']
+  input {'n': 12288, 'batch': 1, 'input_rC_mean': 0.19863785803318024, 'input_gram_err_mean': 0.0023505399003624916, 'input_gram_err_max': 0.0023505399003624916, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E cholqr 163.59007263183594 None
+   E cholqr3 417.0358581542969 None
+   C cholqr 160.52053833007812 None
+   C cholqr3 412.3512268066406 None
+== n=16384 batch=1 t=222s load=['35.33', '17.22', '11.74']
+  input {'n': 16384, 'batch': 1, 'input_rC_mean': 0.19950011372566223, 'input_gram_err_mean': 0.002350043272599578, 'input_gram_err_max': 0.002350043272599578, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E cholqr 364.4945068359375 None
+   E cholqr3 892.3181762695312 None
+   C cholqr 359.0711364746094 None
+   C cholqr3 880.5867919921875 None
+== n=8192 batch=4 t=258s load=['22.60', '16.21', '11.63']
+  input {'n': 8192, 'batch': 4, 'input_rC_mean': 0.19931760430335999, 'input_gram_err_mean': 0.0023422990925610065, 'input_gram_err_max': 0.0023424404207617044, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E cholqr 328.5417175292969 None
+   E cholqr3 858.686279296875 None
+   C cholqr 323.011474609375 None
+   C cholqr3 853.93408203125 None
+== n=12288 batch=4 t=290s load=['17.42', '15.58', '11.56']
+  input {'n': 12288, 'batch': 4, 'input_rC_mean': 0.1989186406135559, 'input_gram_err_mean': 0.002350778493564576, 'input_gram_err_max': 0.002350830240175128, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E cholqr 1065.5604248046875 None
+   E cholqr3 2986.313720703125 None
+   C cholqr 1055.55029296875 None
+   C cholqr3 2967.2265625 None
+== n=16384 batch=4 t=379s load=['12.49', '14.23', '11.44']
+  input {'n': 16384, 'batch': 4, 'input_rC_mean': 0.19806884229183197, 'input_gram_err_mean': 0.002350045251660049, 'input_gram_err_max': 0.0023502798285335302, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E cholqr None OOM: OutOfMemoryError: CUDA out of memory. Tried to allocate 4.00 GiB. GPU 0 has a total capacity of 31.36 GiB of which 2.55 GiB is free. Including non-PyTorch memory, this process has 28.80 GiB memory in use. Of the allocated memory 28.03 GiB is allocated by PyTorch, and 1.12 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:T
+   E cholqr3 None OOM: OutOfMemoryError: CUDA out of memory. Tried to allocate 4.00 GiB. GPU 0 has a total capacity of 31.36 GiB of which 2.55 GiB is free. Including non-PyTorch memory, this process has 28.80 GiB memory in use. Of the allocated memory 25.03 GiB is allocated by PyTorch, and 3.00 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:T
+   C cholqr 2356.50830078125 None
+   C cholqr3 6089.61279296875 None
+== n=8192 batch=12 t=478s load=['9.02', '12.60', '11.15']
+  input {'n': 8192, 'batch': 12, 'input_rC_mean': 0.19822585582733154, 'input_gram_err_mean': 0.002342238226750245, 'input_gram_err_max': 0.002342707011848688, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E cholqr 978.6500244140625 None
+   E cholqr3 2575.936767578125 None
+   C cholqr 965.9140014648438 None
+   C cholqr3 2554.700927734375 None
+== n=12288 batch=12 t=557s load=['8.19', '11.54', '10.89']
+  input {'n': 12288, 'batch': 12, 'input_rC_mean': 0.19811411201953888, 'input_gram_err_mean': 0.0023506035019333162, 'input_gram_err_max': 0.002350800670683384, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E cholqr None OOM: OutOfMemoryError: CUDA out of memory. Tried to allocate 6.75 GiB. GPU 0 has a total capacity of 31.36 GiB of which 3.55 GiB is free. Including non-PyTorch memory, this process has 27.80 GiB memory in use. Of the allocated memory 27.03 GiB is allocated by PyTorch, and 3.25 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:T
+   E cholqr3 None OOM: OutOfMemoryError: CUDA out of memory. Tried to allocate 6.75 GiB. GPU 0 has a total capacity of 31.36 GiB of which 3.55 GiB is free. Including non-PyTorch memory, this process has 27.80 GiB memory in use. Of the allocated memory 27.03 GiB is allocated by PyTorch, and 3.25 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:T
+   C cholqr None OOM: OutOfMemoryError: CUDA out of memory. Tried to allocate 6.75 GiB. GPU 0 has a total capacity of 31.36 GiB of which 3.55 GiB is free. Including non-PyTorch memory, this process has 27.80 GiB memory in use. Of the allocated memory 20.28 GiB is allocated by PyTorch, and 6.75 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:T
+   C cholqr3 None OOM: OutOfMemoryError: CUDA out of memory. Tried to allocate 6.75 GiB. GPU 0 has a total capacity of 31.36 GiB of which 3.55 GiB is free. Including non-PyTorch memory, this process has 27.80 GiB memory in use. Of the allocated memory 20.28 GiB is allocated by PyTorch, and 6.75 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:T
+== n=16384 batch=12 t=587s load=['7.92', '11.15', '10.78']
+  input {'n': 16384, 'batch': 12, 'input_rC_mean': 0.19821399450302124, 'input_gram_err_mean': 0.0023501575148353973, 'input_gram_err_max': 0.0023504896089434624, 'input_output_finite': True, 'input_nonfinite_factors': 0}
+   E cholqr None OOM: OutOfMemoryError: CUDA out of memory. Tried to allocate 12.00 GiB. GPU 0 has a total capacity of 31.36 GiB of which 6.55 GiB is free. Including non-PyTorch memory, this process has 24.80 GiB memory in use. Of the allocated memory 24.03 GiB is allocated by PyTorch, and 3.25 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:
+   E cholqr3 None OOM: OutOfMemoryError: CUDA out of memory. Tried to allocate 12.00 GiB. GPU 0 has a total capacity of 31.36 GiB of which 6.55 GiB is free. Including non-PyTorch memory, this process has 24.80 GiB memory in use. Of the allocated memory 24.03 GiB is allocated by PyTorch, and 3.25 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:
+   C cholqr None OOM: OutOfMemoryError: CUDA out of memory. Tried to allocate 12.00 GiB. GPU 0 has a total capacity of 31.36 GiB of which 6.55 GiB is free. Including non-PyTorch memory, this process has 24.80 GiB memory in use. Of the allocated memory 24.03 GiB is allocated by PyTorch, and 3.25 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:
+   C cholqr3 None OOM: OutOfMemoryError: CUDA out of memory. Tried to allocate 12.00 GiB. GPU 0 has a total capacity of 31.36 GiB of which 6.55 GiB is free. Including non-PyTorch memory, this process has 24.80 GiB memory in use. Of the allocated memory 24.03 GiB is allocated by PyTorch, and 3.25 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:
+/workspace/TurboSOAP/benchmarks/refresh_study_microbench_ext.py:285: UserWarning: No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+  axes[2].legend(fontsize=7, frameon=False)
+{
+ "compiled_b1": {
+  "warm_over_qr": {},
+  "warm_over_cholqr3": {},
+  "first_n_warm_ge_qr": null,
+  "max_n_measured": null
+ },
+ "compiled_b4": {
+  "warm_over_qr": {},
+  "warm_over_cholqr3": {},
+  "first_n_warm_ge_qr": null,
+  "max_n_measured": null
+ },
+ "compiled_b12": {
+  "warm_over_qr": {},
+  "warm_over_cholqr3": {},
+  "first_n_warm_ge_qr": null,
+  "max_n_measured": null
+ },
+ "eager_b1": {
+  "warm_over_qr": {},
+  "warm_over_cholqr3": {},
+  "first_n_warm_ge_qr": null,
+  "max_n_measured": null
+ },
+ "eager_b4": {
+  "warm_over_qr": {},
+  "warm_over_cholqr3": {},
+  "first_n_warm_ge_qr": null,
+  "max_n_measured": null
+ },
+ "eager_b12": {
+  "warm_over_qr": {},
+  "warm_over_cholqr3": {},
+  "first_n_warm_ge_qr": null,
+  "max_n_measured": null
+ }
+}
+finished 2026-11-20T05:17:35Z load=8.15 10.72 10.65 7/5027 1105276

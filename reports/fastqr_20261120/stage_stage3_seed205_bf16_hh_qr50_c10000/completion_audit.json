@@ -1,0 +1,25 @@
+{
+ "status": "passed",
+ "arms": [
+  {
+   "status": "passed",
+   "arm": "bf16_hh_qr50",
+   "event_counts": {
+    "cold": 1,
+    "ordinary": 9800,
+    "qr": 199
+   },
+   "unique_graphs_at_captures": [
+    8,
+    8,
+    8,
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "refresh_counts": null
+  }
+ ]
+}

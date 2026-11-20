@@ -1,0 +1,30 @@
+gpu-claim: refresh-study/gen-d512 holds GPU 5
+/venv/main/lib/python3.12/site-packages/torch/nn/functional.py:2954: UserWarning: Mismatch dtype between input and weight: input dtype = c10::BFloat16, weight dtype = float, Cannot dispatch to fused implementation. (Triggered internally at /pytorch/aten/src/ATen/native/layer_norm.cpp:344.)
+  return torch.rms_norm(input, normalized_shape, weight, eps)
+val {'age': 0, 'ce': 10.840860605239868}
+call 1 age 0 loss 10.8461 step 977ms elapsed 1s
+call 50 age 49 loss 7.4992 step 118ms elapsed 7s
+call 100 age 99 loss 6.6329 step 118ms elapsed 14s
+call 150 age 149 loss 6.1654 step 118ms elapsed 20s
+call 200 age 199 loss 5.8810 step 118ms elapsed 26s
+call 250 age 249 loss 5.9607 step 120ms elapsed 32s
+val {'age': 250, 'ce': 5.820456624031067}
+call 300 age 299 loss 5.7624 step 118ms elapsed 38s
+call 350 age 349 loss 5.5704 step 117ms elapsed 45s
+call 400 age 399 loss 5.5320 step 117ms elapsed 51s
+call 450 age 449 loss 5.5040 step 118ms elapsed 57s
+call 500 age 499 loss 5.2925 step 117ms elapsed 63s
+val {'age': 500, 'ce': 5.35784912109375}
+call 550 age 549 loss 5.4606 step 118ms elapsed 69s
+call 600 age 599 loss 5.2237 step 117ms elapsed 76s
+call 650 age 649 loss 5.1508 step 117ms elapsed 82s
+call 700 age 699 loss 5.1398 step 122ms elapsed 88s
+call 750 age 749 loss 5.0594 step 118ms elapsed 94s
+val {'age': 750, 'ce': 5.157832086086273}
+call 800 age 799 loss 5.1282 step 117ms elapsed 100s
+call 850 age 849 loss 5.0266 step 117ms elapsed 107s
+call 900 age 899 loss 5.0050 step 117ms elapsed 113s
+call 950 age 949 loss 4.9664 step 117ms elapsed 119s
+call 1000 age 999 loss 5.0362 step 117ms elapsed 125s
+val {'age': 1000, 'ce': 5.083919525146484}
+done /workspace/data/turbosoap_refresh_study_20261120/d512 126s
